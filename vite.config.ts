@@ -18,10 +18,7 @@ export default defineConfig((configEnv) => ({
 			include: ['./src}/**/*.{ts,tsx}'],
 			linters: [new EsLinter({ configEnv })],
 		}),
-		dts({
-			include: ['src'],
-			insertTypesEntry: true,
-		}),
+		dts({ include: ['src'] }),
 	],
 	build: {
 		manifest: true,
@@ -31,7 +28,7 @@ export default defineConfig((configEnv) => ({
 			entry: resolve('src', 'components/index.ts'),
 			name: 'XtremeUI',
 			formats: ['es', 'umd'],
-			fileName: (format) => `xtreme-ui.${format}.js`,
+			fileName: (format) => `index.${format}.js`,
 		},
 		rollupOptions: {
 			external: [...Object.keys(peerDependencies)],
