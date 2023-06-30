@@ -31,7 +31,7 @@ jobs:
       - name: Checkout to 'main' Branch ✔️
         uses: actions/checkout@v3.5.3
 
-      - name: Use Node.js v18.x 🚀
+      - name: Use Node.js v18.x 👀
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
@@ -54,6 +54,9 @@ jobs:
             git config --global user.email "jarvis@ritik.me"
             git config --global user.name "Jarvis"
             npm config set sign-git-tag true
+
+      - name: Delete old version tags 🔖
+        run: git ls-remote --tags origin | awk -F/ '/\/tags\// {print ":" $NF}' | grep -Ev "\^" | xargs -I{} git push origin {}
 
       - name: Generate new version tag 🏷️
         run: npm version $VERSION -m "🤖 Jarvis published a $VERSION version"
