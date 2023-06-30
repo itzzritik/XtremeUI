@@ -1,1 +1,6 @@
-declare module '@itzzritik/xtreme-ui'
+declare module '*.scss' {
+	const styles: {
+		readonly [key: string]: string;
+	};
+	export default styles;
+}
