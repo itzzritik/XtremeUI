@@ -17,7 +17,7 @@
 		"ecmaFeatures": { "jsx": true },
 		"ecmaVersion": "latest",
 		"sourceType": "module",
-		"project": ["./tsconfig.json"]
+		"project": ["./tsconfig.json", "./tsconfig.node.json"]
 	},
 	"rules": {
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
