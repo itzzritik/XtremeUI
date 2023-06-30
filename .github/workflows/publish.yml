@@ -1,5 +1,8 @@
 name: Publish
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       version:
@@ -14,13 +17,21 @@ on:
 
 jobs:
   version:
-    name: Publish new ${{ github.event.inputs.version }} version
+    name: Publish new ${{ github.event_name == 'push' && 'patch' || github.event.inputs.version }} version
     runs-on: ubuntu-latest
     steps:
+      - name: Set version variable 📝
+        run: |
+          if [ "${{ github.event_name }}" == "push" ]; then
+            echo "VERSION=patch" >> $GITHUB_ENV
+          else
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
+          fi
+
       - name: Checkout to 'main' Branch ✔️
         uses: actions/checkout@v3.5.3
 
-      - name: Use Node.js ${{ matrix.node-version }} 🚀
+      - name: Use Node.js v18.x 🚀
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
@@ -45,7 +56,7 @@ jobs:
             npm config set sign-git-tag true
 
       - name: Generate new version tag 🏷️
-        run: npm version ${{ github.event.inputs.version }} -m "🤖 Jarvis published a ${{ github.event.inputs.version }} version"
+        run: npm version $VERSION -m "🤖 Jarvis published a $VERSION version"
 
       - name: Push new version tag to repository 🎉
         run: git push --follow-tags
