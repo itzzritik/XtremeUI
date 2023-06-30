@@ -19,10 +19,14 @@ export default defineConfig((configEnv) => ({
 			linters: [new EsLinter({ configEnv })],
 		}),
 		dts({
-			include: ['src/components/'],
+			include: ['src'],
+			insertTypesEntry: true,
 		}),
 	],
 	build: {
+		manifest: true,
+		minify: true,
+		reportCompressedSize: true,
 		lib: {
 			entry: resolve('src', 'components/index.ts'),
 			name: 'XtremeUI',
