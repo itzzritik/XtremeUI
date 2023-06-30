@@ -1,2 +1,1 @@
-export type { IHelloWorld } from './base/Hello';
-export { Helloworld } from './base/Hello';
+export { default as Button } from './base/Button/Button';
