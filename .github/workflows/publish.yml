@@ -1,8 +1,5 @@
 name: Publish
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       version:
@@ -14,6 +11,9 @@ on:
           - patch
           - minor
           - major
+  # push:
+  #   branches:
+  #     - main
 
 jobs:
   version:

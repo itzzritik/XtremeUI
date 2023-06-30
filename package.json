@@ -10,7 +10,7 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 3001",
     "build-storybook": "storybook build"
   },
   "peerDependencies": {
@@ -32,6 +32,7 @@
     "@typescript-eslint/parser": "^5.60.1",
     "@vitejs/plugin-react": "^4.0.1",
     "@vitejs/plugin-react-swc": "^3.3.2",
+    "chromatic": "^6.19.9",
     "eslint": "^8.43.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "^7.32.2",
@@ -61,7 +62,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/itzzritik/XtremeUI"
+    "url": "git+https://github.com/itzzritik/XtremeUI.git"
   },
   "keywords": [
     "react",
@@ -71,12 +72,19 @@
     "react-components",
     "vite"
   ],
-  "author": "Ritik Srivastava",
+  "author": {
+    "name": "Ritik Srivastava"
+  },
   "homepage": "https://github.com/itzzritik/XtremeUI#readme",
   "license": "MIT",
   "eslintConfig": {
     "extends": [
       "plugin:storybook/recommended"
     ]
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/itzzritik/XtremeUI/issues"
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "@itzzritik/xtreme-ui@0.0.10"
 }
