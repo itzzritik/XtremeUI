@@ -18,7 +18,7 @@
 		font-size: 16px;
 		line-height: 1;
 		font-weight: 600;
-		letter-spacing: 0.15rem;
+		letter-spacing: 2px;
 		text-transform: uppercase;
 		color: var(--colorContentSecondary);
 		z-index: 1;
@@ -37,14 +37,9 @@
 		transition: all var(--duration) cubic-bezier(0.23, 1, 0.320, 1);
 	}
 
-	@mixin hover {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
 	&:hover {
 		box-shadow: 0 0 0 5px rgb(var(--colorBrandAccentRgb) / 50%);
+		transition: all var(--duration) cubic-bezier(0.23, 1, 0.320, 1);
 
 		.label {
 			color: white;
@@ -54,12 +49,20 @@
 			clip-path: circle(100% at 50% 50%);
 			opacity: 1;
 		}
-
-		transition: all var(--duration) cubic-bezier(0.23, 1, 0.320, 1);
 	}
 
 	&.clicked {
-		animation: outerRipple var(--duration) linear forwards;
+		box-shadow: 0 0 0 0 rgb(var(--colorBrandAccentRgb) / 0%);
+		animation: outerRipple var(--duration) linear;
+
+		.label {
+			color: white;
+		}
+
+		&::before {
+			clip-path: circle(100% at 50% 50%);
+			opacity: 1;
+		}
 	}
 }
 
@@ -68,11 +71,7 @@
 		box-shadow: 0 0 0 5px rgb(var(--colorBrandAccentRgb) / 50%);
 	}
 
-	20% {
-		box-shadow: 0 0 0 10px rgb(var(--colorBrandAccentRgb) / 50%);
-	}
-
 	100% {
-		box-shadow: 0 0 0 10px rgb(var(--colorBrandAccentRgb) / 0%);
+		box-shadow: 0 0 100px 85px rgb(var(--colorBrandAccentRgb) / 0%);
 	}
 } 

@@ -16,8 +16,8 @@ export const Button = (props: IButtonProps) => {
 		ref.current?.classList.add(styles.clicked);
 		setTimeout(() => {
 			ref.current?.classList.remove(styles.clicked);
-		}, 600);
-	}, 600);
+		}, duration + 100);
+	}, duration + 100);
 
 	const onButtonClick = () => {
 		onClick?.();

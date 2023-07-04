@@ -72,3 +72,16 @@ body {
 		background: rgb(var(--colorBrandAccentRgb));
 	}
 }
+
+* {
+	font-family: Montserrat, sans-serif;
+	font-weight: 500;
+}
+
+@supports (font-variation-settings: normal) {
+	* {
+		font-family: 'Montserrat Variable', sans-serif;
+		font-weight: 500;
+		font-variation-settings: 'wdth' 75, 'wght' 500;
+	}
+}

@@ -2,6 +2,7 @@ import type { Preview } from "@storybook/react";
 import { addons } from "@storybook/addons";
 import { UPDATE_GLOBALS } from "@storybook/core-events";
 import { ColorList } from "./constants";
+import '../src/utils/helper/fontHelper';
 import "../src/components/variables.scss";
 
 let originalBodyClass;
