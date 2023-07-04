@@ -114,10 +114,8 @@
 			color: white;
 		}
 
-		.underline {
-			span {
-				width: 100%;
-			}
+		.underline  span {
+			width: 100%;
 		}
 
 		&::before {
@@ -136,7 +134,7 @@
 
 	&.clicked {
 		box-shadow: 0 0 0 0 rgb(var(--themeColor) / 0%);
-		animation: outerRipple var(--duration) linear;
+		animation: ripple var(--duration) linear;
 
 		.label {
 			color: white;
@@ -149,7 +147,7 @@
 	}
 }
 
-@keyframes outerRipple {
+@keyframes ripple {
 	0% {
 		box-shadow: 0 0 0 7px rgb(var(--themeColor) / 50%);
 	}

@@ -7,6 +7,7 @@ const meta = {
 	component: ProgressBar,
 	tags: ['autodocs'],
 	argTypes: {
+		className: { control: false },
 		progress: { control: { type: 'range', min: 0, max: 100, step: 1 } },
 	},
 } satisfies Meta<typeof ProgressBar>;

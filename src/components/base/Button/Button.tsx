@@ -43,7 +43,7 @@ export const Button = (props: IButtonProps) => {
 	return (
 		<button className={ButtonClsx} ref={ref} onClick={onButtonClick}>
 			<span className={styles.label}>{label}</span>
-			{type.includes(EButtonTypes.link) && (<ProgressBar className={styles.underline} />)}
+			{type.includes(EButtonTypes.link) && <ProgressBar className={styles.underline} />}
 		</button>
 	);
 };
