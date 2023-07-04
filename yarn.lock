@@ -1644,15 +1644,15 @@
   resolved "https://registry.yarnpkg.com/@fal-works/esbuild-plugin-global-externals/-/esbuild-plugin-global-externals-2.1.2.tgz#c05ed35ad82df8e6ac616c68b92c2282bd083ba4"
   integrity sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==
 
+"@fontsource-variable/material-symbols-rounded@^5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@fontsource-variable/material-symbols-rounded/-/material-symbols-rounded-5.0.4.tgz#bad9f8eda17ff6b2f06b65ce7041f885009ac940"
+  integrity sha512-pFiXd1YRzEaeOTNdXdcmnEtD0CUev4fCeK+ln25saZyHhUXZoO+d2kn9Teh33D7MZCc2rOSJxW/r8L8cxaEqbg==
+
 "@fontsource-variable/montserrat@^5.0.5":
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/@fontsource-variable/montserrat/-/montserrat-5.0.5.tgz#ad32dc1d8ec7677ff6f2489b2ddec2398bd6a499"
   integrity sha512-tTzA6hbzfie2j+zbfBhQhGbKD12Fw007Q1w6KiwnYtLt732ajlIvc0c8IzLH1j/SX5va4Um+v8h7QvScJlq9TA==
-
-"@fontsource/material-icons-round@^5.0.4":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@fontsource/material-icons-round/-/material-icons-round-5.0.4.tgz#fc86fdf44296579bd8107392ab5474d404a61b90"
-  integrity sha512-NIHvoQYYKwHHZJ26KCPXkUVoRVMgV+mrbslv4V6kBvZBwa4i91LOynmfmYw+2cFHud6cLH4CcrMh2KQ9XZA0MA==
 
 "@humanwhocodes/config-array@^0.11.10", "@humanwhocodes/config-array@^0.11.6":
   version "0.11.10"

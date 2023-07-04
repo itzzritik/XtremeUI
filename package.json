@@ -18,8 +18,8 @@
 		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
+		"@fontsource-variable/material-symbols-rounded": "^5.0.4",
 		"@fontsource-variable/montserrat": "^5.0.5",
-		"@fontsource/material-icons-round": "^5.0.4",
 		"@storybook/addon-essentials": "7.0.24",
 		"@storybook/addon-interactions": "7.0.24",
 		"@storybook/addon-links": "7.0.24",

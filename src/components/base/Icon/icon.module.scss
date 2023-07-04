@@ -1,0 +1,10 @@
+/* stylelint-disable font-family-no-missing-generic-family-keyword */
+.icon {
+	font-family: 'Material Symbols Rounded Variable';
+	font-size: 24px;
+	font-variation-settings: 'FILL' 0, 'wght' 500;
+
+	&.filled {
+		font-variation-settings: 'FILL' 1, 'wght' 500;
+	}
+}
