@@ -163,6 +163,23 @@
 				"warnOnUnassignedImports": true
 			}
 		],
+		"no-restricted-imports": [
+			"error",
+			{
+				"paths": [
+					{
+						"name": "lodash",
+						"message": "Import [module] from lodash/[module] instead"
+					}
+				],
+				"patterns": [
+					{
+						"group": ["lodash/set"],
+						"message": "Import [module] from lodash/fp/[module] instead"
+					}
+				]
+			}
+		],
 		
 		"react/react-in-jsx-scope": "off",
 		"react/jsx-uses-react": "error",
@@ -201,6 +218,9 @@
     	"react-hooks/exhaustive-deps": "error"
 	},
 	"settings": {
-		"react": { "version": "detect" }
+		"react": { "version": "detect" },
+		"import/resolver": {
+			"typescript": {}
+		}
 	}
 }

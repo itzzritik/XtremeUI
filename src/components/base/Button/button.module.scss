@@ -1,18 +1,78 @@
 .button {
-	background-color: #FFF;
-	border: 1px solid #CCC;
-	border-radius: 100px;
-	color: #333;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 12px 24px;
+	border: none;
+	border-radius: 9999px;
+	background: rgb(var(--colorBrandAccentRgb) / 0%);
+	box-shadow: 0 0 0 2px var(--colorShadow);
 	cursor: pointer;
-	display: inline-block;
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 1.5;
-	margin-bottom: 0;
-	padding: 6px 12px;
-	text-align: center;
-	touch-action: manipulation;
 	user-select: none;
-	vertical-align: middle;
-	white-space: nowrap;
+	overflow: hidden;
+	transition: all var(--duration) cubic-bezier(0.23, 1, 0.320, 1);
+
+	.label {
+		margin: 0;
+		font-size: 16px;
+		line-height: 1;
+		font-weight: 600;
+		letter-spacing: 0.15rem;
+		text-transform: uppercase;
+		color: var(--colorContentSecondary);
+		z-index: 1;
+		transition: all var(--duration) cubic-bezier(0.23, 1, 0.320, 1);
+	}
+	
+	&::before {
+		content: '';
+		position: absolute;
+		display: block;
+		width: 100%; height: 100%;
+		background: rgb(var(--colorBrandAccentRgb));
+		z-index: 0;
+		clip-path: circle(0% at 50% 50%);
+		opacity: 0;
+		transition: all var(--duration) cubic-bezier(0.23, 1, 0.320, 1);
+	}
+
+	@mixin hover {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&:hover {
+		box-shadow: 0 0 0 5px rgb(var(--colorBrandAccentRgb) / 50%);
+
+		.label {
+			color: white;
+		}
+
+		&::before {
+			clip-path: circle(100% at 50% 50%);
+			opacity: 1;
+		}
+
+		transition: all var(--duration) cubic-bezier(0.23, 1, 0.320, 1);
+	}
+
+	&.clicked {
+		animation: outerRipple var(--duration) linear forwards;
+	}
 }
+
+@keyframes outerRipple {
+	0% {
+		box-shadow: 0 0 0 5px rgb(var(--colorBrandAccentRgb) / 50%);
+	}
+
+	20% {
+		box-shadow: 0 0 0 10px rgb(var(--colorBrandAccentRgb) / 50%);
+	}
+
+	100% {
+		box-shadow: 0 0 0 10px rgb(var(--colorBrandAccentRgb) / 0%);
+	}
+} 

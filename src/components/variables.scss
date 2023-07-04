@@ -1,3 +1,74 @@
-:root {
-	--color: #000;
+body {
+	&.red {
+		--colorBrandPrimaryRgb: 249 34 75;								// rgb(249 34 75)
+		--colorBrandSecondaryRgb: 255 68 68;							// rgb(255 68 68)
+		--colorBrandAccentRgb: 255 56 83;								// rgb(255 56 83)
+	}
+
+	&.pink {
+		--colorBrandPrimaryRgb: 252 33 105;								// rgb(252 33 105)
+		--colorBrandSecondaryRgb: 226 33 255;							// rgb(226 33 255)
+		--colorBrandAccentRgb: 255 85 136;								// rgb(255 85 136)
+	}
+
+	&.orange {
+		--colorBrandPrimaryRgb: 255 127 34;								// rgb(255 127 34)
+		--colorBrandSecondaryRgb: 255 65 65;							// rgb(255 65 65)
+		--colorBrandAccentRgb: 255 108 103;								// rgb(255 108 103);
+	}
+
+	&.blue {
+		--colorBrandPrimaryRgb: 34 252 176;								// rgb(34 252 176)
+		--colorBrandSecondaryRgb: 33 129 250;							// rgb(33 129 250)
+		--colorBrandAccentRgb: 33 149 243;								// rgb(33 149 243)
+		
+	}
+
+	&.violet {
+		--colorBrandPrimaryRgb: 63 0 230;								// rgb(63 0 230)
+		--colorBrandSecondaryRgb: 150 44 255;							// rgb(150 44 255)
+		--colorBrandAccentRgb: 127 81 255;								// rgb(127 81 255)
+	}
+
+	&.black {
+		--colorBrandPrimaryRgb: 22 20 28;								// rgb(22 20 28)
+		--colorBrandSecondaryRgb: 9 8 11;								// rgb(9 8 11)
+		--colorBrandAccentRgb: 40 39 44;								// rgb(40 39 44)
+	}
+
+	// Border Colors
+	--colorBorderPrimary: #ABB0BB;
+
+	// Text Colors
+	--colorContentPrimary: #383838;
+	--colorContentSecondary: #666;
+	--colorContentTertiary: #E6E6E6;
+
+	// Background Colors
+	--colorBackgroundPrimary: #FFF;
+	--colorBackgroundSecondary: #F6F6F6;
+	--colorBackgroundTertiary: #EEE;
+	--colorShadow: rgb(100 100 100 / 40%);
+
+	// Gradient Colors
+	--gradientBrand: linear-gradient(320deg, rgb(var(--colorBrandPrimaryRgb)), rgb(var(--colorBrandSecondaryRgb)));
+
+	&.dark {
+		// Text Colors
+		--colorContentPrimary: #A1A1A1;
+		--colorContentSecondary: #636363;
+		--colorContentTertiary: #383838;
+
+		// Background Colors
+		--colorBackgroundPrimary: #080808;
+		--colorBackgroundSecondary: #0C0C0C;
+		--colorBackgroundTertiary: #0F0F0F;
+	}
+
+	scroll-behavior: smooth;
+
+	::selection {
+		color: white;
+		background: rgb(var(--colorBrandAccentRgb));
+	}
 }
