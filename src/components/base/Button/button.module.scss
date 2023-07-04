@@ -1,11 +1,11 @@
 .button {
+	--duration: 0.6s;
 	--themeColor: var(--colorBrandAccentRgb);
 
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 12px 24px;
 	border: none;
 	box-shadow: 0 0 0 0 rgb(var(--themeColor) / 0%);
 	border-radius: 9999px;
@@ -15,9 +15,6 @@
 
 	.label {
 		margin: 0;
-		font-size: 16px;
-		font-weight: 600;
-		letter-spacing: 2px;
 		text-transform: uppercase;
 		z-index: 1;
 		transition: all var(--duration) cubic-bezier(0.23, 1, 0.320, 1);
@@ -40,6 +37,7 @@
 		display: block;
 		width: 100%; height: 100%;
 		background: rgb(var(--themeColor));
+		filter: contrast(1.2) brightness(0.8);
 		clip-path: circle(0% at 50% 50%);
 		border-radius: 9999px;
 		z-index: 0;
@@ -54,10 +52,6 @@
 		.label {
 			color: white;
 		}
-
-		&::before {
-			filter: contrast(1.2) brightness(0.8);
-		}
 	}
 
 	&.secondaryType, &.secondaryDangerType {
@@ -66,10 +60,6 @@
 
 		.label {
 			color: rgb(var(--themeColor));
-		}
-
-		&::before {
-			filter: contrast(1.2) brightness(0.8) !important;
 		}
 	}
 
@@ -106,6 +96,36 @@
 		}
 	}
 
+	&.miniSize {
+		padding: 8px 16px;
+
+		.label {
+			font-size: 12px;
+			font-variation-settings: 'wdth' 75, 'wght' 400;
+			letter-spacing: 2px;
+		}
+	}
+
+	&.defaultSize {
+		padding: 12px 24px;
+
+		.label {
+			font-size: 16px;
+			font-variation-settings: 'wdth' 75, 'wght' 500;
+			letter-spacing: 2px;
+		}
+	}
+	
+	&.largeSize {
+		padding: 16px 32px;
+
+		.label {
+			font-size: 22px;
+			font-variation-settings: 'wdth' 75, 'wght' 600;
+			letter-spacing: 4px;
+		}
+	}
+
 	&:hover {
 		box-shadow: 0 0 0 5px rgb(var(--themeColor) / 50%);
 		transition: all var(--duration) cubic-bezier(0.23, 1, 0.320, 1);
@@ -126,10 +146,6 @@
 
 	&:active {
 		box-shadow: 0 0 0 7px rgb(var(--themeColor) / 50%);
-
-		&::before {
-			filter: contrast(1.2) brightness(0.8);
-		}
 	}
 
 	&.clicked {
@@ -150,10 +166,6 @@
 @keyframes ripple {
 	0% {
 		box-shadow: 0 0 0 7px rgb(var(--themeColor) / 50%);
-	}
-
-	10% {
-		box-shadow: 0 0 0 10px rgb(var(--themeColor) / 50%);
 	}
 
 	100% {

@@ -1,20 +1,17 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 import clsx from 'clsx';
 import throttle from 'lodash/throttle';
-
-import { setCssProperty } from '#utils/helper/domHelper';
 
 import { ProgressBar } from '../ProgressBar/ProgressBar';
 
 import styles from './button.module.scss';
 
-const duration = 600;
 const throttleTime = 100;
 let timeout: number;
 
 export const Button = (props: IButtonProps) => {
-	const { className, label, type, onClick } = props;
+	const { className, label, type = 'primary', size = 'default', onClick } = props;
 	const ref = useRef<HTMLButtonElement>(null);
 
 	const ripple = throttle(() => {
@@ -22,7 +19,7 @@ export const Button = (props: IButtonProps) => {
 		ref.current?.classList.add(styles.clicked);
 		timeout = window.setTimeout(() => {
 			ref.current?.classList.remove(styles.clicked);
-		}, duration + throttleTime);
+		}, 600 + throttleTime);
 	}, throttleTime);
 
 	const onButtonClick = () => {
@@ -33,12 +30,9 @@ export const Button = (props: IButtonProps) => {
 	const ButtonClsx = clsx(
 		styles.button,
 		styles[`${type}Type`],
+		styles[`${size}Size`],
 		className,
 	);
-
-	useEffect(() => {
-		setCssProperty('--duration', `${duration}ms`, ref);
-	}, [ref]);
 
 	return (
 		<button className={ButtonClsx} ref={ref} onClick={onButtonClick}>
@@ -49,8 +43,9 @@ export const Button = (props: IButtonProps) => {
 };
 export interface IButtonProps {
 	className?: string;
-	label: string;
-	type: keyof typeof EButtonTypes;
+	label?: string;
+	type?: keyof typeof EButtonTypes;
+	size?: keyof typeof EButtonSize;
 	onClick: () => void;
 }
 
@@ -61,4 +56,9 @@ enum EButtonTypes {
 	secondaryDanger = 'secondaryDanger',
 	link = 'link',
 	linkDanger = 'linkDanger',
+}
+enum EButtonSize {
+	mini = 'mini',
+	default = 'default',
+	large = 'large',
 }
