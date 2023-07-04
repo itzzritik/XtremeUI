@@ -1649,6 +1649,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource-variable/montserrat/-/montserrat-5.0.5.tgz#ad32dc1d8ec7677ff6f2489b2ddec2398bd6a499"
   integrity sha512-tTzA6hbzfie2j+zbfBhQhGbKD12Fw007Q1w6KiwnYtLt732ajlIvc0c8IzLH1j/SX5va4Um+v8h7QvScJlq9TA==
 
+"@fontsource/material-icons-round@^5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@fontsource/material-icons-round/-/material-icons-round-5.0.4.tgz#fc86fdf44296579bd8107392ab5474d404a61b90"
+  integrity sha512-NIHvoQYYKwHHZJ26KCPXkUVoRVMgV+mrbslv4V6kBvZBwa4i91LOynmfmYw+2cFHud6cLH4CcrMh2KQ9XZA0MA==
+
 "@humanwhocodes/config-array@^0.11.10", "@humanwhocodes/config-array@^0.11.6":
   version "0.11.10"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.11.10.tgz"

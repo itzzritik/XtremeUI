@@ -36,6 +36,11 @@ body {
 		--colorBrandAccentRgb: 40 39 44;								// rgb(40 39 44)
 	}
 
+	// Alert Colors
+	--colorAlertErrorRGB: 255 65 54;									// rgb(255 65 54)
+	--colorAlertWarningRGB: 255 220 0;									// rgb(255 220 0)
+	--colorAlertSuccessRGB: 46 204 64;									// rgb(46 204 64)
+
 	// Border Colors
 	--colorBorderPrimary: #ABB0BB;
 
@@ -62,7 +67,7 @@ body {
 		// Background Colors
 		--colorBackgroundPrimary: #080808;
 		--colorBackgroundSecondary: #0C0C0C;
-		--colorBackgroundTertiary: #0F0F0F;
+		--colorBackgroundTertiary: #333;
 	}
 
 	scroll-behavior: smooth;

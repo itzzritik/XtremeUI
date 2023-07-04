@@ -1,13 +1,14 @@
 .button {
+	--themeColor: var(--colorBrandAccentRgb);
+
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding: 12px 24px;
 	border: none;
+	box-shadow: 0 0 0 0 rgb(var(--themeColor) / 0%);
 	border-radius: 9999px;
-	background: rgb(var(--colorBrandAccentRgb) / 0%);
-	box-shadow: 0 0 0 2px var(--colorShadow);
 	cursor: pointer;
 	user-select: none;
 	overflow: hidden;
@@ -16,11 +17,9 @@
 	.label {
 		margin: 0;
 		font-size: 16px;
-		line-height: 1;
 		font-weight: 600;
 		letter-spacing: 2px;
 		text-transform: uppercase;
-		color: var(--colorContentSecondary);
 		z-index: 1;
 		transition: all var(--duration) cubic-bezier(0.23, 1, 0.320, 1);
 	}
@@ -30,15 +29,66 @@
 		position: absolute;
 		display: block;
 		width: 100%; height: 100%;
-		background: rgb(var(--colorBrandAccentRgb));
+		background: rgb(var(--themeColor));
 		z-index: 0;
 		clip-path: circle(0% at 50% 50%);
 		opacity: 0;
 		transition: all var(--duration) cubic-bezier(0.23, 1, 0.320, 1);
 	}
 
+	&.primaryType, &.primaryDangerType {
+		background: rgb(var(--themeColor));
+		box-shadow: 0 0 0 2px rgb(var(--themeColor) / 40%);
+
+		.label {
+			color: white;
+		}
+
+		&::before {
+			filter: contrast(1.2) brightness(0.8);
+		}
+	}
+
+	&.secondaryType, &.secondaryDangerType {
+		background: var(--colorBackgroundTertiary);
+		box-shadow: 0 0 0 2px rgb(var(--colorBackgroundTertiary) / 40%);
+
+		.label {
+			color: rgb(var(--themeColor));
+		}
+
+		&::before {
+			filter: contrast(1.2) brightness(0.8) !important;
+		}
+	}
+
+	&.linkType, &.linkDangerType  {
+		background: none;
+		box-shadow: none !important;
+
+		.label {
+			color: var(--colorContentPrimary);
+			letter-spacing: unset;
+			text-transform: unset;
+		}
+
+		&::before {
+			display: none;
+		}
+
+		&:hover {
+			.label {
+				color: rgb(var(--themeColor));
+			}
+		}
+	}
+
+	&.primaryDangerType, &.secondaryDangerType, &.linkDangerType {
+		--themeColor: var(--colorAlertErrorRGB);
+	}
+
 	&:hover {
-		box-shadow: 0 0 0 5px rgb(var(--colorBrandAccentRgb) / 50%);
+		box-shadow: 0 0 0 5px rgb(var(--themeColor) / 50%);
 		transition: all var(--duration) cubic-bezier(0.23, 1, 0.320, 1);
 
 		.label {
@@ -51,8 +101,16 @@
 		}
 	}
 
+	&:active {
+		box-shadow: 0 0 0 7px rgb(var(--themeColor) / 50%);
+
+		&::before {
+			filter: contrast(1.2) brightness(0.8);
+		}
+	}
+
 	&.clicked {
-		box-shadow: 0 0 0 0 rgb(var(--colorBrandAccentRgb) / 0%);
+		box-shadow: 0 0 0 0 rgb(var(--themeColor) / 0%);
 		animation: outerRipple var(--duration) linear;
 
 		.label {
@@ -68,10 +126,14 @@
 
 @keyframes outerRipple {
 	0% {
-		box-shadow: 0 0 0 5px rgb(var(--colorBrandAccentRgb) / 50%);
+		box-shadow: 0 0 0 7px rgb(var(--themeColor) / 50%);
+	}
+
+	10% {
+		box-shadow: 0 0 0 10px rgb(var(--themeColor) / 50%);
 	}
 
 	100% {
-		box-shadow: 0 0 100px 85px rgb(var(--colorBrandAccentRgb) / 0%);
+		box-shadow: 0 0 100px 40px rgb(var(--themeColor) / 0%);
 	}
 } 

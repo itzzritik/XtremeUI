@@ -8,20 +8,24 @@ import { setCssProperty } from '#utils/helper/domHelper';
 import styles from './button.module.scss';
 
 const duration = 600;
+const throttleTime = 100;
+let timeout: number;
+
 export const Button = (props: IButtonProps) => {
 	const { className, label, type, onClick } = props;
 	const ref = useRef<HTMLButtonElement>(null);
 
 	const ripple = throttle(() => {
+		clearTimeout(timeout);
 		ref.current?.classList.add(styles.clicked);
-		setTimeout(() => {
+		timeout = window.setTimeout(() => {
 			ref.current?.classList.remove(styles.clicked);
-		}, duration + 100);
-	}, duration + 100);
+		}, duration + throttleTime);
+	}, throttleTime);
 
 	const onButtonClick = () => {
 		onClick?.();
-		ripple();
+		if (!type.includes(EButtonTypes.link)) ripple();
 	};
 
 	const ButtonClsx = clsx(
@@ -31,7 +35,6 @@ export const Button = (props: IButtonProps) => {
 	);
 
 	useEffect(() => {
-		console.log('ref changed');
 		setCssProperty('--duration', `${duration}ms`, ref);
 	}, [ref]);
 
@@ -49,10 +52,10 @@ export interface IButtonProps {
 }
 
 enum EButtonTypes {
-	'primary',
-	'primary-danger',
-	'secondary',
-	'secondary-danger',
-	'link',
-	'link-danger',
+	primary = 'primary',
+	primaryDanger = 'primaryDanger',
+	secondary = 'secondary',
+	secondaryDanger = 'secondaryDanger',
+	link = 'link',
+	linkDanger = 'linkDanger',
 }
