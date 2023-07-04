@@ -1,0 +1,28 @@
+.progressBar {
+	position: relative;
+	width: 100%;
+	height: 3px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+
+	&::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		border-radius: 999px;
+		background: var(--colorBorderPrimary);
+	}
+
+	> .progress {
+		position: absolute;
+		left: 0; top: 0;
+		width: 100%; height: 3px;
+		display: block;
+		background: var(--gradientBrand);
+		border-radius: 999px;
+		transition: transform 0.2s ease-out;
+	}
+}
