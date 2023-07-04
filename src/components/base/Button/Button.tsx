@@ -5,6 +5,8 @@ import throttle from 'lodash/throttle';
 
 import { setCssProperty } from '#utils/helper/domHelper';
 
+import { ProgressBar } from '../ProgressBar/ProgressBar';
+
 import styles from './button.module.scss';
 
 const duration = 600;
@@ -41,6 +43,7 @@ export const Button = (props: IButtonProps) => {
 	return (
 		<button className={ButtonClsx} ref={ref} onClick={onButtonClick}>
 			<span className={styles.label}>{label}</span>
+			{type.includes(EButtonTypes.link) && (<ProgressBar className={styles.underline} />)}
 		</button>
 	);
 };
