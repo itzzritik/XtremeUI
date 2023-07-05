@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { MouseEvent, useRef } from 'react';
 
 import clsx from 'clsx';
 import throttle from 'lodash/throttle';
@@ -32,8 +32,8 @@ export const Button = (props: IButtonProps) => {
 		}, 600 + throttleTime);
 	}, throttleTime);
 
-	const onButtonClick = () => {
-		onClick?.();
+	const onButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
+		onClick?.(e);
 		if (!type.includes(EButtonTypes.link)) ripple();
 	};
 
@@ -48,8 +48,11 @@ export const Button = (props: IButtonProps) => {
 		styles.button,
 		styles[`${type}Type`],
 		styles[`${size}Size`],
+		!label && styles.iconOnly,
 		className,
 	);
+
+	if (!label && !iconName) return null;
 
 	return (
 		<button className={ButtonClsx} ref={ref} onClick={onButtonClick}>
@@ -60,15 +63,19 @@ export const Button = (props: IButtonProps) => {
 		</button>
 	);
 };
-export interface IButtonProps {
-	className?: string;
+export type IButtonProps = ({
+	label: string;
+	iconName?: string;
+} | {
 	label?: string;
+	iconName: string;
+}) & {
+	className?: string;
 	type?: keyof typeof EButtonTypes;
 	size?: keyof typeof EButtonSize;
-	iconName?: string;
 	iconFilled?: boolean;
 	iconPosition?: 'left' | 'right';
-	onClick: () => void;
+	onClick: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
 enum EButtonTypes {

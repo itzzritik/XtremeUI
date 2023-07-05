@@ -9,6 +9,9 @@ const meta = {
 	argTypes: {
 		className: { control: false },
 		onClick: { control: false },
+		size: {
+			defaultValue: { summary: 'default' },
+		},
 		iconPosition: {
 			defaultValue: { summary: 'left' },
 		},
@@ -40,6 +43,13 @@ export const PrimaryWithIcon: Story = {
 		iconName: 'download',
 	},
 };
+export const PrimaryOnlyIcon: Story = {
+	args: {
+		type: 'primary',
+		size: 'default',
+		iconName: 'settings',
+	},
+};
 export const PrimaryDanger: Story = {
 	args: {
 		type: 'primaryDanger',
@@ -60,6 +70,13 @@ export const SecondaryWithIcon: Story = {
 		label: 'Add to Favorites',
 		size: 'default',
 		iconName: 'star',
+	},
+};
+export const SecondaryOnlyIcon: Story = {
+	args: {
+		type: 'secondary',
+		size: 'default',
+		iconName: 'favorite',
 	},
 };
 export const SecondaryDanger: Story = {

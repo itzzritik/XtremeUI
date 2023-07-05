@@ -110,6 +110,7 @@
 	&.miniSize {
 		--maxRippleSize: 80px 40px;
 
+		line-height: 16px;
 		padding: 8px 16px;
 		gap: 6px;
 
@@ -120,14 +121,23 @@
 		}
 
 		.icon {
-			line-height: 12px;
 			font-variation-settings: 'FILL' var(--fill), 'wght' 200;
+		}
+
+		&.iconOnly {
+			padding: 0;
+
+			.icon {
+				width: 32px;
+				line-height: 32px;
+			}
 		}
 	}
 
 	&.defaultSize {
 		--maxRippleSize: 100px 50px;
 
+		line-height: 20px;
 		padding: 12px 24px;
 		gap: 8px;
 
@@ -138,14 +148,23 @@
 		}
 
 		.icon {
-			line-height: 16px;
 			font-variation-settings: 'FILL' var(--fill), 'wght' 300;
+		}
+
+		&.iconOnly {
+			padding: 0;
+
+			.icon {
+				width: 44px;
+				line-height: 44px;
+			}
 		}
 	}
 	
 	&.largeSize {
 		--maxRippleSize: 150px 75px;
 
+		line-height: 28px;
 		padding: 16px 32px;
 		gap: 10px;
 
@@ -156,8 +175,16 @@
 		}
 
 		.icon {
-			line-height: 22px;
 			font-variation-settings: 'FILL' var(--fill), 'wght' 400;
+		}
+
+		&.iconOnly {
+			padding: 0;
+
+			.icon {
+				width: 60px;
+				line-height: 60px;
+			}
 		}
 	}
 
