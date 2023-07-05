@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 
 import styles from './icon.module.scss';
-import { IconName } from './type';
 
 export const Icon = (props: IIconProps) => {
 	const { className, name, size, filled } = props;
@@ -23,7 +22,7 @@ export const Icon = (props: IIconProps) => {
 
 export interface IIconProps {
 	className?: string;
-	name: IconName;
+	name: string;
 	size?: number;
 	filled?: boolean;
 }

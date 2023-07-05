@@ -9,6 +9,12 @@ const meta = {
 	argTypes: {
 		className: { control: false },
 		onClick: { control: false },
+		iconPosition: {
+			defaultValue: { summary: 'left' },
+		},
+		iconFilled: {
+			defaultValue: { summary: false },
+		},
 	},
 } satisfies Meta<typeof Button>;
 
@@ -20,6 +26,14 @@ export const Primary: Story = {
 		type: 'primary',
 		label: 'Submit',
 		size: 'default',
+	},
+};
+export const PrimaryWithIcon: Story = {
+	args: {
+		type: 'primary',
+		label: 'Download',
+		size: 'default',
+		iconName: 'download',
 	},
 };
 export const PrimaryDanger: Story = {
@@ -36,6 +50,14 @@ export const Secondary: Story = {
 		size: 'default',
 	},
 };
+export const SecondaryWithIcon: Story = {
+	args: {
+		type: 'secondary',
+		label: 'Add to Favorites',
+		size: 'default',
+		iconName: 'star',
+	},
+};
 export const SecondaryDanger: Story = {
 	args: {
 		type: 'secondaryDanger',
@@ -48,6 +70,14 @@ export const Link: Story = {
 		type: 'link',
 		label: 'Click here',
 		size: 'default',
+	},
+};
+export const LinkWithIcon: Story = {
+	args: {
+		type: 'link',
+		label: 'hi@ritik.me',
+		size: 'default',
+		iconName: 'mail',
 	},
 };
 export const LinkDanger: Story = {

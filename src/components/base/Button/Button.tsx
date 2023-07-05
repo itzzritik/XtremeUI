@@ -3,15 +3,29 @@ import { useRef } from 'react';
 import clsx from 'clsx';
 import throttle from 'lodash/throttle';
 
+import { Icon } from '../Icon/Icon';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
 
 import styles from './button.module.scss';
 
 const throttleTime = 100;
 let timeout: number;
-
+const IconSize = {
+	mini: 16,
+	default: 24,
+	large: 32,
+};
 export const Button = (props: IButtonProps) => {
-	const { className, label, type = 'primary', size = 'default', onClick } = props;
+	const {
+		className,
+		label,
+		type = 'primary',
+		size = 'default',
+		iconName,
+		iconFilled = false,
+		iconPosition = 'left',
+		onClick,
+	} = props;
 	const ref = useRef<HTMLButtonElement>(null);
 
 	const ripple = throttle(() => {
@@ -27,6 +41,8 @@ export const Button = (props: IButtonProps) => {
 		if (!type.includes(EButtonTypes.link)) ripple();
 	};
 
+	const IconComponent = () =>
+		(iconName ? <Icon className={styles.icon} name={iconName} size={IconSize[size]} filled={iconFilled} /> : null);
 	const ButtonClsx = clsx(
 		styles.button,
 		styles[`${type}Type`],
@@ -36,8 +52,10 @@ export const Button = (props: IButtonProps) => {
 
 	return (
 		<button className={ButtonClsx} ref={ref} onClick={onButtonClick}>
-			<span className={styles.label}>{label}</span>
 			{type.includes(EButtonTypes.link) && <ProgressBar className={styles.underline} />}
+			{iconPosition === 'left' && <IconComponent />}
+			{label && <span className={styles.label}>{label}</span>}
+			{iconPosition === 'right' && <IconComponent />}
 		</button>
 	);
 };
@@ -46,6 +64,9 @@ export interface IButtonProps {
 	label?: string;
 	type?: keyof typeof EButtonTypes;
 	size?: keyof typeof EButtonSize;
+	iconName?: string;
+	iconFilled?: boolean;
+	iconPosition?: 'left' | 'right';
 	onClick: () => void;
 }
 
