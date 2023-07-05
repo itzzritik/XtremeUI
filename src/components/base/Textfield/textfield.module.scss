@@ -1,0 +1,15 @@
+.textfield {
+	position: relative;
+	width: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 999px;
+	overflow: hidden;
+
+	.input {
+		width: 100%;
+		outline: none;
+		border: none;
+	}
+}

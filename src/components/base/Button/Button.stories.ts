@@ -16,6 +16,10 @@ const meta = {
 			defaultValue: { summary: false },
 		},
 	},
+	args: {
+		iconPosition: 'left',
+		iconFilled: false,
+	},
 } satisfies Meta<typeof Button>;
 
 export default meta;

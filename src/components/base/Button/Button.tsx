@@ -3,18 +3,14 @@ import { useRef } from 'react';
 import clsx from 'clsx';
 import throttle from 'lodash/throttle';
 
-import { Icon } from '../Icon/Icon';
+import { Icon, IconSize } from '../Icon/Icon';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
 
 import styles from './button.module.scss';
 
 const throttleTime = 100;
 let timeout: number;
-const IconSize = {
-	mini: 16,
-	default: 24,
-	large: 32,
-};
+
 export const Button = (props: IButtonProps) => {
 	const {
 		className,
@@ -42,7 +38,12 @@ export const Button = (props: IButtonProps) => {
 	};
 
 	const IconComponent = () =>
-		(iconName ? <Icon className={styles.icon} name={iconName} size={IconSize[size]} filled={iconFilled} /> : null);
+		(
+			iconName
+				? <Icon className={clsx(styles.icon, iconFilled && styles.filled)} name={iconName} size={IconSize[size]} />
+				: null
+		);
+
 	const ButtonClsx = clsx(
 		styles.button,
 		styles[`${type}Type`],

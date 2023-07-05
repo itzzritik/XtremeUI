@@ -19,7 +19,11 @@ export const Icon = (props: IIconProps) => {
 		>{name}</span>
 	);
 };
-
+export const IconSize = {
+	mini: 16,
+	default: 24,
+	large: 32,
+};
 export interface IIconProps {
 	className?: string;
 	name: string;

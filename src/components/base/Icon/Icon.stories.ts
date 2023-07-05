@@ -16,6 +16,11 @@ const meta = {
 			defaultValue: { summary: 24 },
 		},
 	},
+	args: {
+		name: 'favorite',
+		size: 24,
+		filled: false,
+	},
 } satisfies Meta<typeof Icon>;
 
 export default meta;

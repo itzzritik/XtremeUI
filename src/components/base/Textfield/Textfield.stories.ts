@@ -1,22 +1,21 @@
-import { ProgressBar } from './ProgressBar';
+import { Textfield } from './Textfield';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-	title: 'Components/Progress Bar',
-	component: ProgressBar,
+	title: 'Components/Textfield',
+	component: Textfield,
 	tags: ['autodocs'],
 	argTypes: {
 		className: { control: false },
-		progress: { control: { type: 'range', min: 0, max: 100, step: 1 } },
 	},
-} satisfies Meta<typeof ProgressBar>;
+} satisfies Meta<typeof Textfield>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
-		progress: 50,
+		placeholder: 'Enter text here',
 	},
 };

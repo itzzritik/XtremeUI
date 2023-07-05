@@ -22,8 +22,14 @@
 	}
 
 	.icon {
+		--fill: 0;
+
 		z-index: 1;
 		transition: all var(--duration) cubic-bezier(0.23, 1, 0.320, 1);
+
+		&.filled {
+			--fill: 1;
+		}
 	}
 
 	.underline {
@@ -115,7 +121,7 @@
 
 		.icon {
 			line-height: 12px;
-			font-variation-settings: 'wght' 200;
+			font-variation-settings: 'FILL' var(--fill), 'wght' 200;
 		}
 	}
 
@@ -133,7 +139,7 @@
 
 		.icon {
 			line-height: 16px;
-			font-variation-settings: 'wght' 300;
+			font-variation-settings: 'FILL' var(--fill), 'wght' 300;
 		}
 	}
 	
@@ -151,7 +157,7 @@
 
 		.icon {
 			line-height: 22px;
-			font-variation-settings: 'wght' 400;
+			font-variation-settings: 'FILL' var(--fill), 'wght' 400;
 		}
 	}
 
