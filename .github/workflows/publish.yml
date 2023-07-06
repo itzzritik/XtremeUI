@@ -71,4 +71,4 @@ jobs:
         run: yarn build
 
       - name: Publishing Package 🚀
-        run: npm publish
+        run: npm publish --access public
