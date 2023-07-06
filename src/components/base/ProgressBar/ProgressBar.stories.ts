@@ -9,9 +9,13 @@ const meta = {
 	argTypes: {
 		className: { control: false },
 		progress: { control: { type: 'range', min: 0, max: 100, step: 1 } },
+		intermediate: {
+			defaultValue: { summary: false },
+		},
 	},
 	args: {
 		progress: 50,
+		intermediate: false,
 	},
 } satisfies Meta<typeof ProgressBar>;
 
@@ -21,5 +25,11 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
 	args: {
 		progress: 50,
+	},
+};
+export const Intermediate: Story = {
+	args: {
+		progress: 50,
+		intermediate: true,
 	},
 };

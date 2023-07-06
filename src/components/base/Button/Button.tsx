@@ -17,6 +17,8 @@ export const Button = (props: IButtonProps) => {
 		label,
 		type = 'primary',
 		size = 'default',
+		disabled = false,
+		loading = false,
 		iconName,
 		iconFilled = false,
 		iconPosition = 'left',
@@ -49,14 +51,15 @@ export const Button = (props: IButtonProps) => {
 		styles[`${type}Type`],
 		styles[`${size}Size`],
 		!label && styles.iconOnly,
+		loading && styles.loading,
 		className,
 	);
 
 	if (!label && !iconName) return null;
 
 	return (
-		<button className={ButtonClsx} ref={ref} onClick={onButtonClick}>
-			{type.includes(EButtonTypes.link) && <ProgressBar className={styles.underline} />}
+		<button className={ButtonClsx} ref={ref} onClick={onButtonClick} disabled={disabled}>
+			{type.includes(EButtonTypes.link) && <ProgressBar className={styles.underline} intermediate={loading} />}
 			{iconPosition === 'left' && <IconComponent />}
 			{label && <span className={styles.label}>{label}</span>}
 			{iconPosition === 'right' && <IconComponent />}
@@ -73,6 +76,8 @@ export type IButtonProps = ({
 	className?: string;
 	type?: keyof typeof EButtonTypes;
 	size?: keyof typeof EButtonSize;
+	loading?: boolean;
+	disabled?: boolean;
 	iconFilled?: boolean;
 	iconPosition?: 'left' | 'right';
 	onClick: (event: MouseEvent<HTMLButtonElement>) => void;

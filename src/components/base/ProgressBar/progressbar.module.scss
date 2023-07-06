@@ -5,6 +5,8 @@
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+	border-radius: 999px;
+	overflow: hidden;
 
 	&::before {
 		content: '';
@@ -13,16 +15,43 @@
 		width: 100%;
 		height: 1px;
 		border-radius: 999px;
+		opacity: 0.3;
 		background: var(--colorBorderPrimary);
+		transition: all 0.5s var(--cubicBezierPrimary);
 	}
 
 	> .progress {
 		position: absolute;
-		left: 0; top: 0;
 		width: 100%; height: 3px;
 		display: block;
 		background: var(--gradientBrand);
 		border-radius: 999px;
-		transition: transform 0.2s ease-out;
+		transition: all 0.5s var(--cubicBezierPrimary);
+	}
+
+	&.intermediate {
+		border-radius: 999px;
+
+		&::before {
+			height: 100%;
+			background: rgb(var(--colorBrandAccentRgb));
+		}
+
+		> .progress {
+			width: 150%;
+			background-image: repeating-linear-gradient(
+				60deg,
+				transparent,
+				transparent 0.5rem,
+				rgb(var(--colorBrandAccentRgb)) 0.5rem,
+				rgb(var(--colorBrandAccentRgb)) 1.5rem
+			);
+			animation: barberPole 0.2s infinite linear;
+		}
+	}
+
+	@keyframes barberPole {
+		from { transform: translateX(-1.75rem); }
+		to { transform: translateX(0); }
 	}
 }

@@ -20,6 +20,8 @@ const meta = {
 		},
 	},
 	args: {
+		disabled: false,
+		loading: false,
 		iconPosition: 'left',
 		iconFilled: false,
 	},
@@ -43,11 +45,46 @@ export const PrimaryWithIcon: Story = {
 		iconName: 'download',
 	},
 };
-export const PrimaryOnlyIcon: Story = {
+export const PrimaryDisabled: Story = {
+	args: {
+		type: 'primary',
+		size: 'default',
+		label: 'Send',
+		iconName: 'send',
+		iconFilled: true,
+		disabled: true,
+	},
+};
+export const PrimaryLoading: Story = {
+	args: {
+		type: 'primary',
+		size: 'default',
+		iconName: 'upload',
+		label: 'Upload',
+		loading: true,
+	},
+};
+export const PrimaryIconButton: Story = {
 	args: {
 		type: 'primary',
 		size: 'default',
 		iconName: 'settings',
+	},
+};
+export const PrimaryIconButtonDisabled: Story = {
+	args: {
+		type: 'primary',
+		size: 'default',
+		iconName: 'shopping_cart',
+		disabled: true,
+	},
+};
+export const PrimaryIconButtonLoading: Story = {
+	args: {
+		type: 'primary',
+		size: 'default',
+		iconName: 'power_settings_new',
+		loading: true,
 	},
 };
 export const PrimaryDanger: Story = {
@@ -55,6 +92,7 @@ export const PrimaryDanger: Story = {
 		type: 'primaryDanger',
 		label: 'Delete',
 		size: 'default',
+		iconName: 'delete',
 	},
 };
 export const Secondary: Story = {
@@ -72,11 +110,45 @@ export const SecondaryWithIcon: Story = {
 		iconName: 'star',
 	},
 };
-export const SecondaryOnlyIcon: Story = {
+export const SecondaryDisabled: Story = {
 	args: {
 		type: 'secondary',
 		size: 'default',
-		iconName: 'favorite',
+		label: 'Report',
+		iconName: 'report',
+		disabled: true,
+	},
+};
+export const SecondaryLoading: Story = {
+	args: {
+		type: 'secondary',
+		size: 'default',
+		label: 'Extract',
+		iconName: 'folder_zip',
+		loading: true,
+	},
+};
+export const SecondaryIconButton: Story = {
+	args: {
+		type: 'secondary',
+		size: 'default',
+		iconName: 'chat',
+	},
+};
+export const SecondaryIconButtonDisabled: Story = {
+	args: {
+		type: 'secondary',
+		size: 'default',
+		iconName: 'vpn_key',
+		disabled: true,
+	},
+};
+export const SecondaryIconButtonLoading: Story = {
+	args: {
+		type: 'secondary',
+		size: 'default',
+		iconName: 'autorenew',
+		loading: true,
 	},
 };
 export const SecondaryDanger: Story = {
@@ -84,6 +156,7 @@ export const SecondaryDanger: Story = {
 		type: 'secondaryDanger',
 		label: 'Block',
 		size: 'default',
+		iconName: 'block',
 	},
 };
 export const Link: Story = {
