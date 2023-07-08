@@ -1,15 +1,74 @@
 .textfield {
+	--duration: 0.6s;
+
 	position: relative;
 	width: 300px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 999px;
+	border-radius: 9999px;
 	overflow: hidden;
+	box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 40%);
+	background: var(--colorBackgroundTertiary);
+	color: rgb(var(--colorContentPrimary));
+	transition: all var(--duration) var(--cubicBezierPrimary);
+
+	&::before {
+		content: '';
+		position: absolute;
+		display: block;
+		width: 100%; height: 100%;
+		background: rgb(var(--colorBrandAccentRgb));
+		clip-path: circle(0% at 50% 50%);
+		border-radius: 9999px;
+		z-index: 0;
+		opacity: 0;
+		transition: all var(--duration) var(--cubicBezierPrimary);
+	}
+
+	.icon {
+		position: absolute;
+		left: 0;
+		width: 40px;
+		line-height: 40px;
+		text-align: center;
+		pointer-events: none;
+	}
 
 	.input {
 		width: 100%;
 		outline: none;
 		border: none;
+		background: transparent;
+		padding: 10px 20px;
+		font-size: 16px;
+		z-index: 1;
+		color: rgb(var(--colorContentPrimary));
+		font-variation-settings: 'wdth' 75, 'wght' 400;
+		transition: all var(--duration) var(--cubicBezierPrimary);
+	}
+
+	&.withIcon {
+		&::before {
+			clip-path: circle(16px at 20px 50%);
+			opacity: 0.2;
+		}
+
+		.input {
+			padding: 10px 20px 10px 42px;
+		}
+	}
+
+	&:focus-within {
+		box-shadow: 0 0 0 5px rgb(var(--colorBrandAccentRgb) / 50%);
+
+		// &::before {
+		// 	clip-path: circle(100% at 50% 50%);
+		// 	opacity: 1;
+		// }
+
+		// ::placeholder {
+		// 	color: inherit;
+		// }
 	}
 }

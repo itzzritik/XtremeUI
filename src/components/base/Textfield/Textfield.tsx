@@ -17,22 +17,19 @@ export const Textfield = (props: ITextfieldProps) => {
 		autoFocus,
 		iconName,
 		iconFilled = false,
-		iconPosition = 'left',
 		value,
 		onChange,
 	} = props;
 
 	const TextfieldClsx = clsx(
 		styles.textfield,
+		iconName && styles.withIcon,
 		className,
 	);
 
-	const IconComponent = () =>
-		(iconName ? <Icon className={styles.icon} name={iconName} size={24} filled={iconFilled} /> : null);
-
 	return (
 		<div className={TextfieldClsx}>
-			{iconPosition === 'left' && <IconComponent />}
+			{!!iconName && !textarea && <Icon className={styles.icon} name={iconName} size={20} filled={iconFilled} />}
 			{
 				!textarea ?
 					<input
@@ -53,7 +50,6 @@ export const Textfield = (props: ITextfieldProps) => {
 						onChange={onChange}
 					/>
 			}
-			{iconPosition === 'right' && <IconComponent />}
 		</div>
 	);
 };
@@ -67,7 +63,6 @@ export interface ITextfieldProps {
 	autoComplete?: keyof typeof ETextfieldAutoComplete;
 	iconName?: string;
 	iconFilled?: boolean;
-	iconPosition?: 'left' | 'right';
 	value?: string;
 	onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }

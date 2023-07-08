@@ -1,22 +1,12 @@
-const LightTheme = {
-	"light-red": "#ffffff",
-	"light-pink": "#fffffe",
-	"light-orange": "#fffeff",
-	"light-blue": "#feffff",
-	"light-violet": "#fffffd",
-	"light-black": "#fffdff",
-}
+export const ThemeList = [
+	{name: 'Dark', value: "#000000"},
+]
 
-const DarkTheme = {
-	"dark-red": "#000000",
-	"dark-pink": "#000001",
-	"dark-orange": "#000100",
-	"dark-blue": "#010000",
-	"dark-violet": "#000002",
-	"dark-black": "#000200",
-}
-
-export const ColorList = [
-	...Object.keys(LightTheme).map((color) => ({name: color, value: LightTheme[color]})),
-	...Object.keys(DarkTheme).map((color) => ({name: color, value: DarkTheme[color]})),
+export const BrandColorList = [
+	{ title: "Red", value: "red", right: "#FF3853" },
+	{ title: "Pink", value: "pink", right: "#FF5588" },
+	{ title: "Orange", value: "orange", right: "#FF6C67" },
+	{ title: "Blue", value: "blue", right: "#2195F3" },
+	{ title: "Violet", value: "violet", right: "#7F51FF" },
+	{ title: "Black", value: "black", right: "#28272C" },
 ]
