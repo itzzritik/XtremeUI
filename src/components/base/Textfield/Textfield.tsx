@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useMemo } from 'react';
 
 import clsx from 'clsx';
 
@@ -21,15 +21,31 @@ export const Textfield = (props: ITextfieldProps) => {
 		onChange,
 	} = props;
 
+	const localIconName = useMemo(() => {
+		if (textarea === true) return null;
+		if (iconName) return iconName;
+		if (type === 'number') return 'numbers';
+		if (type === 'search') return 'search';
+		if (type === 'password') return 'shield';
+	}, [textarea, iconName, type]);
+
 	const TextfieldClsx = clsx(
 		styles.textfield,
-		iconName && styles.withIcon,
+		localIconName && styles.withIcon,
+		textarea && styles.textarea,
 		className,
 	);
 
 	return (
 		<div className={TextfieldClsx}>
-			{!!iconName && !textarea && <Icon className={styles.icon} name={iconName} size={20} filled={iconFilled} />}
+			{!!localIconName && !textarea && (
+				<Icon
+					className={clsx(styles.icon, iconFilled && styles.filled)}
+					name={localIconName}
+					size={20}
+					filled={iconFilled}
+				/>
+			)}
 			{
 				!textarea ?
 					<input
@@ -71,4 +87,5 @@ enum ETextfieldType {
 	text = 'text',
 	number = 'number',
 	password = 'password',
+	search = 'search',
 }

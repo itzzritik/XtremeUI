@@ -84,6 +84,7 @@ body {
 * {
 	font-family: Montserrat, sans-serif;
 	font-weight: 500;
+	box-sizing: border-box;
 }
 
 @supports (font-variation-settings: normal) {
