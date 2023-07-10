@@ -1,4 +1,4 @@
-body {
+@mixin colors {
 	&.red {
 		--colorBrandPrimaryRgb: 249 34 75;								// rgb(249 34 75)
 		--colorBrandSecondaryRgb: 255 68 68;							// rgb(255 68 68)
@@ -72,6 +72,16 @@ body {
 		--colorBackgroundSecondary: #0C0C0C;
 		--colorBackgroundTertiary: #333;
 	}
+}
+
+@mixin sizes {
+	--siderWidth: 300px;
+	--siderWidthMini: 60px;
+}
+
+body {
+	@include colors;
+	@include sizes;
 
 	scroll-behavior: smooth;
 
