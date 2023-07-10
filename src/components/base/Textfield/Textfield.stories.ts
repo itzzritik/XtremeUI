@@ -11,6 +11,9 @@ const meta = {
 		type: {
 			defaultValue: { summary: 'text' },
 		},
+		autoComplete: {
+			defaultValue: { summary: 'off' },
+		},
 		textarea: {
 			defaultValue: { summary: false },
 		},
@@ -19,6 +22,7 @@ const meta = {
 		type: 'text',
 		placeholder: 'Enter text here',
 		textarea: false,
+		autoComplete: 'off',
 	},
 } satisfies Meta<typeof Textfield>;
 

@@ -13,7 +13,7 @@ export const Textfield = (props: ITextfieldProps) => {
 		type = 'text',
 		textarea,
 		placeholder,
-		autoComplete,
+		autoComplete = 'off',
 		autoFocus,
 		iconName,
 		iconFilled = false,
@@ -70,7 +70,7 @@ export const Textfield = (props: ITextfieldProps) => {
 	);
 };
 
-export interface ITextfieldProps {
+export type ITextfieldProps = {
 	className?: string;
 	type?: keyof typeof ETextfieldType;
 	textarea?: boolean;

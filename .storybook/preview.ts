@@ -3,12 +3,12 @@ import { addons } from "@storybook/addons";
 import { UPDATE_GLOBALS } from "@storybook/core-events";
 import "../src/utils/helper/fontHelper";
 import "../src/components/variables.scss";
-import { waitForElement } from "../src/utils/helper/domHelper";
+import { elementObserver, waitForElement } from "../src/utils/helper/domHelper";
 import { BrandColorList, ThemeList } from "./constants";
 
-let body: HTMLElement;
 let theme;
 let brand = "violet";
+let root: HTMLElement;
 
 const preview: Preview = {
 	globalTypes: {
@@ -42,24 +42,34 @@ const preview: Preview = {
 
 const setTheme = () => {
 	document.body.className = `${theme?.name?.toLowerCase() ?? ""} ${brand}`;
-	body.style.setProperty("margin", "0");
-	body.style.setProperty("padding", "16px");
 };
 addons.getChannel().on(UPDATE_GLOBALS, (args) => {
 	console.log("Global config changed: ", args);
 
-	const background = ThemeList.find(
-		(color) => color.value === args?.globals?.backgrounds?.value
-	);
+	const globals = args?.globals;
+	const background = ThemeList.find((color) => color.value === globals?.backgrounds?.value);
+
 	if (background) theme = background;
-	else if (args?.globals?.backgrounds?.value === 'transparent') theme = undefined;
+	else if (globals?.backgrounds?.value === "transparent") theme = undefined;
 	if (args?.globals?.brand) brand = args.globals.brand;
 
 	setTheme();
 });
 
-waitForElement("body").then((element) => {
-	body = element as HTMLElement;
+waitForElement("#storybook-root").then((element) => {
+	root = element;
+	document.documentElement.style.setProperty("height", "100%");
+	document.body.style.setProperty("height", "100%");
+	document.body.style.setProperty("margin", "0");
+	document.body.style.setProperty("padding", "0");
+	element.style.setProperty("height", "100%");
+	element.style.setProperty("padding", "16px")
 	setTheme();
 });
+
+elementObserver((_, event) => {
+	if (event === 'added') root?.style.setProperty("padding", "0");
+	else if (event === 'removed') root?.style.setProperty("padding", "16px");
+}, ['#storybook-root > [role="navigation"]']);
+
 export default preview;
