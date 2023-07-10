@@ -70,6 +70,6 @@ waitForElement("#storybook-root").then((element) => {
 elementObserver((_, event) => {
 	if (event === 'added') root?.style.setProperty("padding", "0");
 	else if (event === 'removed') root?.style.setProperty("padding", "16px");
-}, ['#storybook-root > [role="navigation"]']);
+}, ['#storybook-root > [role="sider"]']);
 
 export default preview;
