@@ -1,4 +1,5 @@
 import { Navigation } from '../Navigation/Navigation';
+import { Routes } from '../Navigation/Routes';
 
 import { Sider } from './Sider';
 
@@ -7,7 +8,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
 	title: 'Layouts/Sider',
 	component: Sider,
-	tags: ['autodocs'],
+	tags: [],
 	argTypes: {
 		className: { control: false },
 		leftSider: { control: false },
@@ -17,7 +18,7 @@ const meta = {
 		showMiniRightSider: { defaultValue: { summary: false } },
 	},
 	args: {
-		leftSider: <Navigation />,
+		leftSider: <Navigation Routes={Routes} />,
 		open: 'closed',
 		showMiniLeftSider: true,
 	},

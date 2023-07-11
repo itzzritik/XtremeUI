@@ -67,9 +67,12 @@ waitForElement("#storybook-root").then((element) => {
 	setTheme();
 });
 
-elementObserver((_, event) => {
+elementObserver((element, event) => {
 	if (event === 'added') root?.style.setProperty("padding", "0");
 	else if (event === 'removed') root?.style.setProperty("padding", "16px");
-}, ['#storybook-root > [role="sider"]']);
+
+	if (element?.classList?.[0].includes("navigation"))
+		element.style.setProperty("background", "rgb(var(--colorBrandAccentRgb) / 90%)");
+}, ['#storybook-root > [role="sider"]', '#storybook-root > [role="navigation"]']);
 
 export default preview;

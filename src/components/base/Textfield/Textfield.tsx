@@ -7,7 +7,7 @@ import { Icon } from '../Icon/Icon';
 import styles from './textfield.module.scss';
 import { ETextfieldAutoComplete } from './types';
 
-export const Textfield = (props: ITextfieldProps) => {
+export const Textfield = (props: TTextfieldProps) => {
 	const {
 		className,
 		type = 'text',
@@ -70,7 +70,7 @@ export const Textfield = (props: ITextfieldProps) => {
 	);
 };
 
-export type ITextfieldProps = {
+export type TTextfieldProps = {
 	className?: string;
 	type?: keyof typeof ETextfieldType;
 	textarea?: boolean;

@@ -61,8 +61,8 @@ export const elementObserver = (cb: ElementObserverCallback, selectors: string[]
 	});
 };
 
-type ElementObserverCallback = (element: HTMLElement, event: keyof typeof ElementObserverEvent, record: MutationRecord) => void
-enum ElementObserverEvent {
+type ElementObserverCallback = (element: HTMLElement, event: keyof typeof EElementObserverEvent, record: MutationRecord) => void
+enum EElementObserverEvent {
 	added = 'added',
 	removed = 'removed',
 }

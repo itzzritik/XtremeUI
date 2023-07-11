@@ -6,13 +6,14 @@
 
 	width: 100%;
 	height: 100%;
-	background: rgb(var(--colorBrandAccentRgb) / 80%);
+	background: rgb(var(--colorBrandAccentRgb) / 90%);
 	padding: 0 var(--paddingRight) 0 var(--paddingLeft);
 	overflow: hidden;
-	transition: padding var(--duration) linear;
+	transition: padding var(--duration) ease;
 	
 	.leftSiderContainer {
 		position: fixed;
+		left: 0;
 		width: var(--siderWidth); height: 100%;
 		z-index: 0;
 	}
@@ -57,6 +58,8 @@
 		.content {
 			border-radius: 36px;
 			transform: translateX(calc(var(--siderWidth) - var(--paddingLeft)));
+			transform-origin: left center;
+			scale: 0.95;
 		}
 	}
 
@@ -64,6 +67,8 @@
 		.content {
 			border-radius: 36px;
 			transform: translateX(calc((var(--siderWidth) - var(--paddingRight)) * -1));
+			transform-origin: right center;
+			scale: 0.95;
 		}
 	}
 }

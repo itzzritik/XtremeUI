@@ -11,7 +11,7 @@ import styles from './button.module.scss';
 const throttleTime = 100;
 let timeout: number;
 
-export const Button = (props: IButtonProps) => {
+export const Button = (props: TButtonProps) => {
 	const {
 		className,
 		label,
@@ -66,7 +66,7 @@ export const Button = (props: IButtonProps) => {
 		</button>
 	);
 };
-export type IButtonProps = ({
+export type TButtonProps = ({
 	label: string;
 	iconName?: string;
 } | {

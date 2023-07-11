@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import styles from './sider.module.scss';
 
-export const Sider = (props: ISiderProps) => {
+export const Sider = (props: TSiderProps) => {
 	const {
 		className,
 		children,
@@ -40,17 +40,17 @@ export const Sider = (props: ISiderProps) => {
 	);
 };
 
-export type ISiderProps = {
+export type TSiderProps = {
 	className?: string;
 	children?: ReactNode;
 	leftSider?: ReactNode;
 	showMiniLeftSider?: boolean;
 	rightSider?: ReactNode;
 	showMiniRightSider?: boolean;
-	open?: keyof typeof openModes;
+	open?: keyof typeof EOpenModes;
 	setOpen?: (open: boolean) => void;
 }
-enum openModes {
+enum EOpenModes {
 	left = 'left',
 	right = 'right',
 	closed = 'closed',
