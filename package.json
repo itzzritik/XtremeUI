@@ -1,6 +1,6 @@
 {
-	"name": "@itzzritik/xtreme-ui",
-	"version": "0.0.3",
+	"name": "xtreme-ui",
+	"version": "0.0.1",
 	"type": "module",
 	"main": "./dist/index.umd.js",
 	"module": "./dist/index.es.js",
@@ -63,7 +63,7 @@
 	},
 	"publishConfig": {
 		"access": "public",
-		"registry": "https://npm.pkg.github.com/"
+		"registry": "https://registry.npmjs.org/"
 	},
 	"files": [
 		"dist"
@@ -76,6 +76,8 @@
 		"react",
 		"javascript",
 		"design-systems",
+		"ui",
+		"ui-library",
 		"typescript",
 		"react-components",
 		"vite"

@@ -23,7 +23,6 @@ export default defineConfig((configEnv) => ({
 	build: {
 		manifest: true,
 		minify: true,
-		reportCompressedSize: true,
 		lib: {
 			entry: resolve('src', 'components/index.ts'),
 			name: 'XtremeUI',

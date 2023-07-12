@@ -35,9 +35,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-          registry-url: https://npm.pkg.github.com/
+          registry-url: https://registry.npmjs.org/
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GIT_PACKAGE_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Setting up SSH key 🔑
         run: |
@@ -65,7 +65,7 @@ jobs:
         run: git push --follow-tags
 
       - name: Installing Dependencies 📦
-        run: yarn
+        run: yarn install --production --frozen-lockfile
 
       - name: Building Package 🏗️
         run: yarn build
