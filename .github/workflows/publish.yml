@@ -1,4 +1,4 @@
-name: Publish GitHub Package
+name: Publish NPM Package
 on:
   workflow_dispatch:
     inputs:
@@ -65,7 +65,7 @@ jobs:
         run: git push --follow-tags
 
       - name: Installing Dependencies 📦
-        run: yarn install --production --frozen-lockfile
+        run: yarn install --frozen-lockfile
 
       - name: Building Package 🏗️
         run: yarn build
