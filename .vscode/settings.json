@@ -1,0 +1,34 @@
+{
+    "css.validate": false,
+	"less.validate": false,
+	"scss.validate": false,
+	"stylelint.validate": ["css", "scss"],
+    "files.eol": "\n",
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true,
+		"source.fixAll.stylelint": true
+	},
+	
+	"gitmoji.showEmojiCode": true,
+	"gitmoji.addCustomEmoji": [
+		{
+			"emoji": "🛡️",
+			"code": ":shield:",
+			"description": "Typescript (TS) related updates"
+		}
+	],
+    
+    "cSpell.words": [
+		"autodocs",
+		"clsx",
+		"liga",
+		"Sider",
+		"stylelint",
+		"testid",
+		"wght",
+		"xtreme"
+	]
+}

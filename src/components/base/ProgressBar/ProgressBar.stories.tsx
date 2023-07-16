@@ -20,14 +20,13 @@ const meta = {
 } satisfies Meta<typeof ProgressBar>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default: StoryObj<typeof meta> = {
 	args: {
 		progress: 50,
 	},
 };
-export const Intermediate: Story = {
+export const Intermediate: StoryObj<typeof meta> = {
 	args: {
 		progress: 50,
 		intermediate: true,

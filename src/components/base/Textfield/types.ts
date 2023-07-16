@@ -1,4 +1,26 @@
-export enum ETextfieldAutoComplete {
+import { ChangeEvent } from 'react';
+
+export type TTextfieldProps = {
+	className?: string;
+	type?: keyof typeof ETextfieldType;
+	textarea?: boolean;
+	placeholder: string;
+	autoFocus?: boolean;
+	autoComplete?: keyof typeof ETextfieldAutoComplete;
+	iconName?: string;
+	iconFilled?: boolean;
+	value?: string;
+	onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+}
+
+enum ETextfieldType {
+	text = 'text',
+	number = 'number',
+	password = 'password',
+	search = 'search',
+}
+
+enum ETextfieldAutoComplete {
 	'off' = 'off',
 	'on' = 'on',
 	'name' = 'name',

@@ -1,13 +1,13 @@
-import { ChangeEvent, useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 
 import clsx from 'clsx';
 
 import { Icon } from '../Icon/Icon';
 
 import styles from './textfield.module.scss';
-import { ETextfieldAutoComplete } from './types';
+import { TTextfieldProps } from './types';
 
-export const Textfield = (props: TTextfieldProps) => {
+export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props: TTextfieldProps, ref) => {
 	const {
 		className,
 		type = 'text',
@@ -37,7 +37,7 @@ export const Textfield = (props: TTextfieldProps) => {
 	);
 
 	return (
-		<div className={TextfieldClsx}>
+		<div className={TextfieldClsx} ref={ref}>
 			{!!localIconName && !textarea && (
 				<Icon
 					className={clsx(styles.icon, iconFilled && styles.filled)}
@@ -68,24 +68,6 @@ export const Textfield = (props: TTextfieldProps) => {
 			}
 		</div>
 	);
-};
+});
 
-export type TTextfieldProps = {
-	className?: string;
-	type?: keyof typeof ETextfieldType;
-	textarea?: boolean;
-	placeholder: string;
-	autoFocus?: boolean;
-	autoComplete?: keyof typeof ETextfieldAutoComplete;
-	iconName?: string;
-	iconFilled?: boolean;
-	value?: string;
-	onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-}
-
-enum ETextfieldType {
-	text = 'text',
-	number = 'number',
-	password = 'password',
-	search = 'search',
-}
+Textfield.displayName = 'Textfield';

@@ -18,8 +18,6 @@
 		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
-		"@fontsource-variable/material-symbols-rounded": "^5.0.5",
-		"@fontsource-variable/montserrat": "^5.0.6",
 		"@storybook/addon-essentials": "7.0.26",
 		"@storybook/addon-interactions": "7.0.26",
 		"@storybook/addon-links": "7.0.26",
@@ -36,7 +34,6 @@
 		"@typescript-eslint/parser": "^5.61.0",
 		"@vitejs/plugin-react": "^4.0.2",
 		"@vitejs/plugin-react-swc": "^3.3.2",
-		"chromatic": "^6.19.9",
 		"clsx": "^1.2.1",
 		"eslint": "^8.44.0",
 		"eslint-import-resolver-typescript": "^3.5.5",

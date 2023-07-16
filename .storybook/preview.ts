@@ -1,10 +1,9 @@
 import type { Preview } from "@storybook/react";
 import { addons } from "@storybook/addons";
 import { UPDATE_GLOBALS } from "@storybook/core-events";
-import "../src/utils/helper/fontHelper";
-import "../src/components/variables.scss";
 import { elementObserver, waitForElement } from "../src/utils/helper/domHelper";
 import { BrandColorList, ThemeList } from "./constants";
+import "../src/components/index.scss";
 
 let theme;
 let brand = "violet";

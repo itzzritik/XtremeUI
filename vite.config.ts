@@ -18,7 +18,10 @@ export default defineConfig((configEnv) => ({
 			include: ['./src}/**/*.{ts,tsx}'],
 			linters: [new EsLinter({ configEnv })],
 		}),
-		dts({ insertTypesEntry: true }),
+		dts({
+			insertTypesEntry: true,
+			exclude: ['**/*.stories.tsx', '**/*.test.tsx', '**/*.spec.tsx'],
+		}),
 	],
 	build: {
 		manifest: true,

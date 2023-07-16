@@ -27,15 +27,14 @@ const meta = {
 } satisfies Meta<typeof Textfield>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default: StoryObj<typeof meta> = {
 	args: {
 		placeholder: 'Enter text here',
 	},
 };
 
-export const Textarea: Story = {
+export const Textarea: StoryObj<typeof meta> = {
 	args: {
 		placeholder: 'Enter paragraph here',
 		textarea: true,

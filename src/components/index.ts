@@ -1,6 +1,4 @@
-import '#utils/helper/fontHelper';
-
-import './variables.scss';
+import './index.scss';
 
 export * from '#utils/index';
 

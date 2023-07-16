@@ -1,9 +1,14 @@
+import { forwardRef } from 'react';
+
 import clsx from 'clsx';
 
 import styles from './icon.module.scss';
+import { EIconSize, IIconProps } from './types';
 
-export const Icon = (props: IIconProps) => {
+export const Icon = forwardRef<HTMLSpanElement, IIconProps>((props: IIconProps, ref) => {
 	const { className, name, size, filled } = props;
+
+	const fontSize = size ? `${typeof size === 'number' ? size : EIconSize[size]}px` : undefined;
 
 	const IconClsx = clsx(
 		styles.icon,
@@ -12,21 +17,8 @@ export const Icon = (props: IIconProps) => {
 	);
 
 	return (
-		<span className={IconClsx}
-			style={{
-				fontSize: `${size}px`,
-			}}
-		>{name}</span>
+		<span className={IconClsx} ref={ref} style={{ fontSize }}>{name}</span>
 	);
-};
-export const IconSize = {
-	mini: 16,
-	default: 24,
-	large: 32,
-};
-export interface IIconProps {
-	className?: string;
-	name: string;
-	size?: number;
-	filled?: boolean;
-}
+});
+
+Icon.displayName = 'Icon';

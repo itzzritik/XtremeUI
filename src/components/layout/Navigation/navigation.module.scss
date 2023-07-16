@@ -60,7 +60,7 @@
 
 			.icon {
 				--fill: 0;
-				--wght: 300;
+				--wght: 200;
 	
 				width: var(--siderWidthMini);
 				line-height: var(--siderWidthMini);
@@ -91,7 +91,7 @@
 
 			&.active {
 				.icon {
-					--wght: 400;
+					--wght: 300;
 				}
 
 				&::after {

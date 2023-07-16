@@ -1,10 +1,11 @@
-import { ReactNode } from 'react';
+import { forwardRef } from 'react';
 
 import clsx from 'clsx';
 
 import styles from './sider.module.scss';
+import { TSiderProps } from './types';
 
-export const Sider = (props: TSiderProps) => {
+export const Sider = forwardRef<HTMLDivElement, TSiderProps>((props: TSiderProps, ref) => {
 	const {
 		className,
 		children,
@@ -13,7 +14,8 @@ export const Sider = (props: TSiderProps) => {
 		rightSider,
 		showMiniRightSider = false,
 		open = 'closed',
-		setOpen,
+
+		// setOpen,
 	} = props;
 
 	const SiderClsx = clsx(
@@ -26,7 +28,7 @@ export const Sider = (props: TSiderProps) => {
 	);
 
 	return (
-		<section className={SiderClsx} role='sider'>
+		<section className={SiderClsx} ref={ref} role='sider'>
 			<div className={styles.leftSiderContainer}>
 				{leftSider}
 			</div>
@@ -38,20 +40,6 @@ export const Sider = (props: TSiderProps) => {
 			</div>
 		</section>
 	);
-};
+});
 
-export type TSiderProps = {
-	className?: string;
-	children?: ReactNode;
-	leftSider?: ReactNode;
-	showMiniLeftSider?: boolean;
-	rightSider?: ReactNode;
-	showMiniRightSider?: boolean;
-	open?: keyof typeof EOpenModes;
-	setOpen?: (open: boolean) => void;
-}
-enum EOpenModes {
-	left = 'left',
-	right = 'right',
-	closed = 'closed',
-}
+Sider.displayName = 'Sider';

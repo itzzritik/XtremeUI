@@ -28,16 +28,15 @@ const meta = {
 } satisfies Meta<typeof Button>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Primary: StoryObj<typeof meta> = {
 	args: {
 		type: 'primary',
 		label: 'Submit',
 		size: 'default',
 	},
 };
-export const PrimaryWithIcon: Story = {
+export const PrimaryWithIcon: StoryObj<typeof meta> = {
 	args: {
 		type: 'primary',
 		label: 'Download',
@@ -45,7 +44,7 @@ export const PrimaryWithIcon: Story = {
 		iconName: 'download',
 	},
 };
-export const PrimaryDisabled: Story = {
+export const PrimaryDisabled: StoryObj<typeof meta> = {
 	args: {
 		type: 'primary',
 		size: 'default',
@@ -55,7 +54,7 @@ export const PrimaryDisabled: Story = {
 		disabled: true,
 	},
 };
-export const PrimaryLoading: Story = {
+export const PrimaryLoading: StoryObj<typeof meta> = {
 	args: {
 		type: 'primary',
 		size: 'default',
@@ -64,14 +63,14 @@ export const PrimaryLoading: Story = {
 		loading: true,
 	},
 };
-export const PrimaryIconButton: Story = {
+export const PrimaryIconButton: StoryObj<typeof meta> = {
 	args: {
 		type: 'primary',
 		size: 'default',
 		iconName: 'settings',
 	},
 };
-export const PrimaryIconButtonDisabled: Story = {
+export const PrimaryIconButtonDisabled: StoryObj<typeof meta> = {
 	args: {
 		type: 'primary',
 		size: 'default',
@@ -79,7 +78,7 @@ export const PrimaryIconButtonDisabled: Story = {
 		disabled: true,
 	},
 };
-export const PrimaryIconButtonLoading: Story = {
+export const PrimaryIconButtonLoading: StoryObj<typeof meta> = {
 	args: {
 		type: 'primary',
 		size: 'default',
@@ -87,7 +86,7 @@ export const PrimaryIconButtonLoading: Story = {
 		loading: true,
 	},
 };
-export const PrimaryDanger: Story = {
+export const PrimaryDanger: StoryObj<typeof meta> = {
 	args: {
 		type: 'primaryDanger',
 		label: 'Delete',
@@ -95,14 +94,14 @@ export const PrimaryDanger: Story = {
 		iconName: 'delete',
 	},
 };
-export const Secondary: Story = {
+export const Secondary: StoryObj<typeof meta> = {
 	args: {
 		type: 'secondary',
 		label: 'Cancel',
 		size: 'default',
 	},
 };
-export const SecondaryWithIcon: Story = {
+export const SecondaryWithIcon: StoryObj<typeof meta> = {
 	args: {
 		type: 'secondary',
 		label: 'Add to Favorites',
@@ -110,7 +109,7 @@ export const SecondaryWithIcon: Story = {
 		iconName: 'star',
 	},
 };
-export const SecondaryDisabled: Story = {
+export const SecondaryDisabled: StoryObj<typeof meta> = {
 	args: {
 		type: 'secondary',
 		size: 'default',
@@ -119,7 +118,7 @@ export const SecondaryDisabled: Story = {
 		disabled: true,
 	},
 };
-export const SecondaryLoading: Story = {
+export const SecondaryLoading: StoryObj<typeof meta> = {
 	args: {
 		type: 'secondary',
 		size: 'default',
@@ -128,14 +127,14 @@ export const SecondaryLoading: Story = {
 		loading: true,
 	},
 };
-export const SecondaryIconButton: Story = {
+export const SecondaryIconButton: StoryObj<typeof meta> = {
 	args: {
 		type: 'secondary',
 		size: 'default',
 		iconName: 'chat',
 	},
 };
-export const SecondaryIconButtonDisabled: Story = {
+export const SecondaryIconButtonDisabled: StoryObj<typeof meta> = {
 	args: {
 		type: 'secondary',
 		size: 'default',
@@ -143,7 +142,7 @@ export const SecondaryIconButtonDisabled: Story = {
 		disabled: true,
 	},
 };
-export const SecondaryIconButtonLoading: Story = {
+export const SecondaryIconButtonLoading: StoryObj<typeof meta> = {
 	args: {
 		type: 'secondary',
 		size: 'default',
@@ -151,7 +150,7 @@ export const SecondaryIconButtonLoading: Story = {
 		loading: true,
 	},
 };
-export const SecondaryDanger: Story = {
+export const SecondaryDanger: StoryObj<typeof meta> = {
 	args: {
 		type: 'secondaryDanger',
 		label: 'Block',
@@ -159,14 +158,14 @@ export const SecondaryDanger: Story = {
 		iconName: 'block',
 	},
 };
-export const Link: Story = {
+export const Link: StoryObj<typeof meta> = {
 	args: {
 		type: 'link',
 		label: 'Click here',
 		size: 'default',
 	},
 };
-export const LinkWithIcon: Story = {
+export const LinkWithIcon: StoryObj<typeof meta> = {
 	args: {
 		type: 'link',
 		label: 'hi@ritik.me',
@@ -174,7 +173,7 @@ export const LinkWithIcon: Story = {
 		iconName: 'mail',
 	},
 };
-export const LinkDanger: Story = {
+export const LinkDanger: StoryObj<typeof meta> = {
 	args: {
 		type: 'linkDanger',
 		label: 'Remove post',

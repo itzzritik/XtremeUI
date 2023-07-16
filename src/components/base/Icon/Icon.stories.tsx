@@ -24,21 +24,20 @@ const meta = {
 } satisfies Meta<typeof Icon>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default: StoryObj<typeof meta> = {
 	args: {
 		name: 'favorite',
 		size: 48,
 	},
 };
-export const Filled: Story = {
+export const Filled: StoryObj<typeof meta> = {
 	args: {
 		name: 'favorite',
 		filled: true,
 	},
 };
-export const Large: Story = {
+export const Large: StoryObj<typeof meta> = {
 	args: {
 		name: 'favorite',
 		size: 64,
