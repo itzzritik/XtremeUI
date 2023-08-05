@@ -1,8 +1,9 @@
 import type { Preview } from "@storybook/react";
 import { addons } from "@storybook/addons";
 import { UPDATE_GLOBALS } from "@storybook/core-events";
-import { elementObserver, waitForElement } from "../src/utils/helper/domHelper";
 import { BrandColorList, ThemeList } from "./constants";
+
+import { elementObserver, waitForElement } from "../src/utils/helper/domHelper";
 import "../src/styles/index.scss";
 
 let theme;

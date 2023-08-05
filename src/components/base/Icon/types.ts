@@ -5,13 +5,15 @@ export type IIconProps = {
 	size?: number | keyof typeof EIconSize;
 }
 export enum EIconType {
-	solid = 'solid',
-	regular = 'regular',
-	light = 'light',
 	thin = 'thin',
-	sharp = 'sharp',
-	brands = 'brands',
+	light = 'light',
+	regular = 'regular',
+	solid = 'solid',
 	duotone = 'duotone',
+	sharpSolid = 'sharpSolid',
+	sharpRegular = 'sharpRegular',
+	sharpLight = 'sharpLight',
+	brand = 'brand',
 }
 
 export enum EIconSize {

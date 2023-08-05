@@ -1,6 +1,72 @@
+/* stylelint-disable font-family-no-missing-generic-family-keyword */
 .icon {
-	&::before {		
+	width: var(--iconSize);
+	height: var(--iconSize);
+	font-size: var(--iconSize);
+	display: inline-block;
+	font-variant: normal;
+	line-height: 1;
+	text-rendering: auto;
+	user-select: none;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+
+	&::before {
+		position: absolute;
 		display: block;
+		color: rgb(var(--colorBrandAccentRgb) / 100%);
 		content: attr(data-content);
+	}
+	
+	&.thin {
+		font-family: FontAwesome;
+		font-weight: 100;
+	}
+
+	&.light {
+		font-family: FontAwesome;
+		font-weight: 300;
+	}
+
+	&.regular {
+		font-family: FontAwesome;
+		font-weight: 400;
+	}
+
+	&.solid {
+		font-family: FontAwesome;
+		font-weight: 900;
+	}
+
+	&.duotone {
+		font-family: FontAwesomeDuotone;
+		font-weight: 900;
+	
+		&::after {
+			position: absolute;
+			display: block;
+			color: rgb(var(--colorBrandAccentRgb) / 20%);
+			content: attr(data-content)attr(data-content);
+		}
+	}
+
+	&.sharpSolid {
+		font-family: FontAwesomeSharp;
+		font-weight: 900;
+	}
+
+	&.sharpRegular {
+		font-family: FontAwesomeSharp;
+		font-weight: 400;
+	}
+
+	&.sharpLight {
+		font-family: FontAwesomeSharp;
+		font-weight: 300;
+	}
+
+	&.brand {
+		font-family: FontAwesomeBrand;
+		font-weight: 400;
 	}
 }

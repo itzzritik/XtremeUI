@@ -1,150 +1,82 @@
 $fontAwesomeCDN: 'https://raw.githubusercontent.com/itzzjarvis/Assets/main/fonts/fontAwesome';
 
-@mixin fontAwesomeClassic {
-	--fontAwesomeFamily: 'FontAwesome';
-
-	@font-face {
-		font-family: var(--fontAwesomeFamily);
-		font-style: normal;
-		font-weight: 300;
-		font-display: block;
-		src: url('#{$fontAwesomeCDN}/fa-sharp-light-300.woff2') format('woff2'),
-			url('#{$fontAwesomeCDN}/fa-sharp-light-300.ttf') format('truetype');
-	}
-	
-	@font-face {
-		font-family: var(--fontAwesomeFamily);
-		font-style: normal;
-		font-weight: 400;
-		font-display: block;
-		src: url('#{$fontAwesomeCDN}/fa-sharp-regular-400.woff2') format('woff2'),
-			url('#{$fontAwesomeCDN}/fa-sharp-regular-400.ttf') format('truetype');
-	}
-	
-	@font-face {
-		font-family: var(--fontAwesomeFamily);
-		font-style: normal;
-		font-weight: 900;
-		font-display: block;
-		src: url('#{$fontAwesomeCDN}/fa-sharp-solid-900.woff2') format('woff2'),
-			url('#{$fontAwesomeCDN}/fa-sharp-solid-900.ttf') format('truetype');
-	}
+// Font Awesome Classic Thin
+@font-face {
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: 100;
+	font-display: block;
+	src: url('#{$fontAwesomeCDN}/fa-thin-100.woff2') format('woff2');
 }
 
-@mixin fontAwesomeBrand {
-	--fontAwesomeFamilyBrand: 'FontAwesomeBrand';
-
-	@font-face {
-		font-family: var(--fontAwesomeFamilyBrand);
-		font-style: normal;
-		font-weight: 400;
-		font-display: block;
-		src: url('#{$fontAwesomeCDN}/fa-brands-400.woff2') format('woff2'),
-			url('#{$fontAwesomeCDN}/fa-brands-400.ttf') format('truetype');
-	}
+// Font Awesome Classic Light
+@font-face {
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: 300;
+	font-display: block;
+	src: url('#{$fontAwesomeCDN}/fa-light-300.woff2') format('woff2');
 }
 
-@mixin fontAwesomeDuotone {
-	--fontAwesomeFamilyDuotone: 'FontAwesomeDuotone';
-
-	@font-face {
-		font-family: var(--fontAwesomeFamilyDuotone);
-		font-style: normal;
-		font-weight: 900;
-		font-display: block;
-		src: url('#{$fontAwesomeCDN}/fa-duotone-900.woff2') format('woff2'),
-			url('#{$fontAwesomeCDN}/fa-duotone-900.ttf') format('truetype');
-	}
+// Font Awesome Classic Regular
+@font-face {
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: 400;
+	font-display: block;
+	src: url('#{$fontAwesomeCDN}/fa-regular-400.woff2') format('woff2');
 }
 
-@mixin fontAwesomeSharp {
-	--fontAwesomeFamilySharp: 'FontAwesomeSharp';
-
-	@font-face {
-		font-family: var(--fontAwesomeFamilySharp);
-		font-style: normal;
-		font-weight: 300;
-		font-display: block;
-		src: url('#{$fontAwesomeCDN}/fa-sharp-light-300.woff2') format('woff2'),
-			url('#{$fontAwesomeCDN}/fa-sharp-light-300.ttf') format('truetype');
-	}
-	
-	@font-face {
-		font-family: var(--fontAwesomeFamilySharp);
-		font-style: normal;
-		font-weight: 400;
-		font-display: block;
-		src: url('#{$fontAwesomeCDN}/fa-sharp-regular-400.woff2') format('woff2'),
-			url('#{$fontAwesomeCDN}/fa-sharp-regular-400.ttf') format('truetype');
-	}
-	
-	@font-face {
-		font-family: var(--fontAwesomeFamilySharp);
-		font-style: normal;
-		font-weight: 900;
-		font-display: block;
-		src: url('#{$fontAwesomeCDN}/fa-sharp-solid-900.woff2') format('woff2'),
-			url('#{$fontAwesomeCDN}/fa-sharp-solid-900.ttf') format('truetype');
-	}
+// Font Awesome Classic Solid
+@font-face {
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: 900;
+	font-display: block;
+	src: url('#{$fontAwesomeCDN}/fa-solid-900.woff2') format('woff2');
 }
 
-@mixin fontAwesome {
-	@include fontAwesomeClassic;
-	@include fontAwesomeBrand;
-	@include fontAwesomeDuotone;
-	@include fontAwesomeSharp;
+// Font Awesome Duotone
+@font-face {
+	font-family: FontAwesomeDuotone;
+	font-style: normal;
+	font-weight: 900;
+	font-display: block;
+	src: url('#{$fontAwesomeCDN}/fa-duotone-900.woff2') format('woff2');
+}
 
-	.fontAwesome {
-		-moz-osx-font-smoothing: grayscale;
-		-webkit-font-smoothing: antialiased;
-		display: inline-block;
-		font-variant: normal;
-		line-height: 1;
-		text-rendering: auto;
+// Font Awesome Sharp Light
+@font-face {
+	font-family: FontAwesomeSharp;
+	font-style: normal;
+	font-weight: 300;
+	font-display: block;
+	src: url('#{$fontAwesomeCDN}/fa-sharp-light-300.woff2') format('woff2');
+}
 	
-		&.solid {
-			font-family: var(--fontAwesomeFamily);
-			font-weight: 900;
-		}
+// Font Awesome Sharp Regular
+@font-face {
+	font-family: FontAwesomeSharp;
+	font-style: normal;
+	font-weight: 400;
+	font-display: block;
+	src: url('#{$fontAwesomeCDN}/fa-sharp-regular-400.woff2') format('woff2');
+}
+	
+// Font Awesome Sharp Solid
+@font-face {
+	font-family: FontAwesomeSharp;
+	font-style: normal;
+	font-weight: 900;
+	font-display: block;
+	src: url('#{$fontAwesomeCDN}/fa-sharp-solid-900.woff2') format('woff2');
+}
 
-		&.regular {
-			font-family: var(--fontAwesomeFamily);
-			font-weight: 400;
-		}
-
-		&.light {
-			font-family: var(--fontAwesomeFamily);
-			font-weight: 300;
-		}
-
-		&.thin {
-			font-family: var(--fontAwesomeFamily);
-			font-weight: 100;
-		}
-
-		&.duotone {
-			font-family: var(--fontAwesomeFamilyDuotone);
-			font-weight: 900;
-		}
-
-		&.brand {
-			font-family: var(--fontAwesomeFamilyBrand);
-			font-weight: 400;
-		}
-
-		&.sharpSolid {
-			font-family: var(--fontAwesomeFamilySharp);
-			font-weight: 900;
-		}
-
-		&.sharpRegular {
-			font-family: var(--fontAwesomeFamilySharp);
-			font-weight: 400;
-		}
-
-		&.sharpLight {
-			font-family: var(--fontAwesomeFamilySharp);
-			font-weight: 300;
-		}
-	}
+// Font Awesome Brand
+@font-face {
+	font-family: FontAwesomeBrand;
+	font-style: normal;
+	font-weight: 400;
+	font-display: block;
+	src: url('#{$fontAwesomeCDN}/fa-brands-400.woff2') format('woff2');
 }

@@ -45,7 +45,7 @@ export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props: TButto
 	const IconComponent = () =>
 		(
 			iconName
-				? <Icon className={clsx(styles.icon, iconFilled && styles.filled)} name={iconName} size={size} />
+				? <Icon className={clsx(styles.icon, iconFilled && styles.filled)} code={iconName} size={size} />
 				: null
 		);
 

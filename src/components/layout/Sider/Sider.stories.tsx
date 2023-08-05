@@ -33,7 +33,7 @@ const Routes = (props: TNavigationRoute) => {
 
 						// href={route.href}
 					>
-						{route.icon && <Icon className={iconClassName} name={route.icon} />}
+						{route.icon && <Icon className={iconClassName} code={route.icon} />}
 						<span className={labelClassName}>{route.name}</span>
 					</a>
 				))
