@@ -8,8 +8,8 @@ const meta = {
 	tags: ['autodocs'],
 	argTypes: {
 		className: { control: false },
-		filled: {
-			defaultValue: { summary: false },
+		type: {
+			defaultValue: { summary: 'light' },
 		},
 		size: {
 			control: { type: 'range', min: 16, max: 256, step: 8 },
@@ -17,9 +17,9 @@ const meta = {
 		},
 	},
 	args: {
-		name: 'favorite',
+		code: 'f004',
 		size: 24,
-		filled: false,
+		type: 'light',
 	},
 } satisfies Meta<typeof Icon>;
 
@@ -27,19 +27,19 @@ export default meta;
 
 export const Default: StoryObj<typeof meta> = {
 	args: {
-		name: 'favorite',
+		code: 'f004',
 		size: 48,
 	},
 };
 export const Filled: StoryObj<typeof meta> = {
 	args: {
-		name: 'favorite',
-		filled: true,
+		code: 'f004',
+		type: 'light',
 	},
 };
 export const Large: StoryObj<typeof meta> = {
 	args: {
-		name: 'favorite',
+		code: 'f004',
 		size: 64,
 	},
 };

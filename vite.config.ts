@@ -27,7 +27,7 @@ export default defineConfig((configEnv) => ({
 		manifest: true,
 		minify: true,
 		lib: {
-			entry: resolve('src', 'components/index.ts'),
+			entry: resolve('src', 'index.ts'),
 			name: 'XtremeUI',
 			formats: ['es', 'umd'],
 			fileName: (format) => `index.${format}.js`,

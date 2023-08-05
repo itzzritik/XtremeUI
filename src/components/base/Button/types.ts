@@ -1,19 +1,24 @@
-import { MouseEvent } from 'react';
+import { HTMLAttributes, MouseEvent } from 'react';
 
-interface IButtonBaseProps {
+interface BaseButton extends HTMLAttributes<HTMLButtonElement> {
 	className?: string;
 	type?: keyof typeof EButtonTypes;
 	size?: keyof typeof EButtonSize;
-	label?: string;
-	iconName?: string;
 	loading?: boolean;
 	disabled?: boolean;
 	iconFilled?: boolean;
 	iconPosition?: 'left' | 'right';
 	onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
-type RequireProperty<T, Prop extends keyof T> = T & {[key in Prop]-?:T[key]};
-export type TButtonProps = RequireProperty<IButtonBaseProps, 'label'> | RequireProperty<IButtonBaseProps, 'iconName'>;
+interface ButtonWithLabel extends BaseButton {
+	label: string;
+	iconName?: string;
+}
+interface ButtonWithIconName extends BaseButton {
+	label?: string;
+	iconName: string;
+}
+export type TButtonProps = ButtonWithLabel | ButtonWithIconName;
 
 export enum EButtonTypes {
 	primary = 'primary',

@@ -1,8 +1,17 @@
 export type IIconProps = {
 	className?: string;
-	name: string;
+	code: string;
+	type?: keyof typeof EIconType;
 	size?: number | keyof typeof EIconSize;
-	filled?: boolean;
+}
+export enum EIconType {
+	solid = 'solid',
+	regular = 'regular',
+	light = 'light',
+	thin = 'thin',
+	sharp = 'sharp',
+	brands = 'brands',
+	duotone = 'duotone',
 }
 
 export enum EIconSize {
