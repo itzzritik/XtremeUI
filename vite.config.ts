@@ -19,13 +19,12 @@ export default defineConfig((configEnv) => ({
 			linters: [new EsLinter({ configEnv })],
 		}),
 		dts({
-			rollupTypes: true,
+			// rollupTypes: true,
 			insertTypesEntry: true,
 			exclude: ['**/*.stories.tsx', '**/*.test.tsx', '**/*.spec.tsx'],
 		}),
 	],
 	build: {
-		manifest: true,
 		minify: true,
 		lib: {
 			entry: resolve('src', 'index.ts'),

@@ -10,7 +10,7 @@ export type TSiderProps = {
 	open?: keyof typeof EOpenModes;
 	setOpen?: (open: boolean) => void;
 }
-enum EOpenModes {
+export enum EOpenModes {
 	left = 'left',
 	right = 'right',
 	closed = 'closed',
