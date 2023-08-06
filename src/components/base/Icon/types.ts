@@ -17,7 +17,7 @@ export enum EIconType {
 }
 
 export enum EIconSize {
-	mini = 16,
-	default = 24,
-	large = 32,
+	mini = 12,
+	default = 18,
+	large = 24,
 }

@@ -15,15 +15,14 @@ const meta = {
 		iconPosition: {
 			defaultValue: { summary: 'left' },
 		},
-		iconFilled: {
-			defaultValue: { summary: false },
+		iconType: {
+			defaultValue: { summary: 'light' },
 		},
 	},
 	args: {
 		disabled: false,
 		loading: false,
 		iconPosition: 'left',
-		iconFilled: false,
 	},
 } satisfies Meta<typeof Button>;
 
@@ -41,7 +40,7 @@ export const PrimaryWithIcon: StoryObj<typeof meta> = {
 		type: 'primary',
 		label: 'Download',
 		size: 'default',
-		iconName: 'download',
+		icon: 'f33d',
 	},
 };
 export const PrimaryDisabled: StoryObj<typeof meta> = {
@@ -49,8 +48,8 @@ export const PrimaryDisabled: StoryObj<typeof meta> = {
 		type: 'primary',
 		size: 'default',
 		label: 'Send',
-		iconName: 'send',
-		iconFilled: true,
+		icon: 'e20a',
+		iconType: 'solid',
 		disabled: true,
 	},
 };
@@ -58,7 +57,7 @@ export const PrimaryLoading: StoryObj<typeof meta> = {
 	args: {
 		type: 'primary',
 		size: 'default',
-		iconName: 'upload',
+		icon: 'f0ee',
 		label: 'Upload',
 		loading: true,
 	},
@@ -67,14 +66,14 @@ export const PrimaryIconButton: StoryObj<typeof meta> = {
 	args: {
 		type: 'primary',
 		size: 'default',
-		iconName: 'settings',
+		icon: 'f013',
 	},
 };
 export const PrimaryIconButtonDisabled: StoryObj<typeof meta> = {
 	args: {
 		type: 'primary',
 		size: 'default',
-		iconName: 'shopping_cart',
+		icon: 'f07a',
 		disabled: true,
 	},
 };
@@ -82,7 +81,7 @@ export const PrimaryIconButtonLoading: StoryObj<typeof meta> = {
 	args: {
 		type: 'primary',
 		size: 'default',
-		iconName: 'power_settings_new',
+		icon: 'f011',
 		loading: true,
 	},
 };
@@ -91,7 +90,8 @@ export const PrimaryDanger: StoryObj<typeof meta> = {
 		type: 'primaryDanger',
 		label: 'Delete',
 		size: 'default',
-		iconName: 'delete',
+		icon: 'f2ed',
+		iconType: 'solid',
 	},
 };
 export const Secondary: StoryObj<typeof meta> = {
@@ -106,7 +106,7 @@ export const SecondaryWithIcon: StoryObj<typeof meta> = {
 		type: 'secondary',
 		label: 'Add to Favorites',
 		size: 'default',
-		iconName: 'star',
+		icon: 'f005',
 	},
 };
 export const SecondaryDisabled: StoryObj<typeof meta> = {
@@ -114,7 +114,7 @@ export const SecondaryDisabled: StoryObj<typeof meta> = {
 		type: 'secondary',
 		size: 'default',
 		label: 'Report',
-		iconName: 'report',
+		icon: 'f188',
 		disabled: true,
 	},
 };
@@ -123,7 +123,7 @@ export const SecondaryLoading: StoryObj<typeof meta> = {
 		type: 'secondary',
 		size: 'default',
 		label: 'Extract',
-		iconName: 'folder_zip',
+		icon: 'f1c6',
 		loading: true,
 	},
 };
@@ -131,14 +131,14 @@ export const SecondaryIconButton: StoryObj<typeof meta> = {
 	args: {
 		type: 'secondary',
 		size: 'default',
-		iconName: 'chat',
+		icon: 'f075',
 	},
 };
 export const SecondaryIconButtonDisabled: StoryObj<typeof meta> = {
 	args: {
 		type: 'secondary',
 		size: 'default',
-		iconName: 'vpn_key',
+		icon: 'f084',
 		disabled: true,
 	},
 };
@@ -146,7 +146,7 @@ export const SecondaryIconButtonLoading: StoryObj<typeof meta> = {
 	args: {
 		type: 'secondary',
 		size: 'default',
-		iconName: 'autorenew',
+		icon: 'f021',
 		loading: true,
 	},
 };
@@ -155,7 +155,7 @@ export const SecondaryDanger: StoryObj<typeof meta> = {
 		type: 'secondaryDanger',
 		label: 'Block',
 		size: 'default',
-		iconName: 'block',
+		icon: 'f05e',
 	},
 };
 export const Link: StoryObj<typeof meta> = {
@@ -170,7 +170,7 @@ export const LinkWithIcon: StoryObj<typeof meta> = {
 		type: 'link',
 		label: 'hi@ritik.me',
 		size: 'default',
-		iconName: 'mail',
+		icon: 'f0e0',
 	},
 };
 export const LinkDanger: StoryObj<typeof meta> = {

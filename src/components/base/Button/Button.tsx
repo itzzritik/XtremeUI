@@ -22,8 +22,8 @@ export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props: TButto
 		size = 'default',
 		disabled = false,
 		loading = false,
-		iconName,
-		iconFilled = false,
+		icon,
+		iconType,
 		iconPosition = 'left',
 		onClick,
 	} = props;
@@ -44,8 +44,8 @@ export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props: TButto
 
 	const IconComponent = () =>
 		(
-			iconName
-				? <Icon className={clsx(styles.icon, iconFilled && styles.filled)} code={iconName} size={size} />
+			icon
+				? <Icon className={styles.icon} code={icon} type={iconType} size={size} />
 				: null
 		);
 
@@ -58,7 +58,7 @@ export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props: TButto
 		className,
 	);
 
-	if (!label && !iconName) return null;
+	if (!label && !icon) return null;
 
 	return (
 		<button className={ButtonClsx} ref={mergeRefs([innerRef, ref])} onClick={onButtonClick} disabled={disabled}>

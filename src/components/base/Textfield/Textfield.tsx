@@ -15,19 +15,19 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props: T
 		placeholder,
 		autoComplete = 'off',
 		autoFocus,
-		iconName,
-		iconFilled = false,
+		icon,
+		iconType,
 		value,
 		onChange,
 	} = props;
 
 	const localIconName = useMemo(() => {
 		if (textarea === true) return null;
-		if (iconName) return iconName;
-		if (type === 'number') return 'numbers';
-		if (type === 'search') return 'search';
-		if (type === 'password') return 'shield';
-	}, [textarea, iconName, type]);
+		if (icon) return icon;
+		if (type === 'number') return '23';
+		if (type === 'search') return 'f002';
+		if (type === 'password') return 'f023';
+	}, [textarea, icon, type]);
 
 	const TextfieldClsx = clsx(
 		styles.textfield,
@@ -39,11 +39,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props: T
 	return (
 		<div className={TextfieldClsx} ref={ref}>
 			{!!localIconName && !textarea && (
-				<Icon
-					className={clsx(styles.icon, iconFilled && styles.filled)}
-					code={localIconName}
-					size={20}
-				/>
+				<Icon className={styles.icon} code={localIconName} type={iconType} />
 			)}
 			{
 				!textarea ?

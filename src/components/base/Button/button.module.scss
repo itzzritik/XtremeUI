@@ -23,7 +23,6 @@
 	}
 
 	.icon {
-		z-index: 1;
 		transition: all var(--duration) var(--cubicBezierPrimary);
 	}
 
@@ -107,7 +106,7 @@
 
 		line-height: 16px;
 		padding: 8px 16px;
-		gap: 6px;
+		gap: 8px;
 
 		.label {
 			font-size: 12px;
@@ -120,7 +119,7 @@
 
 			.icon {
 				width: 32px;
-				line-height: 32px;
+				height: 32px;
 			}
 		}
 	}
@@ -130,7 +129,7 @@
 
 		line-height: 20px;
 		padding: 12px 24px;
-		gap: 8px;
+		gap: 10px;
 
 		.label {
 			font-size: 16px;
@@ -143,7 +142,7 @@
 
 			.icon {
 				width: 44px;
-				line-height: 44px;
+				height: 44px;
 			}
 		}
 	}
@@ -153,7 +152,7 @@
 
 		line-height: 28px;
 		padding: 16px 32px;
-		gap: 10px;
+		gap: 14px;
 
 		.label {
 			font-size: 22px;
@@ -166,7 +165,7 @@
 
 			.icon {
 				width: 60px;
-				line-height: 60px;
+				height: 60px;
 			}
 		}
 	}

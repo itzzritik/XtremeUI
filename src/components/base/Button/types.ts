@@ -1,22 +1,24 @@
 import { HTMLAttributes, MouseEvent } from 'react';
 
+import { EIconType } from '../Icon/types';
+
 interface BaseButton extends HTMLAttributes<HTMLButtonElement> {
 	className?: string;
 	type?: keyof typeof EButtonTypes;
 	size?: keyof typeof EButtonSize;
 	loading?: boolean;
 	disabled?: boolean;
-	iconFilled?: boolean;
+	iconType?: keyof typeof EIconType;
 	iconPosition?: 'left' | 'right';
 	onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 interface ButtonWithLabel extends BaseButton {
 	label: string;
-	iconName?: string;
+	icon?: string;
 }
 interface ButtonWithIconName extends BaseButton {
 	label?: string;
-	iconName: string;
+	icon: string;
 }
 export type TButtonProps = ButtonWithLabel | ButtonWithIconName;
 

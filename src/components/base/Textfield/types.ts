@@ -1,5 +1,7 @@
 import { ChangeEvent } from 'react';
 
+import { EIconType } from '../Icon/types';
+
 export type TTextfieldProps = {
 	className?: string;
 	type?: keyof typeof ETextfieldType;
@@ -7,8 +9,8 @@ export type TTextfieldProps = {
 	placeholder: string;
 	autoFocus?: boolean;
 	autoComplete?: keyof typeof ETextfieldAutoComplete;
-	iconName?: string;
-	iconFilled?: boolean;
+	icon?: string;
+	iconType?: keyof typeof EIconType;
 	value?: string;
 	onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
