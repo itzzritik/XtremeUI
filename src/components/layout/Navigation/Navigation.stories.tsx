@@ -11,13 +11,12 @@ import { TNavigationRoute } from './types';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const routeList = [
-	{ name: 'Dashboard', href: '/dashboard', icon: 'grid_view', View: noop as FC },
-	{ name: 'Transactions', href: '/transactions', icon: 'attach_money', View: noop as FC },
-	{ name: 'Schedules', href: '/schedules', icon: 'schedule', View: noop as FC },
-	{ name: 'Users', href: '/users', icon: 'account_circle', View: noop as FC },
-	{ name: 'Settings', href: '/settings', icon: 'settings', View: noop as FC },
+	{ name: 'Home', href: '/home', icon: 'f015', View: noop as FC },
+	{ name: 'Teams', href: '/teams', icon: 'e533', View: noop as FC },
+	{ name: 'Favorite', href: '/favorite', icon: 'f005', View: noop as FC },
+	{ name: 'Wallet', href: '/wallet', icon: 'f555', View: noop as FC },
+	{ name: 'Settings', href: '/settings', icon: 'f013', View: noop as FC },
 ];
-
 const Routes = (props: TNavigationRoute) => {
 	const { className, activeClassName, iconClassName, labelClassName } = props;
 	const [active, setActive] = useState(0);
@@ -32,7 +31,14 @@ const Routes = (props: TNavigationRoute) => {
 
 						// href={route.href}
 					>
-						{route.icon && <Icon className={iconClassName} code={route.icon} />}
+						{
+							route.icon &&
+							<Icon
+								className={iconClassName}
+								code={route.icon}
+								type={i === active ? 'solid' : 'thin'}
+							/>
+						}
 						<span className={labelClassName}>{route.name}</span>
 					</a>
 				))

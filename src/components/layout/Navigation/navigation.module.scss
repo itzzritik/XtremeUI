@@ -59,16 +59,10 @@
 			}
 
 			.icon {
-				--fill: 0;
-				--wght: 200;
-	
 				width: var(--siderWidthMini);
-				line-height: var(--siderWidthMini);
-				text-align: center;
-				font-size: 24px;
-				background-color: rgb(var(--colorBrandAccentRgb) / 0%);
-				font-variation-settings: 'FILL' var(--fill), 'wght' var(--wght);
-				z-index: 1;
+				height: var(--siderWidthMini);
+				font-size: calc(var(--siderWidthMini) - 40px);
+				color: white;
 				transition: all var(--duration) var(--cubicBezierPrimary);
 			}
 
@@ -90,10 +84,6 @@
 			}
 
 			&.active {
-				.icon {
-					--wght: 300;
-				}
-
 				&::after {
 					clip-path: circle(var(--siderWidth) at calc(var(--siderWidthMini) / 2) 50%);
 					opacity: 1;

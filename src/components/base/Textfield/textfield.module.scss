@@ -27,19 +27,12 @@
 	}
 
 	.icon {
-		--fill: 0;
-
 		position: absolute;
 		left: 0;
 		width: 40px;
 		line-height: 40px;
 		text-align: center;
 		pointer-events: none;
-		font-variation-settings: 'FILL' var(--fill), 'wght' 300;
-
-		&.filled {
-			--fill: 1;
-		}
 	}
 
 	.input {

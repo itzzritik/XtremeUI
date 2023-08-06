@@ -1,20 +1,25 @@
 /* stylelint-disable font-family-no-missing-generic-family-keyword */
 .icon {
+	position: relative;
 	width: var(--iconSize);
 	height: var(--iconSize);
 	font-size: var(--iconSize);
-	display: inline-block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	font-variant: normal;
 	line-height: 1;
 	text-rendering: auto;
 	user-select: none;
+	color: rgb(var(--colorBrandAccentRgb) / 100%);
+	z-index: 1;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 
 	&::before {
 		position: absolute;
 		display: block;
-		color: rgb(var(--colorBrandAccentRgb) / 100%);
+		color: inherit;
 		content: attr(data-content);
 	}
 	
@@ -45,8 +50,9 @@
 		&::after {
 			position: absolute;
 			display: block;
-			color: rgb(var(--colorBrandAccentRgb) / 20%);
+			color: inherit;
 			content: attr(data-content)attr(data-content);
+			opacity: 0.3;
 		}
 	}
 

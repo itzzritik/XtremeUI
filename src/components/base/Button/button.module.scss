@@ -23,14 +23,8 @@
 	}
 
 	.icon {
-		--fill: 0;
-
 		z-index: 1;
 		transition: all var(--duration) var(--cubicBezierPrimary);
-
-		&.filled {
-			--fill: 1;
-		}
 	}
 
 	.underline {
@@ -121,10 +115,6 @@
 			letter-spacing: 2px;
 		}
 
-		.icon {
-			font-variation-settings: 'FILL' var(--fill), 'wght' 200;
-		}
-
 		&.iconOnly {
 			padding: 0;
 
@@ -148,10 +138,6 @@
 			letter-spacing: 2px;
 		}
 
-		.icon {
-			font-variation-settings: 'FILL' var(--fill), 'wght' 300;
-		}
-
 		&.iconOnly {
 			padding: 0;
 
@@ -173,10 +159,6 @@
 			font-size: 22px;
 			font-variation-settings: 'wdth' 75, 'wght' 600;
 			letter-spacing: 4px;
-		}
-
-		.icon {
-			font-variation-settings: 'FILL' var(--fill), 'wght' 400;
 		}
 
 		&.iconOnly {
