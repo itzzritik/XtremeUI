@@ -19,6 +19,7 @@ export default defineConfig((configEnv) => ({
 			linters: [new EsLinter({ configEnv })],
 		}),
 		dts({
+			rollupTypes: true,
 			insertTypesEntry: true,
 			exclude: ['**/*.stories.tsx', '**/*.test.tsx', '**/*.spec.tsx'],
 		}),

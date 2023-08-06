@@ -28,8 +28,6 @@ const Routes = (props: TNavigationRoute) => {
 						key={`Route${i}`}
 						className={clsx(className, i === active && activeClassName)}
 						onClick={() => setActive(i)}
-
-						// href={route.href}
 					>
 						{
 							route.icon &&
