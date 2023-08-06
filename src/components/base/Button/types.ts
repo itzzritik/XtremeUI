@@ -2,6 +2,11 @@ import { HTMLAttributes, MouseEvent } from 'react';
 
 import { EIconType } from '../Icon/types';
 
+enum EButtonSize {
+	mini = 'mini',
+	default = 'default',
+	large = 'large',
+}
 interface BaseButton extends HTMLAttributes<HTMLButtonElement> {
 	className?: string;
 	type?: keyof typeof EButtonTypes;
@@ -29,10 +34,4 @@ export enum EButtonTypes {
 	secondaryDanger = 'secondaryDanger',
 	link = 'link',
 	linkDanger = 'linkDanger',
-}
-
-enum EButtonSize {
-	mini = 'mini',
-	default = 'default',
-	large = 'large',
 }
