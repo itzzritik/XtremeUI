@@ -39,11 +39,11 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
-      - name: Use pnpm as package manager 🏄‍♂️
+      - name: Install dependencies using pnpm 📦
         uses: pnpm/action-setup@v2
         with:
-          version: 7
-          run_install: false
+          version: latest
+          run_install: true
 
       - name: Setting up SSH key 🔑
         run: |
@@ -69,9 +69,6 @@ jobs:
 
       - name: Push new version tag to repository 🎉
         run: git push --follow-tags
-
-      - name: Installing Dependencies 📦
-        run: pnpm install
 
       - name: Building Package 🏗️
         run: pnpm build
