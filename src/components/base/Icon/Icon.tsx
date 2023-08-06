@@ -14,8 +14,8 @@ export const Icon = forwardRef<HTMLSpanElement, IIconProps>((props: IIconProps, 
 
 	const IconClsx = clsx(
 		styles.icon,
-		className,
 		type && styles[type],
+		className,
 	);
 
 	return (

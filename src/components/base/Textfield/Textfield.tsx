@@ -16,7 +16,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props: T
 		autoComplete = 'off',
 		autoFocus,
 		icon,
-		iconType,
+		iconType = 'regular',
 		value,
 		onChange,
 	} = props;
@@ -26,13 +26,14 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props: T
 		if (icon) return icon;
 		if (type === 'number') return '23';
 		if (type === 'search') return 'f002';
-		if (type === 'password') return 'f023';
+		if (type === 'password') return 'f30d';
 	}, [textarea, icon, type]);
 
 	const TextfieldClsx = clsx(
 		styles.textfield,
 		localIconName && styles.withIcon,
 		textarea && styles.textarea,
+		value && styles.hasValue,
 		className,
 	);
 
@@ -47,7 +48,6 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props: T
 						className={styles.input}
 						type={type}
 						autoFocus={autoFocus}
-						placeholder={placeholder}
 						autoComplete={autoComplete}
 						value={value}
 						onChange={onChange}
@@ -55,12 +55,12 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props: T
 					<textarea
 						className={styles.input}
 						autoFocus={autoFocus}
-						placeholder={placeholder}
 						autoComplete={autoComplete}
 						value={value}
 						onChange={onChange}
 					/>
 			}
+			<span className={styles.placeholder}>{placeholder}</span>
 		</div>
 	);
 });
