@@ -18,12 +18,24 @@ const meta = {
 	},
 	args: {
 		code: 'e409',
-		size: 32,
+		size: 64,
 		type: 'light',
 	},
 } satisfies Meta<typeof Icon>;
 
 export default meta;
+
+export const Duotone: StoryObj<typeof meta> = {
+	args: {
+		type: 'duotone',
+	},
+};
+
+export const Solid: StoryObj<typeof meta> = {
+	args: {
+		type: 'solid',
+	},
+};
 
 export const Thin: StoryObj<typeof meta> = {
 	args: {
@@ -40,18 +52,6 @@ export const Light: StoryObj<typeof meta> = {
 export const Regular: StoryObj<typeof meta> = {
 	args: {
 		type: 'regular',
-	},
-};
-
-export const Solid: StoryObj<typeof meta> = {
-	args: {
-		type: 'solid',
-	},
-};
-
-export const Duotone: StoryObj<typeof meta> = {
-	args: {
-		type: 'duotone',
 	},
 };
 
@@ -75,7 +75,7 @@ export const SharpSolid: StoryObj<typeof meta> = {
 
 export const Brand: StoryObj<typeof meta> = {
 	args: {
-		code: 'f09b',
+		code: 'f3b9',
 		type: 'brand',
 		size: 74,
 	},

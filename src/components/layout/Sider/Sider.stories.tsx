@@ -13,9 +13,9 @@ import { Sider } from './Sider';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const routeList = [
-	{ name: 'Home', href: '/home', icon: 'f015', View: noop as FC },
+	{ name: 'Dashboard', href: '/dashboard', icon: 'e323', View: noop as FC },
 	{ name: 'Teams', href: '/teams', icon: 'e533', View: noop as FC },
-	{ name: 'Favorite', href: '/favorite', icon: 'f005', View: noop as FC },
+	{ name: 'Favorite', href: '/favorite', icon: 'f762', View: noop as FC },
 	{ name: 'Wallet', href: '/wallet', icon: 'f555', View: noop as FC },
 	{ name: 'Settings', href: '/settings', icon: 'f013', View: noop as FC },
 ];
@@ -38,7 +38,7 @@ const Routes = (props: TNavigationRoute) => {
 							<Icon
 								className={iconClassName}
 								code={route.icon}
-								type={i === active ? 'solid' : 'thin'}
+								type={i === active ? 'duotone' : 'thin'}
 							/>
 						}
 						<span className={labelClassName}>{route.name}</span>

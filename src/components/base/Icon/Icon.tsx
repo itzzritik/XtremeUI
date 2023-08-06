@@ -2,6 +2,8 @@ import { forwardRef } from 'react';
 
 import clsx from 'clsx';
 
+import { unicodeToString } from '#utils/index';
+
 import styles from './icon.module.scss';
 import { EIconSize, IIconProps } from './types';
 
@@ -17,12 +19,7 @@ export const Icon = forwardRef<HTMLSpanElement, IIconProps>((props: IIconProps, 
 	);
 
 	return (
-		<span
-			className={IconClsx}
-			ref={ref}
-			style={{ ['--iconSize'as string]: iconSize }}
-			data-content={String.fromCodePoint(parseInt(`0x${code}`, 16))}
-		/>
+		<span className={IconClsx} ref={ref} style={{ ['--iconSize'as string]: iconSize }} data-content={unicodeToString(code)} />
 	);
 });
 
