@@ -20,7 +20,7 @@ export { type TTextfieldProps } from './components/base/Textfield/types';
 
 // Sider
 export { Sider } from './components/layout/Sider/Sider';
-export { type TSiderProps, EOpenModes } from './components/layout/Sider/types';
+export { type TSiderProps, type TSiderModes } from './components/layout/Sider/types';
 
 // Navigation
 export { Navigation } from './components/layout/Navigation/Navigation';
