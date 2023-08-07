@@ -25,14 +25,23 @@ export default defineConfig((configEnv) => ({
 		}),
 	],
 	build: {
+		ssr: true,
 		minify: true,
 		lib: {
-			entry: resolve('src', 'index.ts'),
 			name: 'XtremeUI',
-			formats: ['es', 'umd'],
-			fileName: (format) => `index.${format}.js`,
+			entry: resolve('src', 'index.ts'),
+			formats: ['es'],
+
+			// fileName: (format) => `index.${format}.js`,
 		},
 		rollupOptions: {
+			output: {
+				preserveEntrySignatures: 'strict',
+				inlineDynamicImports: false,
+				preserveModules: true,
+				exports: 'named',
+				banner: '\'use client\';',
+			},
 			external: [...Object.keys(peerDependencies)],
 		},
 	},
