@@ -18,6 +18,10 @@ export { type IIconProps, type EIconType, EIconSize } from './components/base/Ic
 export { ProgressBar } from './components/base/ProgressBar/ProgressBar';
 export { type IProgressBarProps } from './components/base/ProgressBar/types';
 
+// Icon
+export { Spinner } from './components/base/Spinner/Spinner';
+export { type ISpinnerProps, ESpinnerSize } from './components/base/Spinner/types';
+
 // Textfield
 export { Textfield } from './components/base/Textfield/Textfield';
 export { type TTextfieldProps } from './components/base/Textfield/types';

@@ -1,0 +1,84 @@
+.spinner {
+	--spinnerSize: 125px;
+	--spinnerCubeSize: calc(var(--spinnerSize) / 2);
+
+	position: relative;
+	width: var(--spinnerSize); height: var(--spinnerSize);
+	display: grid;
+	place-items: center;
+
+	.spinnerWrapper {
+		position: relative;
+		width: var(--spinnerCubeSize); height: var(--spinnerCubeSize);
+		margin-top: calc(var(--spinnerCubeSize) * -0.1);
+		transform-style: preserve-3d;
+		animation: spin 1s linear infinite;
+	
+		.cubeTop {
+			position: absolute;
+			width: var(--spinnerCubeSize); height: var(--spinnerCubeSize);
+			background: hsl(330deg 3.13% 25.1%) 0%;
+			transform: rotateX(90deg) translateZ(calc(var(--spinnerCubeSize) / 2));
+			transform-style: preserve-3d;
+	
+			&::before {
+				content: '';
+				position: absolute;
+				width: var(--spinnerCubeSize); height: var(--spinnerCubeSize);
+				background: hsl(176.61deg 42.28% 40.7%) 19.6%;
+				transform: translateZ(calc(-1 * var(--spinnerCubeSize) * 1.2));
+				filter: blur(10px);
+				box-shadow: 0 0 10px #323232,
+					0 0 20px hsl(176.61deg 42.28% 40.7%) 19.6%,
+					0 0 30px #323232,
+					0 0 40px hsl(176.61deg 42.28% 40.7%) 19.6%;
+			}
+		}
+	
+		.cubeWrapper {
+			position: absolute;
+			width: 100%; height: 100%;
+			transform-style: preserve-3d;
+	
+			.cubeFace {
+				position: absolute;
+				width: 100%; height: 100%;
+				background: linear-gradient(
+					to bottom,
+					hsl(330deg 3.13% 25.1%) 0%,
+					hsl(177.27deg 21.71% 32.06%) 5.5%,
+					hsl(176.67deg 34.1% 36.88%) 12.1%,
+					hsl(176.61deg 42.28% 40.7%) 19.6%,
+					hsl(176.63deg 48.32% 43.88%) 27.9%,
+					hsl(176.66deg 53.07% 46.58%) 36.6%,
+					hsl(176.7deg 56.94% 48.91%) 45.6%,
+					hsl(176.74deg 62.39% 50.91%) 54.6%,
+					hsl(176.77deg 69.86% 52.62%) 63.4%,
+					hsl(176.8deg 76.78% 54.08%) 71.7%,
+					hsl(176.83deg 83.02% 55.29%) 79.4%,
+					hsl(176.85deg 88.44% 56.28%) 86.2%,
+					hsl(176.86deg 92.9% 57.04%) 91.9%,
+					hsl(176.88deg 96.24% 57.59%) 96.3%,
+					hsl(176.88deg 98.34% 57.93%) 99%,
+					hsl(176.89deg 99.07% 58.04%) 100%
+				);
+	
+				@for $i from 1 through 4 {
+					&:nth-child(#{$i}) {
+						transform: rotateY(calc(90deg * #{$i})) translateZ(calc(var(--spinnerCubeSize) / 2));
+					}
+				}
+			}
+		}
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotateX(-30deg) rotateY(0);
+		}
+	  
+		100% {
+			transform: rotateX(-30deg) rotateY(360deg);
+		}
+	}
+}
