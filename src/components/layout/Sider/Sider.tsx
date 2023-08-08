@@ -2,6 +2,8 @@ import { forwardRef } from 'react';
 
 import clsx from 'clsx';
 
+import { useXData } from '#components/context/useContext';
+
 import styles from './sider.module.scss';
 import { TSiderProps } from './types';
 
@@ -13,16 +15,15 @@ export const Sider = forwardRef<HTMLDivElement, TSiderProps>((props: TSiderProps
 		showMiniLeftSider = true,
 		rightSider,
 		showMiniRightSider = false,
-		open = 'closed',
-
-		// setOpen,
 	} = props;
+
+	const { siderMode } = useXData();
 
 	const SiderClsx = clsx(
 		styles.sider,
-		open === 'left' && styles.leftOpen,
+		siderMode === 'left' && styles.leftOpen,
 		showMiniLeftSider && styles.miniLeftSider,
-		open === 'right' && styles.rightOpen,
+		siderMode === 'right' && styles.rightOpen,
 		showMiniRightSider && styles.miniRightSider,
 		className,
 	);

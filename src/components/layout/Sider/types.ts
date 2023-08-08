@@ -7,8 +7,6 @@ export type TSiderProps = {
 	showMiniLeftSider?: boolean;
 	rightSider?: ReactNode;
 	showMiniRightSider?: boolean;
-	open?: TSiderModes;
-	setOpen?: (open: boolean) => void;
 }
 
 export type TSiderModes = keyof typeof EOpenModes;

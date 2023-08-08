@@ -1,13 +1,15 @@
-import { FC } from 'react';
+import { ElementType, ReactNode } from 'react';
 
 export type TNavigationProps = {
 	className?: string;
-	Routes?: FC<TNavigationRoute>;
+	children?: ReactNode;
+	as?: ElementType;
+	pathname: string;
+	routes: TNavigationRoute[];
 }
 
 export type TNavigationRoute = {
-	className: string;
-	activeClassName: string;
-	iconClassName: string;
-	labelClassName: string;
+	name: string,
+	href: string,
+	icon?: string,
 }

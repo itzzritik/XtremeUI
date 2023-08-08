@@ -1,8 +1,8 @@
+import React from "react";
 import type { Preview } from "@storybook/react";
 import { addons } from "@storybook/addons";
-import { UPDATE_GLOBALS } from "@storybook/core-events";
 import { BrandColorList, ThemeList } from "./constants";
-
+import {XProvider} from "../src/components/context";
 import { elementObserver, waitForElement } from "../src/utils/helper/domHelper";
 import "../src/styles/index.scss";
 
@@ -38,12 +38,19 @@ const preview: Preview = {
 			values: ThemeList,
 		},
 	},
+	decorators: [
+		(Story) => (
+		  <XProvider>
+			<Story />
+		  </XProvider>
+		),
+	  ],
 };
 
 const setTheme = () => {
 	document.body.className = `${theme?.name?.toLowerCase() ?? ""} ${brand}`;
 };
-addons.getChannel().on(UPDATE_GLOBALS, (args) => {
+addons.getChannel().on('updateGlobals', (args) => {
 	console.log("Global config changed: ", args);
 
 	const globals = args?.globals;

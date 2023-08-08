@@ -2,7 +2,11 @@ import './styles/index.scss';
 
 export * from '#utils/index';
 
-// Components
+// Context
+export { XProvider } from './components/context';
+export { useXData } from './components/context/useContext';
+
+// Button
 export { Button } from './components/base/Button/Button';
 export { type TButtonProps, EButtonTypes } from './components/base/Button/types';
 
