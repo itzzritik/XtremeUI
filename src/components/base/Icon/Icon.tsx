@@ -8,9 +8,9 @@ import styles from './icon.module.scss';
 import { EIconSize, IIconProps } from './types';
 
 export const Icon = forwardRef<HTMLSpanElement, IIconProps>((props: IIconProps, ref) => {
-	const { className, code, type = 'light', size } = props;
+	const { className, code, type = 'light', size = 'default' } = props;
 
-	const iconSize = size ? `${typeof size === 'number' ? size : EIconSize[size]}px` : undefined;
+	const iconSize = `${typeof size === 'number' ? size : EIconSize[size]}px`;
 
 	const IconClsx = clsx(
 		styles.icon,

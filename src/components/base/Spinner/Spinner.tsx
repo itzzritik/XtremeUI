@@ -6,9 +6,9 @@ import styles from './spinner.module.scss';
 import { ESpinnerSize, ISpinnerProps } from './types';
 
 export const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>((props: ISpinnerProps, ref) => {
-	const { className, size } = props;
+	const { className, size = 'default' } = props;
 
-	const spinnerSize = size ? `${typeof size === 'number' ? size : ESpinnerSize[size]}px` : undefined;
+	const spinnerSize = `${typeof size === 'number' ? size : ESpinnerSize[size]}px`;
 
 	const SpinnerClsx = clsx(
 		styles.spinner,

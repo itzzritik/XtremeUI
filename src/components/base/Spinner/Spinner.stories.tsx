@@ -9,7 +9,7 @@ const meta = {
 	argTypes: {
 		className: { control: false },
 		size: {
-			control: { type: 'range', min: 24, max: 512, step: 16 },
+			control: { type: 'range', min: 32, max: 512, step: 16 },
 			defaultValue: { summary: 64 },
 		},
 	},
