@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import styles from './progressbar.module.scss';
 import { IProgressBarProps } from './types';
 
-export const ProgressBar = forwardRef<HTMLDivElement, IProgressBarProps>((props: IProgressBarProps, ref) => {
+export const ProgressBar = forwardRef<HTMLDivElement, IProgressBarProps>((props, ref) => {
 	const { className, progress = 100, intermediate = false } = props;
 
 	const progressWidth = intermediate ? 150 : Math.min(Math.max(progress, 0), 100);

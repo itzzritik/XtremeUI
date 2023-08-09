@@ -7,7 +7,7 @@ import { Icon } from '#components/base/Icon/Icon';
 import styles from './navigation.module.scss';
 import { TNavigationProps } from './types';
 
-export const Navigation = forwardRef<HTMLDivElement, TNavigationProps>((props: TNavigationProps, ref) => {
+export const Navigation = forwardRef<HTMLDivElement, TNavigationProps>((props, ref) => {
 	const { className, children, routes = [], pathname = '', as: Tag = 'a' as const } = props;
 
 	const NavigationClsx = clsx(

@@ -1,0 +1,10 @@
+@import '@dotlottie/react-player/dist/index.css';
+
+.lottie {
+	--lottieSize: 128px;
+
+	width: var(--lottieSize); height: var(--lottieSize);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

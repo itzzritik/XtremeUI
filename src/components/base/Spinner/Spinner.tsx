@@ -5,11 +5,10 @@ import clsx from 'clsx';
 import styles from './spinner.module.scss';
 import { ESpinnerSize, ISpinnerProps } from './types';
 
-export const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>((props: ISpinnerProps, ref) => {
+export const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>((props, ref) => {
 	const { className, size = 'default' } = props;
 
 	const spinnerSize = `${typeof size === 'number' ? size : ESpinnerSize[size]}px`;
-
 	const SpinnerClsx = clsx(
 		styles.spinner,
 		className,
@@ -30,4 +29,4 @@ export const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>((props: ISpinne
 	);
 });
 
-Spinner.displayName = 'ProgressBar';
+Spinner.displayName = 'Spinner';

@@ -7,7 +7,7 @@ import { useXData } from '#components/context/useContext';
 import styles from './sider.module.scss';
 import { TSiderProps } from './types';
 
-export const Sider = forwardRef<HTMLDivElement, TSiderProps>((props: TSiderProps, ref) => {
+export const Sider = forwardRef<HTMLDivElement, TSiderProps>((props, ref) => {
 	const {
 		className,
 		children,

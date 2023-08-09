@@ -25,12 +25,18 @@ const preview: Preview = {
 	parameters: {
 		actions: { argTypesRegex: "^on[A-Z].*" },
 		controls: {
+			sort: 'requiredFirst',
 			controls: {
 				expanded: true,
 			},
 			matchers: {
 				color: /(background|color)$/i,
 				date: /Date$/,
+			},
+		},
+		docs: {
+			controls: {
+				sort: 'requiredFirst',
 			},
 		},
 		backgrounds: {

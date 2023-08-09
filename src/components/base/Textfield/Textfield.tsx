@@ -7,7 +7,7 @@ import { Icon } from '../Icon/Icon';
 import styles from './textfield.module.scss';
 import { TTextfieldProps } from './types';
 
-export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props: TTextfieldProps, ref) => {
+export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, ref) => {
 	const {
 		className,
 		type = 'text',

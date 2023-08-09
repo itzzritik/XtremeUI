@@ -14,7 +14,7 @@ import { EButtonTypes, TButtonProps } from './types';
 const throttleTime = 100;
 let timeout: number;
 
-export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props: TButtonProps, ref) => {
+export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) => {
 	const {
 		className,
 		label,
