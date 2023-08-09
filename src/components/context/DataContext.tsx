@@ -1,12 +1,10 @@
 import { useState, createContext, ReactNode } from 'react';
 
-import noop from 'lodash/noop';
-
 import { TSiderModes } from '#components/layout/Sider/types';
 
 const DataDefault: DataDefaultType = {
 	siderMode: 'closed',
-	setSiderMode: noop,
+	setSiderMode: () => null,
 };
 
 const DataContext = createContext(DataDefault);

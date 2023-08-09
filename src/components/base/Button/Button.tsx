@@ -1,7 +1,6 @@
 import { MouseEvent, forwardRef, useRef } from 'react';
 
 import clsx from 'clsx';
-import throttle from 'lodash/throttle';
 
 import { mergeRefs } from '#utils/function/mergeRefs';
 
@@ -29,13 +28,13 @@ export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) =
 	} = props;
 	const innerRef = useRef<HTMLButtonElement>(null);
 
-	const ripple = throttle(() => {
+	const ripple = () => {
 		clearTimeout(timeout);
 		innerRef.current?.classList.add(styles.clicked);
 		timeout = window.setTimeout(() => {
 			innerRef.current?.classList.remove(styles.clicked);
 		}, 600 + throttleTime);
-	}, throttleTime);
+	};
 
 	const onButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
 		onClick?.(e);

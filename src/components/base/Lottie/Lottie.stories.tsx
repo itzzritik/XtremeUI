@@ -1,5 +1,4 @@
 import { PlayMode } from '@dotlottie/react-player';
-import sample from 'lodash/sample';
 
 import { Lottie } from './Lottie';
 
@@ -51,6 +50,8 @@ const lottieAssetsLabels = lottieAssetNames?.reduce((acc, assetName) => {
 
 type LottieAsset = {[K in typeof lottieAssetNames[number]]: string};
 
+const getRandomLottie = () => lottieAssets[lottieAssetNames[Math.floor(Math.random() * lottieAssetNames.length)]];
+
 const meta = {
 	title: 'Components/Lottie',
 	component: Lottie,
@@ -93,20 +94,20 @@ export default meta;
 
 export const SvgRenderer: StoryObj<typeof meta> = {
 	args: {
-		src: sample(Object.values(lottieAssets)) ?? lottieAssets.SpacemanDj,
+		src: getRandomLottie(),
 	},
 };
 
 export const CanvasRenderer: StoryObj<typeof meta> = {
 	args: {
-		src: sample(Object.values(lottieAssets)) ?? lottieAssets.SpacemanDj,
+		src: getRandomLottie(),
 		renderer: 'canvas',
 	},
 };
 
 export const HtmlRenderer: StoryObj<typeof meta> = {
 	args: {
-		src: sample(Object.values(lottieAssets)) ?? lottieAssets.SpacemanDj,
+		src: getRandomLottie(),
 		renderer: 'html',
 	},
 };
