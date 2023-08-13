@@ -15,10 +15,12 @@
 	}
 
 	.label {
-		position: relative;
-		font-size: calc(12px + (var(--spinnerSize) / 20));
-		margin-top: calc(var(--spinnerSize) / 4);
+		position: absolute;
+		bottom: 50%;
+		font-variation-settings: 'wdth' 75, 'wght' 500;
+		font-size: calc(8px + (var(--spinnerSize) / 18));
 		color: var(--colorContentPrimary);
+		transform: translateY(calc(5px + var(--spinnerSize) / 1.6));
 	}
 
 	.spinnerWrapper {

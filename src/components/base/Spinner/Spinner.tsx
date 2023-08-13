@@ -26,7 +26,7 @@ export const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>((props, ref) =>
 					<span className={styles.cubeFace} />
 				</div>
 			</div>
-			<span className={styles.label}>{label}</span>
+			{fullpage && <span className={styles.label}>{label}</span>}
 		</div>
 	);
 });

@@ -2,7 +2,7 @@
 	.placeholder {
 		transform: translate(24px, -28px);
 		scale: 0.75;
-		font-weight: 900;
+		font-variation-settings: 'wdth' 75, 'wght' 900;
 		color: rgb(var(--colorBrandAccentRgb) / 100%);
 		
 

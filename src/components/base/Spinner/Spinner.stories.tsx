@@ -18,6 +18,7 @@ const meta = {
 	},
 	args: {
 		fullpage: false,
+		size: 64,
 	},
 } satisfies Meta<typeof Spinner>;
 

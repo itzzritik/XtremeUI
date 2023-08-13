@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css2?family=Montserrat&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;900&display=swap';
 @import 'fontAwesome';
 @import 'colors';
 @import 'sizes';
@@ -17,6 +17,6 @@ body {
 	
 * {
 	font-family: Montserrat, sans-serif;
-	font-weight: 500;
+	font-variation-settings: 'wdth' 75, 'wght' 500;
 	box-sizing: border-box;
 }
