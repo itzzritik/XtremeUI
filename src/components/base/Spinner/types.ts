@@ -1,6 +1,8 @@
 export type ISpinnerProps = {
 	className?: string;
+	label?: string;
 	size?: number | keyof typeof ESpinnerSize;
+	fullpage?: boolean;
 }
 
 export enum ESpinnerSize {

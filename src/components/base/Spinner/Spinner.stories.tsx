@@ -12,9 +12,12 @@ const meta = {
 			control: { type: 'range', min: 32, max: 512, step: 16 },
 			defaultValue: { summary: 64 },
 		},
+		fullpage: {
+			defaultValue: { summary: false },
+		},
 	},
 	args: {
-
+		fullpage: false,
 	},
 } satisfies Meta<typeof Spinner>;
 

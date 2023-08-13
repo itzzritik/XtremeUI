@@ -6,12 +6,13 @@ import styles from './spinner.module.scss';
 import { ESpinnerSize, ISpinnerProps } from './types';
 
 export const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>((props, ref) => {
-	const { className, size = 'default' } = props;
+	const { className, label, size = 'default', fullpage = false } = props;
 
 	const spinnerSize = `${typeof size === 'number' ? size : ESpinnerSize[size]}px`;
 	const SpinnerClsx = clsx(
 		styles.spinner,
 		className,
+		fullpage && styles.fullpage,
 	);
 
 	return (
@@ -25,6 +26,7 @@ export const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>((props, ref) =>
 					<span className={styles.cubeFace} />
 				</div>
 			</div>
+			<span className={styles.label}>{label}</span>
 		</div>
 	);
 });

@@ -1,38 +1,68 @@
 @mixin colors {
+	// Red
+	--colorRedPrimaryRgb: 249 34 75;								// rgb(249 34 75)
+	--colorRedSecondaryRgb: 255 68 68;								// rgb(255 68 68)
+	--colorRedAccentRgb: 255 56 83;									// rgb(255 56 83)
+
+	// Pink
+	--colorPinkPrimaryRgb: 252 33 105;								// rgb(252 33 105)
+	--colorPinkSecondaryRgb: 226 33 255;							// rgb(226 33 255)
+	--colorPinkAccentRgb: 255 85 136;								// rgb(255 85 136)
+
+	// Orange
+	--colorOrangePrimaryRgb: 255 127 34;							// rgb(255 127 34)
+	--colorOrangeSecondaryRgb: 255 65 65;							// rgb(255 65 65)
+	--colorOrangeAccentRgb: 255 108 103;							// rgb(255 108 103);
+
+	// Blue
+	--colorBluePrimaryRgb: 34 252 176;								// rgb(34 252 176)
+	--colorBlueSecondaryRgb: 33 129 250;							// rgb(33 129 250)
+	--colorBlueAccentRgb: 33 149 243;								// rgb(33 149 243)
+
+	// Violet
+	--colorVioletPrimaryRgb: 63 0 230;								// rgb(63 0 230)
+	--colorVioletSecondaryRgb: 150 44 255;							// rgb(150 44 255)
+	--colorVioletAccentRgb: 127 81 255;								// rgb(127 81 255)
+
+	// Black
+	--colorBlackPrimaryRgb: 22 20 28;								// rgb(22 20 28)
+	--colorBlackSecondaryRgb: 9 8 11;								// rgb(9 8 11)
+	--colorBlackAccentRgb: 40 39 44;								// rgb(40 39 44)
+
 	&.red {
-		--colorBrandPrimaryRgb: 249 34 75;								// rgb(249 34 75)
-		--colorBrandSecondaryRgb: 255 68 68;							// rgb(255 68 68)
-		--colorBrandAccentRgb: 255 56 83;								// rgb(255 56 83)
+		--colorBrandPrimaryRgb: var(--colorRedPrimaryRgb);
+		--colorBrandSecondaryRgb: var(--colorRedSecondaryRgb);
+		--colorBrandAccentRgb: var(--colorRedAccentRgb);
 	}
 
 	&.pink {
-		--colorBrandPrimaryRgb: 252 33 105;								// rgb(252 33 105)
-		--colorBrandSecondaryRgb: 226 33 255;							// rgb(226 33 255)
-		--colorBrandAccentRgb: 255 85 136;								// rgb(255 85 136)
+		--colorBrandPrimaryRgb: var(--colorPinkPrimaryRgb);
+		--colorBrandSecondaryRgb: var(--colorPinkSecondaryRgb);
+		--colorBrandAccentRgb: var(--colorPinkAccentRgb);
 	}
 
 	&.orange {
-		--colorBrandPrimaryRgb: 255 127 34;								// rgb(255 127 34)
-		--colorBrandSecondaryRgb: 255 65 65;							// rgb(255 65 65)
-		--colorBrandAccentRgb: 255 108 103;								// rgb(255 108 103);
+		--colorBrandPrimaryRgb: var(--colorOrangePrimaryRgb);
+		--colorBrandSecondaryRgb: var(--colorOrangeSecondaryRgb);
+		--colorBrandAccentRgb: var(--colorOrangeAccentRgb);
 	}
 
 	&.blue {
-		--colorBrandPrimaryRgb: 34 252 176;								// rgb(34 252 176)
-		--colorBrandSecondaryRgb: 33 129 250;							// rgb(33 129 250)
-		--colorBrandAccentRgb: 33 149 243;								// rgb(33 149 243)
+		--colorBrandPrimaryRgb: var(--colorBluePrimaryRgb);
+		--colorBrandSecondaryRgb: var(--colorBlueSecondaryRgb);
+		--colorBrandAccentRgb: var(--colorBlueAccentRgb);
 	}
 
 	&.violet {
-		--colorBrandPrimaryRgb: 63 0 230;								// rgb(63 0 230)
-		--colorBrandSecondaryRgb: 150 44 255;							// rgb(150 44 255)
-		--colorBrandAccentRgb: 127 81 255;								// rgb(127 81 255)
+		--colorBrandPrimaryRgb: var(--colorVioletPrimaryRgb);
+		--colorBrandSecondaryRgb: var(--colorVioletSecondaryRgb);
+		--colorBrandAccentRgb: var(--colorVioletAccentRgb);
 	}
 
 	&.black {
-		--colorBrandPrimaryRgb: 22 20 28;								// rgb(22 20 28)
-		--colorBrandSecondaryRgb: 9 8 11;								// rgb(9 8 11)
-		--colorBrandAccentRgb: 40 39 44;								// rgb(40 39 44)
+		--colorBrandPrimaryRgb: var(--colorBlackPrimaryRgb);
+		--colorBrandSecondaryRgb: var(--colorBlackSecondaryRgb);
+		--colorBrandAccentRgb: var(--colorBlackAccentRgb);
 	}
 
 	// Alert Colors
