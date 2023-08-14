@@ -84,7 +84,7 @@
 			}
 
 			&.loading {
-				--loaderColor: rgb(var(--colorBrandAccentRgb));
+				--loaderColor: rgb(var(--colorBrandAccentRgb) / 50%);
 		
 				background: rgb(var(--themeColor) / 80%);
 				pointer-events: none;
@@ -102,7 +102,7 @@
 						var(--loaderColor) 0.75rem,
 						var(--loaderColor) 1.5rem
 					);
-					animation: barberPole 0.25s linear 0.5s infinite;
+					animation: barberPole 0.18s linear infinite;
 				}
 			}
 			
