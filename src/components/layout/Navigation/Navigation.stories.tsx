@@ -1,3 +1,14 @@
+import { useEffect } from 'react';
+
+import {
+	MemoryRouter,
+	Routes,
+	Route,
+	Link,
+	useLocation,
+	useNavigate,
+} from 'react-router-dom';
+
 import { Navigation } from './Navigation';
 
 import type { Meta, StoryObj } from '@storybook/react';
@@ -10,9 +21,32 @@ const routeList = [
 	{ name: 'Settings', href: '/settings', icon: 'f013' },
 ];
 
+const Renderer = () => {
+	const { pathname } = useLocation();
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (pathname === '/') navigate(routeList[0]?.href);
+	}, [navigate, pathname]);
+
+	return (
+		<Navigation as={Link} hrefPropName='to' pathname={pathname} routes={routeList}>🎲 XtremeUI</Navigation>
+	);
+};
+
+const ReactRouterDecorator = () => {
+	return (
+		<MemoryRouter>
+			<Routes>
+				<Route path='/*' element={<Renderer />} />
+			</Routes>
+		</MemoryRouter>
+	);
+};
+
 const meta = {
 	title: 'Layouts/Navigation',
-	component: Navigation,
+	render: () => <ReactRouterDecorator />,
 	tags: [],
 	argTypes: {
 		className: { control: false },

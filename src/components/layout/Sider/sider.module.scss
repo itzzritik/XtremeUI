@@ -71,4 +71,13 @@
 			scale: 0.95;
 		}
 	}
+
+	@media (width <= 512px) {
+		padding-left: 0 !important;
+
+		.content {
+			border-top-left-radius: 0 !important;
+			border-bottom-left-radius: 0 !important;
+		}
+	}
 }

@@ -4,6 +4,7 @@ export type TNavigationProps = {
 	className?: string;
 	children?: ReactNode;
 	as?: ElementType;
+	hrefPropName?: string;
 	pathname: string;
 	routes: TNavigationRoute[];
 }

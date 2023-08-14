@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 
 import clsx from 'clsx';
 
@@ -8,12 +8,18 @@ import styles from './navigation.module.scss';
 import { TNavigationProps } from './types';
 
 export const Navigation = forwardRef<HTMLDivElement, TNavigationProps>((props, ref) => {
-	const { className, children, routes = [], pathname = '', as: Tag = 'a' as const } = props;
+	const { className, children, hrefPropName = 'href', routes = [], pathname = '', as: Tag = 'a' as const } = props;
+	const [loading, setLoading] = useState<string>('/');
 
 	const NavigationClsx = clsx(
 		styles.navigation,
 		className,
 	);
+
+	useEffect(() => {
+		if (loading === pathname)
+			setLoading('/');
+	}, [loading, pathname]);
 
 	return (
 		<section className={NavigationClsx} ref={ref} role='navigation'>
@@ -23,8 +29,13 @@ export const Navigation = forwardRef<HTMLDivElement, TNavigationProps>((props, r
 					routes.map((route, i) => (
 						<Tag
 							key={`route-${route?.href}-${i}`}
-							className={clsx(styles.route, route?.href === pathname && styles.active)}
-							href={route?.href}
+							className={clsx(
+								styles.route,
+								route?.href === loading && styles.loading,
+								route?.href === pathname && styles.active,
+							)}
+							{...({ [hrefPropName]: route?.href })}
+							onClick={() => setLoading(route?.href)}
 						>
 							{
 								route?.icon &&

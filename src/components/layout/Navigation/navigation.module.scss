@@ -33,6 +33,7 @@
 			text-decoration: none;
 			color: white;
 			transition: all var(--duration) var(--cubicBezierPrimary);
+			-webkit-tap-highlight-color: transparent;
 
 			&::before {
 				content: '';
@@ -82,6 +83,29 @@
 				}
 			}
 
+			&.loading {
+				--loaderColor: rgb(var(--colorBrandAccentRgb));
+		
+				background: rgb(var(--themeColor) / 80%);
+				pointer-events: none;
+		
+				&::before {
+					content: '';
+					position: absolute;
+					display: block;
+					width: 150%; height: 100%;
+					z-index: 0;
+					background-image: repeating-linear-gradient(
+						60deg,
+						transparent,
+						transparent 0.75rem,
+						var(--loaderColor) 0.75rem,
+						var(--loaderColor) 1.5rem
+					);
+					animation: barberPole 0.25s linear 0.5s infinite;
+				}
+			}
+			
 			&.active {
 				&::after {
 					clip-path: circle(var(--siderWidth) at calc(var(--siderWidthMini) / 2) 50%);
@@ -90,5 +114,10 @@
 				}
 			}
 		}
+	}
+
+	@keyframes barberPole {
+		from { transform: translateX(-1.75rem); }
+		to { transform: translateX(0); }
 	}
 }
