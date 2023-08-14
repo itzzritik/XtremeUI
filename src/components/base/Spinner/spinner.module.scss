@@ -1,7 +1,8 @@
 .spinner {
 	--spinnerSize: 64px;
 	--spinnerCubeSize: calc(var(--spinnerSize) / 2);
-	--spinnerTopColor: 67 67 67;
+	--spinnerShadowSize: calc(var(--spinnerSize) / 20);
+	--spinnerTopColor: 50 50 50;
 
 	position: relative;
 	width: var(--spinnerSize); height: var(--spinnerSize);
@@ -43,11 +44,11 @@
 				width: var(--spinnerCubeSize); height: var(--spinnerCubeSize);
 				background: rgb(var(--colorBrandAccentRgb) / 80%);
 				transform: translateZ(calc(-1 * var(--spinnerCubeSize) * 1.2));
-				filter: blur(25px);
-				box-shadow: 0 0 10px rgb(var(--spinnerTopColor)),
-					0 0 20px rgb(var(--colorBrandAccentRgb)),
-					0 0 30px rgb(var(--spinnerTopColor)),
-					0 0 40px rgb(var(--colorBrandAccentRgb));
+				filter: blur(var(--spinnerShadowSize));
+				box-shadow: 0 0 var(--spinnerShadowSize) rgb(var(--spinnerTopColor)),
+					0 0 calc(var(--spinnerShadowSize) * 2) rgb(var(--colorBrandAccentRgb)),
+					0 0 calc(var(--spinnerShadowSize) * 3) rgb(var(--spinnerTopColor)),
+					0 0 calc(var(--spinnerShadowSize) * 4) rgb(var(--colorBrandAccentRgb));
 			}
 		}
 	
@@ -70,7 +71,7 @@
 					background: linear-gradient(
 						to bottom,
 						rgb(var(--colorBrandAccentRgb) / 100%),
-						rgb(var(--colorBrandAccentRgb) / 25%),
+						rgb(var(--colorBrandAccentRgb) / 40%),
 					);
 				}
 
