@@ -36,7 +36,7 @@ export const Navigation = forwardRef<HTMLDivElement, TNavigationProps>((props, r
 							)}
 							{...({ [hrefPropName]: route?.href })}
 							onClick={() => {
-								setTimeout(() => { if (loading !== pathname) setLoading(route?.href); }, 80);
+								setTimeout(() => { if (loading !== pathname) setLoading(route?.href); }, 150);
 							}}
 						>
 							{

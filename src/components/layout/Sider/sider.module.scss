@@ -16,6 +16,7 @@
 		left: 0;
 		width: var(--siderWidth); height: 100%;
 		z-index: 0;
+		transition: opacity var(--duration) var(--cubicBezierPrimary);
 	}
 
 	.rightSiderContainer {
@@ -23,6 +24,7 @@
 		right: 0;
 		width: var(--siderWidth); height: 100%;
 		z-index: 1;
+		transition: opacity var(--duration) var(--cubicBezierPrimary);
 	}
 
 	.content {
@@ -55,6 +57,11 @@
 	}
 
 	&.leftOpen {
+		.rightSiderContainer {
+			opacity: 0;
+			pointer-events: none;
+		}
+
 		.content {
 			border-radius: 36px;
 			transform: translateX(calc(var(--siderWidth) - var(--paddingLeft)));
@@ -64,6 +71,11 @@
 	}
 
 	&.rightOpen {
+		.leftSiderContainer {
+			opacity: 0;
+			pointer-events: none;
+		}
+
 		.content {
 			border-radius: 36px;
 			transform: translateX(calc((var(--siderWidth) - var(--paddingRight)) * -1));
@@ -73,11 +85,26 @@
 	}
 
 	@media (width <= 512px) {
-		padding-left: 0 !important;
+		&.miniLeftSider {
+			--paddingLeft: 0px !important;
+		}
 
-		.content {
-			border-top-left-radius: 0 !important;
-			border-bottom-left-radius: 0 !important;
+		&:not(.leftOpen) {
+			.content {
+				border-top-left-radius: 0 !important;
+				border-bottom-left-radius: 0 !important;
+			}
+		}
+
+		&.miniRightSider {
+			--paddingRight: 0px !important;
+		}
+
+		&:not(.rightOpen) {
+			.content {
+				border-top-right-radius: 0 !important;
+				border-bottom-right-radius: 0 !important;
+			}
 		}
 	}
 }
