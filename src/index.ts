@@ -7,6 +7,10 @@ export { XProvider } from './components/context';
 export { useXData } from './components/context/useContext';
 
 // Button
+export { Avatar } from './components/base/Avatar/Avatar';
+export { type TAvatarProps, EAvatarSize } from './components/base/Avatar/types';
+
+// Button
 export { Button } from './components/base/Button/Button';
 export { type TButtonProps, EButtonTypes } from './components/base/Button/types';
 
@@ -14,7 +18,7 @@ export { type TButtonProps, EButtonTypes } from './components/base/Button/types'
 export { Icon } from './components/base/Icon/Icon';
 export { type IIconProps, type EIconType, EIconSize } from './components/base/Icon/types';
 
-// Icon
+// Lottie
 export { Lottie } from './components/base/Lottie/Lottie';
 export { type TLottieProps, ELottieSize } from './components/base/Lottie/types';
 

@@ -1,0 +1,72 @@
+.avatar {
+	--avatarSize: 64px;
+	--duration: 0.4s;
+
+	position: relative;
+	width: var(--avatarSize);
+	height: var(--avatarSize);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+
+	&::after {
+		content: '';
+		position: absolute;
+		width: 100%; height: 100%;
+		border-radius: 9999px;
+		border: calc(2px + var(--avatarSize) / 300) solid rgb(var(--colorBrandAccentRgb) / 75%);
+		transition: all var(--duration) var(--cubicBezierPrimary);
+	}
+
+	.placeholder {
+		color: rgb(var(--colorBrandAccentRgb) / 100%);
+	}
+
+	.image {
+		--imageSize: calc(100% - (4px + var(--avatarSize) / 100));
+
+		position: absolute;
+		width: var(--imageSize); height: var(--imageSize);
+		border-radius: 50%;
+		background-size: cover;
+		background-position: center;
+		transition: all var(--duration) var(--cubicBezierPrimary);
+	}
+
+	&.loading {
+		&::after {
+			border-color: rgb(var(--colorBrandAccentRgb) / 100%);
+			border-top-color: transparent;
+			border-bottom-color: transparent;
+			animation: spin 0.25s infinite linear;
+		}
+	}
+
+	&.error {
+		&::after {
+			border-color: rgb(var(--colorAlertErrorRGB));
+		}
+
+		.placeholder {
+			color: rgb(var(--colorAlertErrorRGB));
+		}
+	}
+
+	&:hover {
+		&::after {
+			scale: 1.1;
+		}
+	}
+
+	&:active {
+		&::after {
+			scale: 1;
+		}
+	}
+
+	@keyframes spin {
+		from { transform: rotate(0deg); }
+		to { transform: rotate(180deg); }
+	}
+}
