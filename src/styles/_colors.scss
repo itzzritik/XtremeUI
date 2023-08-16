@@ -1,5 +1,33 @@
 @use 'sass:list';
 
+@mixin lightScheme {
+	color-scheme: light;
+
+	// Text Colors
+	--colorContentPrimary: #383838;
+	--colorContentSecondary: #666;
+	--colorContentTertiary: #E6E6E6;
+
+	// Background Colors
+	--colorBackgroundPrimary: #FFF;
+	--colorBackgroundSecondary: #F6F6F6;
+	--colorBackgroundTertiary: #EEE;
+}
+
+@mixin darkScheme {
+	color-scheme: dark;
+
+	// Text Colors
+	--colorContentPrimary: #A1A1A1;
+	--colorContentSecondary: #636363;
+	--colorContentTertiary: #383838;
+
+	// Background Colors
+	--colorBackgroundPrimary: #111;
+	--colorBackgroundSecondary: #222;
+	--colorBackgroundTertiary: #333;
+}
+
 @mixin colors {
 	$colorMap: (
 		red: (
@@ -56,32 +84,27 @@
 	// Border Colors
 	--colorBorderPrimary: #ABB0BB;
 
-	// Text Colors
-	--colorContentPrimary: #383838;
-	--colorContentSecondary: #666;
-	--colorContentTertiary: #E6E6E6;
-
-	// Background Colors
-	--colorBackgroundPrimary: #FFF;
-	--colorBackgroundSecondary: #F6F6F6;
-	--colorBackgroundTertiary: #EEE;
-	--colorShadow: rgb(100 100 100 / 40%);
-
 	// Gradient Colors
 	--gradientBrand: linear-gradient(320deg, rgb(var(--colorBrandPrimaryRgb)), rgb(var(--colorBrandSecondaryRgb)));
 
 	// Cubic Bezier
 	--cubicBezierPrimary: cubic-bezier(0.23, 1, 0.320, 1);
 
-	&[data-theme-scheme='dark'] {
-		// Text Colors
-		--colorContentPrimary: #A1A1A1;
-		--colorContentSecondary: #636363;
-		--colorContentTertiary: #383838;
+	&[data-theme-scheme='system'] {
+		@media (prefers-color-scheme: light) {
+			@include lightScheme;
+		}
+	
+		@media (prefers-color-scheme: dark) {
+			@include darkScheme;
+		}
+	}
 
-		// Background Colors
-		--colorBackgroundPrimary: #111;
-		--colorBackgroundSecondary: #222;
-		--colorBackgroundTertiary: #333;
+	&[data-theme-scheme='light'] {
+		@include lightScheme;
+	}
+
+	&[data-theme-scheme='dark'] {
+		@include darkScheme;
 	}
 }

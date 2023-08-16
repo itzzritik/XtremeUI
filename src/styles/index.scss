@@ -4,7 +4,7 @@
 @import 'colors';
 @import 'sizes';
 
-body {
+html {
 	@include colors;
 	@include sizes;
 	

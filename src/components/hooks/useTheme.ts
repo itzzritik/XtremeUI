@@ -6,11 +6,8 @@ import { TStateHook } from './type';
 import { usePersistingState } from './usePersistingState';
 
 export const applyTheme = (theme: TTheme) => {
-	const body = document.querySelector('body');
-	if (body) {
-		body.setAttribute('data-theme-scheme', theme?.scheme);
-		body.setAttribute('data-theme-color', theme?.color);
-	}
+	document.documentElement.setAttribute('data-theme-scheme', theme?.scheme);
+	document.documentElement.setAttribute('data-theme-color', theme?.color);
 };
 export const useTheme = (initialTheme: TTheme): TStateHook<TTheme> => {
 	const [theme, setTheme] = usePersistingState<TTheme>(STORAGE.theme, initialTheme);
@@ -28,7 +25,7 @@ enum EScheme {
 	system = 'system',
 }
 export type TScheme = keyof typeof EScheme;
-enum EColor {
+export enum EColor {
 	red = 'red',
 	pink = 'pink',
 	orange = 'orange',
