@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 
 import { STORAGE } from '#utils/constants/commons';
+import { doc } from '#utils/index';
 
 import { TStateHook } from './type';
 import { usePersistingState } from './usePersistingState';
 
 export const applyTheme = (theme: TTheme) => {
-	document.documentElement.setAttribute('data-theme-scheme', theme?.scheme);
-	document.documentElement.setAttribute('data-theme-color', theme?.color);
+	doc?.documentElement?.setAttribute('data-theme-scheme', theme?.scheme);
+	doc?.documentElement?.setAttribute('data-theme-color', theme?.color);
 };
 export const useTheme = (initialTheme: TTheme): TStateHook<TTheme> => {
 	const [theme, setTheme] = usePersistingState<TTheme>(STORAGE.theme, initialTheme);

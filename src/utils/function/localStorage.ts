@@ -1,6 +1,8 @@
+import { localStore } from '../helper/domHelper';
+
 export const getLocalState = <T>(key: string, fallback?: T): T => {
 	try {
-		const value = localStorage.getItem(key);
+		const value = localStore?.getItem(key);
 		return value ? JSON.parse(value) : fallback ?? '' as T;
 	}
 	catch (e) {
@@ -11,7 +13,7 @@ export const getLocalState = <T>(key: string, fallback?: T): T => {
 
 export const setLocalState = <T>(key: string, value: T) => {
 	try {
-		localStorage.setItem(key, JSON.stringify(value));
+		localStore?.setItem(key, JSON.stringify(value));
 	}
 	catch (e) {
 		console.log(e);

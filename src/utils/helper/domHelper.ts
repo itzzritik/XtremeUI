@@ -1,7 +1,9 @@
 import { RefObject } from 'react';
 
 export const isClient = typeof window !== 'undefined';
-export const dom = isClient ? window : undefined;
+export const win = isClient ? window : undefined;
+export const doc = isClient ? document : undefined;
+export const localStore = isClient ? localStorage : undefined;
 
 export const getCssProperty = (property: string, element: RefObject<HTMLElement>) => {
 	return isClient ? getComputedStyle(element?.current || document.documentElement).getPropertyValue(property) : '';
@@ -13,12 +15,12 @@ export const getCssPropertyPx = (property: string, element: RefObject<HTMLElemen
 
 export const getCssPropertyVh = (property: string, element: RefObject<HTMLElement>) => {
 	const height = parseInt(getCssProperty(property, element).replace(/vh/g, ''));
-	return [(dom?.innerHeight ?? 0) * height / 100, height];
+	return [(win?.innerHeight ?? 0) * height / 100, height];
 };
 
 export const getCssPropertyVw = (property: string, element: RefObject<HTMLElement>) => {
 	const width = parseInt(getCssProperty(property, element).replace(/vw/g, ''));
-	return [(dom?.innerWidth ?? 0) * width / 100, width];
+	return [(win?.innerWidth ?? 0) * width / 100, width];
 };
 
 export const setCssProperty = (property: string, value: string, element: RefObject<HTMLElement>) => {
