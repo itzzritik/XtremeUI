@@ -7,22 +7,22 @@ import { elementObserver, waitForElement } from "../src/utils/helper/domHelper";
 import { useXData } from "../src/components/context/useContext";
 import { STORAGE } from "../src/utils/constants/commons";
 import { getLocalState } from "../src/utils/function/localStorage";
-import { EThemeColor } from "../src/components/hooks/useThemeColor";
+import { defaultTheme } from "../src/components/hooks/useTheme";
 import "../src/styles/index.scss";
 
-const defaultThemeColor = getLocalState(STORAGE.themeColor, EThemeColor.violet);
+const initialTheme = getLocalState(STORAGE.theme, defaultTheme);
 let root: HTMLElement;
 
 const ThemeController = () => {
-	const {setTheme, setThemeColor} = useXData();
+	const {setScheme, setThemeColor} = useXData();
 	useEffect(() => {
 		addons.getChannel().on('updateGlobals', (args) => {		
 			const globals = args?.globals;
 			const background = ThemeList.find((color) => color.value === globals?.backgrounds?.value);
 			const backgroundName = background?.name?.toLowerCase();
-		
-			if (backgroundName === 'light' || backgroundName === 'dark') setTheme(backgroundName);
-			else if (globals?.backgrounds?.value === "transparent") setTheme('system');
+			
+			if (backgroundName === 'light' || backgroundName === 'dark') setScheme(backgroundName);
+			else if (globals?.backgrounds?.value === "transparent") setScheme('system');
 			if (args?.globals?.brand) setThemeColor(args.globals.brand);
 		});
 	}, [])
@@ -33,7 +33,7 @@ const preview: Preview = {
 	globalTypes: {
 		brand: {
 			description: "Select Brand Color",
-			defaultValue: defaultThemeColor,
+			defaultValue: initialTheme?.color,
 			toolbar: {
 				title: "Brand Color",
 				items: BrandColorList,

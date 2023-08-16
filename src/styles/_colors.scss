@@ -73,7 +73,7 @@
 	// Cubic Bezier
 	--cubicBezierPrimary: cubic-bezier(0.23, 1, 0.320, 1);
 
-	&[data-theme='dark'] {
+	&[data-theme-scheme='dark'] {
 		// Text Colors
 		--colorContentPrimary: #A1A1A1;
 		--colorContentSecondary: #636363;
