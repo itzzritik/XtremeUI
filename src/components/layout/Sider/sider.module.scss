@@ -9,7 +9,7 @@
 	background: rgb(var(--colorBrandAccentRgb) / 90%);
 	padding: 0 var(--paddingRight) 0 var(--paddingLeft);
 	overflow: hidden;
-	transition: padding var(--duration) ease;
+	transition: all var(--duration) ease;
 	
 	.leftSiderContainer {
 		position: fixed;

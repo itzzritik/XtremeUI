@@ -43,7 +43,7 @@
 				background: rgb(var(--colorBrandAccentRgb) / 0%);
 				filter: contrast(2) brightness(0.75);
 				z-index: 0;
-				transition: all var(--duration) var(--cubicBezierPrimary);
+				transition: all var(--duration) var(--cubicBezierPrimary), background var(--duration) ease;
 			}
 
 			&::after {
@@ -56,7 +56,7 @@
 				filter: contrast(2) brightness(0.75);
 				z-index: 0;
 				opacity: 0.4;
-				transition: all var(--duration) var(--cubicBezierPrimary);
+				transition: all var(--duration) var(--cubicBezierPrimary), background var(--duration) ease;
 			}
 
 			.icon {
@@ -110,7 +110,7 @@
 				&::after {
 					clip-path: circle(var(--siderWidth) at calc(var(--siderWidthMini) / 2) 50%);
 					opacity: 1;
-					transition: all var(--duration) ease-in-out;
+					transition: all var(--duration) ease-in-out, background var(--duration) ease;
 				}
 			}
 		}

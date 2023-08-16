@@ -9,9 +9,10 @@ export type TSiderProps = {
 	showMiniRightSider?: boolean;
 }
 
-export type TSiderModes = keyof typeof ESiderModes;
 export enum ESiderModes {
 	left = 'left',
 	right = 'right',
 	closed = 'closed',
 }
+export type TSiderModes = keyof typeof ESiderModes;
+export const defaultSiderMode = ESiderModes.closed;

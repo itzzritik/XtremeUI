@@ -1,5 +1,5 @@
 import { useContext } from 'react';
 
-import { DataContext, DataDefaultType } from './DataContext';
+import { DataContext, TDataDefaultType } from './DataContext';
 
-export const useXData = (): DataDefaultType => useContext(DataContext);
+export const useXData = (): TDataDefaultType => useContext(DataContext);

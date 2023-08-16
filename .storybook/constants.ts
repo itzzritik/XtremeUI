@@ -1,5 +1,6 @@
 export const ThemeList = [
 	{name: 'Dark', value: "#000000"},
+	{name: 'Light', value: "#FFFFFF"},
 ]
 
 export const BrandColorList = [

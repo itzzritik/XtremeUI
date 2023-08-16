@@ -1,20 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { Preview } from "@storybook/react";
 import { addons } from "@storybook/addons";
 import { BrandColorList, ThemeList } from "./constants";
 import {XProvider} from "../src/components/context";
 import { elementObserver, waitForElement } from "../src/utils/helper/domHelper";
+import { useXData } from "../src/components/context/useContext";
+import { STORAGE } from "../src/utils/constants/commons";
+import { getLocalState } from "../src/utils/function/localStorage";
+import { EThemeColor } from "../src/components/hooks/useThemeColor";
 import "../src/styles/index.scss";
 
-let theme;
-let brand = "violet";
+const defaultThemeColor = getLocalState(STORAGE.themeColor, EThemeColor.violet);
 let root: HTMLElement;
+
+const ThemeController = () => {
+	const {setTheme, setThemeColor} = useXData();
+	useEffect(() => {
+		addons.getChannel().on('updateGlobals', (args) => {		
+			const globals = args?.globals;
+			const background = ThemeList.find((color) => color.value === globals?.backgrounds?.value);
+			const backgroundName = background?.name?.toLowerCase();
+		
+			if (backgroundName === 'light' || backgroundName === 'dark') setTheme(backgroundName);
+			else if (globals?.backgrounds?.value === "transparent") setTheme('system');
+			if (args?.globals?.brand) setThemeColor(args.globals.brand);
+		});
+	}, [])
+	return null;
+}
 
 const preview: Preview = {
 	globalTypes: {
 		brand: {
 			description: "Select Brand Color",
-			defaultValue: brand,
+			defaultValue: defaultThemeColor,
 			toolbar: {
 				title: "Brand Color",
 				items: BrandColorList,
@@ -40,34 +59,18 @@ const preview: Preview = {
 			},
 		},
 		backgrounds: {
-			default: theme,
 			values: ThemeList,
 		},
 	},
 	decorators: [
 		(Story) => (
-		  <XProvider>
-			<Story />
-		  </XProvider>
+			<XProvider>
+				<ThemeController />
+				<Story />
+			</XProvider>
 		),
-	  ],
+	],
 };
-
-const setTheme = () => {
-	document.body.className = `${theme?.name?.toLowerCase() ?? ""} ${brand}`;
-};
-addons.getChannel().on('updateGlobals', (args) => {
-	console.log("Global config changed: ", args);
-
-	const globals = args?.globals;
-	const background = ThemeList.find((color) => color.value === globals?.backgrounds?.value);
-
-	if (background) theme = background;
-	else if (globals?.backgrounds?.value === "transparent") theme = undefined;
-	if (args?.globals?.brand) brand = args.globals.brand;
-
-	setTheme();
-});
 
 waitForElement("#storybook-root").then((element) => {
 	root = element;
@@ -76,8 +79,7 @@ waitForElement("#storybook-root").then((element) => {
 	document.body.style.setProperty("margin", "0");
 	document.body.style.setProperty("padding", "0");
 	element.style.setProperty("height", "100%");
-	element.style.setProperty("padding", "16px")
-	setTheme();
+	element.style.setProperty("padding", "16px");
 });
 
 elementObserver((element, event) => {
