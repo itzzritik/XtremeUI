@@ -1,32 +1,28 @@
 import { createContext, useEffect, useState } from 'react';
 
-import { win } from '#utils/helper/domHelper';
+import { win } from '#utils/index';
 
-import { TThemeColor, TThemeInitialType, TThemeProviderProps, TThemeScheme } from './type';
+import { TThemeColor, TThemeInitialType, TThemeProviderProps, TThemeScheme, defaultColor, defaultScheme } from './type';
 
 const ThemeDefault: TThemeInitialType = {
-	scheme: window.__themeScheme,
+	scheme: win?.__themeScheme ?? defaultScheme,
 	setThemeScheme: () => null,
-	color: window.__themeColor,
+	color: win?.__themeColor ?? defaultColor,
 	setThemeColor: () => null,
 };
 
 const ThemeContext = createContext(ThemeDefault);
 const ThemeProvider = ({ children }: TThemeProviderProps) => {
-	const [scheme, setScheme] = useState<TThemeScheme>(window.__themeScheme);
-	const [color, setColor] = useState<TThemeColor>(window.__themeColor);
+	const [scheme, setScheme] = useState<TThemeScheme>(ThemeDefault.scheme);
+	const [color, setColor] = useState<TThemeColor>(ThemeDefault.color);
 
-	const setThemeScheme = (val: TThemeScheme) => {
-		window.__setPreferredThemeScheme?.(val);
-	};
-	const setThemeColor = (val: TThemeColor) => {
-		window.__setPreferredThemeColor?.(val);
-	};
+	const setThemeScheme = (val: TThemeScheme) => win?.__setPreferredThemeScheme?.(val);
+	const setThemeColor = (val: TThemeColor) => win?.__setPreferredThemeColor?.(val);
 
 	useEffect(() => {
 		if (win) {
-			window.__onThemeSchemeChange = setScheme;
-			window.__onThemeColorChange = setColor;
+			win.__onThemeSchemeChange = setScheme;
+			win.__onThemeColorChange = setColor;
 		}
 	}, []);
 

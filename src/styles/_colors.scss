@@ -69,7 +69,7 @@
 		--color#{$capitalizedColor}Secondary: #{list.nth($colorSet, 2)};
 		--color#{$capitalizedColor}Accent: #{list.nth($colorSet, 3)};
 
-		&[data-theme-color=#{$colorName}] {
+		&[data-theme-color=#{"" + $colorName}] {
 			--colorBrandPrimaryRgb: var(--color#{$capitalizedColor}Primary);
 			--colorBrandSecondaryRgb: var(--color#{$capitalizedColor}Secondary);
 			--colorBrandAccentRgb: var(--color#{$capitalizedColor}Accent);
