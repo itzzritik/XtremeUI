@@ -45,6 +45,9 @@ jobs:
           version: latest
           run_install: true
 
+      - name: Building Package 🏗️
+        run: pnpm build
+
       - name: Setting up SSH key 🔑
         run: |
             mkdir -p ~/.ssh/
@@ -69,9 +72,6 @@ jobs:
 
       - name: Push new version tag to repository 🎉
         run: git push --follow-tags
-
-      - name: Building Package 🏗️
-        run: pnpm build
 
       - name: Publishing Package 🚀
         run: npm publish --access public
