@@ -2,27 +2,34 @@ import React, { useEffect } from "react";
 import type { Preview } from "@storybook/react";
 import { addons } from "@storybook/addons";
 import { BrandColorList, ThemeList } from "./constants";
-import {XProvider} from "../src/components/context";
+import { XProvider } from "../src/components/context";
 import { elementObserver, waitForElement } from "../src/utils/helper/domHelper";
-import { useXData } from "../src/components/context/useContext";
 import { STORAGE } from "../src/utils/constants/commons";
 import { getLocalState } from "../src/utils/function/localStorage";
-import { defaultTheme } from "../src/components/hooks/useTheme";
-import "../src/styles/index.scss";
+import { useXTheme } from "../src/components/context/useContext";
+import { themeController } from "../src/utils/helper/themeController";
+import { defaultScheme, defaultColor } from "../src/components/context/Theme/type";
+import { capitalizeFirstLetter } from "../src/utils/function/string";
 
-const initialTheme = getLocalState(STORAGE.theme, defaultTheme);
+import "../src/styles/index.scss";
+import "./style.scss";
+
+eval(themeController);
+
+const initialThemeScheme = getLocalState(STORAGE.themeScheme, defaultScheme);
+const initialThemeColor = getLocalState(STORAGE.themeColor, defaultColor);
 let root: HTMLElement;
 
 const ThemeController = () => {
-	const {setScheme, setThemeColor} = useXData();
+	const {setThemeScheme, setThemeColor} = useXTheme();
 	useEffect(() => {
 		addons.getChannel().on('updateGlobals', (args) => {		
 			const globals = args?.globals;
 			const background = ThemeList.find((color) => color.value === globals?.backgrounds?.value);
 			const backgroundName = background?.name?.toLowerCase();
 			
-			if (backgroundName === 'light' || backgroundName === 'dark') setScheme(backgroundName);
-			else if (globals?.backgrounds?.value === "transparent") setScheme('system');
+			if (backgroundName === 'light' || backgroundName === 'dark') setThemeScheme(backgroundName);
+			else if (globals?.backgrounds?.value === "transparent") setThemeScheme('system');
 			if (args?.globals?.brand) setThemeColor(args.globals.brand);
 		});
 	}, [])
@@ -33,7 +40,7 @@ const preview: Preview = {
 	globalTypes: {
 		brand: {
 			description: "Select Brand Color",
-			defaultValue: initialTheme?.color,
+			defaultValue: initialThemeColor,
 			toolbar: {
 				title: "Brand Color",
 				items: BrandColorList,
@@ -59,16 +66,19 @@ const preview: Preview = {
 			},
 		},
 		backgrounds: {
+			default: capitalizeFirstLetter(initialThemeScheme),
 			values: ThemeList,
 		},
 	},
 	decorators: [
-		(Story) => (
-			<XProvider>
-				<ThemeController />
-				<Story />
-			</XProvider>
-		),
+		(Story) => {
+			return (
+				<XProvider>
+					<ThemeController />
+					<Story />
+				</XProvider>
+			);
+		},
 	],
 };
 

@@ -1,6 +1,8 @@
-import { useState, createContext, ReactNode } from 'react';
+import { useState, createContext } from 'react';
 
 import { TSiderModes, defaultSiderMode } from '#components/layout/Sider/types';
+
+import { TDataInitialType, TDataProviderProps } from './type';
 
 const DataDefault: TDataInitialType = {
 	siderMode: defaultSiderMode,
@@ -19,11 +21,3 @@ const DataProvider = ({ children }: TDataProviderProps) => {
 };
 
 export { DataProvider, DataContext };
-
-export type TDataInitialType = {
-	siderMode: TSiderModes,
-	setSiderMode: (mode: TSiderModes) => void,
-}
-export type TDataProviderProps = {
-    children?: ReactNode
-}

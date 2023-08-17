@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { DataProvider } from './DataContext';
+import { DataProvider } from './Data/DataContext';
 import { ThemeProvider } from './Theme/ThemeContext';
 
 export const XProvider = ({ children }: XProviderProps) => {

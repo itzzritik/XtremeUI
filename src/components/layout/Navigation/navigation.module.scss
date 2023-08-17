@@ -63,13 +63,14 @@
 				width: var(--siderWidthMini);
 				height: var(--siderWidthMini);
 				font-size: calc(var(--siderWidthMini) - 40px);
-				color: white;
+				color: inherit;
 			}
 
 			.label {
 				font-size: 16px;
 				font-variation-settings: 'wdth' 75, 'wght' 400;
 				text-transform: capitalize;
+				color: inherit;
 				z-index: 1;
 			}
 

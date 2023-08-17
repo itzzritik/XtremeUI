@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { MutableRefObject, forwardRef } from 'react';
 
 import { DotLottiePlayer, Controls, PlayMode, DotLottieRefProps } from '@dotlottie/react-player';
 import clsx from 'clsx';
@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import styles from './lottie.module.scss';
 import { ELottieSize, TLottieProps } from './types';
 
-export const Lottie = forwardRef<DotLottieRefProps, TLottieProps>((props) => {
+export const Lottie = forwardRef<DotLottieRefProps, TLottieProps>((props, ref) => {
 	const {
 		className,
 		src,
@@ -29,6 +29,7 @@ export const Lottie = forwardRef<DotLottieRefProps, TLottieProps>((props) => {
 	return (
 		<DotLottiePlayer
 			className={LottieClsx}
+			lottieRef={ref as MutableRefObject<DotLottieRefProps>}
 			src={src}
 			autoplay={autoPlay}
 			loop={loop}

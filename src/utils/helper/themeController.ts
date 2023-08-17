@@ -14,21 +14,25 @@ export const themeController = `
 		window.__themeColor = newThemeColor;
 		window.__onThemeColorChange(newThemeColor);
 	}
+	function saveToStore() {
+		try {
+			localStorage.setItem("${STORAGE.themeScheme}", JSON.stringify(window.__themeScheme));
+		} catch (err) {}
+		try {
+			localStorage.setItem("${STORAGE.themeColor}", JSON.stringify(window.__themeColor));
+		} catch (err) {}
+	}
 	
 	window.__onThemeSchemeChange = function () {};
 	window.__onThemeColorChange = function () {};
 
 	window.__setPreferredThemeScheme = function (newThemeScheme) {
 		setThemeScheme(newThemeScheme);
-		try {
-			localStorage.setItem("${STORAGE.themeScheme}", JSON.stringify(window.__themeScheme));
-		} catch (err) {}
+		saveToStore();
 	};
 	window.__setPreferredThemeColor = function (newThemeColor) {
 		setThemeColor(newThemeColor);
-		try {
-			localStorage.setItem("${STORAGE.themeColor}", JSON.stringify(window.__themeColor));
-		} catch (err) {}
+		saveToStore();
 	};
 
 	let themeScheme;
@@ -36,8 +40,10 @@ export const themeController = `
 	
 	try {
 		themeScheme = JSON.parse(localStorage.getItem("${STORAGE.themeScheme}"));
+	} catch (err) {}
+	try {
 		themeColor = JSON.parse(localStorage.getItem("${STORAGE.themeColor}"));
-	} catch (err) {}  
+	} catch (err) {} 
 	
 	setThemeScheme(themeScheme || "${defaultScheme}");
 	setThemeColor(themeColor || "${defaultColor}");

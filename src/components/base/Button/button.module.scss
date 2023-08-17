@@ -19,10 +19,12 @@
 		margin: 0;
 		text-transform: uppercase;
 		z-index: 1;
+		color: inherit;
 		transition: all var(--duration) var(--cubicBezierPrimary);
 	}
 
 	.icon {
+		color: inherit;
 		transition: all var(--duration) var(--cubicBezierPrimary);
 	}
 
@@ -59,7 +61,7 @@
 	&.secondaryType, &.secondaryDangerType {
 		background: var(--colorBackgroundTertiary);
 		box-shadow: 0 0 0 2px rgb(var(--colorBackgroundTertiary) / 40%);
-		color: rgb(var(--themeColor));
+		color: var(--colorContentPrimary);
 	}
 
 	&.linkType, &.linkDangerType  {
