@@ -18,7 +18,13 @@ export const Icon = forwardRef<HTMLSpanElement, IIconProps>((props, ref) => {
 	);
 
 	return (
-		<span className={IconClsx} ref={ref} style={{ ['--iconSize'as string]: iconSize }} data-content={unicodeToString(code)} />
+		<span
+			ref={ref}
+			className={IconClsx}
+			style={{ ['--iconSize'as string]: iconSize }}
+			data-content={unicodeToString(code)}
+			role='icon'
+		/>
 	);
 });
 

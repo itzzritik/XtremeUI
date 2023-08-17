@@ -11,11 +11,11 @@ import styles from './button.module.scss';
 import { EButtonTypes, TButtonProps } from './types';
 
 const throttleTime = 100;
-let timeout: number;
 
 export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) => {
 	const {
 		className,
+		style,
 		label,
 		type = 'primary',
 		size = 'default',
@@ -28,6 +28,7 @@ export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) =
 	} = props;
 	const innerRef = useRef<HTMLButtonElement>(null);
 
+	let timeout: number;
 	const ripple = () => {
 		clearTimeout(timeout);
 		innerRef.current?.classList.add(styles.clicked);
@@ -60,7 +61,14 @@ export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) =
 	if (!label && !icon) return null;
 
 	return (
-		<button className={ButtonClsx} ref={mergeRefs([innerRef, ref])} onClick={onButtonClick} disabled={disabled}>
+		<button
+			ref={mergeRefs([innerRef, ref])}
+			className={ButtonClsx}
+			style={style}
+			onClick={onButtonClick}
+			disabled={disabled}
+			role='button'
+		>
 			{type.includes(EButtonTypes.link) && <ProgressBar className={styles.underline} intermediate={loading} />}
 			{iconPosition === 'left' && <IconComponent />}
 			{label && <span className={styles.label}>{label}</span>}

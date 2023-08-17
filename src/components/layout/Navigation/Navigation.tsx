@@ -22,7 +22,11 @@ export const Navigation = forwardRef<HTMLDivElement, TNavigationProps>((props, r
 	}, [loading, pathname]);
 
 	return (
-		<section className={NavigationClsx} ref={ref} role='navigation'>
+		<section
+			ref={ref}
+			className={NavigationClsx}
+			role='navigation'
+		>
 			<div className={styles.brand}>{children}</div>
 			<div className={styles.routeList}>
 				{

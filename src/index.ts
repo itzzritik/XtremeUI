@@ -41,3 +41,7 @@ export { type TSiderProps, type TSiderModes } from './components/layout/Sider/ty
 // Navigation
 export { Navigation } from './components/layout/Navigation/Navigation';
 export { type TNavigationProps, type TNavigationRoute } from './components/layout/Navigation/types';
+
+// ThemePicker
+export { ThemePicker } from './components/layout/ThemePicker/ThemePicker';
+export { type TThemePickerProps } from './components/layout/ThemePicker/type';

@@ -21,7 +21,8 @@ const initialThemeColor = getLocalState(STORAGE.themeColor, defaultColor);
 let root: HTMLElement;
 
 const ThemeController = () => {
-	const {setThemeScheme, setThemeColor} = useXTheme();
+	const {themeScheme, themeColor, setThemeScheme, setThemeColor} = useXTheme();
+	
 	useEffect(() => {
 		addons.getChannel().on('updateGlobals', (args) => {		
 			const globals = args?.globals;

@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 
 export type TThemeInitialType = {
-	scheme: TThemeScheme,
+	themeScheme: TThemeScheme,
 	setThemeScheme: (scheme: TThemeScheme) => void,
-	color: TThemeColor,
+	themeColor: TThemeColor,
 	setThemeColor: (color: TThemeColor) => void,
 }
 export type TThemeProviderProps = {
@@ -18,7 +18,7 @@ enum EThemeScheme {
 export type TThemeScheme = keyof typeof EThemeScheme;
 export const defaultScheme = EThemeScheme.system;
 
-enum EThemeColor {
+export enum EThemeColor {
 	red = 'red',
 	pink = 'pink',
 	orange = 'orange',

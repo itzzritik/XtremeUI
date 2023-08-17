@@ -16,7 +16,12 @@ export const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>((props, ref) =>
 	);
 
 	return (
-		<div className={SpinnerClsx} ref={ref} style={{ ['--spinnerSize'as string]: spinnerSize }}>
+		<div
+			ref={ref}
+			className={SpinnerClsx}
+			style={{ ['--spinnerSize'as string]: spinnerSize }}
+			role='spinner'
+		>
 			<div className={styles.spinnerWrapper}>
 				<div className={styles.cubeTop} />
 				<div className={styles.cubeWrapper}>

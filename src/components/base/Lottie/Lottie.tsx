@@ -28,8 +28,9 @@ export const Lottie = forwardRef<DotLottieRefProps, TLottieProps>((props, ref) =
 
 	return (
 		<DotLottiePlayer
-			className={LottieClsx}
 			lottieRef={ref as MutableRefObject<DotLottieRefProps>}
+			className={LottieClsx}
+			style={{ ['--lottieSize'as string]: lottieSize }}
 			src={src}
 			autoplay={autoPlay}
 			loop={loop}
@@ -37,7 +38,7 @@ export const Lottie = forwardRef<DotLottieRefProps, TLottieProps>((props, ref) =
 			direction={direction}
 			playMode={playMode}
 			renderer={renderer}
-			style={{ ['--lottieSize'as string]: lottieSize }}
+			role='lottie'
 		>
 			{controls && <Controls />}
 		</DotLottiePlayer>

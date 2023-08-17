@@ -1,4 +1,4 @@
-import { HTMLAttributes, MouseEvent } from 'react';
+import { CSSProperties, HTMLAttributes, MouseEvent } from 'react';
 
 import { EIconType } from '../Icon/types';
 
@@ -9,6 +9,7 @@ enum EButtonSize {
 }
 interface BaseButton extends HTMLAttributes<HTMLButtonElement> {
 	className?: string;
+	style?: CSSProperties;
 	type?: keyof typeof EButtonTypes;
 	size?: keyof typeof EButtonSize;
 	loading?: boolean;

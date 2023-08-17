@@ -17,7 +17,11 @@ export const ProgressBar = forwardRef<HTMLDivElement, IProgressBarProps>((props,
 	);
 
 	return (
-		<div className={ProgressClsx} ref={ref}>
+		<div
+			ref={ref}
+			className={ProgressClsx}
+			role='progress'
+		>
 			<span className={styles.progress} style={{ width: `${progressWidth}%` }} />
 		</div>
 	);

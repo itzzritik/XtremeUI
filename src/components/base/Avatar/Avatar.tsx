@@ -36,7 +36,13 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 	}, [src]);
 
 	return (
-		<div ref={ref} className={AvatarClsx} style={{ ['--avatarSize'as string]: avatarSize + 'px' }} onClick={onClick}>
+		<div
+			ref={ref}
+			className={AvatarClsx}
+			style={{ ['--avatarSize'as string]: avatarSize + 'px' }}
+			onClick={onClick}
+			role='avatar'
+		>
 			{
 				isLoading || isError ?
 					<Icon

@@ -5,16 +5,16 @@ import { win } from '#utils/index';
 import { TThemeColor, TThemeInitialType, TThemeProviderProps, TThemeScheme, defaultColor, defaultScheme } from './type';
 
 const ThemeDefault: TThemeInitialType = {
-	scheme: win?.__themeScheme ?? defaultScheme,
+	themeScheme: win?.__themeScheme ?? defaultScheme,
 	setThemeScheme: () => null,
-	color: win?.__themeColor ?? defaultColor,
+	themeColor: win?.__themeColor ?? defaultColor,
 	setThemeColor: () => null,
 };
 
 const ThemeContext = createContext(ThemeDefault);
 const ThemeProvider = ({ children }: TThemeProviderProps) => {
-	const [scheme, setScheme] = useState<TThemeScheme>(ThemeDefault.scheme);
-	const [color, setColor] = useState<TThemeColor>(ThemeDefault.color);
+	const [themeScheme, setScheme] = useState<TThemeScheme>(ThemeDefault.themeScheme);
+	const [themeColor, setColor] = useState<TThemeColor>(ThemeDefault.themeColor);
 
 	const setThemeScheme = (val: TThemeScheme) => win?.__setPreferredThemeScheme?.(val);
 	const setThemeColor = (val: TThemeColor) => win?.__setPreferredThemeColor?.(val);
@@ -27,7 +27,7 @@ const ThemeProvider = ({ children }: TThemeProviderProps) => {
 	}, []);
 
 	return (
-		<ThemeContext.Provider value={{ scheme, setThemeScheme, color, setThemeColor }}>
+		<ThemeContext.Provider value={{ themeScheme, setThemeScheme, themeColor, setThemeColor }}>
 			{children}
 		</ThemeContext.Provider>
 	);
