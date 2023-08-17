@@ -39,7 +39,7 @@ export const themeController = `
 		themeColor = JSON.parse(localStorage.getItem("${STORAGE.themeColor}"));
 	} catch (err) {}  
 	
-	setThemeScheme(themeScheme || "${defaultScheme}"));
+	setThemeScheme(themeScheme || "${defaultScheme}");
 	setThemeColor(themeColor || "${defaultColor}");
 })();
 `;
