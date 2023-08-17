@@ -1,3 +1,4 @@
 export const STORAGE = {
-	theme: 'xTheme',
+	themeScheme: 'xThemeScheme',
+	themeColor: 'xThemeColor',
 };

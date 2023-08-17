@@ -1,12 +1,15 @@
 import { ReactNode } from 'react';
 
 import { DataProvider } from './DataContext';
+import { ThemeProvider } from './Theme/ThemeContext';
 
 export const XProvider = ({ children }: XProviderProps) => {
 	return (
-		<DataProvider>
-			{children}
-		</DataProvider>
+		<ThemeProvider>
+			<DataProvider>
+				{children}
+			</DataProvider>
+		</ThemeProvider>
 	);
 };
 

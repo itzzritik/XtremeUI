@@ -4,7 +4,7 @@ export * from '#utils/index';
 
 // Context
 export { XProvider } from './components/context';
-export { useXData } from './components/context/useContext';
+export { useTheme, useXData } from './components/context/useContext';
 
 // Button
 export { Avatar } from './components/base/Avatar/Avatar';
