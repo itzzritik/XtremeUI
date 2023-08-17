@@ -27,6 +27,7 @@ export default defineConfig((configEnv) => ({
 	build: {
 		ssr: true,
 		minify: true,
+		sourcemap: true,
 		lib: {
 			name: 'XtremeUI',
 			entry: resolve('src', 'index.ts'),

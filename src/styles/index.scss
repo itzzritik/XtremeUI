@@ -7,17 +7,19 @@
 html {
 	@include colors;
 	@include sizes;
-	
+
+	background: var(--colorBackgroundPrimary);
 	scroll-behavior: smooth;
 
 	::selection {
 		color: white;
 		background: rgb(var(--colorBrandAccentRgb));
 	}
-}
-	
-* {
-	font-family: Montserrat, sans-serif;
-	font-variation-settings: 'wdth' 75, 'wght' 500;
-	box-sizing: border-box;
+
+	* {
+		font-family: Montserrat, sans-serif;
+		font-variation-settings: 'wdth' 75, 'wght' 500;
+		color: var(--colorContentPrimary);
+		box-sizing: border-box;
+	}
 }
