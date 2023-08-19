@@ -10,7 +10,7 @@ export type TThemeProviderProps = {
     children?: ReactNode
 }
 
-enum EThemeScheme {
+export enum EThemeScheme {
 	light = 'light',
 	dark = 'dark',
 	system = 'system',
@@ -22,6 +22,7 @@ export enum EThemeColor {
 	red = 'red',
 	pink = 'pink',
 	orange = 'orange',
+	green = 'green',
 	blue = 'blue',
 	violet = 'violet',
 	black = 'black',

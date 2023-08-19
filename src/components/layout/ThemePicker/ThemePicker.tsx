@@ -3,17 +3,24 @@ import { forwardRef } from 'react';
 import clsx from 'clsx';
 
 import { Button } from '#components/base/Button/Button';
-import { EThemeColor, TThemeColor } from '#components/context/Theme/type';
+import { Icon } from '#components/base/Icon/Icon';
+import { EThemeColor, EThemeScheme, TThemeColor } from '#components/context/Theme/type';
 import { useXTheme } from '#components/context/useContext';
 import { capitalizeFirstLetter } from '#utils/index';
 
 import styles from './themePicker.module.scss';
-import { TThemePickerProps } from './type';
+import { EThemePickerGap, EThemePickerSize, TThemePickerProps } from './type';
+
+const schemes = [
+	{ name: EThemeScheme.system, icon: 'f390' },
+	{ name: EThemeScheme.light, icon: 'f185' },
+	{ name: EThemeScheme.dark, icon: 'f6c3' },
+] as const;
 
 export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props, ref) => {
-	const { className, size = 'large' } = props;
+	const { className, size = 'default' } = props;
 
-	const { themeColor, setThemeColor } = useXTheme();
+	const { themeScheme, setThemeScheme, themeColor, setThemeColor } = useXTheme();
 
 	const ThemePickerClsx = clsx(
 		styles.themePicker,
@@ -21,25 +28,61 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 	);
 
 	return (
-		<section className={ThemePickerClsx} ref={ref} role='theme'>
-			{
-				Object.keys(EThemeColor).map((color, i) => {
-					return (
-						<Button
-							key={`ThemePicker-${color}-${i}`}
-							className={styles.theme}
-							size={size}
-							icon='f00c'
-							iconType='solid'
-							style={{
-								['--themeColor' as string]: `var(--color${capitalizeFirstLetter(color)}Accent)`,
-								color: themeColor === color ? 'white' : 'transparent',
-							}}
-							onClick={() => setThemeColor(color as TThemeColor)}
-						/>
-					);
-				})
-			}
+		<section className={ThemePickerClsx} ref={ref} role='theme'
+			style={{
+				['--schemeSize' as string]: `${EThemePickerSize[size]}px`,
+				['--schemeGap' as string]: `${EThemePickerGap[size]}px`,
+			}}
+		>
+			<div className={styles.themeSchemes}>
+				{
+					schemes.map(({ name, icon }, i) => (
+						<div
+							key={`ThemeScheme-${name}-${i}`}
+							className={clsx(styles.themeSchemeItem, styles[name], themeScheme === name && styles.active)}
+							onClick={() => setThemeScheme(name)}
+						>
+							<div className={styles.design}>
+								<div className={styles.navigation}>
+									{
+										Array.from({ length: 6 }, (_, i) => (
+											<div key={`ThemeScheme-${name}-navigation-${i}`} className={styles.navigationItem} />
+										))
+									}
+								</div>
+								<div className={styles.content}>
+									<div className={styles.header} />
+									<div className={styles.profile} />
+								</div>
+							</div>
+							<div className={styles.footer}>
+								<Icon className={styles.footerIcon} code={themeScheme === name ? 'f058' : icon} type='solid' />
+								<span className={styles.footerLabel}>{name}</span>
+							</div>
+						</div>
+					))
+				}
+			</div>
+			<div className={styles.themeColors}>
+				{
+					Object.keys(EThemeColor).map((color, i) => {
+						return (
+							<Button
+								key={`ThemeColor-${color}-${i}`}
+								className={styles.themeColorsItem}
+								size={size}
+								icon='f00c'
+								iconType='solid'
+								style={{
+									['--themeColor' as string]: `var(--color${capitalizeFirstLetter(color)}Accent)`,
+									color: themeColor === color ? 'white' : 'transparent',
+								}}
+								onClick={() => setThemeColor(color as TThemeColor)}
+							/>
+						);
+					})
+				}
+			</div>
 		</section>
 	);
 });

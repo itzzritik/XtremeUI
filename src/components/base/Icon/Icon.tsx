@@ -21,7 +21,7 @@ export const Icon = forwardRef<HTMLSpanElement, IIconProps>((props, ref) => {
 		<span
 			ref={ref}
 			className={IconClsx}
-			style={{ ['--iconSize'as string]: iconSize }}
+			style={{ ['--iconSize' as string]: iconSize }}
 			data-content={unicodeToString(code)}
 			role='icon'
 		/>

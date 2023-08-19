@@ -2,7 +2,7 @@
 	.placeholder {
 		transform: translate(24px, -28px);
 		scale: 0.75;
-		font-variation-settings: 'wdth' 75, 'wght' 900;
+		font-variation-settings: 'wdth' 75, 'wght' 700;
 		color: rgb(var(--colorBrandAccentRgb) / 100%);
 		
 
@@ -26,6 +26,7 @@
 
 .textfield {
 	--duration: 0.6s;
+	--fontSize: 16px;
 
 	position: relative;
 	width: 400px;
@@ -55,6 +56,7 @@
 		position: absolute;
 		left: 0;
 		width: 40px; height: 40px;
+		font-size: var(--fontSize);
 		color: rgb(var(--colorBrandAccentRgb) / 100%);
 		pointer-events: none;
 		transition: all 0s;
@@ -66,8 +68,8 @@
 		border: none;
 		background: transparent;
 		padding: 10px 20px;
-		font-size: 16px;
 		z-index: 1;
+		font-size: var(--fontSize);
 		color: rgb(var(--colorContentPrimary));
 		font-variation-settings: 'wdth' 75, 'wght' 400;
 		transition: all var(--duration) var(--cubicBezierPrimary);
@@ -81,6 +83,7 @@
 		color: var(--colorContentSecondary);
 		transform: translate(14px, 0);
 		transform-origin: 0 50%;
+		font-size: var(--fontSize);
 		line-height: 20px;
 		padding: 0 8px;
 		transition: all var(--duration) var(--cubicBezierPrimary);

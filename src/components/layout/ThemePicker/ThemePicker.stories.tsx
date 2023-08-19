@@ -8,10 +8,12 @@ const meta = {
 	tags: ['autodocs'],
 	argTypes: {
 		className: { control: false },
-
+		size: {
+			defaultValue: { summary: 'default' },
+		},
 	},
 	args: {
-
+		size: 'default',
 	},
 } satisfies Meta<typeof ThemePicker>;
 
