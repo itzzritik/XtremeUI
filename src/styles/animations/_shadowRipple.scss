@@ -1,0 +1,35 @@
+.shadowRipple {
+	--rippleDuration: var(--animDurDefault);
+	--rippleColor: var(--colorBrandAccentRgb);
+	--rippleShadowColor: var(--colorBackgroundTertiary);
+	--rippleSize: 100px 50px;
+
+	border-radius: inherit;
+	box-shadow: 0 0 var(--rippleSize) rgb(var(--rippleColor) / 0%);
+	transition: all var(--rippleDuration) linear;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0; left: 0;
+		width: 100%; height: 100%;
+		border-radius: inherit;
+		box-shadow: 0 0 0 2px var(--rippleShadowColor);
+		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
+	}
+
+	&:hover {
+		&::before {
+			box-shadow: 0 0 0 4px rgb(var(--rippleColor) / 50%);
+		}
+	}
+
+	&:active {
+		transition: 0s;
+		box-shadow: 0 0 0 0 rgb(var(--rippleColor) / 50%);
+
+		&::before {
+			box-shadow: 0 0 0 7px rgb(var(--rippleColor) / 50%);
+		}
+	}
+}

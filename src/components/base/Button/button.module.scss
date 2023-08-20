@@ -1,31 +1,28 @@
 .button {
-	--duration: 0.6s;
 	--themeColor: var(--colorBrandAccentRgb);
-	--maxRippleSize: 100px 40px;
+	--rippleColor: var(--themeColor);
+	--rippleShadowColor: var(--themeColor);
 
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border: none;
-	box-shadow: 0 0 0 0 rgb(var(--themeColor) / 0%);
 	border-radius: 9999px;
 	cursor: pointer;
 	user-select: none;
-	overflow: hidden;
-	transition: all var(--duration) var(--cubicBezierPrimary);
 
 	.label {
 		margin: 0;
 		text-transform: uppercase;
 		z-index: 1;
 		color: inherit;
-		transition: all var(--duration) var(--cubicBezierPrimary);
+		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
 	.icon {
 		color: inherit;
-		transition: all var(--duration) var(--cubicBezierPrimary);
+		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
 	.underline {
@@ -49,18 +46,16 @@
 		border-radius: 9999px;
 		z-index: 0;
 		opacity: 0;
-		transition: all var(--duration) var(--cubicBezierPrimary);
+		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
 	&.primaryType, &.primaryDangerType {
 		background: rgb(var(--themeColor));
-		box-shadow: 0 0 0 2px rgb(var(--themeColor) / 40%);
 		color: white;
 	}
 
 	&.secondaryType, &.secondaryDangerType {
 		background: var(--colorBackgroundTertiary);
-		box-shadow: 0 0 0 2px rgb(var(--colorBackgroundTertiary) / 40%);
 		color: var(--colorContentPrimary);
 	}
 
@@ -104,7 +99,7 @@
 	}
 
 	&.miniSize {
-		--maxRippleSize: 80px 40px;
+		--rippleSize: 80px 40px;
 
 		line-height: 16px;
 		padding: 8px 16px;
@@ -127,7 +122,7 @@
 	}
 
 	&.defaultSize {
-		--maxRippleSize: 100px 50px;
+		--rippleSize: 100px 50px;
 
 		line-height: 20px;
 		padding: 12px 24px;
@@ -150,7 +145,7 @@
 	}
 	
 	&.largeSize {
-		--maxRippleSize: 150px 75px;
+		--rippleSize: 150px 75px;
 
 		line-height: 28px;
 		padding: 16px 32px;
@@ -173,8 +168,6 @@
 	}
 
 	&:hover {
-		box-shadow: 0 0 0 5px rgb(var(--themeColor) / 50%);
-		transition: all var(--duration) var(--cubicBezierPrimary);
 		color: white;
 
 		.underline span {
@@ -187,25 +180,11 @@
 		}
 	}
 
-	&:active {
-		box-shadow: 0 0 0 7px rgb(var(--themeColor) / 50%);
-	}
-
-	&.clicked {
-		box-shadow: 0 0 0 0 rgb(var(--themeColor) / 0%);
-		animation: ripple var(--duration) linear;
-		color: white;
-
-		&::before {
-			clip-path: circle(100% at 50% 50%);
-			opacity: 1;
-		}
-	}
-
 	&.loading {
 		--loaderColor: rgb(var(--themeColor));
 
 		pointer-events: none;
+		overflow: hidden;
 		background: rgb(var(--themeColor) / 80%);
 
 		
@@ -247,7 +226,6 @@
 
 		&.iconOnly {
 			background: transparent;
-			box-shadow: 0 0 0 0 rgb(var(--themeColor) / 0%);
 			overflow: unset;
 
 			&.secondaryType, &.secondaryDangerType {
@@ -292,16 +270,6 @@
 					width: 0%;
 				}
 			} 
-		}
-	}
-
-	@keyframes ripple {
-		from {
-			box-shadow: 0 0 0 7px rgb(var(--themeColor) / 50%);
-		}
-	
-		to {
-			box-shadow: 0 0 var(--maxRippleSize) rgb(var(--themeColor) / 0%);
 		}
 	}
 

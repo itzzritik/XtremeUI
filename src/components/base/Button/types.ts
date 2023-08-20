@@ -1,4 +1,4 @@
-import { CSSProperties, HTMLAttributes, MouseEvent } from 'react';
+import { CSSProperties, HTMLAttributes } from 'react';
 
 import { EIconType } from '../Icon/types';
 
@@ -16,7 +16,7 @@ interface BaseButton extends HTMLAttributes<HTMLButtonElement> {
 	disabled?: boolean;
 	iconType?: keyof typeof EIconType;
 	iconPosition?: 'left' | 'right';
-	onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+	onClick?: () => void;
 }
 interface ButtonWithLabel extends BaseButton {
 	label: string;

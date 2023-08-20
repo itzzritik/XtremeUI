@@ -3,7 +3,6 @@
 .themePicker {
 	--schemeSize: 180px;
 	--schemeGap: 24px;
-	--duration: 0.6s;
 	--globalTertiaryColor: var(--colorBackgroundTertiary);
 
 	position: relative;
@@ -13,7 +12,7 @@
 	gap: var(--schemeGap);
 
 	* {
-		transition: all var(--duration) var(--cubicBezierPrimary);
+		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
 	.themeSchemes {
@@ -130,7 +129,7 @@
 							width: calc(var(--schemeGap) * 1.5); height: calc(var(--schemeGap) / 8);
 							border-radius: 9999px;
 							background: var(--colorBackgroundTertiary);
-							transition: all var(--duration) var(--cubicBezierPrimary);
+							transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 						}
 					}
 				}

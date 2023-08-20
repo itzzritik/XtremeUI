@@ -1,5 +1,5 @@
 .navigation {
-	--duration: 0.4s;
+	--animDurFast: 0.4s;
 
 	width: calc(var(--siderWidth) + 16px);
 	height: 100%;
@@ -32,7 +32,7 @@
 			gap: 2px;
 			text-decoration: none;
 			color: white;
-			transition: all var(--duration) var(--cubicBezierPrimary);
+			transition: all var(--animDurFast) var(--cubicBezierPrimary);
 			-webkit-tap-highlight-color: transparent;
 
 			&::before {
@@ -43,7 +43,7 @@
 				background: rgb(var(--colorBrandAccentRgb) / 0%);
 				filter: contrast(2) brightness(0.75);
 				z-index: 0;
-				transition: all var(--duration) var(--cubicBezierPrimary), background var(--duration) ease;
+				transition: all var(--animDurFast) var(--cubicBezierPrimary), background var(--animDurFast) ease;
 			}
 
 			&::after {
@@ -56,7 +56,7 @@
 				filter: contrast(2) brightness(0.75);
 				z-index: 0;
 				opacity: 0.4;
-				transition: all var(--duration) var(--cubicBezierPrimary), background var(--duration) ease;
+				transition: all var(--animDurFast) var(--cubicBezierPrimary), background var(--animDurFast) ease;
 			}
 
 			.icon {
@@ -111,7 +111,7 @@
 				&::after {
 					clip-path: circle(var(--siderWidth) at calc(var(--siderWidthMini) / 2) 50%);
 					opacity: 1;
-					transition: all var(--duration) ease-in-out, background var(--duration) ease;
+					transition: all var(--animDurFast) ease-in-out, background var(--animDurFast) ease;
 				}
 			}
 		}

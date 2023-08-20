@@ -1,0 +1,11 @@
+.actionCard {
+	--cardWidth: 164px;
+	--cardHeight: 164px;
+
+	position: relative;
+	width: var(--cardWidth);
+	height: var(--cardHeight);
+	border-radius: calc(var(--cardWidth) / 10);
+	background: var(--colorBackgroundSecondary);
+	cursor: pointer;
+}

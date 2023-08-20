@@ -1,16 +1,12 @@
-import { MouseEvent, forwardRef, useRef } from 'react';
+import { forwardRef } from 'react';
 
 import clsx from 'clsx';
-
-import { mergeRefs } from '#utils/function/mergeRefs';
 
 import { Icon } from '../Icon/Icon';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
 
 import styles from './button.module.scss';
 import { EButtonTypes, TButtonProps } from './types';
-
-const throttleTime = 100;
 
 export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) => {
 	const {
@@ -26,21 +22,6 @@ export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) =
 		iconPosition = 'left',
 		onClick,
 	} = props;
-	const innerRef = useRef<HTMLButtonElement>(null);
-
-	let timeout: number;
-	const ripple = () => {
-		clearTimeout(timeout);
-		innerRef.current?.classList.add(styles.clicked);
-		timeout = window.setTimeout(() => {
-			innerRef.current?.classList.remove(styles.clicked);
-		}, 600 + throttleTime);
-	};
-
-	const onButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
-		onClick?.(e);
-		if (!type.includes(EButtonTypes.link)) ripple();
-	};
 
 	const IconComponent = () =>
 		(
@@ -51,6 +32,7 @@ export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) =
 
 	const ButtonClsx = clsx(
 		styles.button,
+		'shadowRipple',
 		styles[`${type}Type`],
 		styles[`${size}Size`],
 		!label && styles.iconOnly,
@@ -62,10 +44,10 @@ export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) =
 
 	return (
 		<button
-			ref={mergeRefs([innerRef, ref])}
+			ref={ref}
 			className={ButtonClsx}
 			style={style}
-			onClick={onButtonClick}
+			onClick={onClick}
 			disabled={disabled}
 			role='button'
 		>

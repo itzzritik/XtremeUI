@@ -1,5 +1,4 @@
 .sider {
-	--duration: 0.6s;
 	--paddingLeft: 0px;
 	--paddingRight: 0px;
 	--borderRadius: 36px;
@@ -9,14 +8,14 @@
 	background: rgb(var(--colorBrandAccentRgb) / 90%);
 	padding: 0 var(--paddingRight) 0 var(--paddingLeft);
 	overflow: hidden;
-	transition: all var(--duration) ease;
+	transition: all var(--animDurDefault) ease;
 	
 	.leftSiderContainer {
 		position: fixed;
 		left: 0;
 		width: var(--siderWidth); height: 100%;
 		z-index: 0;
-		transition: opacity var(--duration) var(--cubicBezierPrimary);
+		transition: opacity var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
 	.rightSiderContainer {
@@ -24,7 +23,7 @@
 		right: 0;
 		width: var(--siderWidth); height: 100%;
 		z-index: 1;
-		transition: opacity var(--duration) var(--cubicBezierPrimary);
+		transition: opacity var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
 	.content {
@@ -35,7 +34,7 @@
 		box-shadow: 0 0 50px 2px rgb(0 0 0 / 24%);
 		border-radius: 0;
 		z-index: 2;
-		transition: all var(--duration) var(--cubicBezierPrimary);
+		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
 	&.miniLeftSider {

@@ -25,7 +25,6 @@
 }
 
 .textfield {
-	--duration: 0.6s;
 	--fontSize: 16px;
 
 	position: relative;
@@ -37,7 +36,7 @@
 	box-shadow: 0 0 0 1px rgb(var(--colorBrandAccentRgb) / 50%);
 	background: var(--colorBackgroundSecondary);
 	color: rgb(var(--colorContentPrimary));
-	transition: all var(--duration) var(--cubicBezierPrimary);
+	transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 
 	&::before {
 		content: '';
@@ -49,7 +48,7 @@
 		border-radius: 9999px;
 		z-index: 0;
 		opacity: 0;
-		transition: all var(--duration) var(--cubicBezierPrimary);
+		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
 	.icon {
@@ -72,7 +71,7 @@
 		font-size: var(--fontSize);
 		color: rgb(var(--colorContentPrimary));
 		font-variation-settings: 'wdth' 75, 'wght' 400;
-		transition: all var(--duration) var(--cubicBezierPrimary);
+		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
 	.placeholder {
@@ -86,7 +85,7 @@
 		font-size: var(--fontSize);
 		line-height: 20px;
 		padding: 0 8px;
-		transition: all var(--duration) var(--cubicBezierPrimary);
+		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 
 		&::before {
 			content: '';
@@ -97,7 +96,7 @@
 			background: var(--colorBackgroundPrimary);
 			scale: 0;
 			z-index: -1;
-			transition: all var(--duration) var(--cubicBezierPrimary);
+			transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 		}
 	}
 

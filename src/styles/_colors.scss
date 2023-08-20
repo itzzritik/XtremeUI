@@ -66,6 +66,9 @@
 	--gradientBrand: linear-gradient(320deg, rgb(var(--colorBrandPrimaryRgb)), rgb(var(--colorBrandSecondaryRgb)));
 
 	// Cubic Bezier
+	--animDurSlow: 1s;
+	--animDurDefault: 0.6s;
+	--animDurFast: 0.4s;
 	--cubicBezierPrimary: cubic-bezier(0.23, 1, 0.320, 1);
 
 	&[data-theme-scheme='system'] {

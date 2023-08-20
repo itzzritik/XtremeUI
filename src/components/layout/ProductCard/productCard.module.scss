@@ -1,0 +1,19 @@
+.productCard {
+	--cardWidth: 164px;
+	--cardHeight: 164px;
+
+	position: relative;
+	width: var(--cardWidth);
+	height: var(--cardHeight);
+	border-radius: calc(var(--cardWidth) / 10);
+	background: var(--colorBackgroundSecondary);
+	box-shadow: 0 0 0 3px var(--colorBackgroundTertiary);
+	cursor: pointer;
+
+	.header {
+		width: 100%;
+		display: flex;
+		padding: 16px;
+		gap: calc(var(--cardWidth) / 20);
+	}
+}
