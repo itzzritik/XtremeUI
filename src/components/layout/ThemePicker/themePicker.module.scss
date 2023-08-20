@@ -11,13 +11,13 @@
 	flex-direction: column;
 	gap: var(--schemeGap);
 
-	* {
-		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
-	}
-
 	.themeSchemes {
 		display: flex;
 		gap: calc(var(--schemeGap) / 1.2);
+
+		* {
+			transition: all var(--animDurDefault) var(--cubicBezierPrimary);
+		}
 
 		.themeSchemeItem {
 			--rippleShadowColor: var(--globalTertiaryColor);

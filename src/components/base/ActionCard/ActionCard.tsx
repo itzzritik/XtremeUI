@@ -11,6 +11,7 @@ export const ActionCard = forwardRef<HTMLDivElement, TActionCardProps>((props, r
 	const {
 		className,
 		children,
+		style,
 		size = 'default',
 		title,
 		icon,
@@ -35,6 +36,7 @@ export const ActionCard = forwardRef<HTMLDivElement, TActionCardProps>((props, r
 			style={{
 				['--cardWidth' as string]: `${cardSize[0]}px`,
 				['--cardHeight' as string]: `${cardSize[1]}px`,
+				...style,
 			}}
 			onClick={onClick}
 			role='card'
