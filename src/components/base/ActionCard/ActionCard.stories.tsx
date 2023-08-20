@@ -14,6 +14,9 @@ const meta = {
 	},
 	args: {
 		size: 'default',
+		icon: 'f09b',
+		title: 'Github',
+		iconType: 'brand',
 	},
 } satisfies Meta<typeof ActionCard>;
 

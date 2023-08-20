@@ -1,11 +1,59 @@
 .actionCard {
 	--cardWidth: 164px;
 	--cardHeight: 164px;
+	--rippleColor: var(--colorBrandAccentRgb);
+	--rippleShadowColor: var(--colorBackgroundTertiary);
+	--cardBorderRadius: calc(min(var(--cardWidth), var(--cardHeight)) / 10);
 
 	position: relative;
 	width: var(--cardWidth);
 	height: var(--cardHeight);
-	border-radius: calc(var(--cardWidth) / 10);
+	display: flex;
+	flex-direction: column;
+	border-radius: var(--cardBorderRadius);
 	background: var(--colorBackgroundSecondary);
 	cursor: pointer;
+
+	&.miniSize {
+		--rippleSize: 80px 40px;
+	}
+
+	&.smallSize {
+		--rippleSize: 100px 50px;
+	}
+
+	&.mediumSize {
+		--rippleSize: 150px 75px;
+	}
+
+	.header {
+		position: relative;
+		width: 100%;
+		padding: calc(var(--cardHeight) / 10);
+		display: flex;
+		align-items: center;
+		gap: calc(4px + var(--cardHeight) / 20);
+
+		.icon {
+			--iconSize: calc(var(--cardHeight) / 8) !important;
+		}
+
+		.title {
+			font-size: calc(var(--cardHeight) / 10);
+			font-variation-settings: 'wdth' 75, 'wght' 600;
+		}
+	}
+
+	.content {
+		flex: 1;
+		border-radius: var(--cardBorderRadius);
+		overflow: hidden;
+	}
+
+	&.withHeader {
+		.content {
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+		}
+	}
 }

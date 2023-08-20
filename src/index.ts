@@ -6,7 +6,11 @@ export * from '#utils/index';
 export { XProvider } from './components/context';
 export { useXTheme, useXData } from './components/context/useContext';
 
-// Button
+// Avatar
+export { ActionCard } from './components/base/ActionCard/ActionCard';
+export { type TActionCardProps, EActionCardSize } from './components/base/ActionCard/types';
+
+// Avatar
 export { Avatar } from './components/base/Avatar/Avatar';
 export { type TAvatarProps, EAvatarSize } from './components/base/Avatar/types';
 

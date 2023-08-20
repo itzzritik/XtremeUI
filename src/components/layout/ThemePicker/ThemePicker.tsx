@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 
 import clsx from 'clsx';
 
+import { ActionCard } from '#components/base/ActionCard/ActionCard';
 import { Button } from '#components/base/Button/Button';
 import { Icon } from '#components/base/Icon/Icon';
 import { EThemeColor, EThemeScheme, TThemeColor } from '#components/context/Theme/type';
@@ -37,7 +38,7 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 			<div className={styles.themeSchemes}>
 				{
 					schemes.map(({ name, icon }, i) => (
-						<div
+						<ActionCard
 							key={`ThemeScheme-${name}-${i}`}
 							className={clsx(styles.themeSchemeItem, styles[name], themeScheme === name && styles.active)}
 							onClick={() => setThemeScheme(name)}
@@ -59,7 +60,7 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 								<Icon className={styles.footerIcon} code={themeScheme === name ? 'f058' : icon} type='solid' />
 								<span className={styles.footerLabel}>{name}</span>
 							</div>
-						</div>
+						</ActionCard>
 					))
 				}
 			</div>

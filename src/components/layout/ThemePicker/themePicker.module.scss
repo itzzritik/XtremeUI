@@ -20,15 +20,16 @@
 		gap: calc(var(--schemeGap) / 1.2);
 
 		.themeSchemeItem {
+			--rippleShadowColor: var(--globalTertiaryColor);
+			--cardBorderRadius: calc(var(--schemeGap) / 2);
+			
 			position: relative;
 			width: var(--schemeSize);
 			height: calc(var(--schemeSize) * 0.8);
 			background: var(--colorBackgroundSecondary);
-			border-radius: calc(var(--schemeGap) / 2);
 			user-select: none;
-			overflow: hidden;
-			box-shadow: 0 0 0 3px var(--globalTertiaryColor);
 			cursor: pointer;
+			transition: all var(--animDurDefault) var(--cubicBezierPrimary), box-shadow var(--animDurDefault) linear;
 
 			&.system {
 				@include systemScheme;
@@ -46,6 +47,8 @@
 				position: relative;
 				width: 100%;
 				height: 100%;
+				border-radius: inherit;
+				overflow: hidden;
 				background: var(--colorBackgroundTertiary);
 
 				.navigation {
@@ -78,8 +81,8 @@
 
 				.content {
 					position: absolute;
-					top: 0; left: 3%;
-					width: 97%;
+					top: 0; left: 4%;
+					width: 96%;
 					height: 100%;
 					border-top-left-radius: calc(var(--schemeGap) / 2);
 					border-bottom-left-radius: calc(var(--schemeGap) / 2);
@@ -161,12 +164,10 @@
 			}
 
 			&:hover {
-				box-shadow: 0 0 0 5px rgb(var(--colorBrandAccentRgb) / 40%);
-
 				.design {
 					.content {
-						top: 0; left: 15%;
-						width: 85%;
+						top: 0; left: 20%;
+						width: 80%;
 					}
 				}
 			}
