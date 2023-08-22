@@ -11,7 +11,7 @@ import { EButtonTypes, TButtonProps } from './types';
 export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) => {
 	const {
 		className,
-		style,
+		style = {},
 		label,
 		type = 'primary',
 		size = 'default',

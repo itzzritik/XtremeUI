@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 // const req = await fetch('https://api.github.com/repos/itzzjarvis/Assets/contents/anim/lottie');
 // const lottieAssetNames = (await req.json()).map((item) => item?.name);
 
-const lottieRoot = 'https://cdn.jsdelivr.net/gh/itzzjarvis/Assets/anim/lottie';
+const lottieRoot = 'https://raw.githubusercontent.com/itzzjarvis/Assets/main/anim/lottie';
 const lottieAssetNames = [
 	'Space404',
 	'SpaceAura',

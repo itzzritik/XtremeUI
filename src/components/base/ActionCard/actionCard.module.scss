@@ -25,35 +25,4 @@
 	&.mediumSize {
 		--rippleSize: 150px 75px;
 	}
-
-	.header {
-		position: relative;
-		width: 100%;
-		padding: calc(var(--cardHeight) / 10);
-		display: flex;
-		align-items: center;
-		gap: calc(4px + var(--cardHeight) / 20);
-
-		.icon {
-			--iconSize: calc(var(--cardHeight) / 8) !important;
-		}
-
-		.title {
-			font-size: calc(var(--cardHeight) / 10);
-			font-variation-settings: 'wdth' 75, 'wght' 600;
-		}
-	}
-
-	.content {
-		flex: 1;
-		border-radius: var(--cardBorderRadius);
-		overflow: hidden;
-	}
-
-	&.withHeader {
-		.content {
-			border-top-left-radius: 0;
-			border-top-right-radius: 0;
-		}
-	}
 }

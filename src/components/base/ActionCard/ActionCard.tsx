@@ -2,8 +2,6 @@ import { forwardRef } from 'react';
 
 import clsx from 'clsx';
 
-import { Icon } from '../Icon/Icon';
-
 import styles from './actionCard.module.scss';
 import { EActionCardSize, TActionCardProps } from './types';
 
@@ -11,11 +9,8 @@ export const ActionCard = forwardRef<HTMLDivElement, TActionCardProps>((props, r
 	const {
 		className,
 		children,
-		style,
+		style = {},
 		size = 'default',
-		title,
-		icon,
-		iconType = 'brand',
 		onClick,
 	} = props;
 
@@ -25,7 +20,6 @@ export const ActionCard = forwardRef<HTMLDivElement, TActionCardProps>((props, r
 		styles.actionCard,
 		'shadowRipple',
 		styles[`${size}Size`],
-		title && styles.withHeader,
 		className,
 	);
 
@@ -41,13 +35,7 @@ export const ActionCard = forwardRef<HTMLDivElement, TActionCardProps>((props, r
 			onClick={onClick}
 			role='card'
 		>
-			{title && <div className={styles.header}>
-				{icon && <Icon className={styles.icon} code={icon} type={iconType} />}
-				<span className={styles.title}>{title}</span>
-			</div>}
-			<div className={styles.content}>
-				{children}
-			</div>
+			{children}
 		</div>
 	);
 });

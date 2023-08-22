@@ -16,6 +16,7 @@
 		border-radius: inherit;
 		box-shadow: 0 0 0 2px var(--rippleShadowColor);
 		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
+		z-index: -1;
 	}
 
 	&:hover {
