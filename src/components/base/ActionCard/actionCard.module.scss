@@ -8,8 +8,6 @@
 	position: relative;
 	width: var(--cardWidth);
 	height: var(--cardHeight);
-	display: flex;
-	flex-direction: column;
 	border-radius: var(--cardBorderRadius);
 	background: var(--colorBackgroundSecondary);
 	cursor: pointer;
