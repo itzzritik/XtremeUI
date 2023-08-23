@@ -20,7 +20,7 @@ export const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>((props, ref) =>
 			ref={ref}
 			className={SpinnerClsx}
 			style={{ ['--spinnerSize'as string]: spinnerSize }}
-			role='spinner'
+			role='progressbar'
 		>
 			<div className={styles.spinnerWrapper}>
 				<div className={styles.cubeTop} />

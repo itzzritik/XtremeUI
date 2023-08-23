@@ -9,10 +9,11 @@
 	align-items: center;
 	font-variant: normal;
 	text-rendering: auto;
+	font-style: normal;
 	user-select: none;
-	z-index: 1;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
+	z-index: 1;
 	transition: all 0.4s var(--cubicBezierPrimary);
 
 	&::before {

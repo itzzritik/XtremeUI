@@ -33,7 +33,7 @@ export const ActionCard = forwardRef<HTMLDivElement, TActionCardProps>((props, r
 				...style,
 			}}
 			onClick={onClick}
-			role='card'
+			role='contentinfo'
 		>
 			{children}
 		</div>

@@ -8,7 +8,7 @@ import styles from './avatar.module.scss';
 import { EAvatarSize, TAvatarProps } from './types';
 
 export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
-	const { className, src, placeholderIcon = 'f03e', size = 'default', onClick } = props;
+	const { className, src, alt, placeholderIcon = 'f03e', size = 'default', onClick } = props;
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setIsError] = useState(false);
 
@@ -41,7 +41,7 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 			className={AvatarClsx}
 			style={{ ['--avatarSize'as string]: avatarSize + 'px' }}
 			onClick={onClick}
-			role='avatar'
+			role='img'
 		>
 			{
 				isLoading || isError ?
@@ -51,7 +51,7 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 						size={8 + avatarSize / 4}
 						code={isError ? 'e1b7' : placeholderIcon}
 					/>
-					: <span className={styles.image} style={{ backgroundImage: `url(${src})` }} />
+					: <img className={styles.image} src={src} alt={alt} />
 			}
 
 		</div>

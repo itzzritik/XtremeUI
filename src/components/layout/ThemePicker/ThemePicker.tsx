@@ -29,13 +29,16 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 	);
 
 	return (
-		<section className={ThemePickerClsx} ref={ref} role='theme'
+		<div
+			ref={ref}
+			className={ThemePickerClsx}
+			role='region'
 			style={{
 				['--schemeSize' as string]: `${EThemePickerSize[size]}px`,
 				['--schemeGap' as string]: `${EThemePickerGap[size]}px`,
 			}}
 		>
-			<div className={styles.themeSchemes}>
+			<div className={styles.themeSchemes} role='radiogroup'>
 				{
 					schemes.map(({ name, icon }, i) => (
 						<ActionCard
@@ -64,7 +67,7 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 					))
 				}
 			</div>
-			<div className={styles.themeColors}>
+			<div className={styles.themeColors} role='radiogroup'>
 				{
 					Object.keys(EThemeColor).map((color, i) => {
 						return (
@@ -84,7 +87,7 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 					})
 				}
 			</div>
-		</section>
+		</div>
 	);
 });
 

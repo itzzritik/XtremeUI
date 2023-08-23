@@ -22,7 +22,7 @@ export const Navigation = forwardRef<HTMLDivElement, TNavigationProps>((props, r
 	}, [loading, pathname]);
 
 	return (
-		<section
+		<nav
 			ref={ref}
 			className={NavigationClsx}
 			role='navigation'
@@ -56,7 +56,7 @@ export const Navigation = forwardRef<HTMLDivElement, TNavigationProps>((props, r
 					))
 				}
 			</div>
-		</section>
+		</nav>
 	);
 });
 

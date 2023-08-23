@@ -41,7 +41,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 		<div
 			ref={ref}
 			className={TextfieldClsx}
-			role='textfield'
+			role='textbox'
 		>
 			{!!localIconName && !textarea && (
 				<Icon className={styles.icon} code={localIconName} type={iconType} />

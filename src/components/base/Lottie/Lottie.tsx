@@ -38,7 +38,7 @@ export const Lottie = forwardRef<DotLottieRefProps, TLottieProps>((props, ref) =
 			direction={direction}
 			playMode={playMode}
 			renderer={renderer}
-			role='lottie'
+			role='img'
 		>
 			{controls && <Controls />}
 		</DotLottiePlayer>

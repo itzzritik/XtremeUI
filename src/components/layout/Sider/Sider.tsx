@@ -29,10 +29,10 @@ export const Sider = forwardRef<HTMLDivElement, TSiderProps>((props, ref) => {
 	);
 
 	return (
-		<section
+		<main
 			ref={ref}
 			className={SiderClsx}
-			role='sider'
+			role='region'
 		>
 			<div className={styles.leftSiderContainer}>
 				{leftSider}
@@ -43,7 +43,7 @@ export const Sider = forwardRef<HTMLDivElement, TSiderProps>((props, ref) => {
 			<div className={styles.content}>
 				{children}
 			</div>
-		</section>
+		</main>
 	);
 });
 

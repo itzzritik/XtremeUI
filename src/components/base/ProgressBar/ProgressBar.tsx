@@ -20,7 +20,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, IProgressBarProps>((props,
 		<div
 			ref={ref}
 			className={ProgressClsx}
-			role='progress'
+			role='progressbar'
 		>
 			<span className={styles.progress} style={{ width: `${progressWidth}%` }} />
 		</div>
