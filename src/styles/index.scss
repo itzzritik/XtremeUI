@@ -1,4 +1,3 @@
-@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap';
 @import 'functions';
 @import 'fontAwesome';
 @import 'colors';
@@ -18,7 +17,6 @@ html {
 	}
 
 	* {
-		font-family: Montserrat, sans-serif;
 		font-variation-settings: 'wdth' 75, 'wght' 500;
 		color: var(--colorContentPrimary);
 		box-sizing: border-box;
