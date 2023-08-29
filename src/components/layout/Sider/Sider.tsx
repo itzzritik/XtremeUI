@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useRef } from 'react';
 
 import clsx from 'clsx';
 
@@ -18,26 +18,32 @@ export const Sider = forwardRef<HTMLDivElement, TSiderProps>((props, ref) => {
 	} = props;
 
 	const { siderMode } = useXData();
+	const leftSiderRef = useRef<HTMLDivElement>(null);
+	const rightSiderRef = useRef<HTMLDivElement>(null);
 
 	const SiderClsx = clsx(
 		styles.sider,
-		siderMode === 'left' && styles.leftOpen,
+		siderMode === 'left' && leftSider && styles.leftOpen,
 		showMiniLeftSider && styles.miniLeftSider,
-		siderMode === 'right' && styles.rightOpen,
+		siderMode === 'right' && rightSider && styles.rightOpen,
 		showMiniRightSider && styles.miniRightSider,
 		className,
 	);
-
+	console.log(rightSiderRef?.current?.clientWidth);
 	return (
 		<main
 			ref={ref}
 			className={SiderClsx}
+			style={{
+				['--leftSiderWidth' as string]: `${leftSiderRef?.current?.clientWidth}px`,
+				['--rightSiderWidth' as string]: `${rightSiderRef?.current?.clientWidth}px`,
+			}}
 			role='region'
 		>
-			<div className={styles.leftSiderContainer}>
+			<div ref={leftSiderRef} className={styles.leftSiderContainer}>
 				{leftSider}
 			</div>
-			<div className={styles.rightSiderContainer}>
+			<div ref={rightSiderRef} className={styles.rightSiderContainer}>
 				{rightSider}
 			</div>
 			<div className={styles.content}>

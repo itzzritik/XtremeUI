@@ -43,7 +43,7 @@
 		background: rgb(var(--themeColor));
 		filter: contrast(1.2) brightness(0.8);
 		clip-path: circle(0% at 50% 50%);
-		border-radius: 9999px;
+		border-radius: inherit;
 		z-index: 0;
 		opacity: 0;
 		transition: all var(--animDurDefault) var(--cubicBezierPrimary);

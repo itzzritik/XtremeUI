@@ -99,6 +99,6 @@ elementObserver((element, event) => {
 
 	if (element?.classList?.[0].includes("navigation"))
 		element.style.setProperty("background", "rgb(var(--colorBrandAccentRgb) / 90%)");
-}, ['#storybook-root > [role="sider"]', '#storybook-root > [role="navigation"]']);
+}, ['#storybook-root > [role="region"]']);
 
 export default preview;

@@ -1,12 +1,10 @@
 @import 'functions';
 @import 'fontAwesome';
 @import 'colors';
-@import 'sizes';
 @import 'animations/shadowRipple';
 
 html {
 	@include colors;
-	@include sizes;
 
 	background: var(--colorBackgroundPrimary);
 	scroll-behavior: smooth;

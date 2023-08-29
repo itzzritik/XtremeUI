@@ -12,6 +12,7 @@ import {
 import { useXData } from '#components/context/useContext';
 
 import { Navigation } from '../Navigation/Navigation';
+import { SiderModal } from '../SiderModal/SiderModal';
 
 import { Sider } from './Sider';
 import { ESiderModes, TSiderModes, TSiderProps } from './types';
@@ -44,6 +45,18 @@ const Renderer = (props: TSiderStoryProps) => {
 			{...props}
 			leftSider={
 				<Navigation as={Link} hrefPropName='to' pathname={pathname} routes={routeList}>🎲 XtremeUI</Navigation>
+			}
+			rightSider={
+				<SiderModal
+					title='Demo Sider Modal'
+					icon='f890'
+					primaryButtonProps={{
+						label: 'Save',
+					}}
+					secondaryButtonProps={{
+						label: 'Cancel',
+					}}
+				/>
 			}
 		/>
 	);

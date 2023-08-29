@@ -19,7 +19,6 @@ export default defineConfig((configEnv) => ({
 			linters: [new EsLinter({ configEnv })],
 		}),
 		dts({
-			// rollupTypes: true,
 			insertTypesEntry: true,
 			exclude: ['**/*.stories.tsx', '**/*.test.tsx', '**/*.spec.tsx'],
 		}),
@@ -27,13 +26,10 @@ export default defineConfig((configEnv) => ({
 	build: {
 		ssr: true,
 		minify: true,
-		sourcemap: true,
 		lib: {
 			name: 'XtremeUI',
 			entry: resolve('src', 'index.ts'),
 			formats: ['es'],
-
-			// fileName: (format) => `index.${format}.js`,
 		},
 		rollupOptions: {
 			output: {
