@@ -39,14 +39,14 @@ export const SiderModal = forwardRef<HTMLDivElement, TSiderModalProps>((props, r
 			</div>
 			<div className={styles.footer}>
 				<Button
-					type='secondary'
-					{...secondaryButtonProps}
-					className={clsx(styles.secondaryButton, secondaryButtonProps?.className)}
-				/>
-				<Button
 					type='primary'
 					{...primaryButtonProps}
 					className={clsx(styles.primaryButton, primaryButtonProps?.className)}
+				/>
+				<Button
+					type='secondary'
+					{...secondaryButtonProps}
+					className={clsx(styles.secondaryButton, secondaryButtonProps?.className)}
 				/>
 			</div>
 		</div>

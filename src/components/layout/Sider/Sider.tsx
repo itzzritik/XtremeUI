@@ -29,7 +29,7 @@ export const Sider = forwardRef<HTMLDivElement, TSiderProps>((props, ref) => {
 		showMiniRightSider && styles.miniRightSider,
 		className,
 	);
-	console.log(rightSiderRef?.current?.clientWidth);
+
 	return (
 		<main
 			ref={ref}

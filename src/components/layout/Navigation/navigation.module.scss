@@ -87,8 +87,7 @@
 
 			&.loading {
 				--loaderColor: rgb(var(--colorBrandAccentRgb) / 50%);
-		
-				color: white;
+
 				background: rgb(var(--colorBrandAccentRgb) / 0%);
 				pointer-events: none;
 		

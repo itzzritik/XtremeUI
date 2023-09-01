@@ -64,7 +64,7 @@
 
 		.content {
 			border-radius: 36px;
-			transform: translateX(calc(24px + var(--leftSiderWidth) - var(--paddingLeft)));
+			transform: translateX(calc(48px + var(--leftSiderWidth) - var(--paddingLeft)));
 			transform-origin: left center;
 			scale: 0.95;
 		}
@@ -78,7 +78,7 @@
 
 		.content {
 			border-radius: 36px;
-			transform: translateX(calc((24px + var(--rightSiderWidth) - var(--paddingRight)) * -1));
+			transform: translateX(calc((48px + var(--rightSiderWidth) - var(--paddingRight)) * -1));
 			transform-origin: right center;
 			scale: 0.95;
 		}
