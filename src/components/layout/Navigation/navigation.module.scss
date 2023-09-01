@@ -105,6 +105,7 @@
 						var(--loaderColor) 1.5rem
 					);
 					z-index: 2;
+					transition: all var(--animDurFast) var(--cubicBezierPrimary), clip-path var(--animDurFast) ease;
 					animation: barberPole 0.18s linear infinite;
 				}
 			}

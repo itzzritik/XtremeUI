@@ -31,7 +31,7 @@ export const SiderModal = forwardRef<HTMLDivElement, TSiderModalProps>((props, r
 			role='dialog'
 		>
 			<div className={styles.header}>
-				{icon && <Icon className={styles.icon} code={icon} />}
+				{icon && <Icon className={styles.icon} code={icon} type='duotone' />}
 				<p className={styles.title}>{title}</p>
 			</div>
 			<div className={styles.body}>

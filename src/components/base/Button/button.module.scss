@@ -11,6 +11,7 @@
 	border-radius: 9999px;
 	cursor: pointer;
 	user-select: none;
+	transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 
 	.label {
 		margin: 0;
