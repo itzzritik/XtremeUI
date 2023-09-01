@@ -6,7 +6,7 @@
 
 	border-radius: inherit;
 	box-shadow: 0 0 var(--rippleSize) rgb(var(--rippleColor) / 0%);
-	transition: all var(--rippleDuration) linear;
+	transition: box-shadow var(--rippleDuration) linear;
 
 	&::before {
 		content: '';
