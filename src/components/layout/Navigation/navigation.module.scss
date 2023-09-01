@@ -1,5 +1,6 @@
 .navigation {
 	--animDurFast: 0.4s;
+	--borderRadius: 30px;
 
 	width: 250px;
 	height: 100%;
@@ -32,8 +33,8 @@
 			gap: 2px;
 			text-decoration: none;
 			color: var(--colorContentPrimary);
-			border-top-right-radius: 9999px;
-			border-bottom-right-radius: 9999px;
+			border-top-right-radius: var(--borderRadius);
+			border-bottom-right-radius: var(--borderRadius);
 			transition: all var(--animDurFast) var(--cubicBezierPrimary);
 			-webkit-tap-highlight-color: transparent;
 			overflow: hidden;
@@ -42,10 +43,12 @@
 				content: '';
 				position: absolute;
 				width: 100%; height: 100%;
-				clip-path: polygon(0 0, 0 0%, 0 100%, 0% 100%);
+				transform: translateX(-100%);
 				background: rgb(var(--colorBrandAccentRgb));
 				z-index: 0;
-				transition: all var(--animDurFast) var(--cubicBezierPrimary), clip-path 0.2s ease;
+				border-radius: 0;
+				transition: all var(--animDurFast) var(--cubicBezierPrimary), transform 0.2s ease;
+				overflow: hidden;
 			}
 
 			.icon {
@@ -71,7 +74,7 @@
 
 			&:hover {
 				&::before {
-					clip-path: polygon(0 0, 4px 0%, 4px 100%, 0% 100%);
+					transform: translateX(calc(4px - 100%));
 				}
 			}
 
@@ -81,7 +84,7 @@
 				}
 
 				&::before {
-					clip-path: polygon(0 0, 6px 0%, 6px 100%, 0% 100%);
+					transform: translateX(calc(6px - 100%));
 				}
 			}
 
@@ -95,7 +98,6 @@
 					content: '';
 					position: absolute;
 					width: 150%; height: 100%;
-					clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 					background: none;
 					background-image: repeating-linear-gradient(
 						60deg,
@@ -105,7 +107,10 @@
 						var(--loaderColor) 1.5rem
 					);
 					z-index: 2;
-					transition: all var(--animDurFast) var(--cubicBezierPrimary), clip-path var(--animDurFast) ease;
+					border-top-right-radius: var(--borderRadius);
+					border-bottom-right-radius: var(--borderRadius);
+					transform: translateX(0);
+					transition: all 0s;
 					animation: barberPole 0.18s linear infinite;
 				}
 			}
@@ -114,8 +119,10 @@
 				color: white;
 
 				&::before {
-					clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-					transition: all var(--animDurFast) var(--cubicBezierPrimary), clip-path var(--animDurFast) ease;
+					border-top-right-radius: var(--borderRadius);
+					border-bottom-right-radius: var(--borderRadius);
+					transform: translateX(0);
+					transition: all var(--animDurFast) var(--cubicBezierPrimary), transform var(--animDurFast) ease;
 				}
 			}
 		}
