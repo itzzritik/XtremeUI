@@ -6,7 +6,7 @@ export * from '#utils/index';
 export { XProvider } from './components/context';
 export { useXTheme, useXData } from './components/context/useContext';
 
-// Avatar
+// ActionCard
 export { ActionCard } from './components/base/ActionCard/ActionCard';
 export { type TActionCardProps, EActionCardSize } from './components/base/ActionCard/types';
 
@@ -41,6 +41,10 @@ export { type TTextfieldProps } from './components/base/Textfield/types';
 // Sider
 export { Sider } from './components/layout/Sider/Sider';
 export { type TSiderProps, type TSiderModes } from './components/layout/Sider/types';
+
+// SiderModal
+export { SiderModal } from './components/layout/SiderModal/SiderModal';
+export { type TSiderModalProps } from './components/layout/SiderModal/types';
 
 // Navigation
 export { Navigation } from './components/layout/Navigation/Navigation';
