@@ -48,7 +48,7 @@ export const Navigation = forwardRef<HTMLDivElement, TNavigationProps>((props, r
 								<Icon
 									className={styles?.icon}
 									code={route?.icon}
-									type={route?.href === pathname ? 'duotone' : 'thin'}
+									type={route?.href === pathname ? 'duotone' : 'light'}
 								/>
 							}
 							<span className={styles.label}>{route?.name}</span>
