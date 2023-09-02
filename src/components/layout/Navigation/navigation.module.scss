@@ -110,7 +110,7 @@
 					border-top-right-radius: var(--borderRadius);
 					border-bottom-right-radius: var(--borderRadius);
 					transform: translateX(0);
-					transition: all 0s;
+					transition: all var(--animDurFast) var(--cubicBezierPrimary), transform var(--animDurFast) ease;
 					animation: barberPole 0.18s linear infinite;
 				}
 			}

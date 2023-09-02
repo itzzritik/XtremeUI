@@ -16,7 +16,7 @@
 		left: 0;
 		width: auto; height: 100%;
 		z-index: 0;
-		transition: opacity var(--animDurDefault) var(--cubicBezierPrimary);
+		transition: transform var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
 	.rightSiderContainer {
@@ -24,7 +24,7 @@
 		right: 0;
 		width: auto; height: 100%;
 		z-index: 1;
-		transition: opacity var(--animDurDefault) var(--cubicBezierPrimary);
+		transition: transform var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
 	.content {
@@ -57,28 +57,32 @@
 	}
 
 	&.leftOpen {
+		--transform: translateX(calc(48px + var(--leftSiderWidth) - var(--paddingLeft)));
+
 		.rightSiderContainer {
-			opacity: 0;
+			transform: var(--transform);
 			pointer-events: none;
 		}
 
 		.content {
 			border-radius: 36px;
-			transform: translateX(calc(48px + var(--leftSiderWidth) - var(--paddingLeft)));
+			transform: var(--transform);
 			transform-origin: left center;
 			scale: 0.95;
 		}
 	}
 
 	&.rightOpen {
+		--transform: translateX(calc((48px + var(--rightSiderWidth) - var(--paddingRight)) * -1));
+
 		.leftSiderContainer {
-			opacity: 0;
+			transform: var(--transform);
 			pointer-events: none;
 		}
 
 		.content {
 			border-radius: 36px;
-			transform: translateX(calc((48px + var(--rightSiderWidth) - var(--paddingRight)) * -1));
+			transform: var(--transform);
 			transform-origin: right center;
 			scale: 0.95;
 		}
