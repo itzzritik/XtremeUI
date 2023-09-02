@@ -57,7 +57,7 @@
 	}
 
 	&.leftOpen {
-		--transform: translateX(calc(48px + var(--leftSiderWidth) - var(--paddingLeft)));
+		--transform: translateX(calc(32px + var(--leftSiderWidth) - var(--paddingLeft)));
 
 		.rightSiderContainer {
 			transform: var(--transform);
@@ -73,7 +73,7 @@
 	}
 
 	&.rightOpen {
-		--transform: translateX(calc((48px + var(--rightSiderWidth) - var(--paddingRight)) * -1));
+		--transform: translateX(calc((32px + var(--rightSiderWidth) - var(--paddingRight)) * -1));
 
 		.leftSiderContainer {
 			transform: var(--transform);
@@ -98,6 +98,10 @@
 				border-top-left-radius: 0 !important;
 				border-bottom-left-radius: 0 !important;
 			}
+		}
+
+		&.rightOpen {
+			--transform: translateX(calc((32px + 100vh - var(--paddingRight)) * -1));
 		}
 
 		&.miniRightSider {

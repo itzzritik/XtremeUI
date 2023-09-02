@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { Button } from '#components/base/Button/Button';
 import { TButtonProps } from '#components/base/Button/types';
 import { Icon } from '#components/base/Icon/Icon';
+import { useXData } from '#components/context/useContext';
 
 import styles from './siderModal.module.scss';
 import { TSiderModalProps } from './types';
@@ -19,6 +20,8 @@ export const SiderModal = forwardRef<HTMLDivElement, TSiderModalProps>((props, r
 		secondaryButtonProps = {} as TButtonProps,
 	} = props;
 
+	const { setSiderMode } = useXData();
+
 	const SiderModalClsx = clsx(
 		styles.siderModal,
 		className,
@@ -31,6 +34,7 @@ export const SiderModal = forwardRef<HTMLDivElement, TSiderModalProps>((props, r
 			role='dialog'
 		>
 			<div className={styles.header}>
+				<Button className={styles.back} icon='f053' onClick={() => setSiderMode('closed')} />
 				{icon && <Icon className={styles.icon} code={icon} type='duotone' />}
 				<p className={styles.title}>{title}</p>
 			</div>
