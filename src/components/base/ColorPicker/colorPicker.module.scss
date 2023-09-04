@@ -1,0 +1,22 @@
+.colorPicker {
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+
+	.alpha {
+		height: 9px !important;
+		border-radius: 9999px !important;
+
+		div {
+			&:first-child {
+				border-radius: 9999px !important;
+			}
+
+			&:last-child {
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
+}

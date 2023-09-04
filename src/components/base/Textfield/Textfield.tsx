@@ -10,6 +10,7 @@ import { TTextfieldProps } from './types';
 export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, ref) => {
 	const {
 		className,
+		style,
 		type = 'text',
 		textarea,
 		placeholder,
@@ -19,6 +20,8 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 		iconType = 'regular',
 		value,
 		onChange,
+		onFocus,
+		onBlur,
 	} = props;
 
 	const localIconName = useMemo(() => {
@@ -42,6 +45,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 			ref={ref}
 			className={TextfieldClsx}
 			role='textbox'
+			style={style}
 		>
 			{!!localIconName && !textarea && (
 				<Icon className={styles.icon} code={localIconName} type={iconType} />
@@ -55,6 +59,8 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 						autoComplete={autoComplete}
 						value={value}
 						onChange={onChange}
+						onFocus={onFocus}
+						onBlur={onBlur}
 					/> :
 					<textarea
 						className={styles.input}
@@ -62,6 +68,8 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 						autoComplete={autoComplete}
 						value={value}
 						onChange={onChange}
+						onFocus={onFocus}
+						onBlur={onBlur}
 					/>
 			}
 			<span className={styles.placeholder}>{placeholder}</span>

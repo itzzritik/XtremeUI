@@ -1,9 +1,10 @@
-import { ChangeEvent } from 'react';
+import { CSSProperties, ChangeEvent, FocusEvent } from 'react';
 
 import { EIconType } from '../Icon/types';
 
 export type TTextfieldProps = {
 	className?: string;
+	style?: CSSProperties;
 	type?: keyof typeof ETextfieldType;
 	textarea?: boolean;
 	placeholder: string;
@@ -13,6 +14,8 @@ export type TTextfieldProps = {
 	iconType?: keyof typeof EIconType;
 	value?: string;
 	onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+	onFocus?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+	onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
 enum ETextfieldType {

@@ -1,0 +1,17 @@
+.colorInput {
+	&::before {
+		background: var(--chipColor) !important;
+		opacity: 1 !important;
+		transition: all 0s !important;
+	}
+
+	i {
+		&::before {
+			display: none;
+		}
+	}
+}
+
+.colorPopper {
+	
+}
