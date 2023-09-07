@@ -19,8 +19,9 @@ const meta = {
 	tags: [],
 	argTypes: {
 		className: { control: false },
+		popperClassName: { control: false },
 		showReset: {
-			defaultValue: { summary: false },
+			defaultValue: { summary: true },
 		},
 	},
 	args: {

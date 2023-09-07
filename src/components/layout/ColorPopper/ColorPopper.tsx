@@ -26,7 +26,7 @@ import { TColorPopperProps } from './types';
 import type { HsvaColor, Input } from 'colord/types';
 
 export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props, ref) => {
-	const { className, placeholder = 'Color Picker', showReset = false, color, setColor } = props;
+	const { className, popperClassName, placeholder = 'Color Picker', showReset = true, shade, alpha, color, setColor } = props;
 
 	const format = useMemo(() => getFormat(color as Input), [color]);
 	const initialColor = useMemo(() => colord(color), []);
@@ -38,8 +38,8 @@ export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props,
 		open: isOpen,
 		onOpenChange: setIsOpen,
 		middleware: [
-			flip(),
 			shift(),
+			flip(),
 			offset(({ placement }) => {
 				return placement === 'bottom' ? 10 : 16;
 			}),
@@ -83,7 +83,7 @@ export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props,
 	return (
 		<>
 			<Textfield
-				className={styles.colorInput}
+				className={clsx(styles.colorInput, className)}
 				ref={refs.setReference}
 				placeholder={placeholder}
 				icon='color'
@@ -97,7 +97,7 @@ export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props,
 				isMounted &&
 					<div
 						ref={mergeRefs([ref, refs.setFloating])}
-						className={clsx(styles.colorPopper, className)}
+						className={clsx(styles.colorPopper, popperClassName)}
 						style={{ ...floatingStyles, ...transitionStyles }}
 						{...getFloatingProps()}
 					>
@@ -113,6 +113,8 @@ export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props,
 						</div>
 
 						<ColorPicker
+							shade={shade}
+							alpha={alpha}
 							color={localColor}
 							setColor={(col) => {
 								setLocalColor(col);
