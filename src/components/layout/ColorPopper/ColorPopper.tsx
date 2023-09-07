@@ -1,4 +1,5 @@
-import { forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { forwardRef, useEffect, useMemo, useState } from 'react';
 
 import {
 	autoUpdate,
@@ -12,7 +13,7 @@ import {
 	useTransitionStyles,
 } from '@floating-ui/react';
 import clsx from 'clsx';
-import { Colord, colord, getFormat } from 'colord';
+import { colord, getFormat } from 'colord';
 
 import { ColorPicker } from '#components/base/ColorPicker/ColorPicker';
 import { Icon } from '#components/base/Icon/Icon';
@@ -25,17 +26,24 @@ import { TColorPopperProps } from './types';
 import type { HsvaColor, Input } from 'colord/types';
 
 export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props, ref) => {
-	const { className, placeholder = 'Color Picker', showReset = false, onReset, color, setColor } = props;
+	const { className, placeholder = 'Color Picker', showReset = false, color, setColor } = props;
 
 	const format = useMemo(() => getFormat(color as Input), [color]);
+	const initialColor = useMemo(() => colord(color), []);
 	const [localColor, setLocalColor] = useState<HsvaColor>(colord(color).toHsv());
-	const [textColor, setTextColor] = useState<string>();
+	const [textColor, setTextColor] = useState<string>(colord(color).toHex());
 
 	const [isOpen, setIsOpen] = useState(false);
 	const { refs, floatingStyles, context } = useFloating({
 		open: isOpen,
 		onOpenChange: setIsOpen,
-		middleware: [offset(16), flip(), shift()],
+		middleware: [
+			flip(),
+			shift(),
+			offset(({ placement }) => {
+				return placement === 'bottom' ? 10 : 16;
+			}),
+		],
 		whileElementsMounted: autoUpdate,
 	});
 	const { isMounted, styles: transitionStyles } = useTransitionStyles(context, {
@@ -44,7 +52,7 @@ export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props,
 			return {
 				opacity: 0,
 				scale: 0.9,
-				translate: props?.side === 'bottom' ? '0 16px' : '0 -16px',
+				translate: props?.side === 'bottom' ? '0 12px' : '0 -12px',
 			};
 		},
 	});
@@ -54,22 +62,23 @@ export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props,
 		useDismiss(context),
 	]);
 
-	const onColorChange = useCallback((col: Colord) => {
-		if (format === 'rgb') return setColor?.(col.toRgb());
-		if (format === 'hex') return setColor?.(col.toHex());
-		if (format === 'hsl') return setColor?.(col.toHsl());
-		if (format === 'hsv') return setColor?.(col.toHsv());
-	}, [format, setColor]);
+	const onTextChange = (col: string) => {
+		const format = getFormat(col as Input);
+		setTextColor(col);
 
-	const onTextChange = (color: string) => {
-		const format = getFormat(color as Input);
-		setTextColor(color);
-		if (format && ((format === 'hex' && color.length > 6) || format !== 'hex')) onColorChange(colord(color));
+		if (format && ((format === 'hex' && col.length > 6) || format !== 'hex')) {
+			setLocalColor(colord(col).toHsv());
+		}
 	};
 
 	useEffect(() => {
-		onColorChange(colord(localColor));
-	}, [localColor, onColorChange]);
+		const col = colord(localColor);
+		if (format === 'rgb') setColor?.(col.toRgb());
+		else if (format === 'hex') setColor?.(col.toHex());
+		else if (format === 'hsl') setColor?.(col.toHsl());
+		else if (format === 'hsv') setColor?.(col.toHsv());
+
+	}, [format, localColor, setColor]);
 
 	return (
 		<>
@@ -82,7 +91,6 @@ export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props,
 				onChange={(e) => onTextChange(e.target.value)}
 				style={{ ['--chipColor' as string]: colord(localColor).toHex() }}
 				onFocus={() => setIsOpen(true)}
-				onBlur={() => setIsOpen(false)}
 				{...getReferenceProps()}
 			/>
 			{
@@ -95,12 +103,21 @@ export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props,
 					>
 						<div className={styles.header}>
 							<h1>Choose a color</h1>
-							{showReset && <Icon code='f1da' onClick={onReset} />}
+							{showReset &&
+								<Icon code='f1da' onClick={() => {
+									setLocalColor(initialColor.toHsv());
+									setTextColor(initialColor.toHex());
+								}}
+								/>
+							}
 						</div>
 
 						<ColorPicker
 							color={localColor}
-							setColor={setLocalColor}
+							setColor={(col) => {
+								setLocalColor(col);
+								setTextColor(colord(col).toHex());
+							}}
 						/>
 					</div>
 			}

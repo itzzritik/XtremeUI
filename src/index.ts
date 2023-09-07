@@ -38,6 +38,10 @@ export { type ISpinnerProps, ESpinnerSize } from './components/base/Spinner/type
 export { Textfield } from './components/base/Textfield/Textfield';
 export { type TTextfieldProps } from './components/base/Textfield/types';
 
+// ColorPopper
+export { ColorPopper } from './components/layout/ColorPopper/ColorPopper';
+export { type TColorPopperProps } from './components/layout/ColorPopper/types';
+
 // Sider
 export { Sider } from './components/layout/Sider/Sider';
 export { type TSiderProps, type TSiderModes } from './components/layout/Sider/types';

@@ -2,7 +2,7 @@
 	&::before {
 		background: var(--chipColor) !important;
 		opacity: 1 !important;
-		transition: all 0s !important;
+		transition: all var(--animDurDefault) var(--cubicBezierPrimary), background 0s !important;
 	}
 
 	i {

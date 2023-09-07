@@ -6,11 +6,10 @@ import { TColorPopperProps } from './types';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { AnyColor } from 'colord';
 
-const defaultColor = '#ff0000';
 const ColorPickerComponent = (props: Omit<TColorPopperProps, 'color' | 'setColor'>) => {
-	const [color, setColor] = useState<AnyColor>(defaultColor);
+	const [color, setColor] = useState<AnyColor>('#ff0000');
 	return (
-		<ColorPopper {...props} color={color} setColor={setColor} onReset={() => setColor(defaultColor)} />
+		<ColorPopper {...props} color={color} setColor={setColor} />
 	);
 };
 
