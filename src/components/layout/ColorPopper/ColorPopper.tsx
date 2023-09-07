@@ -1,7 +1,6 @@
-import { forwardRef, useEffect, useMemo, useState } from 'react';
+import { forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
 
 import {
-	FloatingFocusManager,
 	autoUpdate,
 	flip,
 	offset,
@@ -10,6 +9,7 @@ import {
 	useDismiss,
 	useFloating,
 	useInteractions,
+	useTransitionStyles,
 } from '@floating-ui/react';
 import clsx from 'clsx';
 import { Colord, colord, getFormat } from 'colord';
@@ -22,21 +22,31 @@ import { mergeRefs } from '#utils/index';
 import styles from './colorPopper.module.scss';
 import { TColorPopperProps } from './types';
 
-import type { Input } from 'colord/types';
+import type { HsvaColor, Input } from 'colord/types';
 
 export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props, ref) => {
-	const { className, placeholder = 'Color Picker', color, setColor, showReset = false, onReset } = props;
+	const { className, placeholder = 'Color Picker', showReset = false, onReset, color, setColor } = props;
 
-	const localColor = useMemo(() => colord(color), [color]);
 	const format = useMemo(() => getFormat(color as Input), [color]);
+	const [localColor, setLocalColor] = useState<HsvaColor>(colord(color).toHsv());
 	const [textColor, setTextColor] = useState<string>();
 
 	const [isOpen, setIsOpen] = useState(false);
 	const { refs, floatingStyles, context } = useFloating({
 		open: isOpen,
 		onOpenChange: setIsOpen,
-		middleware: [offset(10), flip(), shift()],
+		middleware: [offset(16), flip(), shift()],
 		whileElementsMounted: autoUpdate,
+	});
+	const { isMounted, styles: transitionStyles } = useTransitionStyles(context, {
+		duration: 200,
+		initial: (props) => {
+			return {
+				opacity: 0,
+				scale: 0.9,
+				translate: props?.side === 'bottom' ? '0 16px' : '0 -16px',
+			};
+		},
 	});
 
 	const { getReferenceProps, getFloatingProps } = useInteractions([
@@ -44,17 +54,12 @@ export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props,
 		useDismiss(context),
 	]);
 
-	const ColorPopperClsx = clsx(
-		styles.colorPopper,
-		className,
-	);
-
-	const onColorChange = (col: Colord) => {
-		if (format === 'rgb') setColor?.(col.toRgb());
-		if (format === 'hex') setColor?.(col.toHex());
-		else if (format === 'hsl') setColor?.(col.toHsl());
-		else if (format === 'hsv') setColor?.(col.toHsl());
-	};
+	const onColorChange = useCallback((col: Colord) => {
+		if (format === 'rgb') return setColor?.(col.toRgb());
+		if (format === 'hex') return setColor?.(col.toHex());
+		if (format === 'hsl') return setColor?.(col.toHsl());
+		if (format === 'hsv') return setColor?.(col.toHsv());
+	}, [format, setColor]);
 
 	const onTextChange = (color: string) => {
 		const format = getFormat(color as Input);
@@ -63,8 +68,8 @@ export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props,
 	};
 
 	useEffect(() => {
-		setTextColor(localColor.toHex());
-	}, [localColor]);
+		onColorChange(colord(localColor));
+	}, [localColor, onColorChange]);
 
 	return (
 		<>
@@ -75,17 +80,17 @@ export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props,
 				icon='color'
 				value={textColor}
 				onChange={(e) => onTextChange(e.target.value)}
-				style={{ ['--chipColor' as string]: localColor.toHex() }}
+				style={{ ['--chipColor' as string]: colord(localColor).toHex() }}
 				onFocus={() => setIsOpen(true)}
+				onBlur={() => setIsOpen(false)}
 				{...getReferenceProps()}
 			/>
 			{
-				isOpen &&
-				<FloatingFocusManager context={context} modal={false}>
+				isMounted &&
 					<div
 						ref={mergeRefs([ref, refs.setFloating])}
-						className={ColorPopperClsx}
-						style={floatingStyles}
+						className={clsx(styles.colorPopper, className)}
+						style={{ ...floatingStyles, ...transitionStyles }}
 						{...getFloatingProps()}
 					>
 						<div className={styles.header}>
@@ -94,11 +99,10 @@ export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props,
 						</div>
 
 						<ColorPicker
-							color={color}
-							setColor={setColor}
+							color={localColor}
+							setColor={setLocalColor}
 						/>
 					</div>
-				</FloatingFocusManager>
 			}
 		</>
 	);

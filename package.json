@@ -16,6 +16,7 @@
 		"@dotlottie/react-player": "^1.4.2",
 		"@floating-ui/react": "^0.25.3",
 		"@uiw/react-color-alpha": "^1.3.3",
+		"@uiw/react-color-shade-slider": "^1.3.3",
 		"@uiw/react-color-wheel": "^1.3.3",
 		"clsx": "^2.0.0",
 		"colord": "^2.9.3"

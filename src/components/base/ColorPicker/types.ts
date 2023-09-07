@@ -1,7 +1,9 @@
-import type { AnyColor } from 'colord';
+import type { HsvaColor } from 'colord';
 
 export type TColorPickerProps = {
 	className?: string;
-	color: AnyColor;
-	setColor: (color: AnyColor) => void;
+	alpha?: boolean;
+	shade?: boolean;
+	color: HsvaColor;
+	setColor: (col: HsvaColor) => void;
 }

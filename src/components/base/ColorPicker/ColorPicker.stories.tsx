@@ -1,27 +1,34 @@
 import { useState } from 'react';
 
 import { ColorPicker } from './ColorPicker';
+import { TColorPickerProps } from './types';
 
 import type { Meta, StoryObj } from '@storybook/react';
-import type { AnyColor } from 'colord';
+import type { HsvaColor } from 'colord';
 
-const ColorPickerComponent = () => {
-	const [color, setColor] = useState<AnyColor>('#ff0000');
-
+const ColorPickerComponent = (props: Omit<TColorPickerProps, 'color' | 'setColor'>) => {
+	const [color, setColor] = useState<HsvaColor>({ h: 0, s: 0, v: 100, a: 1 });
 	return (
-		<ColorPicker color={color} setColor={setColor} />
+		<ColorPicker {...props} color={color} setColor={setColor} />
 	);
 };
 
 const meta = {
 	title: 'Components/ColorPicker',
-	render: () => <ColorPickerComponent />,
+	component: ColorPickerComponent,
 	tags: [],
 	argTypes: {
 		className: { control: false },
+		shade: {
+			defaultValue: { summary: true },
+		},
+		alpha: {
+			defaultValue: { summary: true },
+		},
 	},
 	args: {
-
+		shade: true,
+		alpha: true,
 	},
 } satisfies Meta<typeof ColorPicker>;
 

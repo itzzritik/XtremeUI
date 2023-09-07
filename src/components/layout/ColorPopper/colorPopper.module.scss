@@ -2,7 +2,7 @@
 	&::before {
 		background: var(--chipColor) !important;
 		opacity: 1 !important;
-		transition: all 0.1s ease !important;
+		transition: all 0s !important;
 	}
 
 	i {
@@ -13,6 +13,7 @@
 }
 
 .colorPopper {
+	width: fit-content;
 	box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%);
 	border-radius: 24px;
 	display: flex;

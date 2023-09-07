@@ -2,10 +2,14 @@
 	width: 200px;
 	display: flex;
 	flex-direction: column;
-	gap: 24px;
 
-	.alpha {
-		height: 7px !important;
+	.wheel {
+		cursor: crosshair;
+		margin-bottom: 24px;
+	}
+
+	.shade, .alpha {
+		height: 5px !important;
 		border-radius: 9999px !important;
 
 		div {
@@ -18,5 +22,9 @@
 				align-items: center;
 			}
 		}
+	}
+
+	.shade {
+		margin-bottom: 16px;
 	}
 }

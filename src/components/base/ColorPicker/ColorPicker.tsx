@@ -1,32 +1,17 @@
-import { forwardRef, useMemo } from 'react';
+import { forwardRef } from 'react';
 
 import Alpha from '@uiw/react-color-alpha';
+import ShadeSlider from '@uiw/react-color-shade-slider';
 import Wheel from '@uiw/react-color-wheel';
 import clsx from 'clsx';
-import { Colord, colord, getFormat } from 'colord';
 
 import styles from './colorPicker.module.scss';
 import { TColorPickerProps } from './types';
 
-import type { Input } from 'colord/types';
-
 export const ColorPicker = forwardRef<HTMLDivElement, TColorPickerProps>((props, ref) => {
-	const { className, color, setColor } = props;
+	const { className, shade = true, alpha = true, color = { h: 0, s: 0, v: 100, a: 1 }, setColor } = props;
 
-	const localColor = useMemo(() => colord(color), [color]);
-	const format = useMemo(() => getFormat(color as Input), [color]);
-
-	const ColorPickerClsx = clsx(
-		styles.colorPicker,
-		className,
-	);
-
-	const onColorChange = (col: Colord) => {
-		if (format === 'rgb') setColor?.(col.toRgb());
-		if (format === 'hex') setColor?.(col.toHex());
-		else if (format === 'hsl') setColor?.(col.toHsl());
-		else if (format === 'hsv') setColor?.(col.toHsl());
-	};
+	const ColorPickerClsx = clsx(styles.colorPicker, className);
 
 	return (
 		<div
@@ -35,18 +20,25 @@ export const ColorPicker = forwardRef<HTMLDivElement, TColorPickerProps>((props,
 		>
 			<Wheel
 				className={styles.wheel}
-				color={localColor.toHsv()}
-				onChange={(col) => {
-					onColorChange(colord(col.hexa));
-				}}
+				color={color}
+				onChange={(col) => setColor(col.hsva)}
 			/>
-			<Alpha
-				className={styles.alpha}
-				hsva={localColor.toHsv()}
-				onChange={(newAlpha) => {
-					onColorChange(colord({ ...localColor.toRgb(), a: newAlpha.a }));
-				}}
-			/>
+			{
+				shade &&
+				<ShadeSlider
+					className={styles.shade}
+					hsva={color}
+					onChange={({ v }) => setColor({ ...color, v })}
+				/>
+			}
+			{
+				alpha &&
+				<Alpha
+					className={styles.alpha}
+					hsva={color}
+					onChange={({ a }) => setColor({ ...color, a })}
+				/>
+			}
 		</div>
 	);
 });
