@@ -75,4 +75,19 @@
 		font-family: FontAwesomeBrand;
 		font-weight: 400;
 	}
+
+	&.iconButton {
+		border-radius: 9999px;
+		padding: 16px;
+
+		&:hover {
+			cursor: pointer;
+			background: rgb(var(--colorBrandAccentRgb) / 75%);
+			color: white;
+		}
+
+		&:active {
+			background: rgb(var(--colorBrandAccentRgb));
+		}
+	}
 }

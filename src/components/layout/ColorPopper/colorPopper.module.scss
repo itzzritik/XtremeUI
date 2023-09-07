@@ -2,7 +2,7 @@
 	&::before {
 		background: var(--chipColor) !important;
 		opacity: 1 !important;
-		transition: all 0s !important;
+		transition: all 0.1s ease !important;
 	}
 
 	i {
@@ -13,5 +13,28 @@
 }
 
 .colorPopper {
-	
+	box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%);
+	border-radius: 24px;
+	display: flex;
+	flex-direction: column;
+	padding: 16px 24px 24px;
+	gap: 24px;
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		h1 {
+			font-size: small;
+			text-transform: uppercase;
+			line-height: 32px;
+			user-select: none;
+			margin: 0;
+		}
+
+		i {
+			font-size: small;
+		}
+	}
 }

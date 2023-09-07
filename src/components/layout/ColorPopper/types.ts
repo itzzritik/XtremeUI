@@ -5,4 +5,6 @@ export type TColorPopperProps = {
 	placeholder?: string;
 	color: AnyColor;
 	setColor: (color: AnyColor) => void;
+	showReset?: boolean;
+	onReset?: () => void;
 }

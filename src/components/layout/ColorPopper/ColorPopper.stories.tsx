@@ -1,27 +1,31 @@
 import { useState } from 'react';
 
 import { ColorPopper } from './ColorPopper';
+import { TColorPopperProps } from './types';
 
 import type { Meta, StoryObj } from '@storybook/react';
 import type { AnyColor } from 'colord';
 
-const ColorPickerComponent = () => {
-	const [color, setColor] = useState<AnyColor>('#ff0000');
-
+const defaultColor = '#ff0000';
+const ColorPickerComponent = (props: Omit<TColorPopperProps, 'color' | 'setColor'>) => {
+	const [color, setColor] = useState<AnyColor>(defaultColor);
 	return (
-		<ColorPopper color={color} setColor={setColor} />
+		<ColorPopper {...props} color={color} setColor={setColor} onReset={() => setColor(defaultColor)} />
 	);
 };
 
 const meta = {
 	title: 'Layouts/ColorPopper',
-	render: () => <ColorPickerComponent />,
+	component: ColorPickerComponent,
 	tags: [],
 	argTypes: {
 		className: { control: false },
+		showReset: {
+			defaultValue: { summary: false },
+		},
 	},
 	args: {
-
+		showReset: true,
 	},
 } satisfies Meta<typeof ColorPopper>;
 

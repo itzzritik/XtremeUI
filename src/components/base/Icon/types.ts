@@ -3,6 +3,7 @@ export type IIconProps = {
 	code: string;
 	type?: keyof typeof EIconType;
 	size?: number | keyof typeof EIconSize;
+	onClick?: () => void;
 }
 export enum EIconType {
 	thin = 'thin',

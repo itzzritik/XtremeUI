@@ -15,6 +15,7 @@ import clsx from 'clsx';
 import { Colord, colord, getFormat } from 'colord';
 
 import { ColorPicker } from '#components/base/ColorPicker/ColorPicker';
+import { Icon } from '#components/base/Icon/Icon';
 import { Textfield } from '#components/base/Textfield/Textfield';
 import { mergeRefs } from '#utils/index';
 
@@ -24,7 +25,7 @@ import { TColorPopperProps } from './types';
 import type { Input } from 'colord/types';
 
 export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props, ref) => {
-	const { className, placeholder = 'Color Picker', color, setColor } = props;
+	const { className, placeholder = 'Color Picker', color, setColor, showReset = false, onReset } = props;
 
 	const localColor = useMemo(() => colord(color), [color]);
 	const format = useMemo(() => getFormat(color as Input), [color]);
@@ -87,6 +88,11 @@ export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props,
 						style={floatingStyles}
 						{...getFloatingProps()}
 					>
+						<div className={styles.header}>
+							<h1>Choose a color</h1>
+							{showReset && <Icon code='f1da' onClick={onReset} />}
+						</div>
+
 						<ColorPicker
 							color={color}
 							setColor={setColor}
