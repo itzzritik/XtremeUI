@@ -28,8 +28,8 @@
 		position: absolute;
 		width: var(--imageSize); height: var(--imageSize);
 		border-radius: 50%;
-		background-size: cover;
-		background-position: center;
+		object-fit: cover;
+		object-position: center;
 		z-index: 2;
 		transition: all var(--animDurFast) var(--cubicBezierPrimary);
 	}
