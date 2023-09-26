@@ -32,11 +32,25 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 		if (type === 'password') return 'f30d';
 	}, [textarea, icon, type]);
 
+	const localPlaceholder = useMemo(() => {
+		if (placeholder) return placeholder;
+		if (type === 'number') return 'Enter a number';
+		if (type === 'search') return 'Search';
+		if (type === 'password') return 'Enter password';
+		if (type === 'phone') return 'Enter phone number';
+	}, [placeholder, type]);
+
+	const localType = useMemo(() => {
+		if (type === 'phone') return 'number';
+		return type;
+	}, [type]);
+
 	const TextfieldClsx = clsx(
 		styles.textfield,
 		localIconName && styles.withIcon,
 		textarea && styles.textarea,
 		value && styles.hasValue,
+		type === 'phone' && styles.phone,
 		className,
 	);
 
@@ -47,32 +61,37 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 			role='textbox'
 			style={style}
 		>
-			{!!localIconName && !textarea && (
+			{localIconName && !textarea &&
 				<Icon className={styles.icon} code={localIconName} type={iconType} />
-			)}
-			{
-				!textarea ?
-					<input
-						className={styles.input}
-						type={type}
-						autoFocus={autoFocus}
-						autoComplete={autoComplete}
-						value={value}
-						onChange={onChange}
-						onFocus={onFocus}
-						onBlur={onBlur}
-					/> :
-					<textarea
-						className={styles.input}
-						autoFocus={autoFocus}
-						autoComplete={autoComplete}
-						value={value}
-						onChange={onChange}
-						onFocus={onFocus}
-						onBlur={onBlur}
-					/>
 			}
-			<span className={styles.placeholder}>{placeholder}</span>
+			{type === 'phone' &&
+				<div className={styles.dialCode}>
+					<span style={{ backgroundImage: 'url(https://flagcdn.com/in.svg)' }} />
+					<p>+91</p>
+				</div>
+			}
+			{!textarea ?
+				<input
+					className={styles.input}
+					type={localType}
+					autoFocus={autoFocus}
+					autoComplete={autoComplete}
+					value={value}
+					onChange={onChange}
+					onFocus={onFocus}
+					onBlur={onBlur}
+				/> :
+				<textarea
+					className={styles.input}
+					autoFocus={autoFocus}
+					autoComplete={autoComplete}
+					value={value}
+					onChange={onChange}
+					onFocus={onFocus}
+					onBlur={onBlur}
+				/>
+			}
+			<span className={styles.placeholder}>{localPlaceholder}</span>
 		</div>
 	);
 });

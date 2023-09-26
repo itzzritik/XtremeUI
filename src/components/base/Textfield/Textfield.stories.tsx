@@ -20,7 +20,6 @@ const meta = {
 	},
 	args: {
 		type: 'text',
-		placeholder: 'Enter text here',
 		textarea: false,
 		autoComplete: 'off',
 	},
@@ -30,13 +29,11 @@ export default meta;
 
 export const Default: StoryObj<typeof meta> = {
 	args: {
-		placeholder: 'Enter text here',
 	},
 };
 
 export const Textarea: StoryObj<typeof meta> = {
 	args: {
-		placeholder: 'Enter paragraph here',
 		textarea: true,
 	},
 };

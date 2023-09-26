@@ -7,7 +7,7 @@ export type TTextfieldProps = {
 	style?: CSSProperties;
 	type?: keyof typeof ETextfieldType;
 	textarea?: boolean;
-	placeholder: string;
+	placeholder?: string;
 	autoFocus?: boolean;
 	autoComplete?: keyof typeof ETextfieldAutoComplete;
 	icon?: string;
@@ -21,6 +21,7 @@ export type TTextfieldProps = {
 enum ETextfieldType {
 	text = 'text',
 	number = 'number',
+	phone = 'phone',
 	password = 'password',
 	search = 'search',
 }
