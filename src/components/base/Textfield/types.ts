@@ -71,4 +71,10 @@ enum ETextfieldAutoComplete {
 	'bday-day' = 'bday-day',
 	'bday-month' = 'bday-month',
 	'bday-year' = 'bday-year',
+	'tel' = 'tel',
+	'tel-country-code' = 'tel-country-code',
+	'tel-national' = 'tel-national',
+	'tel-area-code' = 'tel-area-code',
+	'tel-local' = 'tel-local',
+	'tel-extension' = 'tel-extension'
 }
