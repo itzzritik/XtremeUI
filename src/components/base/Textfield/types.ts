@@ -1,4 +1,4 @@
-import { CSSProperties, ChangeEvent, FocusEvent } from 'react';
+import { CSSProperties, ChangeEvent, FocusEvent, KeyboardEvent } from 'react';
 
 import { EIconType } from '../Icon/types';
 
@@ -16,8 +16,9 @@ export type TTextfieldProps = {
 	onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 	onFocus?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 	onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+	onKeyDown?: (event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+	onKeyUp?: (event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
-
 enum ETextfieldType {
 	text = 'text',
 	number = 'number',

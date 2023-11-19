@@ -22,6 +22,8 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 		onChange,
 		onFocus,
 		onBlur,
+		onKeyDown,
+		onKeyUp,
 	} = props;
 
 	const localIconName = useMemo(() => {
@@ -80,6 +82,8 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 					onChange={onChange}
 					onFocus={onFocus}
 					onBlur={onBlur}
+					onKeyDown={onKeyDown}
+					onKeyUp={onKeyUp}
 				/> :
 				<textarea
 					className={styles.input}
@@ -89,6 +93,8 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 					onChange={onChange}
 					onFocus={onFocus}
 					onBlur={onBlur}
+					onKeyDown={onKeyDown}
+					onKeyUp={onKeyUp}
 				/>
 			}
 			<span className={styles.placeholder}>{localPlaceholder}</span>
