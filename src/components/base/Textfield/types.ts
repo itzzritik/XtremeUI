@@ -16,8 +16,9 @@ export type TTextfieldProps = {
 	onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 	onFocus?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 	onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-	onKeyDown?: (event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-	onKeyUp?: (event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+	onKeyDown?: (event: KeyboardEvent) => void;
+	onKeyUp?: (event: KeyboardEvent) => void;
+	onEnterKey?: (event: KeyboardEvent) => void;
 }
 enum ETextfieldType {
 	text = 'text',

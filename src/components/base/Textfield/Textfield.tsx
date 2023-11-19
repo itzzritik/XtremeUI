@@ -1,4 +1,4 @@
-import { forwardRef, useMemo } from 'react';
+import { KeyboardEvent, forwardRef, useMemo } from 'react';
 
 import clsx from 'clsx';
 
@@ -22,8 +22,9 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 		onChange,
 		onFocus,
 		onBlur,
-		onKeyDown,
 		onKeyUp,
+		onKeyDown,
+		onEnterKey,
 	} = props;
 
 	const localIconName = useMemo(() => {
@@ -46,6 +47,14 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 		if (type === 'phone') return 'number';
 		return type;
 	}, [type]);
+
+	const onLocalKeyUp = (event: KeyboardEvent) => {
+		onKeyUp?.(event);
+	};
+	const onLocalKeyDown = (event: KeyboardEvent) => {
+		if (event.key === 'Enter') onEnterKey?.(event);
+		onKeyDown?.(event);
+	};
 
 	const TextfieldClsx = clsx(
 		styles.textfield,
@@ -82,8 +91,8 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 					onChange={onChange}
 					onFocus={onFocus}
 					onBlur={onBlur}
-					onKeyDown={onKeyDown}
-					onKeyUp={onKeyUp}
+					onKeyUp={onLocalKeyUp}
+					onKeyDown={onLocalKeyDown}
 				/> :
 				<textarea
 					className={styles.input}
@@ -93,8 +102,8 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 					onChange={onChange}
 					onFocus={onFocus}
 					onBlur={onBlur}
-					onKeyDown={onKeyDown}
-					onKeyUp={onKeyUp}
+					onKeyUp={onLocalKeyUp}
+					onKeyDown={onLocalKeyDown}
 				/>
 			}
 			<span className={styles.placeholder}>{localPlaceholder}</span>
