@@ -33,7 +33,6 @@ export default defineConfig((configEnv) => ({
 		},
 		rollupOptions: {
 			output: {
-				preserveEntrySignatures: 'strict',
 				inlineDynamicImports: false,
 				preserveModules: true,
 				exports: 'named',

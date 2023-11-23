@@ -41,6 +41,7 @@ export { type TTextfieldProps } from './components/base/Textfield/types';
 // ColorPopper
 export { ColorPopper } from './components/layout/ColorPopper/ColorPopper';
 export { type TColorPopperProps } from './components/layout/ColorPopper/types';
+export type { AnyColor } from 'colord';
 
 // Sider
 export { Sider } from './components/layout/Sider/Sider';
