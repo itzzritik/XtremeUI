@@ -2,7 +2,7 @@ import { defaultColor, defaultScheme } from '#components/context/Theme/type';
 
 import { STORAGE } from '../constants/commons';
 
-export const themeController = (customDefaultScheme?: string, customDefaultColor?: string) => {
+export function themeController (customDefaultScheme?: string, customDefaultColor?: string) {
 	return `
 (function () {
 	function setThemeScheme(newThemeScheme) {
@@ -50,4 +50,4 @@ export const themeController = (customDefaultScheme?: string, customDefaultColor
 	setThemeColor(themeColor || "${customDefaultColor ?? defaultColor}");
 })();
 `;
-};
+}
