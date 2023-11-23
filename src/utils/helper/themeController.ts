@@ -2,8 +2,7 @@ import { defaultColor, defaultScheme } from '#components/context/Theme/type';
 
 import { STORAGE } from '../constants/commons';
 
-export function themeController (customDefaultScheme?: string, customDefaultColor?: string) {
-	return `
+export const themeController = (customDefaultScheme?: string, customDefaultColor?: string) => (`
 (function () {
 	function setThemeScheme(newThemeScheme) {
 		document.documentElement.setAttribute("data-theme-scheme", newThemeScheme);
@@ -49,5 +48,4 @@ export function themeController (customDefaultScheme?: string, customDefaultColo
 	setThemeScheme(themeScheme || "${customDefaultScheme ?? defaultScheme}");
 	setThemeColor(themeColor || "${customDefaultColor ?? defaultColor}");
 })();
-`;
-}
+`);

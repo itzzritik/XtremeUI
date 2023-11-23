@@ -14,7 +14,7 @@ import { capitalizeFirstLetter } from "../src/utils/function/string";
 import "../src/styles/index.scss";
 import "./style.scss";
 
-eval(themeController);
+eval(themeController());
 
 const initialThemeScheme = getLocalState(STORAGE.themeScheme, defaultScheme);
 const initialThemeColor = getLocalState(STORAGE.themeColor, defaultColor);
