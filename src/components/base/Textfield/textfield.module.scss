@@ -1,6 +1,6 @@
 @mixin raisePlaceholder {
 	.placeholder {
-		transform: translate(24px, -28px);
+		transform: translate(20px, -12px);
 		scale: 0.75;
 		font-variation-settings: 'wdth' 75, 'wght' 700;
 		color: rgb(var(--colorBrandAccentRgb) / 100%);
@@ -13,13 +13,18 @@
 
 	&.withIcon {
 		.placeholder {
-			transform: translate(54px, -28px);
+			transform: translate(54px, -12px);
 		}
 	}
 
 	&.phone {
 		.placeholder {
-			transform: translate(54px, -28px);
+			transform: translate(54px, -12px);
+		}
+		.dialCode {	
+			p {
+				margin-top: 14px;
+			}
 		}
 	}
 
@@ -88,6 +93,7 @@
 		p {
 			margin: 0;
 			font-size: var(--fontSize);
+			transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 		}
 	}
 
@@ -96,11 +102,20 @@
 		outline: none;
 		border: none;
 		background: transparent;
-		padding: 10px 20px;
+		padding: 20px 20px 6px 20px;
 		z-index: 1;
 		font-size: var(--fontSize);
 		font-variation-settings: 'wdth' 75, 'wght' 400;
 		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
+
+		&[type="number"]::-webkit-inner-spin-button,
+		&[type="number"]::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+		&[type="number"] {
+			-moz-appearance: textfield;
+		}
 	}
 
 	.placeholder {
@@ -115,18 +130,6 @@
 		line-height: 20px;
 		padding: 0 8px;
 		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
-
-		&::before {
-			content: '';
-			position: absolute;
-			left: 0;
-			display: block;
-			width: 100%; height: 50%;
-			background: var(--secondaryColor);
-			scale: 0;
-			z-index: -1;
-			transition: all var(--animDurDefault) var(--cubicBezierPrimary);
-		}
 	}
 
 	&.withIcon {
@@ -136,7 +139,7 @@
 		}
 
 		.input {
-			padding: 10px 20px 10px 44px;
+			padding-left: 46px;
 		}
 
 		.placeholder {
@@ -148,6 +151,7 @@
 		.input {
 			height: 200px;
 			padding: 16px 20px;
+
 			resize: none;
 		}
 
@@ -159,7 +163,7 @@
 	
 	&.phone {
 		.input {
-			padding: 10px 20px 10px 72px;
+			padding-left: 72px;
 		}
 
 		.placeholder {

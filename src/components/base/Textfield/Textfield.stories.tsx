@@ -1,10 +1,20 @@
+import { useState } from 'react';
+
 import { Textfield } from './Textfield';
+import { TTextfieldProps } from './types';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
+const TextFieldComponent = (props: Omit<TTextfieldProps, 'value' | 'setValue'>) => {
+	const [value, setValue] = useState<string>();
+	return (
+		<Textfield {...props} value={value} onChange={(e) => setValue(e?.target?.value)} />
+	);
+};
+
 const meta = {
 	title: 'Components/Textfield',
-	component: Textfield,
+	component: TextFieldComponent,
 	tags: ['autodocs'],
 	argTypes: {
 		className: { control: false },
@@ -21,6 +31,7 @@ const meta = {
 	args: {
 		type: 'text',
 		textarea: false,
+		placeholder: 'Enter a text',
 		autoComplete: 'off',
 	},
 } satisfies Meta<typeof Textfield>;

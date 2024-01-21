@@ -13,14 +13,14 @@
 	cursor: pointer;
 
 	&.miniSize {
-		--rippleSize: 80px 40px;
+		--rippleSize: 24px 12px;
 	}
 
 	&.smallSize {
-		--rippleSize: 100px 50px;
+		--rippleSize: 30px 15px;
 	}
 
 	&.mediumSize {
-		--rippleSize: 150px 75px;
+		--rippleSize: 48px 24px;
 	}
 }
