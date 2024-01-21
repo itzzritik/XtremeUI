@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { forwardRef, useEffect, useMemo, useState } from 'react';
 
 import {
@@ -28,8 +27,9 @@ import type { HsvaColor, Input } from 'colord/types';
 export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props, ref) => {
 	const { className, popperClassName, placeholder = 'Color Picker', showReset = true, shade, alpha, color, setColor } = props;
 
-	const format = useMemo(() => getFormat(color as Input), [color]);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const initialColor = useMemo(() => colord(color), []);
+	const format = useMemo(() => getFormat(color as Input), [color]);
 	const [localColor, setLocalColor] = useState<HsvaColor>(colord(color).toHsv());
 	const [textColor, setTextColor] = useState<string>(colord(color).toHex());
 
@@ -73,12 +73,14 @@ export const ColorPopper = forwardRef<HTMLDivElement, TColorPopperProps>((props,
 
 	useEffect(() => {
 		const col = colord(localColor);
-		if (format === 'rgb') setColor?.(col.toRgb());
-		else if (format === 'hex') setColor?.(col.toHex());
-		else if (format === 'hsl') setColor?.(col.toHsl());
-		else if (format === 'hsv') setColor?.(col.toHsv());
 
-	}, [format, localColor, setColor]);
+		if (!col.isEqual(colord(color))) {
+			if (format === 'rgb') setColor?.(col.toRgb());
+			else if (format === 'hex') setColor?.(col.toHex());
+			else if (format === 'hsl') setColor?.(col.toHsl());
+			else if (format === 'hsv') setColor?.(col.toHsv());
+		}
+	}, [color, format, localColor, setColor]);
 
 	return (
 		<>
