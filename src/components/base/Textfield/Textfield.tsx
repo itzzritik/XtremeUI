@@ -106,7 +106,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 					onKeyDown={onLocalKeyDown}
 				/>
 			}
-			<span className={styles.placeholder}>{localPlaceholder}</span>
+			<label className={styles.placeholder}>{localPlaceholder}</label>
 		</div>
 	);
 });

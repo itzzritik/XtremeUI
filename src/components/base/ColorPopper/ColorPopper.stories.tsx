@@ -14,7 +14,7 @@ const ColorPickerComponent = (props: Omit<TColorPopperProps, 'color' | 'setColor
 };
 
 const meta = {
-	title: 'Layouts/ColorPopper',
+	title: 'Components/ColorPopper',
 	component: ColorPickerComponent,
 	tags: [],
 	argTypes: {

@@ -1,11 +1,10 @@
 @mixin raisePlaceholder {
 	.placeholder {
-		transform: translate(20px, -12px);
+		transform: translate(22px, -12px);
 		scale: 0.75;
 		font-variation-settings: 'wdth' 75, 'wght' 700;
 		color: rgb(var(--colorBrandAccentRgb) / 100%);
 		
-
 		&::before {
 			scale: 1;
 		}
@@ -13,14 +12,15 @@
 
 	&.withIcon {
 		.placeholder {
-			transform: translate(54px, -12px);
+			transform: translate(56px, -12px);
 		}
 	}
 
 	&.phone {
 		.placeholder {
-			transform: translate(54px, -12px);
+			transform: translate(56px, -12px);
 		}
+
 		.dialCode {	
 			p {
 				margin-top: 14px;
@@ -30,7 +30,7 @@
 
 	&.textarea {
 		.placeholder {
-			transform: translate(24px, -14px);
+			transform: translate(22px, 8px);
 		}
 	}
 }
@@ -45,7 +45,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 20px;
+	border-radius: 22px;
 	box-shadow: 0 0 0 1px rgb(var(--colorBrandAccentRgb) / 50%);
 	background: var(--primaryColor);
 	color: rgb(var(--colorContentPrimary));
@@ -57,7 +57,7 @@
 		display: block;
 		width: 100%; height: 100%;
 		background: rgb(var(--colorBrandAccentRgb));
-		clip-path: circle(0% at 20px 50%);
+		clip-path: circle(0% at 22px 50%);
 		border-radius: 9999px;
 		z-index: 0;
 		opacity: 0;
@@ -67,8 +67,8 @@
 	.icon {
 		position: absolute;
 		left: 0;
-		width: 40px; height: 40px;
-		font-size: var(--fontSize);
+		width: 44px; height: 44px;
+		font-size: calc(var(--fontSize) + 2px);
 		color: rgb(var(--colorBrandAccentRgb) / 100%);
 		pointer-events: none;
 		transition: all 0s;
@@ -83,7 +83,7 @@
 
 		span {
 			display: flex;
-			width: 40px; height: 40px;
+			width: 44px; height: 44px;
 			background-size: cover;
 			background-position: center;
 			border-radius: 9999px;
@@ -98,11 +98,12 @@
 	}
 
 	.input {
-		width: 100%; height: 40px;
+		width: 100%;
 		outline: none;
 		border: none;
 		background: transparent;
-		padding: 20px 20px 6px 20px;
+		padding: 20px 22px 6px;
+		line-height: 18px;
 		z-index: 1;
 		font-size: var(--fontSize);
 		font-variation-settings: 'wdth' 75, 'wght' 400;
@@ -110,11 +111,12 @@
 
 		&[type="number"]::-webkit-inner-spin-button,
 		&[type="number"]::-webkit-outer-spin-button {
-			-webkit-appearance: none;
+			appearance: none;
 			margin: 0;
 		}
+
 		&[type="number"] {
-			-moz-appearance: textfield;
+			appearance: textfield;
 		}
 	}
 
@@ -124,22 +126,23 @@
 		display: flex;
 		align-items: center;
 		color: var(--colorContentSecondary);
-		transform: translate(14px, 0);
+		transform: translate(16px, 0);
 		transform-origin: 0 50%;
 		font-size: var(--fontSize);
 		line-height: 20px;
 		padding: 0 8px;
+		z-index: 2;
 		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
 	&.withIcon {
 		&::before {
-			clip-path: circle(15px at 20px 50%);
+			clip-path: circle(16px at 22px 50%);
 			opacity: 0.4;
 		}
 
 		.input {
-			padding-left: 46px;
+			padding-left: 48px;
 		}
 
 		.placeholder {
@@ -150,24 +153,24 @@
 	&.textarea {
 		.input {
 			height: 200px;
-			padding: 16px 20px;
-
+			padding: 0 22px;
+			margin: 26px 0 8px;
 			resize: none;
 		}
 
 		.placeholder {
 			top: 0;
-			transform: translate(20px, 16px);
+			transform: translate(16px, 20px);
 		}
 	}
 	
 	&.phone {
 		.input {
-			padding-left: 72px;
+			padding-left: 74px;
 		}
 
 		.placeholder {
-			transform: translate(64px, 0);
+			transform: translate(68px, 0);
 		}
 	}
 
@@ -183,7 +186,7 @@
 
 		&.withIcon {
 			&::before {
-				clip-path: circle(17px at 20px 50%);
+				clip-path: circle(18px at 22px 50%);
 				opacity: 0.8;
 			}
 

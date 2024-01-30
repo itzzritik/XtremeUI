@@ -3,12 +3,8 @@ import { resolve } from 'node:path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import EsLint from 'vite-plugin-linter';
+import { EsLinter, linterPlugin, TypeScriptLinter } from 'vite-plugin-linter';
 import tsConfigPaths from 'vite-tsconfig-paths';
-
-import { peerDependencies } from './package.json';
-
-const { EsLinter, linterPlugin } = EsLint;
 
 export default defineConfig((configEnv) => ({
 	plugins: [
@@ -16,7 +12,7 @@ export default defineConfig((configEnv) => ({
 		tsConfigPaths(),
 		linterPlugin({
 			include: ['./src}/**/*.{ts,tsx}'],
-			linters: [new EsLinter({ configEnv })],
+			linters: [new EsLinter({ configEnv }), new TypeScriptLinter()],
 		}),
 		dts({
 			insertTypesEntry: true,
@@ -41,7 +37,8 @@ export default defineConfig((configEnv) => ({
 					return null;
 				},
 			},
-			external: [...Object.keys(peerDependencies)],
+
+			// external: [...Object.keys(peerDependencies)],
 		},
 	},
 }));

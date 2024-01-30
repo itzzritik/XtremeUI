@@ -39,8 +39,8 @@ export { Textfield } from './components/base/Textfield/Textfield';
 export { type TTextfieldProps } from './components/base/Textfield/types';
 
 // ColorPopper
-export { ColorPopper } from './components/layout/ColorPopper/ColorPopper';
-export { type TColorPopperProps } from './components/layout/ColorPopper/types';
+export { ColorPopper } from './components/base/ColorPopper/ColorPopper';
+export { type TColorPopperProps } from './components/base/ColorPopper/types';
 export type { AnyColor } from 'colord';
 
 // Sider
