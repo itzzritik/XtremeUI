@@ -1,0 +1,102 @@
+/* stylelint-disable selector-class-pattern */
+.xtrSelect {
+	&__control {
+		background: var(--colorBackgroundSecondary) !important;
+		border: none !important;
+		border-radius: 22px !important;
+		padding: 4px 4px 4px 0 !important;
+		box-shadow: 0 0 0 1px rgb(var(--colorBrandAccentRgb) / 50%) !important;
+		transition: all var(--animDurDefault) var(--cubicBezierPrimary) !important;
+
+		&--menu-is-open {
+			border-radius: 22px 22px 4px 4px !important;
+			background: var(--colorBackgroundPrimary) !important;
+			box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%) !important;
+		}
+	}
+
+	&__value-container {
+		padding-left: 16px !important;
+
+		&.xtrSelect__value-container--is-multi.xtrSelect__value-container--has-value {
+			padding-left: 10px !important;
+		}
+	}
+
+	&__multi-value {
+		background: var(--colorBackgroundTertiary) !important;
+		border-radius: 9999px !important;
+		overflow: hidden !important;
+
+		&__label {
+			padding: 3px 6px 3px 8px !important;
+			color: var(--colorContentPrimary) !important;
+		}
+
+		&__remove {
+			color: var(--colorContentPrimary) !important;
+			padding: 0 8px 0 2px !important;
+			cursor: pointer !important;
+
+			&:hover {
+				background: rgb(var(--colorAlertErrorRGB) / 50%) !important;
+			}
+		}
+	}
+
+	&__indicator-separator {
+		display: none;
+	}
+
+	&__indicator {
+		cursor: pointer;
+	}
+
+	&__single-value, &__input {
+		color: var(--colorContentPrimary) !important;
+	}
+
+	&__menu {
+		background: var(--colorBackgroundPrimary) !important;
+		box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%) !important;
+		border-radius: 4px 4px 22px 22px !important;
+		margin-top: 10px !important;
+		overflow: hidden !important;
+		animation: showDropDown 0.2s ease-out forwards;
+	}
+
+	&__menu-list {
+		padding: 0 !important;
+	}
+
+	&__option {
+		padding: 12px 24px !important;
+		cursor: pointer !important;
+
+		&--is-focused {
+			color: white !important;
+			background: rgb(var(--colorBrandAccentRgb) / 50%) !important;
+		}
+
+		&--is-selected {
+			color: white !important;
+			background: rgb(var(--colorBrandAccentRgb)) !important;
+		}
+	}
+
+	@keyframes showDropDown {
+		0% {
+		  opacity: 0;
+		  transform: translateY(-20px);
+		}
+
+		100% {
+		  opacity: 1;
+		  transform: translateY(0);
+		}
+	}
+
+	&--is-disabled {
+		opacity: 0.5 !important;
+	}
+}

@@ -38,6 +38,14 @@ export { type ISpinnerProps, ESpinnerSize } from './components/base/Spinner/type
 export { Textfield } from './components/base/Textfield/Textfield';
 export { type TTextfieldProps } from './components/base/Textfield/types';
 
+// DatePicker
+export { DatePicker } from './components/base/DatePicker/DatePicker';
+export { type TDatePickerProps, type TDateValue, EDatePickerTypes } from './components/base/DatePicker/types';
+
+// Select
+export { Select } from './components/base/Select/Select';
+export { type TSelectProps, ESelectTypes } from './components/base/Select/types';
+
 // ColorPopper
 export { ColorPopper } from './components/base/ColorPopper/ColorPopper';
 export { type TColorPopperProps } from './components/base/ColorPopper/types';

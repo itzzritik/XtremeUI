@@ -4,7 +4,7 @@ import XDatePicker from 'react-date-picker';
 import XDateTimePicker from 'react-datetime-picker';
 import XTimePicker from 'react-time-picker';
 
-import { Icon } from '../Icon/Icon';
+import { Icon } from '#components/base/Icon/Icon';
 
 import './datePicker.scss';
 import { TDatePickerProps } from './types';

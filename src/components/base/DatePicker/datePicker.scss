@@ -1,8 +1,10 @@
+/* stylelint-disable selector-class-pattern */
 $datePickerNames: date, daterange, datetime, time;
 
 @mixin buttonBackground {
 	&::before {
 		$pad: 1px;
+
 		content: '';
 		position: absolute;
 		inset: $pad $pad $pad $pad;
@@ -14,6 +16,7 @@ $datePickerNames: date, daterange, datetime, time;
 		&::before {
 			background: rgb(var(--colorBrandAccentRgb) / 75%);
 		}
+
 		color: white !important;
 		
 		* {
@@ -50,6 +53,7 @@ $datePickerNames: date, daterange, datetime, time;
 		opacity: 0.4;
 		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 	}
+
 	@each $name in $datePickerNames {
 		.react-#{$name}-picker__wrapper {
 			position: relative;
@@ -89,7 +93,7 @@ $datePickerNames: date, daterange, datetime, time;
 		
 		.react-#{$name}-picker__calendar {
 			width: 100%;
-			border-radius: 24px;
+			border-radius: 4px 4px 22px 22px;
 			box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%);
 			background: var(--colorBackgroundPrimary);
 			padding: 4px;
@@ -104,12 +108,15 @@ $datePickerNames: date, daterange, datetime, time;
 					position: relative;
 					aspect-ratio: 1;
 					background: none;
+
 					@include buttonBackground;
 				}
+
 				.react-calendar__navigation__label {
 					position: relative;
 					border-radius: 8px;
 					background: none;
+
 					@include buttonBackground;
 				}
 	
@@ -121,7 +128,7 @@ $datePickerNames: date, daterange, datetime, time;
 					&::before {
 						content: '';
 						position: absolute;
-						inset: 1 1 1 1;
+						inset: 1;
 						border-radius: 9999px;
 					}
 	
@@ -133,7 +140,7 @@ $datePickerNames: date, daterange, datetime, time;
 	
 					&--now {
 						&::before {
-							inset: 0 0 0 0;
+							inset: 0;
 							background: none;
 							border: 1px solid rgb(var(--colorBrandAccentRgb) / 75%);
 						}
@@ -143,9 +150,10 @@ $datePickerNames: date, daterange, datetime, time;
 					
 					&--active, &--hasActive {
 						&::before {
-							inset: 0 0 0 0;
+							inset: 0;
 							background: rgb(var(--colorBrandAccentRgb) / 100%) !important;
 						}
+
 						abbr {
 							color: white;
 						}
@@ -159,6 +167,7 @@ $datePickerNames: date, daterange, datetime, time;
 	
 						&::before {
 							$pad: 3px;
+
 							inset: $pad $pad $pad $pad;
 							border-radius: 16px;
 						}
@@ -178,7 +187,7 @@ $datePickerNames: date, daterange, datetime, time;
 			
 			width: 100%;
 			height: auto;
-			border-radius: 24px;
+			border-radius: 4px 4px 22px 22px;
 			border: none;
 			box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%);
 			background: var(--colorBackgroundPrimary);
@@ -187,9 +196,11 @@ $datePickerNames: date, daterange, datetime, time;
 	
 			.react-clock {
 				margin: auto;
+
 				.react-clock__face {
 					border-color: var(--clockColor);
 				}
+
 				.react-clock__mark__body, .react-clock__hand__body {
 					background: var(--clockColor);
 				}
@@ -197,6 +208,7 @@ $datePickerNames: date, daterange, datetime, time;
 		}
 	
 		&.react-#{$name}-picker--open {
+			border-radius: 22px 22px 4px 4px !important;
 			box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%);
 			background: var(--secondaryColor);
 	
