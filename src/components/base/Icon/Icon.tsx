@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import { unicodeToString } from '#utils/index';
 
-import styles from './icon.module.scss';
+import './icon.scss';
 import { EIconSize, IIconProps } from './types';
 
 export const Icon = forwardRef<HTMLSpanElement, IIconProps>((props, ref) => {
@@ -12,9 +12,10 @@ export const Icon = forwardRef<HTMLSpanElement, IIconProps>((props, ref) => {
 
 	const iconSize = `${typeof size === 'number' ? size : EIconSize[size]}px`;
 	const IconClsx = clsx(
-		styles.icon,
-		type && styles[type],
-		onClick && styles.iconButton,
+		'xtrIcon',
+		'fontAwesome',
+		type,
+		onClick && 'iconButton',
 		className,
 	);
 

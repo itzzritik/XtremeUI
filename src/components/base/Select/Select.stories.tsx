@@ -29,8 +29,6 @@ const options = [
 
 function SelectComponent <T> (props: TSelectProps<T>) {
 	const [value, setValue] = useState<T>();
-
-	console.log(props);
 	return (
 		<Select {...props} value={value} onChange={(v) => setValue(v as T)} />
 	);
@@ -56,12 +54,13 @@ export default meta;
 
 export const Single: StoryObj<typeof meta> = {
 	args: {
-
+		icon: 'f002',
 	},
 };
 
 export const Multiple: StoryObj<typeof meta> = {
 	args: {
 		type: 'multi',
+		icon: 'f002',
 	},
 };

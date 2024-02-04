@@ -1,8 +1,5 @@
-import XDateRangePicker from '@wojtekmaj/react-daterange-picker';
 import clsx from 'clsx';
-import XDatePicker from 'react-date-picker';
-import XDateTimePicker from 'react-datetime-picker';
-import XTimePicker from 'react-time-picker';
+import DateTimePicker from 'react-datetime-picker';
 
 import { Icon } from '#components/base/Icon/Icon';
 
@@ -19,12 +16,12 @@ const DefaultDateFormat = {
 };
 
 const DateComponentList = {
-	date: XDatePicker,
-	dateRange: XDateRangePicker,
-	time: XTimePicker,
-	timeRange: XDatePicker,
-	dateTime: XDateTimePicker,
-	dateTimeRange: XDateTimePicker,
+	date: DateTimePicker,
+	dateRange: DateTimePicker,
+	time: DateTimePicker,
+	timeRange: DateTimePicker,
+	dateTime: DateTimePicker,
+	dateTimeRange: DateTimePicker,
 };
 
 export const DatePicker = (props: TDatePickerProps) => {
@@ -38,6 +35,8 @@ export const DatePicker = (props: TDatePickerProps) => {
 		hourPlaceholder = 'hh',
 		minutePlaceholder = 'mm',
 		secondPlaceholder = 'ss',
+		placeholder = 'Select a Date',
+		icon = 'f784',
 		value,
 		onChange,
 	} = props;
@@ -49,7 +48,7 @@ export const DatePicker = (props: TDatePickerProps) => {
 
 	const commonProps = {
 		className: DatePickerClsx,
-		calendarIcon: <Icon code='f784' type='solid' />,
+		calendarIcon: <Icon code={icon} type='solid' />,
 		clearIcon: <Icon code='f00d' type='solid' />,
 		format: format ?? DefaultDateFormat[type],
 		dayPlaceholder,
@@ -58,6 +57,7 @@ export const DatePicker = (props: TDatePickerProps) => {
 		hourPlaceholder,
 		minutePlaceholder,
 		secondPlaceholder,
+		placeholder,
 		value,
 		onChange,
 	};
@@ -65,6 +65,6 @@ export const DatePicker = (props: TDatePickerProps) => {
 	const DateComponent = DateComponentList[type];
 
 	return (
-		<DateComponent {...commonProps} />
+		<DateComponent data-testid={placeholder} {...commonProps} />
 	);
 };

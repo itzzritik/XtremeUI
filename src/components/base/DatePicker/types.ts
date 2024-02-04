@@ -11,6 +11,8 @@ export type TDatePickerProps = {
 	hourPlaceholder?: string,
 	minutePlaceholder?: string,
 	secondPlaceholder?: string,
+	placeholder?: string,
+	icon?: string,
 	value?: TDateValue,
 	onChange: (value: TDateValue) => void
 }

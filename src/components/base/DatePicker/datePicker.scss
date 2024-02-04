@@ -1,5 +1,5 @@
 /* stylelint-disable selector-class-pattern */
-$datePickerNames: date, daterange, datetime, time;
+$datePickerNames: datetime;
 
 @mixin buttonBackground {
 	&::before {
@@ -54,12 +54,31 @@ $datePickerNames: date, daterange, datetime, time;
 		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
+	&::after {
+		content: attr(data-testid);
+		position: absolute;
+		top: 3px;
+		left: 27px;
+		font-size: var(--fontSize);
+		line-height: 20px;
+		padding: 0 8px;
+		color: rgb(var(--colorBrandAccentRgb) / 100%);
+		scale: 0.75;
+		font-variation-settings: 'wdth' 75, 'wght' 700;
+	}
+
 	@each $name in $datePickerNames {
 		.react-#{$name}-picker__wrapper {
 			position: relative;
 			display: flex;
-			padding: 9px 8px 9px 48px ;
+			padding: 16px 8px 2px 44px ;
 			border: none;
+
+			* {
+				line-height: 18px;
+				font-size: 14px;
+				font-variation-settings: 'wdth' 75, 'wght' 400;
+			}
 	
 			.react-#{$name}-picker__inputGroup__input {
 				border: none;
@@ -92,14 +111,17 @@ $datePickerNames: date, daterange, datetime, time;
 		}
 		
 		.react-#{$name}-picker__calendar {
+			position: relative;
 			width: 100%;
 			border-radius: 4px 4px 22px 22px;
 			box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%);
 			background: var(--colorBackgroundPrimary);
 			padding: 4px;
 			margin-top: 10px;
+			z-index: 100;
 	
 			.react-calendar {
+				width: 100%;
 				background: transparent;
 				border: none;
 				user-select: none;
@@ -193,6 +215,7 @@ $datePickerNames: date, daterange, datetime, time;
 			background: var(--colorBackgroundPrimary);
 			padding: 16px;
 			margin-top: 10px;
+			z-index: 100;
 	
 			.react-clock {
 				margin: auto;

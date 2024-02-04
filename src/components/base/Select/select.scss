@@ -1,86 +1,199 @@
 /* stylelint-disable selector-class-pattern */
-.xtrSelect {
-	&__control {
-		background: var(--colorBackgroundSecondary) !important;
-		border: none !important;
-		border-radius: 22px !important;
-		padding: 4px 4px 4px 0 !important;
-		box-shadow: 0 0 0 1px rgb(var(--colorBrandAccentRgb) / 50%) !important;
-		transition: all var(--animDurDefault) var(--cubicBezierPrimary) !important;
+.xtrSelectWrapper {
+	position: relative;
+	display: flex;
+	width: fit-content;
+	align-items: center;
 
-		&--menu-is-open {
-			border-radius: 22px 22px 4px 4px !important;
+	.xtrSelect {
+		min-width: 300px;
+		position: relative;
+	
+		&__control {
+			position: relative;
+			background: var(--colorBackgroundSecondary) !important;
+			border: none !important;
+			padding: 0 8px 0 22px !important;
+			border-radius: 22px !important;
+			box-shadow: 0 0 0 1px rgb(var(--colorBrandAccentRgb) / 50%) !important;
+			transition: all var(--animDurDefault) var(--cubicBezierPrimary) !important;
+	
+			&::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				display: block;
+				width: 100%; height: 100%;
+				background: rgb(var(--colorBrandAccentRgb));
+				clip-path: circle(0% at 22px 50%);
+				border-radius: 9999px;
+				opacity: 0;
+				transition: all var(--animDurDefault) var(--cubicBezierPrimary);
+			}
+		}
+	
+		&__value-container {
+			padding: 16px 16px 2px 0 !important;
+			font-size: 14px;
+	
+			&.xtrSelect__value-container--is-multi {
+				padding: 9px 0 !important;
+
+				&.xtrSelect__value-container--has-value {
+					margin-left: -10px;
+				}
+			}
+		}
+	
+		&__multi-value {
+			background: var(--colorBackgroundTertiary) !important;
+			border-radius: 9999px !important;
+			overflow: hidden !important;
+	
+			&__label {
+				padding: 3px 6px 3px 8px !important;
+				color: var(--colorContentPrimary) !important;
+			}
+	
+			&__remove {
+				color: var(--colorContentPrimary) !important;
+				padding: 0 8px 0 2px !important;
+				cursor: pointer !important;
+	
+				&:hover {
+					background: rgb(var(--colorAlertErrorRGB) / 50%) !important;
+				}
+			}
+		}
+	
+		&__indicator-separator {
+			display: none;
+		}
+	
+		&__indicator {
+			cursor: pointer;
+		}
+	
+		&__single-value, &__input {
+			color: var(--colorContentPrimary) !important;
+		}
+	
+		&__menu {
 			background: var(--colorBackgroundPrimary) !important;
 			box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%) !important;
+			border-radius: 4px 4px 22px 22px !important;
+			margin-top: 10px !important;
+			overflow: hidden !important;
+			animation: showDropDown 0.2s ease-out forwards;
+			z-index: 100;
 		}
-	}
-
-	&__value-container {
-		padding-left: 16px !important;
-
-		&.xtrSelect__value-container--is-multi.xtrSelect__value-container--has-value {
-			padding-left: 10px !important;
+	
+		&__menu-list {
+			padding: 0 !important;
 		}
-	}
-
-	&__multi-value {
-		background: var(--colorBackgroundTertiary) !important;
-		border-radius: 9999px !important;
-		overflow: hidden !important;
-
-		&__label {
-			padding: 3px 6px 3px 8px !important;
-			color: var(--colorContentPrimary) !important;
-		}
-
-		&__remove {
-			color: var(--colorContentPrimary) !important;
-			padding: 0 8px 0 2px !important;
+	
+		&__option {
+			padding: 12px 24px !important;
 			cursor: pointer !important;
+	
+			&--is-focused {
+				color: white !important;
+				background: rgb(var(--colorBrandAccentRgb) / 50%) !important;
+			}
+	
+			&--is-selected {
+				color: white !important;
+				background: rgb(var(--colorBrandAccentRgb)) !important;
+			}
+		}
+	
+		&--is-disabled {
+			opacity: 0.5 !important;
+		}
+	}
 
-			&:hover {
-				background: rgb(var(--colorAlertErrorRGB) / 50%) !important;
+	.xtrSelectIcon {
+		position: absolute;
+		left: 0;
+		width: 44px;
+		height: 44px;
+		font-size: 16px;
+		color: rgb(var(--colorBrandAccentRgb) / 100%);
+	}
+
+	.placeholder {
+		position: absolute;
+		left: 18px;
+		font-size: 14px;
+		color: var(--colorContentSecondary);
+		transform-origin: 0 50%;
+		pointer-events: none;
+		margin: 0;
+		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
+	}
+
+	&.single {
+		.xtrSelect__placeholder {
+			opacity: 0;
+		}
+	}
+
+	&.open, &.withValue {
+		.placeholder {
+			transform: translate(8px, -12px);
+			scale: 0.75;
+			font-variation-settings: 'wdth' 75, 'wght' 700;
+			color: rgb(var(--colorBrandAccentRgb) / 100%);
+		}
+	}
+
+	&.withIcon {
+		.xtrSelect__control {
+			padding: 0 8px 0 44px !important;
+
+			&::before {
+				clip-path: circle(16px at 22px 50%);
+				opacity: 0.4;
+			}
+
+			&--menu-is-open {
+				&::before {
+					clip-path: circle(18px at 22px 50%);
+					opacity: 0.8;
+				}
+			}
+		}
+
+		.xtrSelect__value-container  {
+			&.xtrSelect__value-container--is-multi.xtrSelect__value-container--has-value {
+				padding-left: 10px !important;
+			}
+		}
+
+		.input {
+			padding-left: 48px;
+		}
+
+		.placeholder {
+			transform: translate(28px, 0);
+		}
+
+		&.withValue, &.open {
+			.placeholder {
+				transform: translate(38px, -12px);
 			}
 		}
 	}
 
-	&__indicator-separator {
-		display: none;
-	}
-
-	&__indicator {
-		cursor: pointer;
-	}
-
-	&__single-value, &__input {
-		color: var(--colorContentPrimary) !important;
-	}
-
-	&__menu {
-		background: var(--colorBackgroundPrimary) !important;
-		box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%) !important;
-		border-radius: 4px 4px 22px 22px !important;
-		margin-top: 10px !important;
-		overflow: hidden !important;
-		animation: showDropDown 0.2s ease-out forwards;
-	}
-
-	&__menu-list {
-		padding: 0 !important;
-	}
-
-	&__option {
-		padding: 12px 24px !important;
-		cursor: pointer !important;
-
-		&--is-focused {
-			color: white !important;
-			background: rgb(var(--colorBrandAccentRgb) / 50%) !important;
+	&.open {
+		.xtrSelect__control {
+			border-radius: 22px 22px 4px 4px !important;
+			background: var(--colorBackgroundPrimary) !important;
+			box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%) !important;
 		}
 
-		&--is-selected {
-			color: white !important;
-			background: rgb(var(--colorBrandAccentRgb)) !important;
+		.xtrSelectIcon {
+			color: white;
 		}
 	}
 
@@ -94,9 +207,5 @@
 		  opacity: 1;
 		  transform: translateY(0);
 		}
-	}
-
-	&--is-disabled {
-		opacity: 0.5 !important;
 	}
 }
