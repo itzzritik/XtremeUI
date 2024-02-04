@@ -58,10 +58,9 @@ $datePickerNames: datetime;
 		content: attr(data-testid);
 		position: absolute;
 		top: 3px;
-		left: 27px;
+		left: 40px;
 		font-size: var(--fontSize);
 		line-height: 20px;
-		padding: 0 8px;
 		color: rgb(var(--colorBrandAccentRgb) / 100%);
 		scale: 0.75;
 		font-variation-settings: 'wdth' 75, 'wght' 700;
@@ -71,7 +70,7 @@ $datePickerNames: datetime;
 		.react-#{$name}-picker__wrapper {
 			position: relative;
 			display: flex;
-			padding: 16px 8px 2px 44px ;
+			padding: 20px 8px 4px 48px ;
 			border: none;
 
 			* {
@@ -103,6 +102,10 @@ $datePickerNames: datetime;
 				}
 			}
 			.react-#{$name}-picker__clear-button {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 8px;
 				background: transparent;
 				outline: none;
 				border: none;
