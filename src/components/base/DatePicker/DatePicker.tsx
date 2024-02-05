@@ -48,8 +48,8 @@ export const DatePicker = (props: TDatePickerProps) => {
 
 	const commonProps = {
 		className: DatePickerClsx,
-		calendarIcon: <Icon code={icon} type='solid' />,
-		clearIcon: <Icon code='f00d' type='solid' />,
+		calendarIcon: <Icon code={icon} type='regular' />,
+		clearIcon: <Icon code='e59b' type='solid' />,
 		format: format ?? DefaultDateFormat[type],
 		dayPlaceholder,
 		monthPlaceholder,

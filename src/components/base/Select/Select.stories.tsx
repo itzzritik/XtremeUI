@@ -28,9 +28,9 @@ const options = [
 ];
 
 function SelectComponent <T> (props: TSelectProps<T>) {
-	const [value, setValue] = useState<T>();
+	const [value, setValue] = useState<T | null | readonly T[]>(null);
 	return (
-		<Select {...props} value={value} onChange={(v) => setValue(v as T)} />
+		<Select {...props} value={value} onChange={(v) => setValue(v)} />
 	);
 }
 
