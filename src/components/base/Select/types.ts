@@ -1,12 +1,11 @@
 import { ReactNode } from 'react';
 
-import { ActionMeta, GroupBase, MultiValue, PropsValue, SingleValue } from 'react-select';
+import { ActionMeta, Options } from 'react-select';
 
 import { EIconType } from '../Icon/types';
 
-export type TSelectProps<T = string> = {
+type TCommonProps<TValue = string> = {
 	className?: string,
-	type?: keyof typeof ESelectTypes,
 	noOptionsMessage?: (obj: { inputValue: string }) => ReactNode,
 	icon?: string,
 	iconType?: keyof typeof EIconType,
@@ -15,12 +14,17 @@ export type TSelectProps<T = string> = {
 	searchable?: boolean,
 	disabled?: boolean,
 	loading?: boolean,
-	options: (T | GroupBase<T>)[],
-	value?: PropsValue<T>,
-	onChange?: (newValue: SingleValue<T> | MultiValue<T>, actionMeta: ActionMeta<T>) => void,
+	options: Options<TValue>,
 }
 
-export enum ESelectTypes {
-	single = 'single',
-	multi = 'multi',
-}
+export type TSelectProps<TMulti extends boolean, TValue> = TMulti extends true
+  ? {
+	multi: true;
+	value?: TValue[],
+	onChange: (value: TValue[], actionMeta: ActionMeta<TValue>) => void,
+} & TCommonProps<TValue>
+  : {
+	multi: false;
+	value?: TValue
+	onChange: (value: TValue, actionMeta: ActionMeta<TValue>) => void,
+} & TCommonProps<TValue>;

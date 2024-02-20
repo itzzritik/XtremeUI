@@ -1,17 +1,17 @@
 import { useState } from 'react';
 
 import clsx from 'clsx';
-import XSelect from 'react-select';
+import XSelect, { ActionMeta, MultiValue, SingleValue } from 'react-select';
 
 import { Icon } from '../Icon/Icon';
 
 import './select.scss';
 import { TSelectProps } from './types';
 
-export function Select<TValue = string> (props: TSelectProps<TValue>) {
+export function Select<TMulti extends boolean, TValue> (props: TSelectProps<TMulti, TValue>) {
 	const {
 		className,
-		type = 'single',
+		multi,
 		placeholder = 'Select an option',
 		noOptionsMessage,
 		icon,
@@ -25,25 +25,32 @@ export function Select<TValue = string> (props: TSelectProps<TValue>) {
 		onChange,
 	} = props;
 
-	console.log(value);
-
 	const [open, setOpen] = useState(false);
 
 	const SelectClsx = clsx(
 		'xtrSelectWrapper',
-		type,
+		multi ? 'multi' : 'single',
 		icon && 'withIcon',
 		!!value && 'withValue',
 		open && 'open',
 		className,
 	);
 
+	const onChangeHandler = (newValue: MultiValue<TValue> | SingleValue<TValue>, actionMeta: ActionMeta<TValue>) => {
+		if (!newValue) return;
+		const val = multi
+			? newValue.map(({ value }) => value)
+			: newValue.value;
+
+		onChange(val, actionMeta);
+	};
+
 	return (
 		<div className={SelectClsx}>
 			<XSelect
 				className='xtrSelect'
 				classNamePrefix='xtrSelect'
-				isMulti={type === 'multi'}
+				isMulti={multi}
 				menuIsOpen={open}
 				onMenuOpen={() => setOpen(true)}
 				onMenuClose={() => setOpen(false)}
@@ -55,9 +62,9 @@ export function Select<TValue = string> (props: TSelectProps<TValue>) {
 				isLoading={loading}
 				options={options}
 				value={value}
-				onChange={onChange}
+				onChange={onChangeHandler}
 			/>
-			{placeholder && type === 'single' && <p className='placeholder'>{placeholder}</p>}
+			{placeholder && !multi && <p className='placeholder'>{placeholder}</p>}
 			{icon && <Icon className='xtrSelectIcon' code={icon} type={iconType} />}
 		</div>
 	);

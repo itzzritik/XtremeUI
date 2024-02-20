@@ -39,5 +39,6 @@
 		"wght",
 		"wojtekmaj",
 		"xtreme"
-	]
+	],
+	"CodeGPT.apiKey": "OpenAI"
 }

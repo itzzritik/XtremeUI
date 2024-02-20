@@ -27,10 +27,10 @@ const options = [
 	{ value: 'toffee', label: 'Toffee' },
 ];
 
-function SelectComponent <T> (props: TSelectProps<T>) {
-	const [value, setValue] = useState<T | null | readonly T[]>(null);
+function SelectComponent <TMulti extends boolean, TValue> (props: TSelectProps<TMulti, TValue>) {
+	const [value, setValue] = useState<TValue>();
 	return (
-		<Select {...props} value={value} onChange={(v) => setValue(v)} />
+		<Select {...props} multi={false} value={value} options={options} onChange={(v) => setValue(v)} />
 	);
 }
 
