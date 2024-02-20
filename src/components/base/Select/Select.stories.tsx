@@ -27,10 +27,10 @@ const options = [
 	{ value: 'toffee', label: 'Toffee' },
 ];
 
-function SelectComponent <TMulti extends boolean, TValue> (props: TSelectProps<TMulti, TValue>) {
+function SelectComponent <TValue> (props: TSelectProps<TValue>) {
 	const [value, setValue] = useState<TValue>();
 	return (
-		<Select {...props} multi={false} value={value} options={options} onChange={(v) => setValue(v)} />
+		<Select {...props} value={value} onChange={setValue} />
 	);
 }
 
@@ -60,7 +60,7 @@ export const Single: StoryObj<typeof meta> = {
 
 export const Multiple: StoryObj<typeof meta> = {
 	args: {
-		type: 'multi',
+		multi: true,
 		icon: 'f002',
 	},
 };

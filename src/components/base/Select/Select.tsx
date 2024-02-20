@@ -1,17 +1,17 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import clsx from 'clsx';
-import XSelect, { ActionMeta, MultiValue, SingleValue } from 'react-select';
+import XSelect, { ActionMeta, GroupBase, MultiValue, OptionsOrGroups, PropsValue, SingleValue } from 'react-select';
 
 import { Icon } from '../Icon/Icon';
 
 import './select.scss';
-import { TSelectProps } from './types';
+import { Option, TSelectProps } from './types';
 
-export function Select<TMulti extends boolean, TValue> (props: TSelectProps<TMulti, TValue>) {
+export function Select<T> (props: TSelectProps<T>) {
 	const {
 		className,
-		multi,
+		multi = false,
 		placeholder = 'Select an option',
 		noOptionsMessage,
 		icon,
@@ -26,6 +26,7 @@ export function Select<TMulti extends boolean, TValue> (props: TSelectProps<TMul
 	} = props;
 
 	const [open, setOpen] = useState(false);
+	const localValue = useMemo(() => options.find((option) => option.value === value) as unknown as PropsValue<T> ,[value])
 
 	const SelectClsx = clsx(
 		'xtrSelectWrapper',
@@ -36,13 +37,12 @@ export function Select<TMulti extends boolean, TValue> (props: TSelectProps<TMul
 		className,
 	);
 
-	const onChangeHandler = (newValue: MultiValue<TValue> | SingleValue<TValue>, actionMeta: ActionMeta<TValue>) => {
-		if (!newValue) return;
+	const onChangeHandler = (newValue: MultiValue<T> | SingleValue<T>, actionMeta: ActionMeta<T>) => {
 		const val = multi
-			? newValue.map(({ value }) => value)
-			: newValue.value;
+			? (newValue as Array<Option<T>>)?.map(({ value }) => value)
+			: (newValue as unknown as Option<T>)?.value;
 
-		onChange(val, actionMeta);
+		onChange(val as any);
 	};
 
 	return (
@@ -60,8 +60,8 @@ export function Select<TMulti extends boolean, TValue> (props: TSelectProps<TMul
 				isSearchable={searchable}
 				isDisabled={disabled}
 				isLoading={loading}
-				options={options}
-				value={value}
+				options={options as unknown as OptionsOrGroups<T, GroupBase<T>>}
+				value={localValue}
 				onChange={onChangeHandler}
 			/>
 			{placeholder && !multi && <p className='placeholder'>{placeholder}</p>}
