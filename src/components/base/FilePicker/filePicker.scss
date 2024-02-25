@@ -1,0 +1,39 @@
+.xtrFilePicker {
+	&.draggable {
+		width: 500px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		border: 2px dotted var(--colorContentTertiary);
+		border-radius: 24px;
+		cursor: pointer;
+		user-select: none;
+		padding: 32px;
+		transition: all 0.2s ease-out;
+
+		> i {
+			margin-bottom: 12px;
+		}
+		> h2 {
+			margin: 0;
+			font-variation-settings: 'wdth' 75, 'wght' 200;
+			margin-bottom: 4px;
+		}
+		> p {
+			margin: 0;
+			font-size: 14px;
+			font-variation-settings: 'wdth' 75, 'wght' 300;
+		}
+
+		&:hover {
+			background: rgb(var(--colorBrandAccentRgb) / 10%);
+			border-color: rgb(var(--colorBrandAccentRgb) / 50%);
+
+			> i {
+				color: rgb(var(--colorBrandAccentRgb) / 100%);
+				transform: scale(1.05);
+			}
+		}
+	}
+}
