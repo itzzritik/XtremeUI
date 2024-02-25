@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { Avatar } from '#components/base/Avatar/Avatar';
 
 import { FilePicker } from './FilePicker';
@@ -6,8 +8,12 @@ import { TFilePickerProps } from './types';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const FilePickerComponent = (props: Omit<TFilePickerProps, 'value' | 'onChange'>) => {
+	const [file, setFile] = useState<File[]>();
+
 	return (
-		<FilePicker {...props} onChange={console.log} />
+		<FilePicker {...props} onChange={setFile}>
+			{ props.children && <Avatar file={file?.[0]} size={200} /> }
+		</FilePicker>
 	);
 };
 
@@ -41,6 +47,6 @@ export const Draggable: StoryObj<typeof meta> = {
 export const Wrapper: StoryObj<typeof meta> = {
 	args: {
 		accept: 'image/*',
-		children: <Avatar src='https://avatars.githubusercontent.com/u/24320496?v=4' />,
+		children: 'Avatar',
 	},
 };

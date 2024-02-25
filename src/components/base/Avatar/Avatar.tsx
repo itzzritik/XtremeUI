@@ -4,36 +4,74 @@ import clsx from 'clsx';
 
 import { Icon } from '../Icon/Icon';
 
-import styles from './avatar.module.scss';
+import './avatar.scss';
 import { EAvatarSize, TAvatarProps } from './types';
 
 export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
-	const { className, src, alt, placeholderIcon = 'f03e', size = 'default', onClick } = props;
-	const [isLoading, setIsLoading] = useState(true);
+	const { className, src, file, alt, placeholderIcon = 'f03e', size = 'default', onClick } = props;
+	const [image, setImage] = useState<string>();
+	const [isLoading, setIsLoading] = useState(!!src || !!file);
 	const [isError, setIsError] = useState(false);
 
 	const avatarSize = typeof size === 'number' ? size : EAvatarSize[size];
 	const AvatarClsx = clsx(
-		styles.avatar,
+		'xtrAvatar',
 		className,
-		isLoading && styles.loading,
-		isError && styles.error,
+		isLoading && 'loading',
+		isError && 'error',
 	);
 
-	useEffect(() => {
-		setIsLoading(true);
-		setIsError(false);
+	const loadSrcImage = async (url: string, cb: (img?: string) => void) => {
+		const response = await fetch(url);
+		if (!response.ok) {
+			setIsLoading(false);
+			setIsError(false);
+		}
+		else {
+			const blob = await response.blob();
+			cb(URL.createObjectURL(blob));
+		}
+	};
+	const loadFileImage = async (file: File, cb: (img?: string) => void) => {
+		const reader = new FileReader();
 
-		const img = new Image();
-		img.src = src;
-		img.onload = () => setIsLoading(false);
-		img.onerror = () => {
+		reader.onloadend = () => {
+			cb(reader?.result?.toString());
+		};
+		reader.onerror = () => {
 			setIsLoading(false);
 			setIsError(true);
 		};
 
-		return () => { img.onload = null; };
-	}, [src]);
+		reader.readAsDataURL(file);
+	};
+
+	const clearLoading = (img?: string) => {
+		img && setTimeout(() => setImage(img), 300);
+		setTimeout(() => setIsLoading(false), 1000);
+	};
+
+	useEffect(() => {
+		try {
+			if (file) {
+				setIsLoading(true);
+				setIsError(false);
+				loadFileImage(file, clearLoading);
+			}
+			else if (src) {
+				setIsLoading(true);
+				setIsError(false);
+				loadSrcImage(src, clearLoading);
+			}
+			else {
+				setImage(undefined);
+				clearLoading();
+			}
+		}
+		catch (err) {
+			clearLoading();
+		}
+	}, [src, file]);
 
 	return (
 		<div
@@ -44,16 +82,12 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 			role='img'
 		>
 			{
-				isLoading || isError ?
-					<Icon
-						className={styles.placeholder}
-						type='solid'
-						size={8 + avatarSize / 4}
-						code={isError ? 'e1b7' : placeholderIcon}
-					/>
-					: <img className={styles.image} src={src} alt={alt} />
+				!image &&
+				<Icon className='placeholder' type='solid' size={8 + avatarSize / 4} code={isError ? 'e1b7' : placeholderIcon} />
 			}
-
+			{
+				image && <img className='image' src={image} alt={alt} />
+			}
 		</div>
 	);
 });

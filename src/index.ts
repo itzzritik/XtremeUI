@@ -42,9 +42,13 @@ export { type TTextfieldProps } from './components/base/Textfield/types';
 export { DatePicker } from './components/base/DatePicker/DatePicker';
 export { type TDatePickerProps, type TDateValue, EDatePickerTypes } from './components/base/DatePicker/types';
 
+// FilePicker
+export { FilePicker } from './components/base/FilePicker/FilePicker';
+export { type TFilePickerProps, type EFilePickerAccept, FilePickerIcon } from './components/base/FilePicker/types';
+
 // Select
 export { Select } from './components/base/Select/Select';
-export { type TSelectProps, ESelectTypes } from './components/base/Select/types';
+export { type TSelectProps } from './components/base/Select/types';
 
 // ColorPopper
 export { ColorPopper } from './components/base/ColorPopper/ColorPopper';

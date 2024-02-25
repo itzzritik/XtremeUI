@@ -1,7 +1,5 @@
 import { ReactNode } from 'react';
 
-import { ActionMeta } from 'react-select';
-
 import { EIconType } from '../Icon/types';
 
 export type Option<T> = { label: string; value: T };
