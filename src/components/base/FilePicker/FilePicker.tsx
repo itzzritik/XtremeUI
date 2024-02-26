@@ -1,21 +1,26 @@
 import clsx from 'clsx';
 import { useFilePicker } from 'use-file-picker';
 
+import { ImageEditor } from '#components/layout/ImageEditor/ImageEditor';
+
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 
 import './filePicker.scss';
 import { getFilePickerIcon } from './getFilePickerIcon';
-import { TFilePickerProps } from './types';
+import { TFilePickerProps, imageExts } from './types';
 
 export const FilePicker = (props: TFilePickerProps) => {
-	const { className, children, draggable = false, multiple = false, accept = '*/*', onChange } = props;
+	const { className, children, draggable = false, editable = false, multiple = false, accept = '*/*', onChange } = props;
 
-	const { openFilePicker, loading } = useFilePicker({
+	const isEditable = editable && !multiple &&
+	(accept.includes('image') || imageExts.includes(accept?.split?.(',')?.[0]?.replace('.', '')));
+
+	const { openFilePicker, loading, plainFiles, clear } = useFilePicker({
 		accept,
 		multiple,
-		onFilesSuccessfullySelected: ({ plainFiles }: {plainFiles: File[]}) => {
-			onChange(plainFiles);
+		onFilesSuccessfullySelected: ({ plainFiles }: {plainFiles: Blob[]}) => {
+			if (!isEditable) onChange(plainFiles);
 		},
 	});
 
@@ -28,7 +33,11 @@ export const FilePicker = (props: TFilePickerProps) => {
 
 	if (children) {
 		return (
-			<div className={FilePickerClsx} onClick={openFilePicker}>{children}</div>
+			<>
+				<div className={FilePickerClsx} onClick={openFilePicker}>{children}</div>
+				{isEditable && plainFiles?.[0] &&
+				<ImageEditor file={plainFiles?.[0]} clearFile={clear} onChange={(v) => onChange(v.blob ? [v.blob] : [])} />}
+			</>
 		);
 	}
 
@@ -43,12 +52,16 @@ export const FilePicker = (props: TFilePickerProps) => {
 	}
 
 	return (
-		<Button
-			className={FilePickerClsx}
-			label={`Choose File${multiple ? 's' : ''}`}
-			icon={getFilePickerIcon(accept)}
-			onClick={openFilePicker}
-			loading={loading}
-		/>
+		<>
+			<Button
+				className={FilePickerClsx}
+				label={`Choose File${multiple ? 's' : ''}`}
+				icon={getFilePickerIcon(accept)}
+				onClick={openFilePicker}
+				loading={loading}
+			/>
+			{isEditable && plainFiles?.[0] &&
+			<ImageEditor file={plainFiles?.[0]} clearFile={clear} onChange={(v) => onChange(v.blob ? [v.blob] : [])} />}
+		</>
 	);
 };

@@ -2,6 +2,8 @@ import { forwardRef, useEffect, useState } from 'react';
 
 import clsx from 'clsx';
 
+import { readImageFile, readImageSrc } from '#utils/helper/imageHelper';
+
 import { Icon } from '../Icon/Icon';
 
 import './avatar.scss';
@@ -21,31 +23,6 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 		isError && 'error',
 	);
 
-	const loadSrcImage = async (url: string, cb: (img?: string) => void) => {
-		const response = await fetch(url);
-		if (!response.ok) {
-			setIsLoading(false);
-			setIsError(false);
-		}
-		else {
-			const blob = await response.blob();
-			cb(URL.createObjectURL(blob));
-		}
-	};
-	const loadFileImage = async (file: File, cb: (img?: string) => void) => {
-		const reader = new FileReader();
-
-		reader.onloadend = () => {
-			cb(reader?.result?.toString());
-		};
-		reader.onerror = () => {
-			setIsLoading(false);
-			setIsError(true);
-		};
-
-		reader.readAsDataURL(file);
-	};
-
 	const clearLoading = (img?: string) => {
 		img && setTimeout(() => setImage(img), 300);
 		setTimeout(() => setIsLoading(false), 1000);
@@ -56,12 +33,22 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 			if (file) {
 				setIsLoading(true);
 				setIsError(false);
-				loadFileImage(file, clearLoading);
+				readImageFile(file)
+					.then((img) => clearLoading(img))
+					.catch(() => {
+						setIsLoading(false);
+						setIsError(true);
+					});
 			}
 			else if (src) {
 				setIsLoading(true);
 				setIsError(false);
-				loadSrcImage(src, clearLoading);
+				readImageSrc(src)
+					.then((img) => clearLoading(img))
+					.catch(() => {
+						setIsLoading(false);
+						setIsError(true);
+					});
 			}
 			else {
 				setImage(undefined);

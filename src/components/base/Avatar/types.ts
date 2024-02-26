@@ -1,7 +1,7 @@
 export type TAvatarProps = {
 	className?: string;
 	src?: string;
-	file?: File;
+	file?: Blob;
 	alt?: string;
 	placeholderIcon?: string;
 	size?: number | keyof typeof EAvatarSize;

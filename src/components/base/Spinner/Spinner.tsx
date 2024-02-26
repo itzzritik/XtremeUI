@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 import clsx from 'clsx';
 
-import styles from './spinner.module.scss';
+import './spinner.scss';
 import { ESpinnerSize, ISpinnerProps } from './types';
 
 export const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>((props, ref) => {
@@ -10,9 +10,9 @@ export const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>((props, ref) =>
 
 	const spinnerSize = `${typeof size === 'number' ? size : ESpinnerSize[size]}px`;
 	const SpinnerClsx = clsx(
-		styles.spinner,
+		'xtrSpinner',
+		fullpage && 'fullpage',
 		className,
-		fullpage && styles.fullpage,
 	);
 
 	return (
@@ -22,16 +22,16 @@ export const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>((props, ref) =>
 			style={{ ['--spinnerSize'as string]: spinnerSize }}
 			role='progressbar'
 		>
-			<div className={styles.spinnerWrapper}>
-				<div className={styles.cubeTop} />
-				<div className={styles.cubeWrapper}>
-					<span className={styles.cubeFace} />
-					<span className={styles.cubeFace} />
-					<span className={styles.cubeFace} />
-					<span className={styles.cubeFace} />
+			<div className='spinnerWrapper'>
+				<div className='cubeTop' />
+				<div className='cubeWrapper'>
+					<span className='cubeFace' />
+					<span className='cubeFace' />
+					<span className='cubeFace' />
+					<span className='cubeFace' />
 				</div>
 			</div>
-			{fullpage && <span className={styles.label}>{label}</span>}
+			{fullpage && <span className='label'>{label}</span>}
 		</div>
 	);
 });

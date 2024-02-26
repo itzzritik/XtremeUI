@@ -5,8 +5,9 @@ export type TFilePickerProps = {
 	children?: ReactNode,
 	accept?: string,
 	draggable?: boolean,
+	editable?: boolean,
 	multiple?: boolean,
-	onChange: (file: File[]) => void,
+	onChange: (file: Blob[]) => void,
 }
 
 export enum EFilePickerAccept {
@@ -25,6 +26,7 @@ export enum EFilePickerAccept {
 	html = '.html, .htm',
 }
 
+export const imageExts = ['jpg', 'jpeg', 'png', 'gif', '.bmp', 'webp', 'heif', 'heic'];
 export const FilePickerIcon = {
 	file: 'f15b',
 	multimedia: 'f86d',

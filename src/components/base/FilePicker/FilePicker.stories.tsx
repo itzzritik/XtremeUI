@@ -8,7 +8,7 @@ import { TFilePickerProps } from './types';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const FilePickerComponent = (props: Omit<TFilePickerProps, 'value' | 'onChange'>) => {
-	const [file, setFile] = useState<File[]>();
+	const [file, setFile] = useState<Blob[]>();
 
 	return (
 		<FilePicker {...props} onChange={setFile}>
@@ -48,5 +48,6 @@ export const Wrapper: StoryObj<typeof meta> = {
 	args: {
 		accept: 'image/*',
 		children: 'Avatar',
+		editable: true,
 	},
 };

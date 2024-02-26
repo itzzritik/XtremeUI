@@ -47,13 +47,13 @@
 		object-position: center;
 		z-index: 2;
 		transition: all var(--animDurFast) var(--cubicBezierPrimary);
-		animation: grow 0.2s ease-out forwards;
+		animation: fadeIn 0.2s ease-out forwards;
 	}
 
 	&.loading {
 		&::after {
 			opacity: 1;
-			animation: spin 1.2s infinite linear;
+			animation: avatarSpin 1s infinite linear;
 		}
 	}
 
@@ -79,25 +79,25 @@
 		}
 	}
 
-	@keyframes spin {
+	@keyframes avatarSpin {
 		0% {
 			transform: rotate(0);
 			animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 		}
 		50% {
-			transform: rotate(540deg);
+			transform: rotate(360deg);
 			animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
 		}
 		100% {
-			transform: rotate(1080deg);
+			transform: rotate(720deg);
 		}
 	}
-	@keyframes grow {
+	@keyframes fadeIn {
 		from {
-			scale: 0;
+			opacity: 0;
 		}
 		to {
-			scale: 1;
+			opacity: 1;
 		}
 	}
 }

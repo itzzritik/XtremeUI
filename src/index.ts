@@ -70,3 +70,7 @@ export { type TNavigationProps, type TNavigationRoute } from './components/layou
 // ThemePicker
 export { ThemePicker } from './components/layout/ThemePicker/ThemePicker';
 export { type TThemePickerProps } from './components/layout/ThemePicker/type';
+
+// ImageEditor
+export { ImageEditor } from './components/layout/ImageEditor/ImageEditor';
+export { type TImageEditorProps } from './components/layout/ImageEditor/types';
