@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { createPortal } from 'react-dom';
 import { useFilePicker } from 'use-file-picker';
 
 import { ImageEditor } from '#components/layout/ImageEditor/ImageEditor';
@@ -35,8 +36,17 @@ export const FilePicker = (props: TFilePickerProps) => {
 		return (
 			<>
 				<div className={FilePickerClsx} onClick={openFilePicker}>{children}</div>
-				{isEditable && plainFiles?.[0] &&
-				<ImageEditor file={plainFiles?.[0]} clearFile={clear} onChange={(v) => onChange(v.blob ? [v.blob] : [])} />}
+				{
+					isEditable && plainFiles?.[0] &&
+					createPortal(
+						<ImageEditor
+							file={plainFiles?.[0]}
+							clearFile={clear}
+							onChange={(v) => onChange(v.blob ? [v.blob] : [])}
+						/>,
+						document.body,
+					)
+				}
 			</>
 		);
 	}
@@ -60,8 +70,17 @@ export const FilePicker = (props: TFilePickerProps) => {
 				onClick={openFilePicker}
 				loading={loading}
 			/>
-			{isEditable && plainFiles?.[0] &&
-			<ImageEditor file={plainFiles?.[0]} clearFile={clear} onChange={(v) => onChange(v.blob ? [v.blob] : [])} />}
+			{
+				isEditable && plainFiles?.[0] &&
+					createPortal(
+						<ImageEditor
+							file={plainFiles?.[0]}
+							clearFile={clear}
+							onChange={(v) => onChange(v.blob ? [v.blob] : [])}
+						/>,
+						document.body,
+					)
+			}
 		</>
 	);
 };
