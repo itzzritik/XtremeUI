@@ -37,6 +37,8 @@
 
 	.body {
 		flex: 1;
+		padding: 16px 0;
+		overflow-y: auto;
 		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
