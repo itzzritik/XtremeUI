@@ -35,7 +35,8 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 				setIsError(false);
 				readImageFile(file)
 					.then((img) => clearLoading(img))
-					.catch(() => {
+					.catch((err) => {
+						console.log(err);
 						setIsLoading(false);
 						setIsError(true);
 					});
@@ -45,7 +46,8 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 				setIsError(false);
 				readImageSrc(src)
 					.then((img) => clearLoading(img))
-					.catch(() => {
+					.catch((err) => {
+						console.log(err, src);
 						setIsLoading(false);
 						setIsError(true);
 					});

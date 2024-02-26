@@ -6,7 +6,7 @@ export const readImageSrc = async (src: string) => {
 	return new Promise<string>((resolve, reject) => {
 		fetch(src)
 			.then((res) => {
-				if (!res.ok) reject();
+				if (!res.ok) reject(res.status);
 				return res.blob();
 			})
 			.then((blob) => resolve(URL.createObjectURL(blob)));
