@@ -1,4 +1,4 @@
-@import '../../../styles/colorSchemes';
+@use '../../../styles/colorSchemes';
 
 .themePicker {
 	--schemeSize: 180px;
@@ -32,15 +32,15 @@
 			transition: all var(--animDurDefault) var(--cubicBezierPrimary), box-shadow var(--animDurDefault) linear;
 
 			&.system {
-				@include systemScheme;
+				@include colorSchemes.systemScheme;
 			}
 
 			&.light {
-				@include lightScheme;
+				@include colorSchemes.lightScheme;
 			}
 
 			&.dark {
-				@include darkScheme;
+				@include colorSchemes.darkScheme;
 			}
 
 			.design {

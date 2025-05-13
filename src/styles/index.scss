@@ -1,22 +1,23 @@
-@import 'react-datetime-picker/dist/DateTimePicker.css';
-@import 'react-calendar/dist/Calendar.css';
-@import 'react-clock/dist/Clock.css';
-@import 'functions';
-@import 'fontAwesome';
-@import 'colors';
-@import 'animations/shadowRipple';
+@use 'react-datetime-picker/dist/DateTimePicker.css';
+@use 'react-calendar/dist/Calendar.css';
+@use 'react-clock/dist/Clock.css';
+
+@use 'fontAwesome';
+@use 'colors';
+@use 'animations/shadowRipple';
 
 html {
-	@include colors;
-
-	background: var(--colorBackgroundPrimary);
 	scroll-behavior: smooth;
-
+	
+	background: var(--colorBackgroundPrimary);
+	
 	::selection {
 		color: white;
 		background: rgb(var(--colorBrandAccentRgb));
 	}
 
+	@include colors.colors;
+	
 	* {
 		font-variation-settings: 'wdth' 75, 'wght' 500;
 		color: var(--colorContentPrimary);

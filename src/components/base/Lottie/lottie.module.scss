@@ -1,9 +1,11 @@
-@import '@dotlottie/react-player/dist/index.css';
-
-.lottie {
-	--lottieSize: 128px;
-
+.lottieWrapper {
 	width: var(--lottieSize); height: var(--lottieSize);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.lottie {
+	width: 100%; height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;

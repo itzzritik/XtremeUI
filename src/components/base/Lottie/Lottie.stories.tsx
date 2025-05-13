@@ -1,4 +1,3 @@
-import { PlayMode } from '@dotlottie/react-player';
 
 import { Lottie } from './Lottie';
 
@@ -84,9 +83,6 @@ const meta = {
 		loop: true,
 		size: 256,
 		speed: 1,
-		direction: 1,
-		playMode: PlayMode.Normal,
-		renderer: 'svg',
 	},
 } satisfies Meta<typeof Lottie>;
 
@@ -95,19 +91,5 @@ export default meta;
 export const SvgRenderer: StoryObj<typeof meta> = {
 	args: {
 		src: getRandomLottie(),
-	},
-};
-
-export const CanvasRenderer: StoryObj<typeof meta> = {
-	args: {
-		src: getRandomLottie(),
-		renderer: 'canvas',
-	},
-};
-
-export const HtmlRenderer: StoryObj<typeof meta> = {
-	args: {
-		src: getRandomLottie(),
-		renderer: 'html',
 	},
 };

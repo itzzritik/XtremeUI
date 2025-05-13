@@ -1,5 +1,6 @@
 @use 'sass:list';
-@import 'colorSchemes';
+@use 'functions';
+@use 'colorSchemes';
 
 @mixin colors {
 	$colorMap: (
@@ -41,7 +42,7 @@
 	);
 
 	@each $colorName, $colorSet in $colorMap {
-		$capitalizedColor: capitalize($colorName);
+		$capitalizedColor: functions.capitalize($colorName);
 
 		--color#{$capitalizedColor}Primary: #{list.nth($colorSet, 1)};
 		--color#{$capitalizedColor}Secondary: #{list.nth($colorSet, 2)};
@@ -72,14 +73,14 @@
 	--cubicBezierPrimary: cubic-bezier(0.23, 1, 0.320, 1);
 
 	&[data-theme-scheme='system'] {
-		@include systemScheme;
+		@include colorSchemes.systemScheme;
 	}
 
 	&[data-theme-scheme='light'] {
-		@include lightScheme;
+		@include colorSchemes.lightScheme;
 	}
 
 	&[data-theme-scheme='dark'] {
-		@include darkScheme;
+		@include colorSchemes.darkScheme;
 	}
 }
