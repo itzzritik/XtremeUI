@@ -69,7 +69,11 @@ export { type TNavigationProps, type TNavigationRoute } from './components/layou
 
 // ThemePicker
 export { ThemePicker } from './components/layout/ThemePicker/ThemePicker';
-export { type TThemePickerProps } from './components/layout/ThemePicker/type';
+export { type TThemePickerProps } from './components/layout/ThemePicker/types';
+
+// ThemePicker
+export { SchemeSwitch } from './components/layout/SchemeSwitch/SchemeSwitch';
+export { type TSchemeSwitchProps } from './components/layout/SchemeSwitch/types';
 
 // ImageEditor
 export { ImageEditor } from './components/layout/ImageEditor/ImageEditor';

@@ -2,7 +2,7 @@ import { CSSProperties, HTMLAttributes } from 'react';
 
 import { EIconType } from '../Icon/types';
 
-enum EButtonSize {
+export enum EButtonSize {
 	mini = 'mini',
 	default = 'default',
 	large = 'large',

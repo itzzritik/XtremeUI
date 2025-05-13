@@ -5,18 +5,12 @@ import clsx from 'clsx';
 import { ActionCard } from '#components/base/ActionCard/ActionCard';
 import { Button } from '#components/base/Button/Button';
 import { Icon } from '#components/base/Icon/Icon';
-import { EThemeColor, EThemeScheme, TThemeColor } from '#components/context/Theme/type';
+import { EThemeColor, TThemeColor } from '#components/context/Theme/type';
 import { useXTheme } from '#components/context/useContext';
-import { capitalizeFirstLetter } from '#utils/index';
+import { capitalizeFirstLetter, THEME_SCHEME } from '#utils/index';
 
 import styles from './themePicker.module.scss';
-import { EThemePickerGap, EThemePickerSize, TThemePickerProps } from './type';
-
-const schemes = [
-	{ name: EThemeScheme.system, icon: 'f390' },
-	{ name: EThemeScheme.light, icon: 'f185' },
-	{ name: EThemeScheme.dark, icon: 'f6c3' },
-] as const;
+import { EThemePickerGap, EThemePickerSize, TThemePickerProps } from './types';
 
 export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props, ref) => {
 	const { className, size = 'default' } = props;
@@ -40,7 +34,7 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 		>
 			<div className={styles.themeSchemes} role='radiogroup'>
 				{
-					schemes.map(({ name, icon }, i) => (
+					THEME_SCHEME.map(({ name, icon }, i) => (
 						<ActionCard
 							key={`ThemeScheme-${name}-${i}`}
 							className={clsx(styles.themeSchemeItem, styles[name], themeScheme === name && styles.active)}
