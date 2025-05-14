@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, useMemo } from 'react';
 
 import { Button } from '#components/base/Button/Button';
@@ -28,7 +30,7 @@ export const SchemeSwitch = forwardRef<HTMLButtonElement, TSchemeSwitchProps>((p
 			icon={currentIcon}
 			iconType={iconType}
 			label={withLabel ? `${themeScheme === 'system' ? 'auto' : themeScheme}` : undefined}
-			onClick={() => setThemeScheme(nextTheme.name)}
+			onClick={() => nextTheme.name && setThemeScheme(nextTheme.name)}
 		/>
 	);
 });
