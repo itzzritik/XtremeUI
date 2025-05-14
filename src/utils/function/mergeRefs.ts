@@ -1,13 +1,22 @@
-import { LegacyRef, MutableRefObject, RefCallback } from 'react';
+import { Ref, RefCallback } from 'react';
 
-export const mergeRefs = <T>(refs: Array<MutableRefObject<T> | LegacyRef<T>>): RefCallback<T> => {
+export function assignRef<T> (
+	ref: Ref<T> | undefined | null,
+	value: T | null,
+): void {
+	if (typeof ref === 'function') {
+		ref(value);
+	} else if (ref != null) {
+		try {
+			ref.current = value;
+		} catch {
+			throw new Error(`Cannot assign value "${value}" to ref "${ref}"`);
+		}
+	}
+}
+
+export function mergeRefs<T> (refs: (Ref<T> | undefined | null)[]): RefCallback<T> {
 	return (value) => {
-		refs.forEach((ref) => {
-			if (typeof ref === 'function') {
-				ref(value);
-			} else if (ref != null) {
-				(ref as MutableRefObject<T | null>).current = value;
-			}
-		});
+		refs.forEach((ref) => assignRef(ref, value));
 	};
-};
+}

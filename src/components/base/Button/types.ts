@@ -7,7 +7,7 @@ export enum EButtonSize {
 	default = 'default',
 	large = 'large',
 }
-interface BaseButton extends HTMLAttributes<HTMLButtonElement> {
+export interface BaseButton extends HTMLAttributes<HTMLButtonElement> {
 	className?: string;
 	style?: CSSProperties;
 	type?: keyof typeof EButtonTypes;
@@ -18,14 +18,17 @@ interface BaseButton extends HTMLAttributes<HTMLButtonElement> {
 	iconPosition?: 'left' | 'right';
 	onClick?: () => void;
 }
-interface ButtonWithLabel extends BaseButton {
+
+export interface ButtonWithLabel extends BaseButton {
 	label: string;
 	icon?: string;
 }
-interface ButtonWithIconName extends BaseButton {
+
+export interface ButtonWithIconName extends BaseButton {
 	label?: string;
 	icon: string;
 }
+
 export type TButtonProps = ButtonWithLabel | ButtonWithIconName;
 
 export enum EButtonTypes {

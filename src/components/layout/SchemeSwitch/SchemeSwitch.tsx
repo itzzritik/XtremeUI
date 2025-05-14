@@ -6,7 +6,7 @@ import { THEME_SCHEME } from '#utils/index';
 
 import { TSchemeSwitchProps } from './types';
 
-export const SchemeSwitch = forwardRef<HTMLSpanElement, TSchemeSwitchProps>((props) => {
+export const SchemeSwitch = forwardRef<HTMLButtonElement, TSchemeSwitchProps>((props, ref) => {
 	const { className, withLabel = false, type = 'secondary', size = 'default', iconType = 'solid' } = props;
 
 	const { themeScheme, setThemeScheme } = useXTheme();
@@ -21,6 +21,7 @@ export const SchemeSwitch = forwardRef<HTMLSpanElement, TSchemeSwitchProps>((pro
 
 	return (
 		<Button
+			ref={ref}
 			className={className}
 			type={type}
 			size={size}
