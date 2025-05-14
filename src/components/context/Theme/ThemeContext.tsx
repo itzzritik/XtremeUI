@@ -1,13 +1,13 @@
 import { createContext, useEffect, useState } from 'react';
 
-import { win } from '#utils/index';
+import { STORAGE } from '#utils/index';
 
-import { TThemeColor, TThemeInitialType, TThemeProviderProps, TThemeScheme, defaultColor, defaultScheme } from './type';
+import { TThemeColor, TThemeInitialType, TThemeProviderProps, TThemeScheme } from './type';
 
 const ThemeDefault: TThemeInitialType = {
-	themeScheme: win?.__themeScheme ?? defaultScheme,
+	themeScheme: undefined,
 	setThemeScheme: () => null,
-	themeColor: win?.__themeColor ?? defaultColor,
+	themeColor: undefined,
 	setThemeColor: () => null,
 };
 
@@ -16,18 +16,24 @@ const ThemeProvider = ({ children }: TThemeProviderProps) => {
 	const [themeScheme, setScheme] = useState<TThemeScheme>(ThemeDefault.themeScheme);
 	const [themeColor, setColor] = useState<TThemeColor>(ThemeDefault.themeColor);
 
-	const setThemeScheme = (val: TThemeScheme) => win?.__setPreferredThemeScheme?.(val);
-	const setThemeColor = (val: TThemeColor) => win?.__setPreferredThemeColor?.(val);
-
 	useEffect(() => {
-		if (win) {
-			win.__onThemeSchemeChange = setScheme;
-			win.__onThemeColorChange = setColor;
-		}
+		const storedScheme = localStorage.getItem(STORAGE.themeScheme) as TThemeScheme;
+		const storedColor = localStorage.getItem(STORAGE.themeColor) as TThemeColor;
+
+		if (storedScheme) setScheme(storedScheme);
+		if (storedColor) setColor(storedColor);
 	}, []);
 
+	useEffect(() => {
+		if (!themeScheme || !themeColor) return;
+		document.documentElement.setAttribute(STORAGE.themeSchemeAttr, themeScheme);
+		document.documentElement.setAttribute(STORAGE.themeColorAttr, themeColor);
+		localStorage.setItem(STORAGE.themeScheme, themeScheme);
+		localStorage.setItem(STORAGE.themeColor, themeColor);
+	}, [themeScheme, themeColor]);
+
 	return (
-		<ThemeContext.Provider value={{ themeScheme, setThemeScheme, themeColor, setThemeColor }}>
+		<ThemeContext.Provider value={{ themeScheme, setThemeScheme: setScheme, themeColor, setThemeColor: setColor }}>
 			{children}
 		</ThemeContext.Provider>
 	);

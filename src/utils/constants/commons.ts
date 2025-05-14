@@ -1,6 +1,8 @@
 import { EThemeScheme } from '#components/context/Theme/type';
 
 export const STORAGE = {
+	themeSchemeAttr: 'data-theme-scheme',
+	themeColorAttr: 'data-theme-color',
 	themeScheme: 'xThemeScheme',
 	themeColor: 'xThemeColor',
 };

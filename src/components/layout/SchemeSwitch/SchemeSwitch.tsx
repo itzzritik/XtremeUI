@@ -29,7 +29,7 @@ export const SchemeSwitch = forwardRef<HTMLButtonElement, TSchemeSwitchProps>((p
 			size={size}
 			icon={currentIcon}
 			iconType={iconType}
-			label={withLabel ? `${themeScheme === 'system' ? 'auto' : themeScheme}` : undefined}
+			label={withLabel ? themeScheme === 'system' ? 'auto' : themeScheme : undefined}
 			onClick={() => nextTheme.name && setThemeScheme(nextTheme.name)}
 		/>
 	);

@@ -15,7 +15,7 @@ export enum EThemeScheme {
 	dark = 'dark',
 	system = 'system',
 }
-export type TThemeScheme = keyof typeof EThemeScheme;
+export type TThemeScheme = keyof typeof EThemeScheme | undefined;
 export const defaultScheme = EThemeScheme.system;
 
 export enum EThemeColor {
@@ -27,5 +27,5 @@ export enum EThemeColor {
 	violet = 'violet',
 	black = 'black',
 }
-export type TThemeColor = keyof typeof EThemeColor;
+export type TThemeColor = keyof typeof EThemeColor | undefined;
 export const defaultColor = EThemeColor.violet;
