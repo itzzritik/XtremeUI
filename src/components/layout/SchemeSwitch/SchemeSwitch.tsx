@@ -1,11 +1,12 @@
 import { forwardRef, useMemo } from 'react';
 
-import { TSchemeSwitchProps } from './types';
 import { Button } from '#components/base/Button/Button';
 import { useXTheme } from '#components/context/useContext';
 import { THEME_SCHEME } from '#utils/index';
 
-export const SchemeSwitch = forwardRef<HTMLSpanElement, TSchemeSwitchProps>((props, ref) => {
+import { TSchemeSwitchProps } from './types';
+
+export const SchemeSwitch = forwardRef<HTMLSpanElement, TSchemeSwitchProps>((props) => {
 	const { className, withLabel = false, type = 'secondary', size = 'default', iconType = 'solid' } = props;
 
 	const { themeScheme, setThemeScheme } = useXTheme();
@@ -15,7 +16,7 @@ export const SchemeSwitch = forwardRef<HTMLSpanElement, TSchemeSwitchProps>((pro
 	}, [themeScheme]);
 
 	const currentIcon = useMemo(() => {
-		return THEME_SCHEME.find((t) => t.name === themeScheme)?.icon ?? "";
+		return THEME_SCHEME.find((t) => t.name === themeScheme)?.icon ?? '';
 	}, [themeScheme]);
 
 	return (

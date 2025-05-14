@@ -1,4 +1,4 @@
-import { EThemeScheme } from "#components/context/Theme/type";
+import { EThemeScheme } from '#components/context/Theme/type';
 
 export const STORAGE = {
 	themeScheme: 'xThemeScheme',

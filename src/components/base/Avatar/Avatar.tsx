@@ -24,7 +24,7 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 	);
 
 	const clearLoading = (img?: string) => {
-		img && setTimeout(() => setImage(img), 300);
+		if (img) setTimeout(() => setImage(img), 300);
 		setTimeout(() => setIsLoading(false), 1000);
 	};
 

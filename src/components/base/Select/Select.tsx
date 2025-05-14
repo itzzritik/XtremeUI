@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 
 import clsx from 'clsx';
-import XSelect, { ActionMeta, GroupBase, MultiValue, OptionsOrGroups, PropsValue, SingleValue } from 'react-select';
+import XSelect, { GroupBase, MultiValue, OptionsOrGroups, PropsValue, SingleValue } from 'react-select';
 
 import { Icon } from '../Icon/Icon';
 
@@ -26,7 +26,8 @@ export function Select<T> (props: TSelectProps<T>) {
 	} = props;
 
 	const [open, setOpen] = useState(false);
-	const localValue = useMemo(() => options.find((option) => option.value === value) as unknown as PropsValue<T> ,[value])
+	const localValue = useMemo(() => options.find((option) => option.value === value) as unknown as PropsValue<T>,
+		[options, value]);
 
 	const SelectClsx = clsx(
 		'xtrSelectWrapper',
@@ -37,12 +38,13 @@ export function Select<T> (props: TSelectProps<T>) {
 		className,
 	);
 
-	const onChangeHandler = (newValue: MultiValue<T> | SingleValue<T>, actionMeta: ActionMeta<T>) => {
+	const onChangeHandler = (newValue: MultiValue<T> | SingleValue<T>) => {
 		const val = multi
 			? (newValue as Array<Option<T>>)?.map(({ value }) => value)
 			: (newValue as unknown as Option<T>)?.value;
 
-		onChange(val as any);
+		// @ts-expect-error
+		onChange(val);
 	};
 
 	return (

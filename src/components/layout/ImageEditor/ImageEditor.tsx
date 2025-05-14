@@ -28,7 +28,7 @@ export const ImageEditor = (props: TImageEditorProps) => {
 	const accept = async () => {
 		try {
 			const croppedImageFile = await getCroppedImg(imageSrc, croppedAreaPixels, rotation);
-			croppedImageFile && onChange(croppedImageFile);
+			if (croppedImageFile) onChange(croppedImageFile);
 		} catch (e) {
 			console.error(e);
 		}
