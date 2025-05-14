@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import type { Preview } from "@storybook/react";
-import { addons } from "@storybook/addons";
+import { addons } from '@storybook/preview-api';
 import { BrandColorList, ThemeList } from "./constants";
 import { XProvider } from "../src/components/context";
 import { elementObserver, waitForElement } from "../src/utils/helper/domHelper";
@@ -50,7 +50,6 @@ const preview: Preview = {
 		},
 	},
 	parameters: {
-		actions: { argTypesRegex: "^on[A-Z].*" },
 		controls: {
 			sort: 'requiredFirst',
 			controls: {
