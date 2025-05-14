@@ -67,6 +67,9 @@ jobs:
       - name: Delete old version tags 🔖
         run: git ls-remote --tags origin | awk -F/ '/\/tags\// {print ":" $NF}' | grep -Ev "\^" | xargs -I{} git push origin {}
 
+      - name: Clean working directory before versioning 🧽
+        run: git restore .
+
       - name: Generate new version tag 🏷️
         run: npm version $VERSION -m "🤖 Jarvis published a $VERSION version"
 
