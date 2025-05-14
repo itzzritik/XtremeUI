@@ -20,10 +20,13 @@ type SingleProps<T> = TCommonProps<T> & {
 	value?: T;
 	onChange: (value: T) => void;
 };
-type MultiProps<T> = TCommonProps<T> & {
-	multi: true;
-	value?: T[];
-	onChange: (value: T[]) => void;
-};
 
-export type TSelectProps<T> = SingleProps<T> | MultiProps<T>;
+// type MultiProps<T> = TCommonProps<T> & {
+// 	multi: true;
+// 	value?: T[];
+// 	onChange: (value: T[]) => void;
+// };
+
+export type TSelectProps<T> = SingleProps<T>;
+
+// export type TSelectProps<T> = SingleProps<T> | MultiProps<T>;

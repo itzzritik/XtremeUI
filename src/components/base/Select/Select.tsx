@@ -43,8 +43,7 @@ export function Select<T> (props: TSelectProps<T>) {
 			? (newValue as Array<Option<T>>)?.map(({ value }) => value)
 			: (newValue as unknown as Option<T>)?.value;
 
-		// @ts-expect-error
-		onChange(val);
+		onChange(val as T);
 	};
 
 	return (

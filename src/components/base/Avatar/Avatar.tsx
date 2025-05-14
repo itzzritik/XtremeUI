@@ -57,7 +57,7 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 				clearLoading();
 			}
 		}
-		catch (err) {
+		catch {
 			clearLoading();
 		}
 	}, [src, file]);

@@ -6,6 +6,8 @@ import reactImport from "eslint-plugin-import";
 import pluginStorybook from "eslint-plugin-storybook";
 import pluginReact from "eslint-plugin-react";
 import tseslint from "typescript-eslint";
+import eslintPluginTs from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
 
 export default tseslint.config(
 	{ ignores: ["dist"] },
@@ -13,8 +15,14 @@ export default tseslint.config(
 		extends: [js.configs.recommended, ...tseslint.configs.recommended],
 		files: ["**/*.{ts,tsx}"],
 		languageOptions: {
-			ecmaVersion: 2020,
+			parser: tsParser,
+			ecmaVersion: "latest",
 			globals: globals.browser,
+			parserOptions: {
+				project: "./tsconfig.eslint.json",
+				tsconfigRootDir: process.cwd(),
+				sourceType: "module",
+			},
 		},
 		plugins: {
 			react: pluginReact,
@@ -22,6 +30,7 @@ export default tseslint.config(
 			"react-refresh": reactRefresh,
 			import: reactImport,
 			storybook: pluginStorybook,
+			"@typescript-eslint": eslintPluginTs,
 		},
 		settings: {
 			react: { version: "detect" },
@@ -276,6 +285,7 @@ export default tseslint.config(
 					minimumDescriptionLength: 0,
 				},
 			],
+			"@typescript-eslint/no-unused-expressions": "off",
 
 			"jsx-quotes": ["error", "prefer-single"],
 			"react-hooks/rules-of-hooks": "error",

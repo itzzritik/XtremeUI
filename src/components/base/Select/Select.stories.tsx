@@ -53,12 +53,14 @@ export default meta;
 export const Single: StoryObj<typeof meta> = {
 	args: {
 		icon: 'f002',
+		options,
+		onChange: (value) => console.log('Selected value:', value),
 	},
 };
 
-export const Multiple: StoryObj<typeof meta> = {
-	args: {
-		multi: true,
-		icon: 'f002',
-	},
-};
+// export const Multiple: StoryObj<typeof meta> = {
+// 	args: {
+// 		multi: true,
+// 		icon: 'f002',
+// 	},
+// };

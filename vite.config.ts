@@ -11,7 +11,7 @@ export default defineConfig((configEnv) => ({
 		react(),
 		tsConfigPaths(),
 		linterPlugin({
-			include: ['./src}/**/*.{ts,tsx}'],
+			include: ['./src/**/*.{ts,tsx}', '.storybook/**/*.{ts,tsx}'],
 			linters: [new EsLinter({ configEnv }), new TypeScriptLinter()],
 		}),
 		dts({
@@ -33,7 +33,8 @@ export default defineConfig((configEnv) => ({
 				preserveModules: true,
 				exports: 'named',
 				banner: (chunk) => {
-					if (chunk.facadeModuleId.endsWith('.tsx')) return '\'use client\';';
+					if (chunk.facadeModuleId.endsWith('.tsx'))
+						return '\'use client\';';
 					return null;
 				},
 			},
