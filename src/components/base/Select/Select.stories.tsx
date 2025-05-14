@@ -50,7 +50,7 @@ const meta = {
 
 export default meta;
 
-export const Single: StoryObj<typeof meta> = {
+export const Default: StoryObj<typeof meta> = {
 	args: {
 		icon: 'f002',
 		options,
@@ -58,9 +58,20 @@ export const Single: StoryObj<typeof meta> = {
 	},
 };
 
-// export const Multiple: StoryObj<typeof meta> = {
-// 	args: {
-// 		multi: true,
-// 		icon: 'f002',
-// 	},
-// };
+export const Mini: StoryObj<typeof meta> = {
+	args: {
+		size: 'mini',
+		options,
+		onChange: (value) => console.log('Selected value:', value),
+	},
+};
+
+export const MiniWithIcon: StoryObj<typeof meta> = {
+	args: {
+		size: 'mini',
+		icon: 'f55d',
+		searchable: false,
+		options,
+		onChange: (value) => console.log('Selected value:', value),
+	},
+};

@@ -1,3 +1,5 @@
+'use client';
+
 import { useMemo, useState } from 'react';
 
 import clsx from 'clsx';
@@ -15,6 +17,7 @@ export function Select<T> (props: TSelectProps<T>) {
 		placeholder = 'Select an option',
 		noOptionsMessage,
 		icon,
+		size = 'default',
 		iconType = 'regular',
 		clearable = true,
 		searchable = true,
@@ -31,10 +34,12 @@ export function Select<T> (props: TSelectProps<T>) {
 
 	const SelectClsx = clsx(
 		'xtrSelectWrapper',
+		size && `${size}Size`,
 		multi ? 'multi' : 'single',
 		icon && 'withIcon',
 		!!value && 'withValue',
 		open && 'open',
+		!searchable && 'noSearch',
 		className,
 	);
 

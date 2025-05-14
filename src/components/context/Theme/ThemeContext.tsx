@@ -17,8 +17,13 @@ const ThemeProvider = ({ children }: TThemeProviderProps) => {
 	const [themeColor, setColor] = useState<TThemeColor>(ThemeDefault.themeColor);
 
 	useEffect(() => {
-		const storedScheme = localStorage.getItem(STORAGE.themeScheme) as TThemeScheme;
-		const storedColor = localStorage.getItem(STORAGE.themeColor) as TThemeColor;
+		let storedScheme = localStorage.getItem(STORAGE.themeScheme) as TThemeScheme;
+		let storedColor = localStorage.getItem(STORAGE.themeColor) as TThemeColor;
+
+		if (!storedScheme)
+			storedScheme = document?.documentElement.getAttribute(STORAGE.themeSchemeAttr) as TThemeScheme ?? undefined;
+		if (!storedColor)
+			storedColor = document?.documentElement.getAttribute(STORAGE.themeColorAttr) as TThemeColor ?? undefined;
 
 		if (storedScheme) setScheme(storedScheme);
 		if (storedColor) setColor(storedColor);

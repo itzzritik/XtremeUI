@@ -72,8 +72,8 @@ export { ThemePicker } from './components/layout/ThemePicker/ThemePicker';
 export { type TThemePickerProps } from './components/layout/ThemePicker/types';
 
 // ThemePicker
-export { SchemeSwitch } from './components/layout/SchemeSwitch/SchemeSwitch';
-export { type TSchemeSwitchProps } from './components/layout/SchemeSwitch/types';
+export { ThemeSwitch } from './components/layout/ThemeSwitch/ThemeSwitch';
+export { type TThemeSwitchProps } from './components/layout/ThemeSwitch/types';
 
 // ImageEditor
 export { ImageEditor } from './components/layout/ImageEditor/ImageEditor';

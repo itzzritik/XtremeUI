@@ -1,10 +1,10 @@
-import { SchemeSwitch } from './SchemeSwitch';
+import { ThemeSwitch } from './ThemeSwitch';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-	title: 'Layouts/Scheme Picker',
-	component: SchemeSwitch,
+	title: 'Layouts/Theme Switch',
+	component: ThemeSwitch,
 	tags: ['autodocs'],
 	argTypes: {
 		className: { control: false },
@@ -19,7 +19,7 @@ const meta = {
 		iconType: 'solid',
 		withLabel: false,
 	},
-} satisfies Meta<typeof SchemeSwitch>;
+} satisfies Meta<typeof ThemeSwitch>;
 
 export default meta;
 

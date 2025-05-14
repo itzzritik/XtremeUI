@@ -2,7 +2,7 @@
 .xtrSelectWrapper {
 	position: relative;
 	display: flex;
-	width: 350px;
+	width: auto;
 	align-items: center;
 
 	.xtrSelect {
@@ -15,7 +15,7 @@
 			border: none !important;
 			padding: 0 8px 0 22px !important;
 			border-radius: 22px !important;
-			box-shadow: 0 0 0 1px rgb(var(--colorBrandAccentRgb) / 50%) !important;
+			box-shadow: 0 0 0 1px var(--colorBackgroundSecondary) !important;
 			transition: all var(--animDurDefault) var(--cubicBezierPrimary) !important;
 	
 			&::before {
@@ -24,7 +24,7 @@
 				left: 0;
 				display: block;
 				width: 100%; height: 100%;
-				background: rgb(var(--colorBrandAccentRgb));
+				background: var(--colorContentSecondary);
 				clip-path: circle(0% at 22px 50%);
 				border-radius: 9999px;
 				opacity: 0;
@@ -118,7 +118,7 @@
 		width: 44px;
 		height: 44px;
 		font-size: 16px;
-		color: rgb(var(--colorBrandAccentRgb) / 100%);
+		color: var(--colorContentPrimary);
 	}
 
 	.placeholder {
@@ -139,6 +139,11 @@
 	}
 
 	&.open, &.withValue {
+		.xtrSelect__control {
+			&::before {
+				background: rgb(var(--colorBrandAccentRgb));
+			}
+		}
 		.placeholder {
 			transform: translate(8px, -12px);
 			scale: 0.75;
@@ -190,11 +195,105 @@
 			border-radius: 22px 22px 4px 4px !important;
 			background: var(--colorBackgroundPrimary) !important;
 			box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%) !important;
+
+			&::before {
+				background: rgb(var(--colorBrandAccentRgb));
+			}
 		}
 
 		.xtrSelectIcon {
 			color: white;
 			font-weight: 900;
+		}
+	}
+
+	&.defaultSize {
+		width: 350px;
+	}
+
+	&.miniSize {
+		.xtrSelect {
+			width: auto;
+			position: relative;
+	
+			&__control {
+				width: auto;
+				height: 32px;
+				min-height: 32px;
+				padding: 0 8px 0 16px !important;
+
+				&::before {
+					clip-path: circle(12px at 16px);
+				}
+			}
+			&__value-container {
+				padding: 12px 16px 1px 0 !important;
+				font-size: 12px;
+			}
+			&__menu {
+				margin-top: 6px !important;
+				border-radius: 4px 4px 16px 16px !important;
+			}
+			&__option {
+				padding: 8px 24px !important;
+				font-size: 12px;
+			}
+			&__indicator {
+				svg {
+					width: 16px;
+					height: 16px;
+				}
+			}
+		}
+		.xtrSelectIcon {
+			width: 31px;
+    		height: 31px;
+			font-size: 12px;
+		}
+
+		.placeholder {
+			font-variation-settings: 'wdth' 75, 'wght' 500;
+			scale: 1;
+			font-size: 13px;
+			transform: translate(0, 0);
+		}
+
+		&.withIcon {
+			.xtrSelect {
+				&__control {
+					padding: 0 8px 0 36px !important;
+				}
+			}
+			.placeholder {
+				transform: translate(20px, 0);
+			}
+		}
+
+		&.open {
+			.xtrSelect {
+				&__control {
+					border-radius: 16px 16px 4px 4px !important;
+				}
+			}
+		}
+		&.open:not(.noSearch), &.withValue {
+			.placeholder {
+				font-variation-settings: 'wdth' 75, 'wght' 600;
+				scale: 0.75 !important;
+				transform: translate(2px, -10px);
+			}
+			&.withIcon {
+				.placeholder {
+					scale: 0.75 !important;
+					transform: translate(28px, -10px);
+				}
+			}
+		}
+	}
+
+	&.noSearch {
+		* {
+			cursor: pointer;
 		}
 	}
 

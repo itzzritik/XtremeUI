@@ -2,10 +2,17 @@ import { ReactNode } from 'react';
 
 import { EIconType } from '../Icon/types';
 
+export enum ESelectSize {
+	mini = 'mini',
+	default = 'default',
+	large = 'large',
+}
+
 export type Option<T> = { label: string; value: T };
 type TCommonProps<T> = {
 	className?: string;
 	noOptionsMessage?: (obj: { inputValue: string }) => ReactNode;
+	size?: keyof typeof ESelectSize;
 	icon?: string;
 	iconType?: keyof typeof EIconType;
 	placeholder?: string;

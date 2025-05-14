@@ -2,7 +2,7 @@ import { EIconType } from '#components/base/Icon/types';
 
 import { EButtonSize, EButtonTypes } from '../../base/Button/types';
 
-export type TSchemeSwitchProps = {
+export type TThemeSwitchProps = {
 	className?: string;
 	withLabel?: boolean;
 	type?: keyof typeof EButtonTypes;
