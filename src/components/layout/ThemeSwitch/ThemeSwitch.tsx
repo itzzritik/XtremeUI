@@ -1,11 +1,9 @@
-'use client';
-
 import { forwardRef, useMemo } from 'react';
 
 import clsx from 'clsx';
 
 import { Button } from '#components/base/Button/Button';
-import { EThemeColor } from '#components/context/Theme/type';
+import { EThemeColor } from '#components/context/Theme/types';
 import { useXTheme } from '#components/context/useContext';
 import { THEME_SCHEME } from '#utils/index';
 
@@ -14,7 +12,7 @@ import { TThemeSwitchProps } from './types';
 
 const THEME_COLOR = Object.values(EThemeColor);
 
-export const ThemeSwitch = forwardRef<HTMLButtonElement, TThemeSwitchProps>((props, ref) => {
+export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props, ref) => {
 	const { className, withLabel = false, type = 'secondary', size = 'default', iconType = 'solid' } = props;
 
 	const { themeScheme, setThemeScheme, themeColor, setThemeColor } = useXTheme();
@@ -40,9 +38,8 @@ export const ThemeSwitch = forwardRef<HTMLButtonElement, TThemeSwitchProps>((pro
 	if (!themeScheme || !themeColor) return null;
 
 	return (
-		<div className={mainClass}>
+		<div ref={ref} className={mainClass}>
 			<Button
-				ref={ref}
 				className='xtrThemeScheme'
 				type={type}
 				size={size}

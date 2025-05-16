@@ -1,4 +1,4 @@
-import { EThemeScheme } from '#components/context/Theme/type';
+import { EThemeScheme } from '#components/context/Theme/types';
 
 export const STORAGE = {
 	themeSchemeAttr: 'data-theme-scheme',

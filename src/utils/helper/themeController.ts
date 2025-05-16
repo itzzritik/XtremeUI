@@ -1,4 +1,4 @@
-import { defaultColor, defaultScheme } from '#components/context/Theme/type';
+import { defaultColor, defaultScheme } from '#components/context/Theme/types';
 import { STORAGE } from '#utils/constants/commons';
 
 export const themeController = (scheme: string = defaultScheme, color: string = defaultColor) => (`

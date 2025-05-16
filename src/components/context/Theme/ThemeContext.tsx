@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 
 import { STORAGE } from '#utils/index';
 
-import { TThemeColor, TThemeInitialType, TThemeProviderProps, TThemeScheme } from './type';
+import { TThemeColor, TThemeInitialType, TThemeProviderProps, TThemeScheme } from './types';
 
 const ThemeDefault: TThemeInitialType = {
 	themeScheme: undefined,

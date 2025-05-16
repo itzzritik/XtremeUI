@@ -32,14 +32,11 @@ export default defineConfig((configEnv) => ({
 				inlineDynamicImports: false,
 				preserveModules: true,
 				exports: 'named',
-				banner: (chunk) => {
-					if (chunk.facadeModuleId.endsWith('.tsx'))
-						return '\'use client\';';
-					return null;
-				},
+				banner: ({ facadeModuleId: id }) =>
+					(id && (id.endsWith('.tsx') || (/components\/hooks\/.*\.ts$/).test(id))
+						? '\'use client\';'
+						: null),
 			},
-
-			// external: [...Object.keys(peerDependencies)],
 		},
 	},
 }));

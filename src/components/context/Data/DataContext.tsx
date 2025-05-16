@@ -2,7 +2,7 @@ import { useState, createContext } from 'react';
 
 import { TSiderModes, defaultSiderMode } from '#components/layout/Sider/types';
 
-import { TDataInitialType, TDataProviderProps } from './type';
+import { TDataInitialType, TDataProviderProps } from './types';
 
 const DataDefault: TDataInitialType = {
 	siderMode: defaultSiderMode,

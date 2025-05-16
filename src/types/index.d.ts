@@ -1,4 +1,4 @@
-import { TThemeColor, TThemeScheme } from '#components/context/Theme/type';
+import { TThemeColor, TThemeScheme } from '#components/context/Theme/types';
 
 declare global {
 

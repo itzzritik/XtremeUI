@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { ActionCard } from '#components/base/ActionCard/ActionCard';
 import { Button } from '#components/base/Button/Button';
 import { Icon } from '#components/base/Icon/Icon';
-import { EThemeColor, TThemeColor } from '#components/context/Theme/type';
+import { EThemeColor, TThemeColor } from '#components/context/Theme/types';
 import { useXTheme } from '#components/context/useContext';
 import { capitalizeFirstLetter, THEME_SCHEME } from '#utils/index';
 
