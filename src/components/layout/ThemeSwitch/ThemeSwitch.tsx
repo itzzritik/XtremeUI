@@ -2,8 +2,9 @@
 
 import { forwardRef, useMemo } from 'react';
 
+import clsx from 'clsx';
+
 import { Button } from '#components/base/Button/Button';
-import { Select } from '#components/base/Select/Select';
 import { EThemeColor } from '#components/context/Theme/type';
 import { useXTheme } from '#components/context/useContext';
 import { THEME_SCHEME } from '#utils/index';
@@ -11,10 +12,7 @@ import { THEME_SCHEME } from '#utils/index';
 import './themeSwitch.scss';
 import { TThemeSwitchProps } from './types';
 
-const options = Object.values(EThemeColor).map((color) => ({
-	value: color,
-	label: color.charAt(0).toUpperCase() + color.slice(1),
-}));
+const THEME_COLOR = Object.values(EThemeColor);
 
 export const ThemeSwitch = forwardRef<HTMLButtonElement, TThemeSwitchProps>((props, ref) => {
 	const { className, withLabel = false, type = 'secondary', size = 'default', iconType = 'solid' } = props;
@@ -29,13 +27,23 @@ export const ThemeSwitch = forwardRef<HTMLButtonElement, TThemeSwitchProps>((pro
 		return THEME_SCHEME.find((t) => t.name === themeScheme)?.icon ?? '';
 	}, [themeScheme]);
 
+	const nextColor = useMemo(() => {
+		return THEME_COLOR[(THEME_COLOR.findIndex((t) => t === themeColor) + 1) % THEME_COLOR.length];
+	}, [themeColor]);
+
+	const mainClass = clsx(
+		'xtrThemeSwitch',
+		className,
+		withLabel && 'withLabel',
+	);
+
 	if (!themeScheme || !themeColor) return null;
 
 	return (
-		<>
+		<div className={mainClass}>
 			<Button
 				ref={ref}
-				className={className}
+				className='xtrThemeScheme'
 				type={type}
 				size={size}
 				icon={currentIcon}
@@ -43,17 +51,16 @@ export const ThemeSwitch = forwardRef<HTMLButtonElement, TThemeSwitchProps>((pro
 				label={withLabel ? themeScheme === 'system' ? 'auto' : themeScheme : undefined}
 				onClick={() => nextTheme.name && setThemeScheme(nextTheme.name)}
 			/>
-			<Select
-				clearable={false}
-				searchable={false}
+			<Button
+				className='xtrThemeColor'
+				type='primary'
 				size={size}
-				options={options}
-				icon='f55d'
-				placeholder='Theme'
-				value={themeColor}
-				onChange={setThemeColor}
+				icon='f53f'
+				iconType={iconType}
+				label={withLabel ? themeColor : undefined}
+				onClick={() => nextColor && setThemeColor(nextColor)}
 			/>
-		</>
+		</div>
 	);
 });
 

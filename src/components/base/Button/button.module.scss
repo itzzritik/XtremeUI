@@ -55,7 +55,7 @@
 	}
 
 	&.secondaryType, &.secondaryDangerType {
-		background: var(--colorBackgroundTertiary);
+		background: var(--colorBackgroundSecondary);
 		color: var(--colorContentPrimary);
 	}
 
@@ -188,9 +188,9 @@
 		background: rgb(var(--themeColor) / 80%);
 
 		&.secondaryType, &.secondaryDangerType {
-			--loaderColor: var(--colorBackgroundPrimary);
+			--loaderColor: var(--colorBackgroundTertiary);
 
-			background: var(--colorBackgroundTertiary);
+			background: var(--colorBackgroundSecondary);
 		}
 
 		&.linkType, &.linkDangerType {

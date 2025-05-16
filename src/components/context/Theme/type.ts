@@ -25,7 +25,6 @@ export enum EThemeColor {
 	green = 'green',
 	blue = 'blue',
 	violet = 'violet',
-	black = 'black',
 }
 export type TThemeColor = keyof typeof EThemeColor | undefined;
 export const defaultColor = EThemeColor.violet;

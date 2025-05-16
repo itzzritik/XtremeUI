@@ -1,5 +1,27 @@
-.xtrSelect {
-	&__control {
-		width: 150px !important;
+.xtrThemeSwitch {
+	display: flex;
+
+	button {
+		i {
+			width: unset !important;
+			aspect-ratio: 1.2;
+		}
+		&.xtrThemeScheme {
+			padding-right: 1rem;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			
+		}
+		&.xtrThemeColor {
+			padding-left: 1rem;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+	}
+
+	&.withLabel {
+		i {
+			aspect-ratio: 1;
+		}
 	}
 }
