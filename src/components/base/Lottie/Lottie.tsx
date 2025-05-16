@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import styles from './lottie.module.scss';
 import { ELottieSize, TLottieProps } from './types';
 
-export const Lottie = forwardRef<HTMLDivElement, TLottieProps>((props) => {
+export const Lottie = forwardRef<HTMLDivElement, TLottieProps>((props, ref) => {
 	const {
 		className,
 		src,
@@ -29,6 +29,7 @@ export const Lottie = forwardRef<HTMLDivElement, TLottieProps>((props) => {
 
 	return (
 		<div
+			ref={ref}
 			className={LottieClsx}
 			style={{ ['--lottieSize' as string]: lottieSize }}
 		>
