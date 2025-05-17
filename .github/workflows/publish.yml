@@ -11,12 +11,13 @@ on:
           - patch
           - minor
           - major
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
 
 jobs:
   publish:
+    if: github.actor != 'itzzjarvis'
     name: Publish new ${{ github.event_name == 'push' && 'patch' || github.event.inputs.version }} version
     runs-on: ubuntu-latest
     steps:

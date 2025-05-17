@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, useEffect, useMemo, useState } from 'react';
 
 import clsx from 'clsx';
 
@@ -10,13 +10,13 @@ import { Icon } from '../Icon/Icon';
 import './avatar.scss';
 import { EAvatarSize, TAvatarProps } from './types';
 
-const RANDOM_HAPPY_FACE = FACE_ICONS.happy[Math.floor(Math.random() * FACE_ICONS.happy.length)];
-
 export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
-	const { className, src, file, alt, placeholderIcon = RANDOM_HAPPY_FACE, size = 'default', onClick } = props;
+	const { className, src, file, alt, placeholderIcon, size = 'default', onClick } = props;
 	const [image, setImage] = useState<string>();
 	const [isLoading, setIsLoading] = useState(!!src || !!file);
 	const [isError, setIsError] = useState(false);
+
+	const RANDOM_HAPPY_FACE = useMemo(() => FACE_ICONS.happy[Math.floor(Math.random() * FACE_ICONS.happy.length)], []);
 
 	const avatarSize = typeof size === 'number' ? size : EAvatarSize[size];
 	const AvatarClsx = clsx(
@@ -79,7 +79,7 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 					<Icon className='placeholder'
 						type='solid'
 						size={8 + avatarSize / 4}
-						code={isError ? 'e1b7' : placeholderIcon}
+						code={isError ? 'e1b7' : (placeholderIcon ?? RANDOM_HAPPY_FACE)}
 					/>
 			}
 		</div>
