@@ -1,5 +1,5 @@
 import { XProvider } from '../src/components/context';
-import { defaultScheme, defaultColor } from '../src/components/context/Theme/type';
+import { defaultScheme, defaultColor } from '../src/components/context/Theme/types';
 import '../src/styles/index.scss';
 import { STORAGE } from '../src/utils/constants/commons';
 import { getLocalState } from '../src/utils/function/localStorage';

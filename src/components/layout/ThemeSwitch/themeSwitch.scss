@@ -10,12 +10,23 @@
 			padding-right: 1rem;
 			border-top-right-radius: 0;
 			border-bottom-right-radius: 0;
-			
 		}
 		&.xtrThemeColor {
 			padding-left: 1rem;
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
+		}
+	}
+	.xtrSelectWrapper {
+		.xtrSelect__control {
+			border-top-left-radius: 0 !important;
+			border-bottom-left-radius: 0 !important;
+		}
+
+		&.open {
+			.xtrSelect__control {
+				border-top-left-radius: 0 !important;
+			}
 		}
 	}
 

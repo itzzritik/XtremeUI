@@ -6,16 +6,18 @@
 	align-items: center;
 
 	.xtrSelect {
-		width: 100%;
+		width: auto;
 		position: relative;
 	
 		&__control {
+			min-width: 250px;
+			width: auto;
 			position: relative;
 			background: var(--colorBackgroundSecondary) !important;
 			border: none !important;
 			padding: 0 8px 0 22px !important;
 			border-radius: 22px !important;
-			box-shadow: 0 0 0 1px var(--colorBackgroundSecondary) !important;
+			box-shadow: 0 0 0 0px var(--colorBackgroundSecondary) !important;
 			transition: all var(--animDurDefault) var(--cubicBezierPrimary) !important;
 	
 			&::before {
@@ -25,7 +27,7 @@
 				display: block;
 				width: 100%; height: 100%;
 				background: var(--colorContentSecondary);
-				clip-path: circle(0% at 22px 50%);
+				clip-path: circle(0% at 22px);
 				border-radius: 9999px;
 				opacity: 0;
 				transition: all var(--animDurDefault) var(--cubicBezierPrimary);
@@ -157,13 +159,13 @@
 			padding: 0 8px 0 48px !important;
 
 			&::before {
-				clip-path: circle(16px at 22px 50%);
+				clip-path: circle(17px at 22px);
 				opacity: 0.4;
 			}
 
 			&--menu-is-open {
 				&::before {
-					clip-path: circle(18px at 22px 50%);
+					clip-path: circle(19px at 22px);
 					opacity: 0.8;
 				}
 			}
@@ -207,16 +209,14 @@
 		}
 	}
 
-	&.defaultSize {
-		width: 350px;
-	}
-
 	&.miniSize {
+		width: auto;
 		.xtrSelect {
 			width: auto;
 			position: relative;
 	
 			&__control {
+				min-width: 100px;
 				width: auto;
 				height: 32px;
 				min-height: 32px;
@@ -227,8 +227,8 @@
 				}
 			}
 			&__value-container {
-				padding: 12px 16px 1px 0 !important;
-				font-size: 12px;
+				padding: 12px 16px 2px 0 !important;
+				font-size: 11px;
 			}
 			&__menu {
 				margin-top: 6px !important;
@@ -244,17 +244,20 @@
 					height: 16px;
 				}
 			}
+			&__menu-list {
+				max-height: 220px;
+			}
 		}
 		.xtrSelectIcon {
 			width: 31px;
-    		height: 31px;
+			height: 31px;
 			font-size: 12px;
 		}
 
 		.placeholder {
 			font-variation-settings: 'wdth' 75, 'wght' 500;
 			scale: 1;
-			font-size: 13px;
+			font-size: 12px;
 			transform: translate(0, 0);
 		}
 
@@ -273,6 +276,10 @@
 			.xtrSelect {
 				&__control {
 					border-radius: 16px 16px 4px 4px !important;
+
+					&::before {
+						clip-path: circle(14px at 16px);
+					}
 				}
 			}
 		}
@@ -286,6 +293,89 @@
 				.placeholder {
 					scale: 0.75 !important;
 					transform: translate(28px, -10px);
+				}
+			}
+		}
+	}
+	&.largeSize {
+		width: auto;
+		.xtrSelect {
+			width: auto;
+			position: relative;
+	
+			&__control {
+				min-width: 300px;
+				width: auto;
+				height: 60px;
+				min-height: 60px;
+				border-radius: 30px !important;
+				padding: 0 12px 0 24px !important;
+
+				&::before {
+					clip-path: circle(24px at 30px);
+				}
+			}
+			&__value-container {
+				font-size: 22px;
+				padding: 18px 16px 0px 0 !important;
+			}
+			&__option {
+				padding: 18px 24px !important;
+				font-size: 20px;
+			}
+			&__indicator {
+				svg {
+					width: 24px;
+					height: 24px;
+				}
+			}
+			&__menu-list {
+				max-height: 420px;
+			}
+		}
+		.xtrSelectIcon {
+			width: 60px;
+			height: 60px;
+			font-size: 22px;
+		}
+		.placeholder {
+			font-variation-settings: 'wdth' 75, 'wght' 500;
+			scale: 1;
+			font-size: 20px;
+			transform: translate(8px, 0);
+		}
+
+		&.withIcon {
+			.xtrSelect {
+				&__control {
+					padding: 0 8px 0 64px !important;
+				}
+			}
+			.placeholder {
+				transform: translate(50px, 0);
+			}
+		}
+		&.open {
+			.xtrSelect {
+				&__control {
+					border-radius: 30px 30px 4px 4px !important;
+
+					&::before {
+						clip-path: circle(26px at 30px);
+					}
+				}
+			}
+		}
+		&.open:not(.noSearch), &.withValue {
+			.placeholder {
+				font-variation-settings: 'wdth' 75, 'wght' 600;
+				scale: 0.75 !important;
+				transform: translate(12px, -18px);
+			}
+			&.withIcon {
+				.placeholder {
+					scale: 0.75 !important;
+					transform: translate(66px, -18px);
 				}
 			}
 		}
@@ -306,6 +396,12 @@
 		100% {
 		  opacity: 1;
 		  transform: translateY(0);
+		}
+	}
+
+	&:not(.open) {
+		.xtrSelect__input {
+			caret-color: transparent;
 		}
 	}
 }

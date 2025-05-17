@@ -3,19 +3,28 @@ import { forwardRef, useMemo } from 'react';
 import clsx from 'clsx';
 
 import { Button } from '#components/base/Button/Button';
+import { Select } from '#components/base/Select/Select';
 import { EThemeColor } from '#components/context/Theme/types';
 import { useXTheme } from '#components/context/useContext';
+import { useScreenType } from '#components/hooks/useScreen';
 import { THEME_SCHEME } from '#utils/index';
 
 import './themeSwitch.scss';
 import { TThemeSwitchProps } from './types';
 
+const OPTIONS = Object.values(EThemeColor).map((color) => ({
+	value: color,
+	label: color.charAt(0).toUpperCase() + color.slice(1),
+}));
 const THEME_COLOR = Object.values(EThemeColor);
 
 export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props, ref) => {
-	const { className, withLabel = false, type = 'secondary', size = 'default', iconType = 'solid' } = props;
+	const { className, type = 'secondary', size = 'default', iconType = 'solid' } = props;
 
 	const { themeScheme, setThemeScheme, themeColor, setThemeColor } = useXTheme();
+	const { isMobile, isDesktop } = useScreenType();
+
+	const withLabel = !isMobile;
 
 	const nextTheme = useMemo(() => {
 		return THEME_SCHEME[(THEME_SCHEME.findIndex((t) => t.name === themeScheme) + 1) % THEME_SCHEME.length];
@@ -48,15 +57,30 @@ export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props,
 				label={withLabel ? themeScheme === 'system' ? 'auto' : themeScheme : undefined}
 				onClick={() => nextTheme.name && setThemeScheme(nextTheme.name)}
 			/>
-			<Button
-				className='xtrThemeColor'
-				type='primary'
-				size={size}
-				icon='f53f'
-				iconType={iconType}
-				label={withLabel ? themeColor : undefined}
-				onClick={() => nextColor && setThemeColor(nextColor)}
-			/>
+			{
+				isDesktop ?
+					<Select
+						clearable={false}
+						searchable={false}
+						size={size}
+						options={OPTIONS}
+						icon='f53f'
+						iconType={iconType}
+						placeholder='Theme'
+						value={themeColor}
+						onChange={setThemeColor}
+					/> :
+					<Button
+						className='xtrThemeColor'
+						type='primary'
+						size={size}
+						icon='f53f'
+						iconType={iconType}
+						label={withLabel ? themeColor : undefined}
+						onClick={() => nextColor && setThemeColor(nextColor)}
+					/>
+			}
+
 		</div>
 	);
 });
