@@ -2,6 +2,7 @@ import { forwardRef, useEffect, useState } from 'react';
 
 import clsx from 'clsx';
 
+import { FACE_ICONS } from '#utils/constants/iconCollection';
 import { readImageFile, readImageSrc } from '#utils/helper/imageHelper';
 
 import { Icon } from '../Icon/Icon';
@@ -9,8 +10,10 @@ import { Icon } from '../Icon/Icon';
 import './avatar.scss';
 import { EAvatarSize, TAvatarProps } from './types';
 
+const RANDOM_HAPPY_FACE = FACE_ICONS.happy[Math.floor(Math.random() * FACE_ICONS.happy.length)];
+
 export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
-	const { className, src, file, alt, placeholderIcon = 'f03e', size = 'default', onClick } = props;
+	const { className, src, file, alt, placeholderIcon = RANDOM_HAPPY_FACE, size = 'default', onClick } = props;
 	const [image, setImage] = useState<string>();
 	const [isLoading, setIsLoading] = useState(!!src || !!file);
 	const [isError, setIsError] = useState(false);
@@ -71,11 +74,13 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 			role='img'
 		>
 			{
-				!image &&
-				<Icon className='placeholder' type='solid' size={8 + avatarSize / 4} code={isError ? 'e1b7' : placeholderIcon} />
-			}
-			{
-				image && <img className='image' src={image} alt={alt} />
+				image
+					? <img className='image' src={image} alt={alt} /> :
+					<Icon className='placeholder'
+						type='solid'
+						size={8 + avatarSize / 4}
+						code={isError ? 'e1b7' : placeholderIcon}
+					/>
 			}
 		</div>
 	);

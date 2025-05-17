@@ -23,5 +23,6 @@ export default meta;
 export const Default: StoryObj<typeof meta> = {
 	args: {
 		src: 'https://avatars.githubusercontent.com/u/24320496?v=4',
+		size: 256,
 	},
 };
