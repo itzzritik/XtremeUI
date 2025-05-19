@@ -29,6 +29,8 @@ const options = [
 
 function SelectComponent<TValue> (props: TSelectProps<TValue>) {
 	const [value, setValue] = useState<TValue>();
+
+	// @ts-expect-error
 	return <Select {...props} value={value} onChange={setValue} />;
 }
 

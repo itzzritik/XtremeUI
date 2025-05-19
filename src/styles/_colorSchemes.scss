@@ -22,7 +22,7 @@
 	--colorBackgroundTertiary: #333;
 }
 
-@mixin systemScheme {
+@mixin autoScheme {
 	@media (prefers-color-scheme: light) {
 		@include lightScheme;
 	}

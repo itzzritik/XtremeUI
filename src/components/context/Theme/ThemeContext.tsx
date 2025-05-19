@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from 'react';
 
-import { STORAGE } from '#utils/index';
+import { defaultColorPreset, STORAGE } from '#utils/index';
 
-import { defaultColorPreset, TThemeColor, TThemeInitialType, TThemeProviderProps, TThemeScheme } from './types';
+import { TThemeColor, TThemeInitialType, TThemeProviderProps, TThemeScheme } from './types';
 
 const ThemeDefault: TThemeInitialType = {
 	themeScheme: undefined,

@@ -278,7 +278,7 @@ export default tseslint.config(
 			"@typescript-eslint/ban-ts-comment": [
 				"warn",
 				{
-					"ts-expect-error": true,
+					"ts-expect-error": false,
 					"ts-ignore": true,
 					"ts-nocheck": true,
 					"ts-check": false,

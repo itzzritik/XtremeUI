@@ -11,18 +11,18 @@ const meta = {
 		size: { defaultValue: { summary: 'default' } },
 		type: { defaultValue: { summary: 'secondary' } },
 		iconType: { defaultValue: { summary: 'solid' } },
-		withLabel: { defaultValue: { summary: false } },
 	},
 	args: {
 		size: 'default',
 		type: 'secondary',
 		iconType: 'solid',
-		withLabel: false,
 	},
 } satisfies Meta<typeof ThemeSwitch>;
 
 export default meta;
 
 export const Default: StoryObj<typeof meta> = {
-	args: {},
+	args: {
+		size: 'mini',
+	},
 };

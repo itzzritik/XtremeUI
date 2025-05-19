@@ -1,14 +1,13 @@
 import { forwardRef } from 'react';
 
 import clsx from 'clsx';
+import isEqual from 'lodash/isEqual';
 
 import { ActionCard } from '#components/base/ActionCard/ActionCard';
 import { Button } from '#components/base/Button/Button';
 import { Icon } from '#components/base/Icon/Icon';
-import { ThemeColorsPreset, TThemeColor } from '#components/context/Theme/types';
 import { useXTheme } from '#components/context/useContext';
-import { getColorLabel } from '#utils/helper/colorHelper';
-import { capitalizeFirstLetter, THEME_SCHEME } from '#utils/index';
+import { THEME_SCHEME, ThemeColorsPreset } from '#utils/index';
 
 import styles from './themePicker.module.scss';
 import { EThemePickerGap, EThemePickerSize, TThemePickerProps } from './types';
@@ -65,19 +64,19 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 			</div>
 			<div className={styles.themeColors} role='radiogroup'>
 				{
-					THEME_COLOR.map((color, i) => {
+					THEME_COLOR.map((c, i) => {
 						return (
 							<Button
-								key={`ThemeColor-${color}-${i}`}
+								key={`ThemeColor-${c.h}${c.s}${c.l}-${i}`}
 								className={styles.themeColorsItem}
 								size={size}
 								icon='f00c'
 								iconType='solid'
 								style={{
-									['--themeColor' as string]: `var(--color${capitalizeFirstLetter(getColorLabel(color) ?? '')}Primary)`,
-									color: themeColor === color ? 'white' : 'transparent',
+									['--themeColor' as string]: `${c.h} ${c.s}% ${c.l}%`,
+									color: isEqual(c, themeColor) ? 'white' : 'transparent',
 								}}
-								onClick={() => setThemeColor(color as TThemeColor)}
+								onClick={() => setThemeColor(c)}
 							/>
 						);
 					})

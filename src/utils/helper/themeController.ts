@@ -1,5 +1,5 @@
-import { defaultScheme, defaultColorPreset, TThemeColor } from '#components/context/Theme/types';
-import { STORAGE } from '#utils/constants/commons';
+import { defaultScheme, TThemeColor } from '#components/context/Theme/types';
+import { defaultColorPreset, STORAGE } from '#utils/constants/theme';
 
 export const themeController = (
 	scheme: string = defaultScheme,

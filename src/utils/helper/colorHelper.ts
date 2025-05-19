@@ -1,7 +1,8 @@
 import namer from 'color-namer';
 import { colord } from 'colord';
 
-import { ThemeColorsPreset, TThemeColor } from '#components/context/Theme/types';
+import { TThemeColor } from '#components/context/Theme/types';
+import { ThemeColorsPreset } from '#utils/constants/theme';
 
 export const guessClosestColorName = (color: TThemeColor) => {
 	const hex = colord(color).toHex();

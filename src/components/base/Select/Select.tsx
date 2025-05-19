@@ -2,7 +2,13 @@ import { useMemo, useState } from 'react';
 
 import clsx from 'clsx';
 import isEqual from 'lodash/isEqual';
-import XSelect, { GroupBase, MultiValue, OptionsOrGroups, PropsValue, SingleValue } from 'react-select';
+import XSelect, {
+	GroupBase,
+	MultiValue,
+	OptionsOrGroups,
+	PropsValue,
+	SingleValue,
+} from 'react-select';
 
 import { Icon } from '../Icon/Icon';
 
@@ -28,9 +34,17 @@ export function Select<T> (props: TSelectProps<T>) {
 	} = props;
 
 	const [open, setOpen] = useState(false);
+
 	const localValue = useMemo(() => {
-		return options.find((option) => isEqual(option.value, value)) as unknown as PropsValue<T>;
-	}, [options, value]);
+		if (multi) {
+			const vals = (value ?? []) as T[];
+			return options.filter((option) =>
+				vals.some((v) => isEqual(v, option.value)),
+			);
+		} else {
+			return options.find((option) => isEqual(option.value, value)) || null;
+		}
+	}, [multi, options, value]);
 
 	const SelectClsx = clsx(
 		'xtrSelectWrapper',
@@ -43,12 +57,16 @@ export function Select<T> (props: TSelectProps<T>) {
 		className,
 	);
 
-	const onChangeHandler = (newValue: MultiValue<T> | SingleValue<T>) => {
-		const val = multi
-			? (newValue as Array<Option<T>>)?.map(({ value }) => value)
-			: (newValue as unknown as Option<T>)?.value;
-
-		onChange(val as T);
+	const onChangeHandler = (
+		newValue: MultiValue<Option<T>> | SingleValue<Option<T>> | null,
+	) => {
+		if (multi) {
+			const vals = (newValue as MultiValue<Option<T>>)?.map((opt) => opt.value) ?? [];
+			(onChange as (value: T[]) => void)(vals);
+		} else {
+			const val = (newValue as SingleValue<Option<T>>)?.value ?? null;
+			(onChange as (value: T | null) => void)(val);
+		}
 	};
 
 	return (
@@ -66,8 +84,8 @@ export function Select<T> (props: TSelectProps<T>) {
 				isSearchable={searchable}
 				isDisabled={disabled}
 				isLoading={loading}
-				options={options as unknown as OptionsOrGroups<T, GroupBase<T>>}
-				value={localValue}
+				options={options as unknown as OptionsOrGroups<Option<T>, GroupBase<Option<T>>>}
+				value={localValue as unknown as PropsValue<Option<T>>}
 				onChange={onChangeHandler}
 			/>
 			{placeholder && !multi && <p className='placeholder'>{placeholder}</p>}

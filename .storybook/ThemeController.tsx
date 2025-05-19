@@ -18,7 +18,7 @@ export const ThemeController = () => {
 			const themeColor = BrandColorList.find((i) => i.value === globals?.brand)?.color;
 
 			if (backgroundName === 'light' || backgroundName === 'dark') setThemeScheme(backgroundName);
-			else if (globals?.backgrounds?.value === 'transparent') setThemeScheme('system');
+			else if (globals?.backgrounds?.value === 'transparent') setThemeScheme('auto');
 			if (themeColor) setThemeColor(themeColor);
 		});
 	}, [setThemeColor, setThemeScheme]);

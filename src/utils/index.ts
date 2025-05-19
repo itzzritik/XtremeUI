@@ -1,4 +1,4 @@
-export * from './constants/commons';
+export * from './constants/theme';
 export * from './constants/iconCollection';
 export * from './function/localStorage';
 export * from './function/mergeRefs';

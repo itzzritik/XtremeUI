@@ -31,8 +31,8 @@
 			cursor: pointer;
 			transition: all var(--animDurDefault) var(--cubicBezierPrimary), box-shadow var(--animDurDefault) linear;
 
-			&.system {
-				@include colorSchemes.systemScheme;
+			&.auto {
+				@include colorSchemes.autoScheme;
 			}
 
 			&.light {

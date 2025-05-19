@@ -31,8 +31,8 @@
 	--animDurFast: 0.4s;
 	--cubicBezierPrimary: cubic-bezier(0.23, 1, 0.320, 1);
 
-	&[data-theme-scheme='system'] {
-		@include colorSchemes.systemScheme;
+	&[data-theme-scheme='auto'] {
+		@include colorSchemes.autoScheme;
 	}
 
 	&[data-theme-scheme='light'] {

@@ -1,4 +1,4 @@
-import { ThemeColorsPreset } from '../src/components/context/Theme/types';
+import { ThemeColorsPreset } from '../src/utils/constants/theme';
 
 export const ThemeList = [
 	{ name: 'Dark', value: '#000000' },

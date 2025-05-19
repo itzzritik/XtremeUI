@@ -1,7 +1,7 @@
 import { XProvider } from '../src/components/context';
-import { defaultScheme, defaultColorPreset } from '../src/components/context/Theme/types';
+import { defaultScheme } from '../src/components/context/Theme/types';
 import '../src/styles/index.scss';
-import { STORAGE } from '../src/utils/constants/commons';
+import { defaultColorPreset, STORAGE } from '../src/utils/constants/theme';
 import { getLocalState } from '../src/utils/function/localStorage';
 import { capitalizeFirstLetter } from '../src/utils/function/string';
 import { elementObserver, localStore, waitForElement } from '../src/utils/helper/domHelper';
@@ -49,7 +49,7 @@ const preview: Preview = {
 			},
 		},
 		backgrounds: {
-			default: initialThemeScheme === 'system' ? undefined : capitalizeFirstLetter(initialThemeScheme),
+			default: initialThemeScheme === 'auto' ? undefined : capitalizeFirstLetter(initialThemeScheme),
 			values: ThemeList,
 		},
 	},
