@@ -63,7 +63,7 @@
 				cursor: pointer !important;
 	
 				&:hover {
-					background: rgb(var(--colorAlertErrorRGB) / 50%) !important;
+					background: hsl(var(--colorAlertError) / 50%) !important;
 				}
 			}
 		}
@@ -82,7 +82,7 @@
 	
 		&__menu {
 			background: var(--colorBackgroundPrimary) !important;
-			box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%) !important;
+			box-shadow: 0 0 0 2px hsl(var(--colorBrandPrimary) / 50%) !important;
 			border-radius: 4px 4px 22px 22px !important;
 			margin-top: 10px !important;
 			overflow: hidden !important;
@@ -100,12 +100,12 @@
 	
 			&--is-focused {
 				color: white !important;
-				background: rgb(var(--colorBrandAccentRgb) / 50%) !important;
+				background: hsl(var(--colorBrandPrimary) / 50%) !important;
 			}
 	
 			&--is-selected {
 				color: white !important;
-				background: rgb(var(--colorBrandAccentRgb)) !important;
+				background: hsl(var(--colorBrandPrimary)) !important;
 			}
 		}
 	
@@ -143,14 +143,14 @@
 	&.open, &.withValue {
 		.xtrSelect__control {
 			&::before {
-				background: rgb(var(--colorBrandAccentRgb));
+				background: hsl(var(--colorBrandPrimary));
 			}
 		}
 		.placeholder {
 			transform: translate(8px, -12px);
 			scale: 0.75;
 			font-variation-settings: 'wdth' 75, 'wght' 700;
-			color: rgb(var(--colorBrandAccentRgb) / 100%);
+			color: hsl(var(--colorBrandPrimary) / 100%);
 		}
 	}
 
@@ -196,10 +196,10 @@
 		.xtrSelect__control {
 			border-radius: 22px 22px 4px 4px !important;
 			background: var(--colorBackgroundPrimary) !important;
-			box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%) !important;
+			box-shadow: 0 0 0 2px hsl(var(--colorBrandPrimary) / 50%) !important;
 
 			&::before {
-				background: rgb(var(--colorBrandAccentRgb));
+				background: hsl(var(--colorBrandPrimary));
 			}
 		}
 

@@ -29,11 +29,11 @@
 		}
 
 		&:hover {
-			background: rgb(var(--colorBrandAccentRgb) / 10%);
-			border-color: rgb(var(--colorBrandAccentRgb) / 50%);
+			background: hsl(var(--colorBrandPrimary) / 10%);
+			border-color: hsl(var(--colorBrandPrimary) / 50%);
 
 			> i {
-				color: rgb(var(--colorBrandAccentRgb) / 100%);
+				color: hsl(var(--colorBrandPrimary) / 100%);
 				transform: scale(1.05);
 			}
 		}

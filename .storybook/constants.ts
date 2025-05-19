@@ -1,14 +1,13 @@
+import { ThemeColorsPreset } from '../src/components/context/Theme/types';
+
 export const ThemeList = [
 	{ name: 'Dark', value: '#000000' },
 	{ name: 'Light', value: '#FFFFFF' },
 ];
 
-export const BrandColorList = [
-	{ title: 'Red', value: 'red', right: '#FF3853' },
-	{ title: 'Pink', value: 'pink', right: '#FF5588' },
-	{ title: 'Orange', value: 'orange', right: '#FF6C67' },
-	{ title: 'Green', value: 'green', right: '#7eaa92' },
-	{ title: 'Blue', value: 'blue', right: '#2195F3' },
-	{ title: 'Violet', value: 'violet', right: '#7F51FF' },
-	{ title: 'Black', value: 'black', right: '#28272C' },
-];
+export const BrandColorList = Object.entries(ThemeColorsPreset).map(([name, c]) => ({
+	title: name.charAt(0).toUpperCase() + name.slice(1),
+	value: name,
+	color: c,
+	right: `${c.h}, ${c.s}%, ${c.l}%`,
+}));

@@ -44,7 +44,7 @@
 				position: absolute;
 				width: 100%; height: 100%;
 				transform: translateX(-100%);
-				background: rgb(var(--colorBrandAccentRgb));
+				background: hsl(var(--colorBrandPrimary));
 				z-index: 0;
 				border-radius: 0;
 				transition: all var(--animDurFast) var(--cubicBezierPrimary), transform 0.2s ease;
@@ -89,9 +89,9 @@
 			}
 
 			&.loading {
-				--loaderColor: rgb(var(--colorBrandAccentRgb) / 50%);
+				--loaderColor: hsl(var(--colorBrandPrimary) / 50%);
 
-				background: rgb(var(--colorBrandAccentRgb) / 0%);
+				background: hsl(var(--colorBrandPrimary) / 0%);
 				pointer-events: none;
 		
 				&::before {

@@ -175,7 +175,7 @@
 			&.active, &:hover {
 				.design {
 					.navigation {
-						background: rgb(var(--colorBrandAccentRgb));
+						background: hsl(var(--colorBrandPrimary));
 
 						.navigationItem {
 							opacity: 0.3;
@@ -185,14 +185,14 @@
 					.content {
 						.header {
 							&::before {
-								background: rgb(var(--colorBrandAccentRgb));
+								background: hsl(var(--colorBrandPrimary));
 							}
 						}
 					}
 				}
 
 				.footer {
-					color: rgb(var(--colorBrandAccentRgb));
+					color: hsl(var(--colorBrandPrimary));
 				}
 			}
 		}

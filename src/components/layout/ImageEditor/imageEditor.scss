@@ -25,7 +25,7 @@
 			color: #ffffffdd;
 
 			&:hover {
-				border: 1px solid rgb(var(--colorBrandAccentRgb) / 75%);
+				border: 1px solid hsl(var(--colorBrandPrimary) / 75%);
 				color: #ffffff;
 			}
 		}

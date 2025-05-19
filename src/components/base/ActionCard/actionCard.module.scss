@@ -1,7 +1,7 @@
 .actionCard {
 	--cardWidth: 164px;
 	--cardHeight: 164px;
-	--rippleColor: var(--colorBrandAccentRgb);
+	--rippleColor: var(--colorBrandPrimary);
 	--rippleShadowColor: var(--colorBackgroundTertiary);
 	--cardBorderRadius: calc(min(var(--cardWidth), var(--cardHeight)) / 10);
 

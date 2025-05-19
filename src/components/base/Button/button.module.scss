@@ -1,5 +1,5 @@
 .button {
-	--themeColor: var(--colorBrandAccentRgb);
+	--themeColor: var(--colorBrandPrimary);
 	--rippleColor: var(--themeColor);
 	--rippleShadowColor: var(--themeColor);
 
@@ -40,7 +40,7 @@
 		position: absolute;
 		display: block;
 		width: 100%; height: 100%;
-		background: rgb(var(--themeColor));
+		background: hsl(var(--themeColor));
 		filter: contrast(1.2) brightness(0.8);
 		clip-path: circle(0% at 50% 50%);
 		border-radius: inherit;
@@ -50,7 +50,7 @@
 	}
 
 	&.primaryType, &.primaryDangerType {
-		background: rgb(var(--themeColor));
+		background: hsl(var(--themeColor));
 		color: white;
 	}
 
@@ -76,7 +76,7 @@
 		}
 
 		&:hover {
-			color: rgb(var(--themeColor));
+			color: hsl(var(--themeColor));
 
 			.label {
 				filter: contrast(0.8) brightness(1.2);
@@ -91,10 +91,10 @@
 	}
 
 	&.primaryDangerType, &.secondaryDangerType, &.linkDangerType {
-		--themeColor: var(--colorAlertErrorRGB);
+		--themeColor: var(--colorAlertError);
 
 		.underline span {
-			background: rgb(var(--themeColor));
+			background: hsl(var(--themeColor));
 		}
 	}
 
@@ -181,11 +181,11 @@
 	}
 
 	&.loading {
-		--loaderColor: rgb(var(--themeColor));
+		--loaderColor: hsl(var(--themeColor));
 
 		pointer-events: none;
 		overflow: hidden;
-		background: rgb(var(--themeColor) / 80%);
+		background: hsl(var(--themeColor) / 80%);
 
 		&.secondaryType, &.secondaryDangerType {
 			--loaderColor: var(--colorBackgroundTertiary);
@@ -238,7 +238,7 @@
 			&::after {
 				width: 100%;
 				background: none;
-				border: 2px solid rgb(var(--themeColor));
+				border: 2px solid hsl(var(--themeColor));
 				border-top-color: transparent;
 				border-bottom-color: transparent;
 				animation: spin 0.25s infinite linear;
@@ -247,13 +247,13 @@
 	}
 
 	&:disabled {
-		background: rgb(var(--themeColor) / 20%);
-		color: rgb(var(--themeColor) / 75%);
+		background: hsl(var(--themeColor) / 20%);
+		color: hsl(var(--themeColor) / 75%);
 		pointer-events: none;
 		filter: grayscale(1);
 
 		&.secondaryType, &.secondaryDangerType {
-			background: rgb(var(--themeColor) / 5%);
+			background: hsl(var(--themeColor) / 5%);
 		}
 
 		&.linkType {

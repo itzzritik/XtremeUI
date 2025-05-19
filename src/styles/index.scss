@@ -13,7 +13,7 @@ html {
 	
 	::selection {
 		color: white;
-		background: rgb(var(--colorBrandAccentRgb));
+		background: hsl(var(--colorBrandPrimary));
 	}
 
 	@include colors.colors;

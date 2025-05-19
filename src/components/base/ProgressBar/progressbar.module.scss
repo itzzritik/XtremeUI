@@ -34,7 +34,7 @@
 
 		&::before {
 			height: 100%;
-			background: rgb(var(--colorBrandAccentRgb));
+			background: hsl(var(--colorBrandPrimary));
 		}
 
 		> .progress {
@@ -43,8 +43,8 @@
 				60deg,
 				transparent,
 				transparent 0.5rem,
-				rgb(var(--colorBrandAccentRgb)) 0.5rem,
-				rgb(var(--colorBrandAccentRgb)) 1.5rem
+				hsl(var(--colorBrandPrimary)) 0.5rem,
+				hsl(var(--colorBrandPrimary)) 1.5rem
 			);
 			animation: barberPole 0.2s infinite linear;
 		}

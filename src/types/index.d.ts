@@ -1,7 +1,6 @@
 import { TThemeColor, TThemeScheme } from '#components/context/Theme/types';
 
 declare global {
-
 	declare module '*.scss' {
 		const styles: {
 			readonly [key: string]: string;

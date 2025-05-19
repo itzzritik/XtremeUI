@@ -1,11 +1,11 @@
 .shadowRipple {
 	--rippleDuration: var(--animDurDefault);
-	--rippleColor: var(--colorBrandAccentRgb);
+	--rippleColor: var(--colorBrandPrimary);
 	--rippleShadowColor: var(--colorBackgroundTertiary);
 	--rippleSize: 30px 15px;
 
 	border-radius: inherit;
-	box-shadow: 0 0 var(--rippleSize) rgb(var(--rippleColor) / 0%);
+	box-shadow: 0 0 var(--rippleSize) hsl(var(--rippleColor) / 0%);
 	transition: box-shadow var(--rippleDuration) linear;
 
 	&::before {
@@ -21,16 +21,16 @@
 
 	&:hover {
 		&::before {
-			box-shadow: 0 0 0 3px rgb(var(--rippleColor) / 50%);
+			box-shadow: 0 0 0 3px hsl(var(--rippleColor) / 50%);
 		}
 	}
 
 	&:active {
 		transition: 0s !important;
-		box-shadow: 0 0 0 0 rgb(var(--rippleColor) / 50%);
+		box-shadow: 0 0 0 0 hsl(var(--rippleColor) / 50%);
 
 		&::before {
-			box-shadow: 0 0 0 5px rgb(var(--rippleColor) / 50%);
+			box-shadow: 0 0 0 5px hsl(var(--rippleColor) / 50%);
 		}
 	}
 }

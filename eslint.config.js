@@ -45,7 +45,7 @@ export default tseslint.config(
 				{ allowConstantExport: true },
 			],
 			indent: ["error", "tab", { SwitchCase: 1 }],
-			"max-len": ["error", { code: 130 }],
+			"max-len": ["error", { code: 180 }],
 			"no-return-assign": ["off"],
 			quotes: ["error", "single"],
 			"prefer-const": "error",

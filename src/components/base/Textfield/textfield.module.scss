@@ -3,7 +3,7 @@
 		transform: translate(22px, -12px);
 		scale: 0.75;
 		font-variation-settings: 'wdth' 75, 'wght' 700;
-		color: rgb(var(--colorBrandAccentRgb) / 100%);
+		color: hsl(var(--colorBrandPrimary) / 100%);
 		
 		&::before {
 			scale: 1;
@@ -46,9 +46,9 @@
 	justify-content: center;
 	align-items: center;
 	border-radius: 22px;
-	box-shadow: 0 0 0 1px rgb(var(--colorBrandAccentRgb) / 50%);
+	box-shadow: 0 0 0 1px hsl(var(--colorBrandPrimary) / 50%);
 	background: var(--primaryColor);
-	color: rgb(var(--colorContentPrimary));
+	color: hsl(var(--colorContentPrimary));
 	transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 
 	&::before {
@@ -56,7 +56,7 @@
 		position: absolute;
 		display: block;
 		width: 100%; height: 100%;
-		background: rgb(var(--colorBrandAccentRgb));
+		background: hsl(var(--colorBrandPrimary));
 		clip-path: circle(0% at 22px 50%);
 		border-radius: 9999px;
 		z-index: 0;
@@ -69,7 +69,7 @@
 		left: 0;
 		width: 44px; height: 44px;
 		font-size: calc(var(--fontSize) + 2px);
-		color: rgb(var(--colorBrandAccentRgb) / 100%);
+		color: hsl(var(--colorBrandPrimary) / 100%);
 		pointer-events: none;
 		transition: all 0s;
 	}
@@ -180,7 +180,7 @@
 	}
 
 	&:focus-within {
-		box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%);
+		box-shadow: 0 0 0 2px hsl(var(--colorBrandPrimary) / 50%);
 		background: var(--secondaryColor);
 
 		@include raisePlaceholder;

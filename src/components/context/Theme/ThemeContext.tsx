@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 
 import { STORAGE } from '#utils/index';
 
-import { TThemeColor, TThemeInitialType, TThemeProviderProps, TThemeScheme } from './types';
+import { defaultColorPreset, TThemeColor, TThemeInitialType, TThemeProviderProps, TThemeScheme } from './types';
 
 const ThemeDefault: TThemeInitialType = {
 	themeScheme: undefined,
@@ -13,17 +13,21 @@ const ThemeDefault: TThemeInitialType = {
 
 const ThemeContext = createContext(ThemeDefault);
 const ThemeProvider = ({ children }: TThemeProviderProps) => {
-	const [themeScheme, setScheme] = useState<TThemeScheme>(ThemeDefault.themeScheme);
-	const [themeColor, setColor] = useState<TThemeColor>(ThemeDefault.themeColor);
+	const [themeScheme, setScheme] = useState<TThemeScheme | undefined>(ThemeDefault.themeScheme);
+	const [themeColor, setColor] = useState<TThemeColor | undefined>(ThemeDefault.themeColor);
 
 	useEffect(() => {
 		let storedScheme = localStorage.getItem(STORAGE.themeScheme) as TThemeScheme;
-		let storedColor = localStorage.getItem(STORAGE.themeColor) as TThemeColor;
+		let storedColor: TThemeColor | undefined;
+
+		try {
+			storedColor = JSON.parse(localStorage.getItem(STORAGE.themeColor) || 'null') || defaultColorPreset;
+		} catch {
+			storedColor = defaultColorPreset;
+		}
 
 		if (!storedScheme)
 			storedScheme = document?.documentElement.getAttribute(STORAGE.themeSchemeAttr) as TThemeScheme ?? undefined;
-		if (!storedColor)
-			storedColor = document?.documentElement.getAttribute(STORAGE.themeColorAttr) as TThemeColor ?? undefined;
 
 		if (storedScheme) setScheme(storedScheme);
 		if (storedColor) setColor(storedColor);
@@ -32,9 +36,11 @@ const ThemeProvider = ({ children }: TThemeProviderProps) => {
 	useEffect(() => {
 		if (!themeScheme || !themeColor) return;
 		document.documentElement.setAttribute(STORAGE.themeSchemeAttr, themeScheme);
-		document.documentElement.setAttribute(STORAGE.themeColorAttr, themeColor);
+		document.documentElement.style.setProperty('--H', `${themeColor?.h}`);
+		document.documentElement.style.setProperty('--S', `${themeColor?.s}%`);
+		document.documentElement.style.setProperty('--L', `${themeColor?.l}%`);
 		localStorage.setItem(STORAGE.themeScheme, themeScheme);
-		localStorage.setItem(STORAGE.themeColor, themeColor);
+		localStorage.setItem(STORAGE.themeColor, JSON.stringify(themeColor));
 	}, [themeScheme, themeColor]);
 
 	return (

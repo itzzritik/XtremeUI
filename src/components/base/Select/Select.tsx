@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 
 import clsx from 'clsx';
+import isEqual from 'lodash/isEqual';
 import XSelect, { GroupBase, MultiValue, OptionsOrGroups, PropsValue, SingleValue } from 'react-select';
 
 import { Icon } from '../Icon/Icon';
@@ -27,8 +28,9 @@ export function Select<T> (props: TSelectProps<T>) {
 	} = props;
 
 	const [open, setOpen] = useState(false);
-	const localValue = useMemo(() => options.find((option) => option.value === value) as unknown as PropsValue<T>,
-		[options, value]);
+	const localValue = useMemo(() => {
+		return options.find((option) => isEqual(option.value, value)) as unknown as PropsValue<T>;
+	}, [options, value]);
 
 	const SelectClsx = clsx(
 		'xtrSelectWrapper',

@@ -1,10 +1,10 @@
 import { XProvider } from '../src/components/context';
-import { defaultScheme, defaultColor } from '../src/components/context/Theme/types';
+import { defaultScheme, defaultColorPreset } from '../src/components/context/Theme/types';
 import '../src/styles/index.scss';
 import { STORAGE } from '../src/utils/constants/commons';
 import { getLocalState } from '../src/utils/function/localStorage';
 import { capitalizeFirstLetter } from '../src/utils/function/string';
-import { elementObserver, waitForElement } from '../src/utils/helper/domHelper';
+import { elementObserver, localStore, waitForElement } from '../src/utils/helper/domHelper';
 import { themeController } from '../src/utils/helper/themeController';
 
 import { ThemeController } from './ThemeController';
@@ -15,8 +15,8 @@ import type { Preview } from '@storybook/react';
 
 eval(themeController());
 
-const initialThemeScheme = getLocalState(STORAGE.themeScheme, defaultScheme);
-const initialThemeColor = getLocalState(STORAGE.themeColor, defaultColor);
+const initialThemeScheme = localStore?.getItem(STORAGE.themeScheme) ?? defaultScheme;
+const initialThemeColor = getLocalState(STORAGE.themeColor, defaultColorPreset);
 let root: HTMLElement;
 
 const preview: Preview = {
@@ -26,6 +26,7 @@ const preview: Preview = {
 			defaultValue: initialThemeColor,
 			toolbar: {
 				title: 'Brand Color',
+				icon: 'paintbrush',
 				items: BrandColorList,
 				dynamicTitle: true,
 			},
@@ -48,7 +49,7 @@ const preview: Preview = {
 			},
 		},
 		backgrounds: {
-			default: capitalizeFirstLetter(initialThemeScheme),
+			default: initialThemeScheme === 'system' ? undefined : capitalizeFirstLetter(initialThemeScheme),
 			values: ThemeList,
 		},
 	},
@@ -79,7 +80,7 @@ elementObserver((element, event) => {
 	else if (event === 'removed') root?.style.setProperty('padding', '16px');
 
 	if (element?.classList?.[0].includes('navigation'))
-		element.style.setProperty('background', 'rgb(var(--colorBrandAccentRgb) / 90%)');
+		element.style.setProperty('background', 'hsl(var(--colorBrandPrimary) / 90%)');
 }, ['#storybook-root > [role="region"]']);
 
 export default preview;

@@ -5,12 +5,12 @@
 
 		&:hover {
 			cursor: pointer;
-			background: rgb(var(--colorBrandAccentRgb) / 75%);
+			background: hsl(var(--colorBrandPrimary) / 75%);
 			color: white;
 		}
 
 		&:active {
-			background: rgb(var(--colorBrandAccentRgb));
+			background: hsl(var(--colorBrandPrimary));
 		}
 	}
 }

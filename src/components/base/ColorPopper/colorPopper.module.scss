@@ -14,7 +14,7 @@
 
 .colorPopper {
 	width: 300px;
-	box-shadow: 0 0 0 2px rgb(var(--colorBrandAccentRgb) / 50%);
+	box-shadow: 0 0 0 2px hsl(var(--colorBrandPrimary) / 50%);
 	background: var(--colorBackgroundPrimary);
 	border-radius: 24px;
 	display: flex;

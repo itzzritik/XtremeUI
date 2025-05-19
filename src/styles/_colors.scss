@@ -3,68 +3,27 @@
 @use 'colorSchemes';
 
 @mixin colors {
-	$colorMap: (
-		red: (
-			249 34 75,									// rgb(249 34 75)
-			255 68 68,									// rgb(255 68 68)
-			255 56 83,									// rgb(255 56 83)
-		),
-		pink: (
-			252 33 105,									// rgb(252 33 105)
-			226 33 255,									// rgb(226 33 255)
-			255 85 136,									// rgb(255 85 136)
-		),
-		orange: (
-			255 127 34,									// rgb(255 127 34)
-			255 65 65,									// rgb(255 65 65)
-			255 108 103,								// rgb(255 108 103)
-		),
-		blue: (
-			34 252 176,									// rgb(34 252 176)
-			33 129 250,									// rgb(33 129 250)
-			33 149 243,									// rgb(33 149 243)
-		),
-		green: (
-			200 228 178,								// rgb(200, 228, 178)
-			158 210 190,								// rgb(158, 210, 190)
-			126 170 146,								// rgb(126, 170, 146)
-		),
-		violet: (
-			63 0 230,									// rgb(63 0 230)
-			150 44 255,									// rgb(150 44 255)
-			127 81 255,									// rgb(127 81 255)
-		),
-		black: (
-			22 20 28,									// rgb(22 20 28)
-			9 8 11,										// rgb(9 8 11)
-			40 39 44,									// rgb(40 39 44)
-		)
-	);
+	// Brand Colors (HSL)
+	--H: 2;
+	--S: 100%;
+	--L: 70%;
+	--L2: min(calc(var(--L) + 10%), 100%);
+	--L3: min(calc(var(--L) + 20%), 100%);
 
-	@each $colorName, $colorSet in $colorMap {
-		$capitalizedColor: functions.capitalize($colorName);
-
-		--color#{$capitalizedColor}Primary: #{list.nth($colorSet, 1)};
-		--color#{$capitalizedColor}Secondary: #{list.nth($colorSet, 2)};
-		--color#{$capitalizedColor}Accent: #{list.nth($colorSet, 3)};
-
-		&[data-theme-color=#{"" + $colorName}] {
-			--colorBrandPrimaryRgb: var(--color#{$capitalizedColor}Primary);
-			--colorBrandSecondaryRgb: var(--color#{$capitalizedColor}Secondary);
-			--colorBrandAccentRgb: var(--color#{$capitalizedColor}Accent);
-		}
-	}
+	--colorBrandPrimary: var(--H) var(--S) var(--L);
+	--colorBrandSecondary: var(--H) var(--S) var(--L2);
+	--colorBrandTertiary: var(--H) var(--S) var(--L3);
 
 	// Alert Colors
-	--colorAlertErrorRGB: 255 65 54;									// rgb(255 65 54)
-	--colorAlertWarningRGB: 255 220 0;									// rgb(255 220 0)
-	--colorAlertSuccessRGB: 46 204 64;									// rgb(46 204 64)
+	--colorAlertError: 4 100% 60%;										// hsl(4 100% 60%)
+	--colorAlertWarning: 52 100% 50%;									// hsl(52 100% 50%)
+	--colorAlertSuccess: 126 63% 49%;									// hsl(126 63% 49%)
 
 	// Border Colors
 	--colorBorderPrimary: #ABB0BB;
 
 	// Gradient Colors
-	--gradientBrand: linear-gradient(320deg, rgb(var(--colorBrandPrimaryRgb)), rgb(var(--colorBrandSecondaryRgb)));
+	--gradientBrand: linear-gradient(320deg, rgb(var(--colorBrandPrimary)), rgb(var(--colorBrandSecondaryRgb)));
 
 	// Cubic Bezier
 	--animDurSlow: 1s;

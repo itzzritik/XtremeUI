@@ -4,19 +4,21 @@ import clsx from 'clsx';
 
 import { Button } from '#components/base/Button/Button';
 import { Select } from '#components/base/Select/Select';
-import { EThemeColor } from '#components/context/Theme/types';
+import { ThemeColorsPreset } from '#components/context/Theme/types';
 import { useXTheme } from '#components/context/useContext';
 import { useScreenType } from '#components/hooks/useScreen';
+import { getColorLabel, isValidThemeColor } from '#utils/helper/colorHelper';
 import { THEME_SCHEME } from '#utils/index';
 
 import './themeSwitch.scss';
 import { TThemeSwitchProps } from './types';
 
-const OPTIONS = Object.values(EThemeColor).map((color) => ({
-	value: color,
-	label: color.charAt(0).toUpperCase() + color.slice(1),
+const OPTIONS = Object.entries(ThemeColorsPreset).map(([label, value]) => ({
+	label: label.charAt(0).toUpperCase() + label.slice(1),
+	value,
 }));
-const THEME_COLOR = Object.values(EThemeColor);
+
+const THEME_COLOR = Object.values(ThemeColorsPreset);
 
 export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props, ref) => {
 	const { className, type = 'secondary', size = 'default', iconType = 'solid' } = props;
@@ -44,7 +46,7 @@ export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props,
 		withLabel && 'withLabel',
 	);
 
-	if (!themeScheme || !themeColor) return null;
+	if (!themeScheme || !isValidThemeColor(themeColor)) return null;
 
 	return (
 		<div ref={ref} className={mainClass}>
@@ -63,10 +65,10 @@ export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props,
 						clearable={false}
 						searchable={false}
 						size={size}
-						options={OPTIONS}
 						icon='f53f'
 						iconType={iconType}
 						placeholder='Theme'
+						options={OPTIONS}
 						value={themeColor}
 						onChange={setThemeColor}
 					/> :
@@ -76,7 +78,7 @@ export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props,
 						size={size}
 						icon='f53f'
 						iconType={iconType}
-						label={withLabel ? themeColor : undefined}
+						label={withLabel ? getColorLabel(themeColor) : undefined}
 						onClick={() => nextColor && setThemeColor(nextColor)}
 					/>
 			}

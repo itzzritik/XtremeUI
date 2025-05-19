@@ -5,13 +5,15 @@ import clsx from 'clsx';
 import { ActionCard } from '#components/base/ActionCard/ActionCard';
 import { Button } from '#components/base/Button/Button';
 import { Icon } from '#components/base/Icon/Icon';
-import { EThemeColor, TThemeColor } from '#components/context/Theme/types';
+import { ThemeColorsPreset, TThemeColor } from '#components/context/Theme/types';
 import { useXTheme } from '#components/context/useContext';
+import { getColorLabel } from '#utils/helper/colorHelper';
 import { capitalizeFirstLetter, THEME_SCHEME } from '#utils/index';
 
 import styles from './themePicker.module.scss';
 import { EThemePickerGap, EThemePickerSize, TThemePickerProps } from './types';
 
+const THEME_COLOR = Object.values(ThemeColorsPreset);
 export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props, ref) => {
 	const { className, size = 'default' } = props;
 
@@ -63,7 +65,7 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 			</div>
 			<div className={styles.themeColors} role='radiogroup'>
 				{
-					Object.keys(EThemeColor).map((color, i) => {
+					THEME_COLOR.map((color, i) => {
 						return (
 							<Button
 								key={`ThemeColor-${color}-${i}`}
@@ -72,7 +74,7 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 								icon='f00c'
 								iconType='solid'
 								style={{
-									['--themeColor' as string]: `var(--color${capitalizeFirstLetter(color)}Accent)`,
+									['--themeColor' as string]: `var(--color${capitalizeFirstLetter(getColorLabel(color) ?? '')}Primary)`,
 									color: themeColor === color ? 'white' : 'transparent',
 								}}
 								onClick={() => setThemeColor(color as TThemeColor)}
