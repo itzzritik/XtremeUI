@@ -1,18 +1,18 @@
 .colorInput {
+	transition: box-shadow 0s var(--cubicBezierPrimary);
+
 	&::before {
-		background: var(--chipColor) !important;
+		background: hsl(var(--colorBrandPrimary)) !important;
 		opacity: 1 !important;
 		transition: all var(--animDurDefault) var(--cubicBezierPrimary), background 0s !important;
 	}
 
 	i {
-		&::before {
-			display: none;
-		}
+		color: var(--iconColor) !important;
 	}
 }
 
-.colorPopper {
+.xtrColorPopper {
 	width: 300px;
 	box-shadow: 0 0 0 2px hsl(var(--colorBrandPrimary) / 50%);
 	background: var(--colorBackgroundPrimary);

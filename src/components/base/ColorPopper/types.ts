@@ -1,12 +1,22 @@
-import { type AnyColor } from 'colord';
+import type { HslColor, RgbColor, HsvColor, RgbaColor, AnyColor } from 'colord';
 
-export type TColorPopperProps = {
+export type ExtractColorType<T> = T extends RgbColor
+	? RgbColor
+	: T extends RgbaColor
+	? RgbaColor
+	: T extends HslColor
+	? HslColor
+	: T extends HsvColor
+	? HsvColor
+	: AnyColor;
+
+export type TColorPopperProps<T extends AnyColor = AnyColor> = {
 	className?: string;
 	popperClassName?: string;
 	placeholder?: string;
 	showReset?: boolean;
 	alpha?: boolean;
 	shade?: boolean;
-	color: AnyColor;
-	setColor: (col: AnyColor) => void;
-}
+	color: T;
+	setColor: (col: ExtractColorType<T>) => void;
+};

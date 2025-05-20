@@ -45,7 +45,9 @@ const meta = {
 export default meta;
 
 export const Default: StoryObj<typeof meta> = {
-	args: {},
+	args: {
+		icon: 'f007',
+	},
 };
 
 export const Textarea: StoryObj<typeof meta> = {
