@@ -9,7 +9,6 @@ const meta = {
 	argTypes: {
 		className: { control: false },
 		size: { defaultValue: { summary: 'default' } },
-		type: { defaultValue: { summary: 'secondary' } },
 		iconType: { defaultValue: { summary: 'solid' } },
 	},
 	args: {
@@ -21,6 +20,12 @@ export default meta;
 
 export const Default: StoryObj<typeof meta> = {
 	args: {
-		size: 'mini',
+
+	},
+};
+
+export const WithSwatch: StoryObj<typeof meta> = {
+	args: {
+		withSwatch: true,
 	},
 };

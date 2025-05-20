@@ -8,6 +8,7 @@ export type TTextfieldProps = {
 	type?: keyof typeof ETextfieldType;
 	textarea?: boolean;
 	placeholder?: string;
+	active?: boolean;
 	autoFocus?: boolean;
 	autoComplete?: keyof typeof ETextfieldAutoComplete;
 	icon?: string;

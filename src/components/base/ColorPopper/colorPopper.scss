@@ -1,22 +1,26 @@
 .colorInput {
-	box-shadow: 0 0 0 0px hsl(var(--colorBrandPrimary));
-	transition: box-shadow 0s var(--cubicBezierPrimary);
+	box-shadow: 0 0 0 0px transparent;
+	transition: box-shadow 0s, background var(--animDurDefault);
 
 	&::before {
 		background: hsl(var(--colorBrandPrimary)) !important;
 		opacity: 1 !important;
-		transition: all var(--animDurDefault) var(--cubicBezierPrimary), background 0s !important;
+		transition: all var(--animDurDefault) var(--cubicBezierPrimary),
+			background 0s !important;
 	}
 
 	i {
 		color: var(--iconColor) !important;
 	}
+
+	input {
+		cursor: pointer;
+	}
 }
 
 .xtrColorPopper {
-	width: 300px;
+	min-width: 200px;
 	box-shadow: 0 0 0 2px hsl(var(--colorBrandPrimary) / 50%);
-	background: var(--colorBackgroundPrimary);
 	border-radius: 24px;
 	display: flex;
 	flex-direction: column;
@@ -24,6 +28,9 @@
 	justify-content: center;
 	padding: 16px 24px 24px;
 	gap: 24px;
+	background: var(--colorBackgroundPrimary);
+	z-index: 9999;
+	overflow: hidden;
 
 	.header {
 		width: 100%;
@@ -31,16 +38,71 @@
 		justify-content: space-between;
 		align-items: center;
 
-		h1 {
-			font-size: small;
-			text-transform: uppercase;
-			line-height: 32px;
-			user-select: none;
-			margin: 0;
+		.heading {
+			position: relative;
+			width: 100%;
+			max-width: 172px;
+			padding-right: 16px;
+			height: 32px;
+
+			h1 {
+				position: absolute;
+				width: 100%;
+				font-size: 14px;
+				text-transform: uppercase;
+				line-height: 32px;
+				user-select: none;
+				margin: 0;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				background: var(--colorBackgroundPrimary);
+
+				&:first-child {
+					animation: slideInLeft 0.4s ease 1s forwards;
+				}
+				&:last-child {
+					animation: slideOutRight 0.4s ease 1s forwards;
+				}
+
+				@keyframes slideInLeft {
+					from { opacity: 0; transform: translateX(50px); }
+					to { opacity: 1; transform: translateX(0); }
+				}
+
+				@keyframes slideOutRight {
+					from { opacity: 1; transform: translateX(0); }
+					to { opacity: 0; transform: translateX(-50px); }
+				}
+			}
 		}
 
 		i {
 			font-size: small;
+		}
+	}
+
+	hr {
+		width: 20%;
+		height: 4px;
+		background: var(--colorContentPrimary);
+		border: none;
+		margin: 0;
+		opacity: 0.2;
+		border-radius: 9999px;
+	}
+
+	.swatch {
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		gap: 8px 12px;
+
+		.swatchItem {
+			aspect-ratio: 1;
+			border-radius: 9999px;
+			cursor: pointer;
 		}
 	}
 }

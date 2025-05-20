@@ -1,5 +1,8 @@
+import { CSSProperties } from 'react';
+
 export type IIconProps = {
 	className?: string;
+	style?: CSSProperties;
 	code: string;
 	type?: keyof typeof EIconType;
 	size?: number | keyof typeof EIconSize;

@@ -179,7 +179,7 @@
 		@include raisePlaceholder;
 	}
 
-	&:focus-within {
+	&:focus-within, &.active {
 		box-shadow: 0 0 0 2px hsl(var(--colorBrandPrimary) / 50%);
 		background: var(--secondaryColor);
 
@@ -195,6 +195,10 @@
 				color: white;
 				font-weight: 900;
 			}
+		}
+
+		.input {
+			cursor: text !important;
 		}
 	}
 }

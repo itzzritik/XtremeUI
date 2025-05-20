@@ -15,6 +15,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 		textarea,
 		placeholder,
 		autoComplete = 'off',
+		active,
 		autoFocus,
 		icon,
 		iconType = 'regular',
@@ -62,6 +63,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 		textarea && styles.textarea,
 		value && styles.hasValue,
 		type === 'phone' && styles.phone,
+		active && styles.active,
 		className,
 	);
 

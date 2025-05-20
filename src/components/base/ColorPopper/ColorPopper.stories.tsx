@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { ThemeColorsPreset } from '#utils/index';
+
 import { ColorPopper } from './ColorPopper';
 import { TColorPopperProps } from './types';
 
@@ -33,4 +35,10 @@ export default meta;
 
 export const Default: StoryObj<typeof meta> = {
 	args: {},
+};
+
+export const WithSwatch: StoryObj<typeof meta> = {
+	args: {
+		swatch: Object.values(ThemeColorsPreset),
+	},
 };

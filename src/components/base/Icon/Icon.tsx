@@ -8,7 +8,7 @@ import './icon.scss';
 import { EIconSize, IIconProps } from './types';
 
 export const Icon = forwardRef<HTMLSpanElement, IIconProps>((props, ref) => {
-	const { className, code, type = 'light', size = 'default', onClick } = props;
+	const { className, style = {}, code, type = 'light', size = 'default', onClick } = props;
 
 	const iconSize = `${typeof size === 'number' ? size : EIconSize[size]}px`;
 	const IconClsx = clsx(
@@ -23,7 +23,7 @@ export const Icon = forwardRef<HTMLSpanElement, IIconProps>((props, ref) => {
 		<i
 			ref={ref}
 			className={IconClsx}
-			style={{ ['--iconSize' as string]: iconSize }}
+			style={{ ['--iconSize' as string]: iconSize, ...style }}
 			data-content={unicodeToString(code)}
 			role='img'
 			onClick={onClick}

@@ -13,11 +13,16 @@ export const THEME_SCHEME = [
 ] as const;
 
 export const ThemeColorsPreset: Record<string, TThemeColor> = {
-	red: { h: 352, s: 100, l: 61 },														// hsl(352 100 61)
-	pink: { h: 342, s: 100, l: 67 },													// hsl(342 100 67)
-	orange: { h: 2, s: 100, l: 70 },													// hsl(2 100 70)
-	blue: { h: 207, s: 90, l: 54 },														// hsl(207 90 54)
-	green: { h: 147, s: 20, l: 58 },													// hsl(147 20 58)
-	violet: { h: 256, s: 100, l: 66 },													// hsl(256 100 66)
+	cherry: { h: 350, s: 70, l: 50 },
+	blush: { h: 335, s: 75, l: 55 },
+	saffron: { h: 19, s: 100, l: 56 },
+	sunset: { h: 28, s: 80, l: 55 },
+	mango: { h: 45, s: 80, l: 50 },
+	clay: { h: 20, s: 25, l: 50 },
+	mint: { h: 135, s: 45, l: 50 },
+	ocean: { h: 170, s: 60, l: 55 },
+	sky: { h: 205, s: 75, l: 50 },
+	plum: { h: 280, s: 40, l: 55 },
 };
+
 export const defaultColorPreset = ThemeColorsPreset.orange;

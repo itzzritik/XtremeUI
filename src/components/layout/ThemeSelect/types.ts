@@ -1,11 +1,11 @@
 import { EIconType } from '#components/base/Icon/types';
 
-import { EButtonSize, EButtonTypes } from '../../base/Button/types';
+import { EButtonSize } from '../../base/Button/types';
 
 export type TThemeSwitchProps = {
 	className?: string;
 	withLabel?: boolean;
-	type?: keyof typeof EButtonTypes;
+	withSwatch?: boolean;
 	size?: keyof typeof EButtonSize;
 	iconType?: keyof typeof EIconType;
 }

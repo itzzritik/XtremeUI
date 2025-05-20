@@ -1,6 +1,6 @@
 @use '../../../styles/colorSchemes';
 
-.themePicker {
+.xtrThemePicker {
 	--schemeSize: 180px;
 	--schemeGap: 24px;
 	--globalTertiaryColor: var(--colorBackgroundTertiary);
@@ -12,6 +12,7 @@
 	gap: var(--schemeGap);
 
 	.themeSchemes {
+		width: fit-content;
 		display: flex;
 		gap: calc(var(--schemeGap) / 1.2);
 
@@ -199,8 +200,22 @@
 	}
 
 	.themeColors {
-		display: flex;
-		justify-content: space-between;
-		flex: 1;
+		max-width: 580px;
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		grid-auto-rows: auto;
+		gap: 12px;
+
+		.xtrThemeSelect {
+			width: unset !important;
+			grid-column: span 2;
+		}
+
+		&.mini {
+			max-width: 412px;
+		}
+		&.large {
+			max-width: 822px;
+		}
 	}
 }

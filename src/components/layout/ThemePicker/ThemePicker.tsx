@@ -9,7 +9,9 @@ import { useXTheme } from '#components/context/useContext';
 import { isEqual } from '#utils/function/common';
 import { THEME_SCHEME, ThemeColorsPreset } from '#utils/index';
 
-import styles from './themePicker.module.scss';
+import { ThemeSelect } from '../ThemeSelect/ThemeSelect';
+
+import './themePicker.scss';
 import { EThemePickerGap, EThemePickerSize, TThemePickerProps } from './types';
 
 const THEME_COLOR = Object.values(ThemeColorsPreset);
@@ -19,7 +21,7 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 	const { themeScheme, setThemeScheme, themeColor, setThemeColor } = useXTheme();
 
 	const ThemePickerClsx = clsx(
-		styles.themePicker,
+		'xtrThemePicker',
 		className,
 	);
 
@@ -33,42 +35,42 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 				['--schemeGap' as string]: `${EThemePickerGap[size]}px`,
 			}}
 		>
-			<div className={styles.themeSchemes} role='radiogroup'>
+			<div className='themeSchemes' role='radiogroup'>
 				{
 					THEME_SCHEME.map(({ name, icon }, i) => (
 						<ActionCard
 							key={`ThemeScheme-${name}-${i}`}
-							className={clsx(styles.themeSchemeItem, styles[name], themeScheme === name && styles.active)}
+							className={clsx('themeSchemeItem', name, themeScheme === name && 'active')}
 							onClick={() => setThemeScheme(name)}
 						>
-							<div className={styles.design}>
-								<div className={styles.navigation}>
+							<div className='design'>
+								<div className='navigation'>
 									{
 										Array.from({ length: 6 }, (_, i) => (
-											<div key={`ThemeScheme-${name}-navigation-${i}`} className={styles.navigationItem} />
+											<div key={`ThemeScheme-${name}-navigation-${i}`} className='navigationItem' />
 										))
 									}
 								</div>
-								<div className={styles.content}>
-									<div className={styles.header} />
-									<div className={styles.profile} />
+								<div className='content'>
+									<div className='header' />
+									<div className='profile' />
 								</div>
 							</div>
-							<div className={styles.footer}>
-								<Icon className={styles.footerIcon} code={themeScheme === name ? 'f058' : icon} type='solid' />
-								<span className={styles.footerLabel}>{name}</span>
+							<div className='footer'>
+								<Icon className='footerIcon' code={themeScheme === name ? 'f058' : icon} type='solid' />
+								<span className='footerLabel'>{name}</span>
 							</div>
 						</ActionCard>
 					))
 				}
 			</div>
-			<div className={styles.themeColors} role='radiogroup'>
+			<div className={clsx('themeColors', size)} role='radiogroup'>
 				{
 					THEME_COLOR.map((c, i) => {
 						return (
 							<Button
 								key={`ThemeColor-${c.h}${c.s}${c.l}-${i}`}
-								className={styles.themeColorsItem}
+								className='themeColorsItem'
 								size={size}
 								icon='f00c'
 								iconType='solid'
@@ -81,6 +83,7 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 						);
 					})
 				}
+				<ThemeSelect />
 			</div>
 		</div>
 	);

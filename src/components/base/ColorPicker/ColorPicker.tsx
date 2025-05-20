@@ -8,6 +8,7 @@ import clsx from 'clsx';
 import styles from './colorPicker.module.scss';
 import { TColorPickerProps } from './types';
 
+const WHEEL_SIZE = 180;
 export const ColorPicker = forwardRef<HTMLDivElement, TColorPickerProps>((props, ref) => {
 	const { className, shade = true, alpha = true, color = { h: 0, s: 0, v: 100, a: 1 }, setColor } = props;
 
@@ -21,6 +22,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, TColorPickerProps>((props,
 			<Wheel
 				className={styles.wheel}
 				color={color}
+				width={WHEEL_SIZE} height={WHEEL_SIZE}
 				onChange={(col) => setColor(col.hsva)}
 			/>
 			{
