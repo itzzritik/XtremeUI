@@ -18,7 +18,7 @@ import { ColorPicker } from '#components/base/ColorPicker/ColorPicker';
 import { Icon } from '#components/base/Icon/Icon';
 import { Textfield } from '#components/base/Textfield/Textfield';
 import { getColorLabel } from '#utils/helper/colorHelper';
-import { mergeRefs } from '#utils/index';
+import { mergeRefs, THEME_SCHEME } from '#utils/index';
 
 import { Button } from '../Button/Button';
 
@@ -27,12 +27,16 @@ import './colorPopper.scss';
 import type { ExtractColorType, TColorPopperProps } from './types';
 import type { AnyColor, HsvaColor, Input } from 'colord/types';
 
-const DEFAULT_HEADING = 'Pick color';
 function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperProps<T>, ref: Ref<HTMLDivElement>) {
 	const {
 		className,
 		popperClassName,
+		size = 'default',
 		placeholder = 'Color Picker',
+		colorHeading = 'Pick color',
+		schemeHeading,
+		themeScheme,
+		setThemeScheme,
 		showReset = true,
 		alpha,
 		shade,
@@ -47,7 +51,7 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 
 	const [localColor, setLocalColor] = useState<HsvaColor>(initialColor.toHsv());
 	const [inputValue, setInputValue] = useState(initialColor.toHex());
-	const [heading, setHeading] = useState(DEFAULT_HEADING);
+	const [heading, setHeading] = useState(colorHeading);
 	const internalChange = useRef(false);
 
 	const [isOpen, setIsOpen] = useState(false);
@@ -131,26 +135,44 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 	}, [color]);
 
 	useEffect(() => {
-		setHeading(getColorLabel(colord(inputValue).toHsl()) ?? DEFAULT_HEADING);
-	}, [inputValue]);
+		setHeading(getColorLabel(colord(inputValue).toHsl()) ?? colorHeading);
+	}, [colorHeading, inputValue]);
 
 	return (
 		<>
-			<Textfield
-				className={clsx('colorInput', className)}
-				ref={refs.setReference}
-				placeholder={placeholder}
-				icon='f53f'
-				active={isOpen}
-				value={inputValue}
-				onChange={(e) => handleTextChange(e.target.value)}
-				style={{
-					['--colorBrandPrimary' as string]: hslThemeColor,
-					['--iconColor' as string]: iconColor,
-				}}
-				onFocus={() => setIsOpen(true)}
-				{...getReferenceProps()}
-			/>
+			{
+				size === 'mini' ?
+					<Button
+						className='colorButton'
+						ref={refs.setReference}
+						size={size}
+						icon='f53f'
+						iconType='solid'
+						style={{
+							['--themeColor' as string]: hslThemeColor,
+							['--iconColor' as string]: iconColor,
+						}}
+						onClick={() => setIsOpen(true)} {...getReferenceProps()}
+					/>
+					:
+					<Textfield
+						className={clsx('colorInput', className)}
+						ref={refs.setReference}
+						placeholder={placeholder}
+						icon='f53f'
+						iconType='solid'
+						active={isOpen}
+						value={inputValue}
+						onChange={(e) => handleTextChange(e.target.value)}
+						style={{
+							['--colorBrandPrimary' as string]: hslThemeColor,
+							['--iconColor' as string]: iconColor,
+						}}
+						onFocus={() => setIsOpen(true)}
+						{...getReferenceProps()}
+					/>
+			}
+
 			{isMounted && (
 				<div
 					ref={mergeRefs([ref, refs.setFloating])}
@@ -158,10 +180,38 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 					style={{ ...floatingStyles, ...transitionStyles, ['--colorBrandPrimary' as string]: hslThemeColor }}
 					{...getFloatingProps()}
 				>
+					{
+						schemeHeading &&
+						<div className='themeScheme'>
+							<div className='header'>
+								<div className='heading'>
+									<h1>{themeScheme}</h1>
+									<h1>{schemeHeading}</h1>
+								</div>
+							</div>
+							<div className='schemeSelector'>
+								{
+									THEME_SCHEME.map(({ name, icon }, i) => (
+										<Button
+											key={`ThemeScheme-${name}-${i}`}
+											icon={icon}
+											iconType='solid'
+											disabled={themeScheme === name}
+											type={themeScheme === name ? 'primary' : 'secondary'}
+											style={{
+												color: themeScheme === name ? 'hsl(var(--colorBrandPrimary))' : undefined,
+											}}
+											onClick={() => setThemeScheme?.(name)}
+										/>
+									))
+								}
+							</div>
+						</div>
+					}
 					<div className='header'>
 						<div className='heading'>
 							<h1>{heading}</h1>
-							<h1>Pick color</h1>
+							<h1>{colorHeading}</h1>
 						</div>
 						{
 							showReset &&

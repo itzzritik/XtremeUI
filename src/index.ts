@@ -72,6 +72,10 @@ export { ThemePicker } from './components/layout/ThemePicker/ThemePicker';
 export { type TThemePickerProps } from './components/layout/ThemePicker/types';
 
 // ThemePicker
+export { ThemeSelect } from './components/layout/ThemeSelect/ThemeSelect';
+export { type TThemeSelectProps } from './components/layout/ThemeSelect/types';
+
+// ThemePicker
 export { ThemeSwitch } from './components/layout/ThemeSwitch/ThemeSwitch';
 export { type TThemeSwitchProps } from './components/layout/ThemeSwitch/types';
 

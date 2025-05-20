@@ -1,3 +1,9 @@
+.colorButton {
+	i {
+		color: var(--iconColor) !important;
+		--iconSize: 16px !important;
+	}
+}
 .colorInput {
 	box-shadow: 0 0 0 0px transparent;
 	transition: box-shadow 0s, background var(--animDurDefault);
@@ -30,7 +36,37 @@
 	gap: 24px;
 	background: var(--colorBackgroundPrimary);
 	z-index: 9999;
+	transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 	overflow: hidden;
+
+	.themeScheme {
+		width: 100%;
+
+		.schemeSelector {
+			display: flex;
+			justify-content: center;
+			padding-top: 16px;
+
+			button {
+				border-radius: 0px;
+				padding: 0 8px;
+				filter: unset !important;
+
+				&:first-child {
+					border-top-left-radius: 24px;
+					border-bottom-left-radius: 24px;
+				}
+				&:last-child {
+					border-top-right-radius: 24px;
+					border-bottom-right-radius: 24px;
+				}
+
+				i {
+					height: 38px !important;
+				}
+			}
+		}
+	}
 
 	.header {
 		width: 100%;

@@ -42,3 +42,10 @@ export const WithSwatch: StoryObj<typeof meta> = {
 		swatch: Object.values(ThemeColorsPreset),
 	},
 };
+
+export const WithSwatchMini: StoryObj<typeof meta> = {
+	args: {
+		size: 'mini',
+		swatch: Object.values(ThemeColorsPreset),
+	},
+};

@@ -7,7 +7,7 @@ export const STORAGE = {
 };
 
 export const THEME_SCHEME = [
-	{ name: EThemeScheme.auto, icon: 'e2ca' },
+	{ name: EThemeScheme.auto, icon: 'e163' },
 	{ name: EThemeScheme.light, icon: 'f763' },
 	{ name: EThemeScheme.dark, icon: 'f754' },
 ] as const;
