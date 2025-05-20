@@ -2,8 +2,8 @@ import { defaultScheme as xDefaultScheme, TThemeColor } from '#components/contex
 import { defaultColorPreset as xDefaultColorPreset, STORAGE } from '#utils/constants/theme';
 
 export const themeController = (
-	preferredScheme: string | undefined | null,
-	preferredColor: TThemeColor | undefined | null,
+	preferredScheme?: string | undefined | null,
+	preferredColor?: TThemeColor | undefined | null,
 	defaultScheme: string = xDefaultScheme,
 	defaultColorPreset: TThemeColor = xDefaultColorPreset,
 ) => {
