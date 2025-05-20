@@ -8,11 +8,9 @@ const meta = {
 	tags: ['autodocs'],
 	argTypes: {
 		className: { control: false },
-		size: { defaultValue: { summary: 'default' } },
 		iconType: { defaultValue: { summary: 'solid' } },
 	},
 	args: {
-		size: 'default',
 	},
 } satisfies Meta<typeof ThemeSelect>;
 
