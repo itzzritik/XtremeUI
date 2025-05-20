@@ -1,4 +1,5 @@
 .colorInput {
+	box-shadow: 0 0 0 0px hsl(var(--colorBrandPrimary));
 	transition: box-shadow 0s var(--cubicBezierPrimary);
 
 	&::before {

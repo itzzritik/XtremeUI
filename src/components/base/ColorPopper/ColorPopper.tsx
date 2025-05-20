@@ -49,7 +49,7 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 		open: isOpen,
 		onOpenChange: setIsOpen,
 		middleware: [
-			shift({ padding: 16 }),
+			shift({ padding: 18 }),
 			flip(),
 			offset(({ placement }) => (placement === 'bottom' ? 10 : 16)),
 		],
@@ -83,12 +83,12 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 		return [`${Math.round(h)} ${Math.round(s)}% ${Math.round(l)}%`, col.isLight() ? 'black' : 'white'];
 	}, [localColor]);
 
-	const emitColorChange = (newColor: Colord) => {
+	const emitColorChange = (c: Colord) => {
 		internalChange.current = true;
-		if (format === 'rgb') setColor(newColor.toRgb() as ExtractColorType<T>);
-		else if (format === 'hex') setColor(newColor.toHex() as ExtractColorType<T>);
-		else if (format === 'hsl') setColor(newColor.toHsl() as ExtractColorType<T>);
-		else if (format === 'hsv') setColor(newColor.toHsv() as ExtractColorType<T>);
+		if (format === 'rgb') setColor(c.toRgb() as ExtractColorType<T>);
+		else if (format === 'hex') setColor(c.toHex() as ExtractColorType<T>);
+		else if (format === 'hsl') setColor(c.toHsl() as ExtractColorType<T>);
+		else if (format === 'hsv') setColor(c.toHsv() as ExtractColorType<T>);
 	};
 
 	const handleTextChange = (val: string) => {

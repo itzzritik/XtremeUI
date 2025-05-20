@@ -12,7 +12,6 @@ export const ThemeController = () => {
 	useEffect(() => {
 		addons.getChannel().on('updateGlobals', (args) => {
 			const globals = args?.globals;
-			console.log('globals', globals?.brand);
 			const background = ThemeList.find((color) => color.value === globals?.backgrounds?.value);
 			const backgroundName = background?.name?.toLowerCase();
 			const themeColor = BrandColorList.find((i) => i.value === globals?.brand)?.color;

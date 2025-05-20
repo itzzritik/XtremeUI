@@ -1,12 +1,12 @@
 import { forwardRef } from 'react';
 
 import clsx from 'clsx';
-import isEqual from 'lodash/isEqual';
 
 import { ActionCard } from '#components/base/ActionCard/ActionCard';
 import { Button } from '#components/base/Button/Button';
 import { Icon } from '#components/base/Icon/Icon';
 import { useXTheme } from '#components/context/useContext';
+import { isEqual } from '#utils/function/common';
 import { THEME_SCHEME, ThemeColorsPreset } from '#utils/index';
 
 import styles from './themePicker.module.scss';

@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react';
 
 import clsx from 'clsx';
-import isEqual from 'lodash/isEqual';
 import XSelect, {
 	GroupBase,
 	MultiValue,
@@ -9,6 +8,8 @@ import XSelect, {
 	PropsValue,
 	SingleValue,
 } from 'react-select';
+
+import { isEqual } from '#utils/function/common';
 
 import { Icon } from '../Icon/Icon';
 
@@ -38,9 +39,7 @@ export function Select<T> (props: TSelectProps<T>) {
 	const localValue = useMemo(() => {
 		if (multi) {
 			const vals = (value ?? []) as T[];
-			return options.filter((option) =>
-				vals.some((v) => isEqual(v, option.value)),
-			);
+			return options.filter((option) => vals.some((v) => isEqual(option.value, v)));
 		} else {
 			return options.find((option) => isEqual(option.value, value)) || null;
 		}
