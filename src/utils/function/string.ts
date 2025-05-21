@@ -8,6 +8,6 @@ export const unicodeToString = (unicode: string) => {
 	return safeStringFromCodePoint(parseInt(`0x${unicode}`, 16));
 };
 
-export const capitalizeFirstLetter = (string: string) => {
+export const capitalize = (string: string) => {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 };

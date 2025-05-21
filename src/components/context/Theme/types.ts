@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 export type TThemeInitialType = {
+	isDarkTheme: boolean | undefined;
 	themeScheme: TThemeScheme | undefined;
 	setThemeScheme: (scheme: TThemeScheme | undefined) => void;
 	themeColor: TThemeColor | undefined;

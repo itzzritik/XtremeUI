@@ -83,7 +83,7 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 						);
 					})
 				}
-				<ThemeSelect />
+				<ThemeSelect withScheme={false} />
 			</div>
 		</div>
 	);

@@ -29,6 +29,7 @@
 			height: calc(var(--schemeSize) * 0.8);
 			background: var(--colorBackgroundSecondary);
 			user-select: none;
+			border: 2px solid var(--colorBackgroundTertiary);
 			cursor: pointer;
 			transition: all var(--animDurDefault) var(--cubicBezierPrimary), box-shadow var(--animDurDefault) linear;
 

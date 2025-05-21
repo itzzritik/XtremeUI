@@ -5,6 +5,7 @@ export * from '#utils/index';
 // Context
 export { XProvider } from './components/context';
 export { useXTheme, useXData } from './components/context/useContext';
+export type { EThemeScheme, TThemeColor } from './components/context/Theme/types';
 
 // ActionCard
 export { ActionCard } from './components/base/ActionCard/ActionCard';
@@ -71,11 +72,11 @@ export { type TNavigationProps, type TNavigationRoute } from './components/layou
 export { ThemePicker } from './components/layout/ThemePicker/ThemePicker';
 export { type TThemePickerProps } from './components/layout/ThemePicker/types';
 
-// ThemePicker
+// ThemeSelect
 export { ThemeSelect } from './components/layout/ThemeSelect/ThemeSelect';
 export { type TThemeSelectProps } from './components/layout/ThemeSelect/types';
 
-// ThemePicker
+// ThemeSwitch
 export { ThemeSwitch } from './components/layout/ThemeSwitch/ThemeSwitch';
 export { type TThemeSwitchProps } from './components/layout/ThemeSwitch/types';
 

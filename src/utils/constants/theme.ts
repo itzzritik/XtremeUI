@@ -25,4 +25,4 @@ export const ThemeColorsPreset: Record<string, TThemeColor> = {
 	plum: { h: 280, s: 40, l: 55 },
 };
 
-export const defaultColorPreset = ThemeColorsPreset.orange;
+export const defaultColorPreset = ThemeColorsPreset.saffron;

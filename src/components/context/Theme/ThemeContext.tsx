@@ -5,6 +5,7 @@ import { defaultColorPreset, STORAGE } from '#utils/index';
 import { TThemeColor, TThemeInitialType, TThemeProviderProps, TThemeScheme } from './types';
 
 const ThemeDefault: TThemeInitialType = {
+	isDarkTheme: undefined,
 	themeScheme: undefined,
 	setThemeScheme: () => null,
 	themeColor: undefined,
@@ -13,8 +14,11 @@ const ThemeDefault: TThemeInitialType = {
 
 const ThemeContext = createContext(ThemeDefault);
 const ThemeProvider = ({ children }: TThemeProviderProps) => {
-	const [themeScheme, setScheme] = useState<TThemeScheme | undefined>(ThemeDefault.themeScheme);
-	const [themeColor, setColor] = useState<TThemeColor | undefined>(ThemeDefault.themeColor);
+	const [themeScheme, setThemeScheme] = useState<TThemeScheme | undefined>(ThemeDefault.themeScheme);
+	const [themeColor, setThemeColor] = useState<TThemeColor | undefined>(ThemeDefault.themeColor);
+
+	const getSystemPref = () => matchMedia('(prefers-color-scheme: dark)').matches;
+	const [isDarkTheme, setIsDark] = useState(themeScheme === 'auto' ? getSystemPref() : themeScheme === 'dark');
 
 	useEffect(() => {
 		let storedScheme = localStorage.getItem(STORAGE.themeScheme) as TThemeScheme;
@@ -29,8 +33,8 @@ const ThemeProvider = ({ children }: TThemeProviderProps) => {
 		if (!storedScheme)
 			storedScheme = document?.documentElement.getAttribute(STORAGE.themeSchemeAttr) as TThemeScheme ?? undefined;
 
-		if (storedScheme) setScheme(storedScheme);
-		if (storedColor) setColor(storedColor);
+		if (storedScheme) setThemeScheme(storedScheme);
+		if (storedColor) setThemeColor(storedColor);
 	}, []);
 
 	useEffect(() => {
@@ -43,8 +47,18 @@ const ThemeProvider = ({ children }: TThemeProviderProps) => {
 		localStorage.setItem(STORAGE.themeColor, JSON.stringify(themeColor));
 	}, [themeScheme, themeColor]);
 
+	useEffect(() => {
+		if (themeScheme !== 'auto') return setIsDark(themeScheme === 'dark');
+
+		const media = matchMedia('(prefers-color-scheme: dark)');
+		const update = () => setIsDark(media.matches);
+		update();
+		media.addEventListener('change', update);
+		return () => media.removeEventListener('change', update);
+	}, [themeScheme]);
+
 	return (
-		<ThemeContext.Provider value={{ themeScheme, setThemeScheme: setScheme, themeColor, setThemeColor: setColor }}>
+		<ThemeContext.Provider value={{ isDarkTheme, themeScheme, setThemeScheme, themeColor, setThemeColor }}>
 			{children}
 		</ThemeContext.Provider>
 	);

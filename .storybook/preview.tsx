@@ -3,7 +3,7 @@ import { defaultScheme } from '../src/components/context/Theme/types';
 import '../src/styles/index.scss';
 import { defaultColorPreset, STORAGE } from '../src/utils/constants/theme';
 import { getLocalState } from '../src/utils/function/localStorage';
-import { capitalizeFirstLetter } from '../src/utils/function/string';
+import { capitalize } from '../src/utils/function/string';
 import { elementObserver, localStore, waitForElement } from '../src/utils/helper/domHelper';
 import { themeController } from '../src/utils/helper/themeController';
 
@@ -49,7 +49,7 @@ const preview: Preview = {
 			},
 		},
 		backgrounds: {
-			default: initialThemeScheme === 'auto' ? undefined : capitalizeFirstLetter(initialThemeScheme),
+			default: initialThemeScheme === 'auto' ? undefined : capitalize(initialThemeScheme),
 			values: ThemeList,
 		},
 	},
