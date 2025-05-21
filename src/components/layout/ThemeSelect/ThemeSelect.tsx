@@ -12,7 +12,7 @@ import './themeSelect.scss';
 import { TThemeSelectProps } from './types';
 
 export const ThemeSelect = forwardRef<HTMLDivElement, TThemeSelectProps>((props, ref) => {
-	const { className, size = 'default', withScheme, withSwatch } = props;
+	const { className, size, withScheme, withSwatch } = props;
 	const { themeScheme, setThemeScheme, themeColor, setThemeColor } = useXTheme();
 	const { isMobile } = useScreenType();
 
