@@ -27,3 +27,10 @@ export const WithSwatch: StoryObj<typeof meta> = {
 		withSwatch: true,
 	},
 };
+
+export const withScheme: StoryObj<typeof meta> = {
+	args: {
+		withSwatch: true,
+		withScheme: true,
+	},
+};
