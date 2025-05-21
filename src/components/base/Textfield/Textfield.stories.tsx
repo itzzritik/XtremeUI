@@ -50,6 +50,12 @@ export const Default: StoryObj<typeof meta> = {
 	},
 };
 
+export const Phone: StoryObj<typeof meta> = {
+	args: {
+		type: 'phone',
+	},
+};
+
 export const Textarea: StoryObj<typeof meta> = {
 	args: {
 		textarea: true,

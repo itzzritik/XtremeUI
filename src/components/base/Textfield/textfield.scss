@@ -1,9 +1,9 @@
 @mixin raisePlaceholder {
 	.placeholder {
-		transform: translate(22px, -12px);
-		scale: 0.75;
 		font-variation-settings: 'wdth' 75, 'wght' 700;
 		color: hsl(var(--colorBrandPrimary) / 100%);
+		translate: 22px -12px;
+		scale: 0.75;
 		
 		&::before {
 			scale: 1;
@@ -12,13 +12,14 @@
 
 	&.withIcon {
 		.placeholder {
-			transform: translate(56px, -12px);
+			translate: 42px -10px;
 		}
 	}
 
 	&.phone {
 		.placeholder {
-			transform: translate(56px, -12px);
+			translate: 42px -10px;
+
 		}
 
 		.dialCode {	
@@ -30,12 +31,12 @@
 
 	&.textarea {
 		.placeholder {
-			transform: translate(22px, 8px);
+			translate: 16px 8px;
 		}
 	}
 }
 
-.textfield {
+.xtrTextfield {
 	--fontSize: 14px;
 	--primaryColor: var(--colorBackgroundSecondary);
 	--secondaryColor: var(--colorBackgroundPrimary);
@@ -64,7 +65,7 @@
 		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 	}
 
-	.icon {
+	.xtrIcon {
 		position: absolute;
 		left: 0;
 		width: 44px; height: 44px;
@@ -126,7 +127,7 @@
 		display: flex;
 		align-items: center;
 		color: var(--colorContentSecondary);
-		transform: translate(16px, 0);
+		translate: 16px 0;
 		transform-origin: 0 50%;
 		font-size: var(--fontSize);
 		line-height: 20px;
@@ -147,7 +148,7 @@
 		}
 
 		.placeholder {
-			transform: translate(40px, 0);
+			translate: 40px 0;
 		}
 	}
 
@@ -161,7 +162,7 @@
 
 		.placeholder {
 			top: 0;
-			transform: translate(16px, 20px);
+			translate: 16px 20px;
 		}
 	}
 	
@@ -171,7 +172,7 @@
 		}
 
 		.placeholder {
-			transform: translate(68px, 0);
+			translate: 68px 0;
 		}
 	}
 
@@ -191,7 +192,7 @@
 				opacity: 0.8;
 			}
 
-			.icon {
+			.xtrIcon {
 				color: white;
 				font-weight: 900;
 			}

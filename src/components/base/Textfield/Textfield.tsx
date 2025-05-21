@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import { Icon } from '../Icon/Icon';
 
-import styles from './textfield.module.scss';
+import './textfield.scss';
 import { TTextfieldProps } from './types';
 
 export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, ref) => {
@@ -58,12 +58,12 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 	};
 
 	const TextfieldClsx = clsx(
-		styles.textfield,
-		localIconName && styles.withIcon,
-		textarea && styles.textarea,
-		value && styles.hasValue,
-		type === 'phone' && styles.phone,
-		active && styles.active,
+		'xtrTextfield',
+		localIconName && 'withIcon',
+		textarea && 'textarea',
+		value && 'hasValue',
+		(type === 'phone') && 'phone',
+		active && 'active',
 		className,
 	);
 
@@ -75,17 +75,17 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 			style={style}
 		>
 			{localIconName && !textarea &&
-				<Icon className={styles.icon} code={localIconName} type={iconType} />
+				<Icon code={localIconName} type={iconType} />
 			}
 			{type === 'phone' &&
-				<div className={styles.dialCode}>
+				<div className='dialCode'>
 					<span style={{ backgroundImage: 'url(https://flagcdn.com/in.svg)' }} />
 					<p>+91</p>
 				</div>
 			}
 			{!textarea ?
 				<input
-					className={styles.input}
+					className='input'
 					type={localType}
 					autoFocus={autoFocus}
 					autoComplete={autoComplete}
@@ -97,7 +97,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 					onKeyDown={onLocalKeyDown}
 				/> :
 				<textarea
-					className={styles.input}
+					className='input'
 					autoFocus={autoFocus}
 					autoComplete={autoComplete}
 					value={value}
@@ -108,7 +108,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 					onKeyDown={onLocalKeyDown}
 				/>
 			}
-			<label className={styles.placeholder}>{localPlaceholder}</label>
+			<label className='placeholder'>{localPlaceholder}</label>
 		</div>
 	);
 });
