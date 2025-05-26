@@ -191,7 +191,7 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 									{
 										input === 'button' &&
 										<input
-											placeholder='Hex'
+											placeholder='#Hex'
 											className={clsx('popperInput', className)}
 											autoFocus
 											value={inputValue}
