@@ -28,7 +28,8 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 		onEnterKey,
 	} = props;
 
-	const id = useId();
+	const generatedId = useId();
+	const id = props.id ?? generatedId;
 
 	const localIconName = useMemo(() => {
 		if (textarea === true) return null;
@@ -76,6 +77,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 			role='textbox'
 			style={style}
 		>
+			<label className='placeholder' htmlFor={id}>{localPlaceholder}</label>
 			{localIconName && !textarea &&
 				<Icon code={localIconName} type={iconType} />
 			}
@@ -98,7 +100,9 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 					onBlur={onBlur}
 					onKeyUp={onLocalKeyUp}
 					onKeyDown={onLocalKeyDown}
-				/> :
+					aria-label={localPlaceholder}
+				/>
+				:
 				<textarea
 					className='input'
 					id={id}
@@ -110,9 +114,9 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 					onBlur={onBlur}
 					onKeyUp={onLocalKeyUp}
 					onKeyDown={onLocalKeyDown}
+					aria-label={localPlaceholder}
 				/>
 			}
-			<label className='placeholder' htmlFor={id}>{localPlaceholder}</label>
 		</div>
 	);
 });

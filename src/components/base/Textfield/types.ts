@@ -14,6 +14,7 @@ export type TTextfieldProps = {
 	icon?: string;
 	iconType?: keyof typeof EIconType;
 	value?: string;
+	id?: string;
 	onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 	onFocus?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 	onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
