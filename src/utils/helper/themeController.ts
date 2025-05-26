@@ -1,25 +1,32 @@
-import { defaultScheme as xDefaultScheme, TThemeColor } from '#components/context/Theme/types';
-import { defaultColorPreset as xDefaultColorPreset, STORAGE } from '#utils/constants/theme';
+import { defaultScheme, TThemeColor } from '#components/context/Theme/types';
+import { defaultColorPreset, STORAGE } from '#utils/constants/theme';
 
-export const themeController = (
-	preferredScheme?: string | null,
-	preferredColor?: TThemeColor | null,
-	defaultScheme: string = xDefaultScheme,
-	defaultColorPreset: TThemeColor = xDefaultColorPreset,
-) => {
-	const preferredSchemeStr = preferredScheme != null ? `'${preferredScheme}'` : 'null';
-	const preferredColorStr = preferredColor ? JSON.stringify(preferredColor) : 'null';
-	const defaultColorStr = JSON.stringify(defaultColorPreset);
+type ThemeConfig = {
+	scheme?: string;
+	color?: TThemeColor;
+	defScheme?: string;
+	defColor?: TThemeColor;
+};
+
+export const themeController = ({
+	scheme,
+	color,
+	defScheme = defaultScheme,
+	defColor = defaultColorPreset,
+}: ThemeConfig = {}) => {
+	const schemeStr = scheme != null ? `'${scheme}'` : 'null';
+	const colorStr = color ? JSON.stringify(color) : 'null';
+	const defaultColorStr = JSON.stringify(defColor);
 
 	return `(function() {
 		try {
 			let storedScheme = localStorage.getItem('${STORAGE.themeScheme}');
-			const themeScheme = ${preferredSchemeStr} ?? storedScheme ?? '${defaultScheme}';
+			const themeScheme = ${schemeStr} ?? storedScheme ?? '${defScheme}';
 
 			const themeColorRaw = localStorage.getItem('${STORAGE.themeColor}');
 			let { h, s, l } = ${defaultColorStr};
 
-			const preferredColor = ${preferredColorStr};
+			const preferredColor = ${colorStr};
 
 			if (preferredColor) {
 				({ h, s, l } = preferredColor);

@@ -21,7 +21,7 @@ export type TTextfieldProps = {
 	onKeyUp?: (event: KeyboardEvent) => void;
 	onEnterKey?: (event: KeyboardEvent) => void;
 }
-enum ETextfieldType {
+export enum ETextfieldType {
 	text = 'text',
 	number = 'number',
 	phone = 'phone',
@@ -29,7 +29,7 @@ enum ETextfieldType {
 	search = 'search',
 }
 
-enum ETextfieldAutoComplete {
+export enum ETextfieldAutoComplete {
 	'off' = 'off',
 	'on' = 'on',
 	'name' = 'name',
