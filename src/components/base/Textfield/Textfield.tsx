@@ -1,4 +1,4 @@
-import { KeyboardEvent, forwardRef, useMemo } from 'react';
+import { KeyboardEvent, forwardRef, useId, useMemo } from 'react';
 
 import clsx from 'clsx';
 
@@ -27,6 +27,8 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 		onKeyDown,
 		onEnterKey,
 	} = props;
+
+	const id = useId();
 
 	const localIconName = useMemo(() => {
 		if (textarea === true) return null;
@@ -86,6 +88,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 			{!textarea ?
 				<input
 					className='input'
+					id={id}
 					type={localType}
 					autoFocus={autoFocus}
 					autoComplete={autoComplete}
@@ -98,6 +101,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 				/> :
 				<textarea
 					className='input'
+					id={id}
 					autoFocus={autoFocus}
 					autoComplete={autoComplete}
 					value={value}
@@ -108,7 +112,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 					onKeyDown={onLocalKeyDown}
 				/>
 			}
-			<label className='placeholder'>{localPlaceholder}</label>
+			<label className='placeholder' htmlFor={id}>{localPlaceholder}</label>
 		</div>
 	);
 });

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useId, useMemo, useState } from 'react';
 
 import clsx from 'clsx';
 import XSelect, {
@@ -34,6 +34,7 @@ export function Select<T> (props: TSelectProps<T>) {
 		onChange,
 	} = props;
 
+	const id = useId();
 	const [open, setOpen] = useState(false);
 
 	const localValue = useMemo(() => {
@@ -73,6 +74,7 @@ export function Select<T> (props: TSelectProps<T>) {
 			<XSelect
 				className='xtrSelect'
 				classNamePrefix='xtrSelect'
+				id={id}
 				isMulti={multi}
 				menuIsOpen={open}
 				onMenuOpen={() => setOpen(true)}
@@ -87,7 +89,7 @@ export function Select<T> (props: TSelectProps<T>) {
 				value={localValue as unknown as PropsValue<Option<T>>}
 				onChange={onChangeHandler}
 			/>
-			{placeholder && !multi && <p className='placeholder'>{placeholder}</p>}
+			{placeholder && !multi && <label className='placeholder' htmlFor={id}>{placeholder}</label>}
 			{icon && <Icon className='xtrSelectIcon' code={icon} type={iconType} />}
 		</div>
 	);
