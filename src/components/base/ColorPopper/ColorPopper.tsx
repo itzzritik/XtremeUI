@@ -31,6 +31,7 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 	const {
 		className,
 		popperClassName,
+		input = 'textfield',
 		size = 'default',
 		placeholder = 'Color Picker',
 		colorHeading = 'Pick color',
@@ -141,9 +142,9 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 	return (
 		<>
 			{
-				size === 'mini' ?
+				input === 'button' ?
 					<Button
-						className='colorButton'
+						className='xtrColorButton'
 						ref={refs.setReference}
 						size={size}
 						icon='f53f'
@@ -156,7 +157,7 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 					/>
 					:
 					<Textfield
-						className={clsx('colorInput', className)}
+						className={clsx('xtrColorInput', className)}
 						ref={refs.setReference}
 						placeholder={placeholder}
 						icon='f53f'
