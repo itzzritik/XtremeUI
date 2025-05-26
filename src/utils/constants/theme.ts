@@ -8,8 +8,8 @@ export const STORAGE = {
 
 export const THEME_SCHEME = [
 	{ name: EThemeScheme.auto, icon: 'e163' },
-	{ name: EThemeScheme.light, icon: 'f763' },
-	{ name: EThemeScheme.dark, icon: 'f754' },
+	{ name: EThemeScheme.light, icon: 'e28f' },
+	{ name: EThemeScheme.dark, icon: 'f186' },
 ] as const;
 
 export const ThemeColorsPreset: Record<string, TThemeColor> = {
