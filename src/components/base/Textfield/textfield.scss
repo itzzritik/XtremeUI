@@ -2,7 +2,7 @@
 	.placeholder {
 		font-variation-settings: 'wdth' 75, 'wght' 700;
 		color: hsl(var(--colorBrandPrimary) / 100%);
-		translate: 22px -12px;
+		translate: 16px -9px;
 		scale: 0.75;
 		
 		&::before {
@@ -12,13 +12,13 @@
 
 	&.withIcon {
 		.placeholder {
-			translate: 42px -10px;
+			translate: 42px -9px;
 		}
 	}
 
 	&.phone {
 		.placeholder {
-			translate: 42px -10px;
+			translate: 42px -9px;
 
 		}
 

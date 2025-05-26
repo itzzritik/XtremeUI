@@ -12,7 +12,7 @@ import './themeSelect.scss';
 import { TThemeSelectProps } from './types';
 
 export const ThemeSelect = forwardRef<HTMLDivElement, TThemeSelectProps>((props, ref) => {
-	const { className, input, size, withScheme, withSwatch } = props;
+	const { className, input, size, withScheme = true, withSwatch = true, withWheel = true } = props;
 	const { themeScheme, setThemeScheme, themeColor, setThemeColor } = useXTheme();
 	const { isMobile } = useScreenType();
 
@@ -29,6 +29,7 @@ export const ThemeSelect = forwardRef<HTMLDivElement, TThemeSelectProps>((props,
 			className={mainClass}
 			placeholder='Theme'
 			alpha={false}
+			hideWheel={!withWheel}
 			swatch={withSwatch ? Object.values(ThemeColorsPreset) : undefined}
 			colorHeading='Theme Color'
 			schemeHeading={withScheme ? 'Appearance' : undefined}

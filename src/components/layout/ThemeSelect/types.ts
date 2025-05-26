@@ -7,5 +7,6 @@ export type TThemeSelectProps = {
 	size?: keyof typeof EColorPopperSize;
 	withScheme?: boolean;
 	withSwatch?: boolean;
+	withWheel?: boolean;
 	iconType?: keyof typeof EIconType;
 }

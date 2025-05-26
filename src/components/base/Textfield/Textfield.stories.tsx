@@ -50,6 +50,12 @@ export const Default: StoryObj<typeof meta> = {
 	},
 };
 
+export const NoIcon: StoryObj<typeof meta> = {
+	args: {
+		icon: '',
+	},
+};
+
 export const Phone: StoryObj<typeof meta> = {
 	args: {
 		type: 'phone',

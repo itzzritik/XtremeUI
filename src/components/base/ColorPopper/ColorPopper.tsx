@@ -42,6 +42,7 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 		alpha,
 		shade,
 		swatch,
+		hideWheel = false,
 		color,
 		setColor,
 	} = props;
@@ -182,44 +183,32 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 					{...getFloatingProps()}
 				>
 					{
-						schemeHeading &&
-						<div className='themeScheme'>
-							<div className='header'>
-								<div className='heading'>
-									<h1>{themeScheme}</h1>
-									<h1>{schemeHeading}</h1>
-								</div>
-							</div>
-							<div className='schemeSelector'>
-								{
-									THEME_SCHEME.map(({ name, icon }, i) => (
-										<Button
-											key={`ThemeScheme-${name}-${i}`}
-											icon={icon}
-											iconType='solid'
-											disabled={themeScheme === name}
-											type={themeScheme === name ? 'primary' : 'secondary'}
-											style={{
-												color: themeScheme === name ? 'hsl(var(--colorBrandPrimary))' : undefined,
-											}}
-											onClick={() => setThemeScheme?.(name)}
+						(swatch || !hideWheel) &&
+						<div className={clsx('header', input === 'button' && 'withInput')}>
+							<div className='heading'>
+								<div>
+									<h1>{heading}</h1>
+									{
+										input === 'button' &&
+										<input
+											placeholder='Hex'
+											className={clsx('popperInput', className)}
+											autoFocus
+											value={inputValue}
+											onChange={(e) => handleTextChange(e.target.value)}
 										/>
-									))
-								}
+									}
+								</div>
+								<h1>{colorHeading}</h1>
 							</div>
+							{
+								showReset &&
+								<Icon code='f1da' type='solid' style={{ ['--colorBrandPrimary' as string]: hslResetColor }}
+									onClick={handleReset}
+								/>
+							}
 						</div>
 					}
-					<div className='header'>
-						<div className='heading'>
-							<h1>{heading}</h1>
-							<h1>{colorHeading}</h1>
-						</div>
-						{
-							showReset &&
-							<Icon code='f1da' type='solid' style={{ ['--colorBrandPrimary' as string]: hslResetColor }}
-								onClick={handleReset}
-							/>}
-					</div>
 					{
 						swatch &&
 							<div className='swatch'>
@@ -245,14 +234,41 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 								})}
 							</div>
 					}
-					{swatch && <hr />}
-					<ColorPicker
-						className='colorPicker'
-						alpha={alpha}
-						shade={shade}
-						color={localColor}
-						setColor={handlePickerChange}
-					/>
+					{
+						!hideWheel &&
+						<ColorPicker
+							className='colorPicker'
+							alpha={alpha}
+							shade={shade}
+							color={localColor}
+							setColor={handlePickerChange}
+						/>
+					}
+					{
+						schemeHeading &&
+						<div className='themeScheme'>
+							<div className='header'>
+								<div className='heading'>
+									<div><h1>{themeScheme}</h1></div>
+									<h1>{schemeHeading}</h1>
+								</div>
+							</div>
+							<div className='schemeSelector'>
+								{
+									THEME_SCHEME.map(({ name, icon }, i) => (
+										<Button
+											key={`ThemeScheme-${name}-${i}`}
+											icon={icon}
+											iconType='solid'
+											disabled={themeScheme === name}
+											type={themeScheme === name ? 'primary' : 'secondary'}
+											onClick={() => setThemeScheme?.(name)}
+										/>
+									))
+								}
+							</div>
+						</div>
+					}
 				</div>
 			)}
 		</>

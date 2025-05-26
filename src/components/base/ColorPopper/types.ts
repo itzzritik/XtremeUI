@@ -26,6 +26,7 @@ export type TColorPopperProps<T extends AnyColor = AnyColor> = {
 	showReset?: boolean;
 	alpha?: boolean;
 	shade?: boolean;
+	hideWheel?: boolean;
 	swatch?: T[];
 	color: T;
 	setColor: (col: ExtractColorType<T>) => void;
