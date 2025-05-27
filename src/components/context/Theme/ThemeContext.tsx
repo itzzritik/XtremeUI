@@ -39,10 +39,20 @@ const ThemeProvider = ({ children }: TThemeProviderProps) => {
 
 	useEffect(() => {
 		if (!themeScheme || !themeColor) return;
+		const { h, s, l } = themeColor;
 		document.documentElement.setAttribute(STORAGE.themeSchemeAttr, themeScheme);
-		document.documentElement.style.setProperty('--H', `${themeColor?.h}`);
-		document.documentElement.style.setProperty('--S', `${themeColor?.s}%`);
-		document.documentElement.style.setProperty('--L', `${themeColor?.l}%`);
+		document.documentElement.style.setProperty('--H', `${h}`);
+		document.documentElement.style.setProperty('--S', `${s}%`);
+		document.documentElement.style.setProperty('--L', `${l}%`);
+
+		let meta = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null;
+		if (!meta) {
+			meta = document.createElement('meta') as HTMLMetaElement;
+			meta.name = 'theme-color';
+			document.head.appendChild(meta);
+		}
+		meta.content = `hsl(${h},${s}%,${l}%)`;
+
 		localStorage.setItem(STORAGE.themeScheme, themeScheme);
 		localStorage.setItem(STORAGE.themeColor, JSON.stringify(themeColor));
 	}, [themeScheme, themeColor]);

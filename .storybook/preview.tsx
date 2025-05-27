@@ -13,7 +13,8 @@ import './style.scss';
 
 import type { Preview } from '@storybook/react';
 
-eval(themeController());
+const themeScript = themeController();
+eval(themeScript);
 
 const initialThemeScheme = localStore?.getItem(STORAGE.themeScheme) ?? defaultScheme;
 const initialThemeColor = getLocalState(STORAGE.themeColor, defaultColorPreset);

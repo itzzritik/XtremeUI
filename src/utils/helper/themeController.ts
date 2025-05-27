@@ -44,6 +44,14 @@ export const themeController = ({
 			document.documentElement.style.setProperty('--S', s + '%');
 			document.documentElement.style.setProperty('--L', l + '%');
 
+			let meta = document.head.querySelector('meta[name="theme-color"]');
+			if (!meta) {
+				meta = document.createElement('meta');
+				meta.name = 'theme-color';
+				document.head.appendChild(meta);
+			}
+			meta.content = \`hsl(\${h},\${s}%,\${l}%)\`;
+
 			localStorage.setItem('${STORAGE.themeScheme}', themeScheme);
 			localStorage.setItem('${STORAGE.themeColor}', JSON.stringify({ h, s, l }));
 		} catch {}
