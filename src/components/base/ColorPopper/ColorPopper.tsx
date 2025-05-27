@@ -17,6 +17,7 @@ import { Colord, colord, getFormat } from 'colord';
 import { ColorPicker } from '#components/base/ColorPicker/ColorPicker';
 import { Icon } from '#components/base/Icon/Icon';
 import { Textfield } from '#components/base/Textfield/Textfield';
+import { useScreenType } from '#components/hooks/useScreen';
 import { getColorLabel } from '#utils/helper/colorHelper';
 import { mergeRefs, THEME_SCHEME } from '#utils/index';
 
@@ -46,6 +47,8 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 		color,
 		setColor,
 	} = props;
+
+	const { isDesktop } = useScreenType();
 
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const initialColor = useMemo(() => colord(color), []);
@@ -193,8 +196,8 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 										<input
 											placeholder='#Hex'
 											className={clsx('popperInput', className)}
-											autoFocus
 											value={inputValue}
+											autoFocus={isDesktop}
 											onChange={(e) => handleTextChange(e.target.value)}
 										/>
 									}
