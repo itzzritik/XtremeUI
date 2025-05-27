@@ -121,11 +121,12 @@
 					background: none;
 					letter-spacing: 0.8px;
 					text-transform: uppercase;
-					color: var(--colorContentSecondary);
+					color: hsl(var(--colorBrandPrimary));
 					font-size: 14px;
 					padding: 0;
 					margin-top: -4px;
 					z-index: 2;
+					animation: slideInLeft 0.4s ease 1s forwards;
 
 					&:focus-within {
 						color: hsl(var(--colorBrandPrimary));

@@ -59,6 +59,8 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 	const [heading, setHeading] = useState(colorHeading);
 	const internalChange = useRef(false);
 
+	const visibleReset = inputValue !== initialColor.toHex();
+
 	const [isOpen, setIsOpen] = useState(false);
 	const { refs, floatingStyles, context } = useFloating({
 		open: isOpen,
@@ -151,7 +153,7 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 						className='xtrColorButton'
 						ref={refs.setReference}
 						size={size}
-						icon='f53f'
+						icon={'f53f'}
 						iconType='solid'
 						style={{
 							['--themeColor' as string]: hslThemeColor,
@@ -206,7 +208,13 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 							</div>
 							{
 								showReset &&
-								<Icon code='f1da' type='solid' style={{ ['--colorBrandPrimary' as string]: hslResetColor }}
+								<Icon
+									code='f1da'
+									type='solid'
+									style={{
+										['--colorBrandPrimary' as string]: hslResetColor,
+										visibility: visibleReset ? 'visible' : 'hidden',
+									}}
 									onClick={handleReset}
 								/>
 							}

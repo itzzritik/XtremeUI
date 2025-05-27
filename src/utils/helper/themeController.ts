@@ -40,9 +40,10 @@ export const themeController = ({
 			}
 
 			document.documentElement.setAttribute('${STORAGE.themeSchemeAttr}', themeScheme);
-			document.documentElement.style.setProperty('--H', h.toString());
-			document.documentElement.style.setProperty('--S', s + '%');
-			document.documentElement.style.setProperty('--L', l + '%');
+
+			const style = document.getElementById('${STORAGE.themeColor}') || 
+				document.head.appendChild(Object.assign(document.createElement('style'), { id: '${STORAGE.themeColor}' }));
+			style.textContent = \`:root{ --H: \${h}; --S: \${s}%; --L: \${l}% }\`;
 
 			let meta = document.head.querySelector('meta[name="theme-color"]');
 			if (!meta) {
