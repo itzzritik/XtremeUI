@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { Icon } from '../Icon/Icon';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
 
-import styles from './button.module.scss';
+import './button.scss';
 import { EButtonTypes, TButtonProps } from './types';
 
 export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) => {
@@ -26,17 +26,17 @@ export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) =
 	const IconComponent = () =>
 		(
 			icon
-				? <Icon className={styles.icon} code={icon} type={iconType} size={size} />
+				? <Icon className='icon' code={icon} type={iconType} size={size} />
 				: null
 		);
 
 	const ButtonClsx = clsx(
-		styles.button,
+		'xtrButton',
 		'shadowRipple',
-		styles[`${type}Type`],
-		styles[`${size}Size`],
-		!label && styles.iconOnly,
-		loading && styles.loading,
+		`${type}Type`,
+		`${size}Size`,
+		!label && 'iconOnly',
+		loading && 'loading',
 		className,
 	);
 
@@ -51,9 +51,9 @@ export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) =
 			disabled={disabled}
 			role='button'
 		>
-			{type.includes(EButtonTypes.link) && <ProgressBar className={styles.underline} intermediate={loading} />}
+			{type.includes(EButtonTypes.link) && <ProgressBar className={'underline'} intermediate={loading} />}
 			{iconPosition === 'left' && <IconComponent />}
-			{label && <span className={styles.label}>{label}</span>}
+			{label && <span className={'label'}>{label}</span>}
 			{iconPosition === 'right' && <IconComponent />}
 		</button>
 	);

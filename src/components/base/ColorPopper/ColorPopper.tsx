@@ -59,8 +59,6 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 	const [heading, setHeading] = useState(colorHeading);
 	const internalChange = useRef(false);
 
-	const visibleReset = inputValue !== initialColor.toHex();
-
 	const [isOpen, setIsOpen] = useState(false);
 	const { refs, floatingStyles, context } = useFloating({
 		open: isOpen,
@@ -94,6 +92,9 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 			col.isLight() ? 'black' : 'white',
 		];
 	}, [initialColor, localColor]);
+
+	const visibleReset = inputValue !== initialColor.toHex();
+	const buttonInput = input === 'button' || input === 'buttonLabel';
 
 	const emitColorChange = (c: Colord) => {
 		internalChange.current = true;
@@ -148,16 +149,18 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 	return (
 		<>
 			{
-				input === 'button' ?
+				buttonInput ?
 					<Button
 						className='xtrColorButton'
 						ref={refs.setReference}
 						size={size}
-						icon={'f53f'}
+						icon='f53f'
 						iconType='solid'
+						label={input === 'buttonLabel' ? inputValue : undefined}
 						style={{
 							['--themeColor' as string]: hslThemeColor,
 							['--iconColor' as string]: iconColor,
+							color: iconColor,
 						}}
 						onClick={() => setIsOpen(true)} {...getReferenceProps()}
 					/>
@@ -189,12 +192,12 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 				>
 					{
 						(swatch || !hideWheel) &&
-						<div className={clsx('header', input === 'button' && 'withInput')}>
+						<div className={clsx('header', buttonInput && 'withInput')}>
 							<div className='heading'>
 								<div>
 									<h1>{heading}</h1>
 									{
-										input === 'button' &&
+										buttonInput &&
 										<input
 											placeholder='#Hex'
 											className={clsx('popperInput', className)}

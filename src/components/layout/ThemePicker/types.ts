@@ -1,14 +1,14 @@
 export enum EThemePickerSize {
-	mini = 128,
-	default = 180,
-	large = 254,
+	mini = 100,
+	default = 130,
+	large = 190,
 }
 
-export enum EThemePickerGap {
-	mini = 16,
-	default = 24,
-	large = 36,
-}
+export const EThemePickerGap = Object.fromEntries(
+	Object.entries(EThemePickerSize).map(([key, value]) => [key, Math.round((value as number) / 8)]),
+) as {
+	[key in keyof typeof EThemePickerSize]: number;
+};
 
 export type TThemePickerProps = {
 	className?: string;

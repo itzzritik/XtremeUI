@@ -7,7 +7,7 @@ export enum EColorPopperSize {
 	default = 'default',
 }
 
-export type ColorPopperInput = 'button' | 'textfield';
+export type ColorPopperInput = 'button' | 'buttonLabel' | 'textfield';
 
 export type ExtractColorType<T> = T extends RgbColor
 	? RgbColor : T extends RgbaColor ? RgbaColor : T extends HslColor

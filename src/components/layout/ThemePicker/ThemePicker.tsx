@@ -21,24 +21,17 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 
 	const { themeScheme, setThemeScheme, themeColor, setThemeColor } = useXTheme();
 
-	const { isMobile, isTablet } = useScreenType({
+	const { isTablet, isDesktop } = useScreenType({
 		mobile: 420,
 		tablet: 640,
 	});
-	const localSize = size ?? (isTablet ? 'mini' : 'default');
+	const localSize = size ?? (isDesktop ? 'large' : isTablet ? 'default' : 'mini');
 
 	const ThemePickerClsx = clsx(
 		'xtrThemePicker',
 		className,
+		localSize,
 	);
-
-	if (isMobile) {
-		return (
-			<div ref={ref} role='region' className={clsx(ThemePickerClsx, 'mobile')}>
-				<ThemeSelect withScheme withSwatch input='textfield' />
-			</div>
-		);
-	}
 
 	return (
 		<div
@@ -86,7 +79,7 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 							<Button
 								key={`ThemeColor-${c.h}${c.s}${c.l}-${i}`}
 								className='swatchItem'
-								size={size}
+								size={isDesktop ? 'default' : 'mini'}
 								icon='f00c'
 								iconType='solid'
 								style={{
@@ -98,7 +91,11 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 						);
 					})
 				}
-				<ThemeSelect withScheme={false} withSwatch={false} input='textfield' />
+				<ThemeSelect
+					withScheme={false}
+					withSwatch={false}
+					input={isDesktop ? 'textfield' : 'buttonLabel'}
+				/>
 			</div>
 		</div>
 	);
