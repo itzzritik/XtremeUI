@@ -6,6 +6,7 @@ import { ActionCard } from '#components/base/ActionCard/ActionCard';
 import { Button } from '#components/base/Button/Button';
 import { Icon } from '#components/base/Icon/Icon';
 import { useXTheme } from '#components/context/useContext';
+import { useScreenType } from '#components/hooks/useScreen';
 import { isEqual } from '#utils/function/common';
 import { THEME_SCHEME, ThemeColorsPreset } from '#utils/index';
 
@@ -16,14 +17,28 @@ import { EThemePickerGap, EThemePickerSize, TThemePickerProps } from './types';
 
 const THEME_COLOR = Object.values(ThemeColorsPreset);
 export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props, ref) => {
-	const { className, size = 'default' } = props;
+	const { className, size } = props;
 
 	const { themeScheme, setThemeScheme, themeColor, setThemeColor } = useXTheme();
+
+	const { isMobile, isTablet } = useScreenType({
+		mobile: 420,
+		tablet: 640,
+	});
+	const localSize = size ?? (isTablet ? 'mini' : 'default');
 
 	const ThemePickerClsx = clsx(
 		'xtrThemePicker',
 		className,
 	);
+
+	if (isMobile) {
+		return (
+			<div ref={ref} role='region' className={clsx(ThemePickerClsx, 'mobile')}>
+				<ThemeSelect withScheme withSwatch input='textfield' />
+			</div>
+		);
+	}
 
 	return (
 		<div
@@ -31,8 +46,8 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 			className={ThemePickerClsx}
 			role='region'
 			style={{
-				['--schemeSize' as string]: `${EThemePickerSize[size]}px`,
-				['--schemeGap' as string]: `${EThemePickerGap[size]}px`,
+				['--schemeSize' as string]: `${EThemePickerSize[localSize]}px`,
+				['--schemeGap' as string]: `${EThemePickerGap[localSize]}px`,
 			}}
 		>
 			<div className='themeSchemes' role='radiogroup'>
@@ -64,13 +79,13 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 					))
 				}
 			</div>
-			<div className={clsx('themeColors', size)} role='radiogroup'>
+			<div className='swatches' role='radiogroup'>
 				{
 					THEME_COLOR.map((c, i) => {
 						return (
 							<Button
 								key={`ThemeColor-${c.h}${c.s}${c.l}-${i}`}
-								className='themeColorsItem'
+								className='swatchItem'
 								size={size}
 								icon='f00c'
 								iconType='solid'
@@ -83,7 +98,7 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 						);
 					})
 				}
-				<ThemeSelect withScheme={false} />
+				<ThemeSelect withScheme={false} withSwatch={false} input='textfield' />
 			</div>
 		</div>
 	);

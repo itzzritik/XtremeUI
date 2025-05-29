@@ -3,32 +3,41 @@ import { useEffect, useState } from 'react';
 export type TScreenType = 'mobile' | 'tablet' | 'desktop';
 
 type Breakpoints = {
-  mobile?: string;
-  tablet?: string;
+  mobile: number;
+  tablet: number;
 };
 
-const defaultBreakpoints: Required<Breakpoints> = {
-	mobile: '(max-width: 639px)',
-	tablet: '(min-width: 640px) and (max-width: 1023px)',
+const defaultBreakpoints: Breakpoints = {
+	mobile: 640,
+	tablet: 1024,
 };
+
+const generateMediaQueries = (bp: Breakpoints) => ({
+	mobile: `(max-width: ${bp.mobile - 1}px)`,
+	tablet: `(min-width: ${bp.mobile}px) and (max-width: ${bp.tablet - 1}px)`,
+});
 
 export const useScreenType = (customBreakpoints?: Breakpoints) => {
 	const breakpoints = { ...defaultBreakpoints, ...customBreakpoints };
-
+	const mediaQueries = generateMediaQueries(breakpoints);
 	const [screenType, setScreenType] = useState<TScreenType>('desktop');
 
 	useEffect(() => {
 		const queries = {
-			mobile: window.matchMedia(breakpoints.mobile),
-			tablet: window.matchMedia(breakpoints.tablet),
+			mobile: window.matchMedia(mediaQueries.mobile),
+			tablet: window.matchMedia(mediaQueries.tablet),
 		};
-		const update = () =>
-			setScreenType(queries.mobile.matches ? 'mobile' : queries.tablet.matches ? 'tablet' : 'desktop');
+
+		const update = () => {
+			if (queries.mobile.matches) setScreenType('mobile');
+			else if (queries.tablet.matches) setScreenType('tablet');
+			else setScreenType('desktop');
+		};
 
 		update();
 		Object.values(queries).forEach((q) => q.addEventListener('change', update));
 		return () => Object.values(queries).forEach((q) => q.removeEventListener('change', update));
-	}, [breakpoints.mobile, breakpoints.tablet]);
+	}, [mediaQueries]);
 
 	return {
 		screenType,

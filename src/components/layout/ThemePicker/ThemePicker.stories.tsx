@@ -13,7 +13,6 @@ const meta = {
 		},
 	},
 	args: {
-		size: 'default',
 	},
 } satisfies Meta<typeof ThemePicker>;
 
