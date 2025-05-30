@@ -277,7 +277,7 @@
 	}
 
 	@keyframes spin {
-		from { transform: rotate(0deg); }
-		to { transform: rotate(180deg); }
+		from { transform: rotateZ(0deg); }
+		to { transform: rotateZ(180deg); }
 	}
 }
