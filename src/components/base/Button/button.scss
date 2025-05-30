@@ -241,7 +241,7 @@
 				border: 2px solid hsl(var(--themeColor));
 				border-top-color: transparent;
 				border-bottom-color: transparent;
-				animation: spin 0.25s infinite linear;
+				animation: loader 0.25s infinite linear;
 			}
 		}
 	}
@@ -276,7 +276,7 @@
 		to { transform: translateX(0); }
 	}
 
-	@keyframes spin {
+	@keyframes loader {
 		from { transform: rotateZ(0deg); }
 		to { transform: rotateZ(180deg); }
 	}
