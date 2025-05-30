@@ -8,9 +8,6 @@ const meta = {
 	tags: ['autodocs'],
 	argTypes: {
 		className: { control: false },
-		size: {
-			defaultValue: { summary: 'default' },
-		},
 	},
 	args: {
 	},

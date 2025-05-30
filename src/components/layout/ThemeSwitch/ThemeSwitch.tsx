@@ -23,7 +23,7 @@ export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props,
 	const { className, type = 'secondary', size = 'default', iconType = 'solid' } = props;
 
 	const { themeScheme, setThemeScheme, themeColor, setThemeColor } = useXTheme();
-	const { isMobile, isDesktop } = useScreenType();
+	const s = useScreenType();
 
 	const nextTheme = useMemo(() => {
 		return THEME_SCHEME[(THEME_SCHEME.findIndex((t) => t.name === themeScheme) + 1) % THEME_SCHEME.length];
@@ -40,7 +40,7 @@ export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props,
 	const mainClass = clsx(
 		'xtrThemeSwitch',
 		className,
-		!isMobile && 'withLabel',
+		!s.isMobile && 'withLabel',
 	);
 
 	if (!themeScheme || !isValidThemeColor(themeColor)) return null;
@@ -53,11 +53,11 @@ export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props,
 				size={size}
 				icon={currentIcon}
 				iconType={iconType}
-				label={!isMobile ? themeScheme : undefined}
+				label={!s.isMobile ? themeScheme : undefined}
 				onClick={() => nextTheme.name && setThemeScheme(nextTheme.name)}
 			/>
 			{
-				isDesktop ?
+				s.isLargest ?
 					<Select
 						clearable={false}
 						searchable={false}
@@ -75,7 +75,7 @@ export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props,
 						size={size}
 						icon='f53f'
 						iconType={iconType}
-						label={!isMobile ? getColorLabel(themeColor) : undefined}
+						label={!s.isMobile ? getColorLabel(themeColor) : undefined}
 						onClick={() => nextColor && setThemeColor(nextColor)}
 					/>
 			}

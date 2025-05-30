@@ -48,7 +48,7 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 		setColor,
 	} = props;
 
-	const { isDesktop } = useScreenType();
+	const s = useScreenType();
 
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const initialColor = useMemo(() => colord(color), []);
@@ -202,7 +202,7 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 											placeholder='#Hex'
 											className={clsx('popperInput', className)}
 											value={inputValue}
-											autoFocus={isDesktop}
+											autoFocus={s.isLargest}
 											onChange={(e) => handleTextChange(e.target.value)}
 										/>
 									}

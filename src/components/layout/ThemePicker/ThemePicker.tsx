@@ -13,24 +13,23 @@ import { THEME_SCHEME, ThemeColorsPreset } from '#utils/index';
 import { ThemeSelect } from '../ThemeSelect/ThemeSelect';
 
 import './themePicker.scss';
-import { EThemePickerGap, EThemePickerSize, TThemePickerProps } from './types';
+import { TThemePickerProps } from './types';
 
 const THEME_COLOR = Object.values(ThemeColorsPreset);
 export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props, ref) => {
-	const { className, size } = props;
+	const { className } = props;
 
 	const { themeScheme, setThemeScheme, themeColor, setThemeColor } = useXTheme();
 
-	const { isTablet, isDesktop } = useScreenType({
+	const s = useScreenType({
+		smallMobile: 325,
 		mobile: 420,
 		tablet: 640,
 	});
-	const localSize = size ?? (isDesktop ? 'large' : isTablet ? 'default' : 'mini');
 
 	const ThemePickerClsx = clsx(
 		'xtrThemePicker',
 		className,
-		localSize,
 	);
 
 	return (
@@ -38,10 +37,6 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 			ref={ref}
 			className={ThemePickerClsx}
 			role='region'
-			style={{
-				['--schemeSize' as string]: `${EThemePickerSize[localSize]}px`,
-				['--schemeGap' as string]: `${EThemePickerGap[localSize]}px`,
-			}}
 		>
 			<div className='themeSchemes' role='radiogroup'>
 				{
@@ -79,7 +74,7 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 							<Button
 								key={`ThemeColor-${c.h}${c.s}${c.l}-${i}`}
 								className='swatchItem'
-								size={isDesktop ? 'default' : 'mini'}
+								size={s.isLargest ? 'default' : 'mini'}
 								icon='f00c'
 								iconType='solid'
 								style={{
@@ -92,9 +87,9 @@ export const ThemePicker = forwardRef<HTMLDivElement, TThemePickerProps>((props,
 					})
 				}
 				<ThemeSelect
-					withScheme={false}
-					withSwatch={false}
-					input={isDesktop ? 'textfield' : 'buttonLabel'}
+					withScheme={s.isSmallMobile}
+					withSwatch={s.isSmallMobile}
+					input={s.isLargest || s.isSmallMobile ? 'textfield' : 'buttonLabel'}
 				/>
 			</div>
 		</div>

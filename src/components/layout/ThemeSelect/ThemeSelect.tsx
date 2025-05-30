@@ -14,7 +14,7 @@ import { TThemeSelectProps } from './types';
 export const ThemeSelect = forwardRef<HTMLDivElement, TThemeSelectProps>((props, ref) => {
 	const { className, input, size, withScheme = true, withSwatch = true, withWheel = true } = props;
 	const { themeScheme, setThemeScheme, themeColor, setThemeColor } = useXTheme();
-	const { isMobile } = useScreenType();
+	const s = useScreenType();
 
 	const mainClass = clsx(
 		'xtrThemeSelect',
@@ -34,8 +34,8 @@ export const ThemeSelect = forwardRef<HTMLDivElement, TThemeSelectProps>((props,
 			colorHeading='Theme Color'
 			schemeHeading={withScheme ? 'Appearance' : undefined}
 			themeScheme={themeScheme}
-			input={input ? input : isMobile ? 'button' : 'textfield'}
-			size={size ? size : isMobile ? 'mini' : 'default'}
+			input={input ? input : s.isMobile ? 'button' : 'textfield'}
+			size={size ? size : s.isMobile ? 'mini' : 'default'}
 			setThemeScheme={setThemeScheme}
 			color={themeColor}
 			setColor={setThemeColor}

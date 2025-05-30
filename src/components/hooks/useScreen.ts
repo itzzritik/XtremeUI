@@ -1,48 +1,62 @@
 import { useEffect, useState } from 'react';
 
-export type TScreenType = 'mobile' | 'tablet' | 'desktop';
-
-type Breakpoints = {
-  mobile: number;
-  tablet: number;
-};
-
-const defaultBreakpoints: Breakpoints = {
+const defaultBreakpoints = {
 	mobile: 640,
 	tablet: 1024,
 };
 
-const generateMediaQueries = (bp: Breakpoints) => ({
-	mobile: `(max-width: ${bp.mobile - 1}px)`,
-	tablet: `(min-width: ${bp.mobile}px) and (max-width: ${bp.tablet - 1}px)`,
-});
+const capitalize = <S extends string>(s: S) => (s.charAt(0).toUpperCase() + s.slice(1)) as Capitalize<S>;
 
-export const useScreenType = (customBreakpoints?: Breakpoints) => {
-	const breakpoints = { ...defaultBreakpoints, ...customBreakpoints };
-	const mediaQueries = generateMediaQueries(breakpoints);
-	const [screenType, setScreenType] = useState<TScreenType>('desktop');
+export function useScreenType<
+	B extends Record<string, number> = typeof defaultBreakpoints,
+	K extends keyof B = keyof B
+> (
+	breakpointsArg?: B,
+): {
+	screenType: K | 'largest';
+	isLargest: boolean;
+} & {
+	[P in K as `is${Capitalize<string & P>}`]: boolean;
+} {
+	const breakpoints = (breakpointsArg ?? defaultBreakpoints) as B;
+	const keys = Object.keys(breakpoints) as K[];
+	const sorted = keys.map((k) => [k, breakpoints[k]] as [K, number]).sort((a, b) => a[1] - b[1]);
+
+	const queries = sorted.map(([k, v], i) => (
+		i === 0
+			? { key: k, query: `(max-width: ${v - 1}px)` }
+			: { key: k, query: `(min-width: ${sorted[i - 1][1]}px) and (max-width: ${v - 1}px)` }
+	));
+
+	const lastValue = sorted[sorted.length - 1][1];
+	const largestKey = 'largest';
+	queries.push({ key: largestKey as K, query: `(min-width: ${lastValue}px)` });
+
+	const [screenType, setScreenType] = useState<K | 'largest'>(largestKey as 'largest');
 
 	useEffect(() => {
-		const queries = {
-			mobile: window.matchMedia(mediaQueries.mobile),
-			tablet: window.matchMedia(mediaQueries.tablet),
-		};
-
+		const mediaQueries = queries.map((q) => window.matchMedia(q.query));
 		const update = () => {
-			if (queries.mobile.matches) setScreenType('mobile');
-			else if (queries.tablet.matches) setScreenType('tablet');
-			else setScreenType('desktop');
+			for (let i = 0; i < mediaQueries.length; i++) {
+				if (mediaQueries[i].matches) {
+					setScreenType(queries[i].key as K | 'largest');
+					break;
+				}
+			}
 		};
-
 		update();
-		Object.values(queries).forEach((q) => q.addEventListener('change', update));
-		return () => Object.values(queries).forEach((q) => q.removeEventListener('change', update));
-	}, [mediaQueries]);
+		mediaQueries.forEach((mq) => mq.addEventListener('change', update));
+		return () => mediaQueries.forEach((mq) => mq.removeEventListener('change', update));
+	}, [queries]);
 
 	return {
 		screenType,
-		isMobile: screenType === 'mobile',
-		isTablet: screenType === 'tablet',
-		isDesktop: screenType === 'desktop',
+		...Object.fromEntries(keys.map((k) => [`is${capitalize(k as string)}`, screenType === k])),
+		isLargest: screenType === largestKey,
+	} as {
+		screenType: K | 'largest';
+		isLargest: boolean;
+	} & {
+		[P in K as `is${Capitalize<string & P>}`]: boolean;
 	};
-};
+}

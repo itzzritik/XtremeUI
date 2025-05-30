@@ -2,16 +2,15 @@
 
 .xtrThemePicker {
 	container-type: inline-size;
-	--schemeSize: 180px;
-	--schemeGap: 24px;
+	--schemeSize: 190px;
+	--schemeGap: calc(var(--schemeSize) / 8);
 	--globalTertiaryColor: var(--colorBackgroundTertiary);
 
 	position: relative;
-	width: calc(var(--schemeSize) * 3 + var(--schemeGap) * 2 / 1.2);
+	width: 100%;
 	max-width: 100%;
 	display: flex;
 	flex-direction: column;
-	gap: var(--schemeGap);
 
 	.themeSchemes {
 		width: fit-content;
@@ -204,12 +203,14 @@
 
 	.swatches {
 		position: relative;
-		width: 100%;
+		width: calc(var(--schemeSize) * 3 + var(--schemeGap) * 2 / 1.2);
 		display: grid;
 		grid-template-columns: repeat(6, 1fr);
 		grid-auto-rows: auto;
 		gap: calc(var(--schemeGap) / 1.5);
 		padding: 0 4px;
+		margin-top: var(--schemeGap);;
+		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 
 		.xtrThemeSelect, .xtrColorButton {
 			width: 100% !important;
@@ -221,8 +222,21 @@
 		}
 	}
 
-	&.mini {
+	@container (width < 640px) {
+		.themeSchemes, .swatches {
+			--schemeSize: 130px;
+			--schemeGap: calc(var(--schemeSize) / 8);
+		}
+	}
+
+	@container (width < 420px) {
+		.themeSchemes, .swatches {
+			--schemeSize: 100px;
+			--schemeGap: calc(var(--schemeSize) / 8);
+		}
 		.xtrButton {
+			padding: 6px 12px;
+
 			.xtrIcon {
 				--iconSize: 14px !important;
 			}
@@ -233,7 +247,9 @@
 		}
 	}
 
-	@container (width < 321px) {
+	@container (width < 325px) {
+		--schemeSize: 100px;
+
 		.themeSchemeItem {
 			display: none;
 		}
@@ -241,7 +257,7 @@
 			width: 100%;
 			grid-template-columns: 1fr;
 
-			.xtrButton:not(.xtrColorButton) {
+			> .xtrButton:not(.xtrColorButton) {
 				display: none;
 			}
 		}
