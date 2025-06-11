@@ -3,7 +3,7 @@ import { forwardRef, useEffect, useState } from 'react';
 import { DotLottie, DotLottieReact } from '@lottiefiles/dotlottie-react';
 import clsx from 'clsx';
 
-import styles from './lottie.module.scss';
+import './lottie.scss';
 import { ELottieSize, TLottieProps } from './types';
 
 export const Lottie = forwardRef<HTMLDivElement, TLottieProps>((props, ref) => {
@@ -21,7 +21,7 @@ export const Lottie = forwardRef<HTMLDivElement, TLottieProps>((props, ref) => {
 	const lottieSize = `${
 		typeof size === 'number' ? size : ELottieSize[size]
 	}px`;
-	const LottieClsx = clsx(styles.lottieWrapper, className);
+	const LottieClsx = clsx('xtrLottieWrapper', className);
 
 	useEffect(() => {
 		if (lottieSize) dotLottie?.resize();
@@ -34,7 +34,7 @@ export const Lottie = forwardRef<HTMLDivElement, TLottieProps>((props, ref) => {
 			style={{ ['--lottieSize' as string]: lottieSize }}
 		>
 			<DotLottieReact
-				className={styles.lottie}
+				className='xtrLottie'
 				dotLottieRefCallback={setDotLottie}
 				src={src}
 				autoplay={autoPlay}

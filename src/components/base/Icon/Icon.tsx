@@ -13,7 +13,7 @@ export const Icon = forwardRef<HTMLSpanElement, IIconProps>((props, ref) => {
 	const iconSize = `${typeof size === 'number' ? size : EIconSize[size]}px`;
 	const IconClsx = clsx(
 		'xtrIcon',
-		'fontAwesome',
+		'fa',
 		type,
 		onClick && 'iconButton',
 		className,
