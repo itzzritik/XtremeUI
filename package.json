@@ -1,6 +1,6 @@
 {
   "name": "xtreme-ui",
-  "version": "0.0.119",
+  "version": "0.0.120",
   "type": "module",
   "description": "Collection of reusable components that can be used in web projects",
   "main": "dist/index.js",
