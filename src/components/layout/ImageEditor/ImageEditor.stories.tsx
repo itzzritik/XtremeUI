@@ -6,7 +6,7 @@ import { FilePicker } from '#components/base/FilePicker/FilePicker';
 import { ImageEditor } from './ImageEditor';
 import { TImageEditorProps, TEditedImageType } from './types';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const ImageEditorComponent = (
 	props: Omit<TImageEditorProps, 'value' | 'onChange'>,

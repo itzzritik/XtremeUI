@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { addons } from '@storybook/preview-api';
+import { addons } from 'storybook/preview-api';
 
 import { useXTheme } from '../src/components/context/useContext';
 

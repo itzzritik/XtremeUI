@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { ColorPicker } from './ColorPicker';
 import { TColorPickerProps } from './types';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { HsvaColor } from 'colord';
 
 const ColorPickerComponent = (

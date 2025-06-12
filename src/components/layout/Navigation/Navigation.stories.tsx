@@ -11,7 +11,7 @@ import {
 
 import { Navigation } from './Navigation';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const routeList = [
 	{ name: 'Dashboard', href: '/dashboard', icon: 'e323' },

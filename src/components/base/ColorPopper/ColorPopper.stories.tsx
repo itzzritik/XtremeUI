@@ -5,7 +5,7 @@ import { ThemeColorsPreset } from '#utils/index';
 import { ColorPopper } from './ColorPopper';
 import { TColorPopperProps } from './types';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { AnyColor } from 'colord';
 
 const ColorPickerComponent = (

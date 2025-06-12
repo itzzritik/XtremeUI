@@ -1,6 +1,6 @@
 import { ThemeSelect } from './ThemeSelect';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
 	title: 'Layouts/Theme Select',

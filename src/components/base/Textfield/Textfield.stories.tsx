@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Textfield } from './Textfield';
 import { TTextfieldProps } from './types';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const TextFieldComponent = (
 	props: Omit<TTextfieldProps, 'value' | 'setValue'>,

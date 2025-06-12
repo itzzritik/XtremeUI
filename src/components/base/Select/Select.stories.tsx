@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Select } from './Select';
 import { TSelectProps } from './types';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const options = [
 	{ value: 'chocolate', label: 'Chocolate' },

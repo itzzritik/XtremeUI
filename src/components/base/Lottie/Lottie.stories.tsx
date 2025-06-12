@@ -1,6 +1,6 @@
 import { Lottie } from './Lottie';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 // const req = await fetch('https://api.github.com/repos/itzzjarvis/Assets/contents/anim/lottie');
 // const lottieAssetNames = (await req.json()).map((item) => item?.name);

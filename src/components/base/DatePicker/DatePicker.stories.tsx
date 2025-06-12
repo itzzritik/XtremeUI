@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { DatePicker } from './DatePicker';
 import { TDatePickerProps, TDateValue } from './types';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const DatePickerComponent = (
 	props: Omit<TDatePickerProps, 'value' | 'onChange'>,

@@ -17,7 +17,7 @@ import { SiderModal } from '../SiderModal/SiderModal';
 import { Sider } from './Sider';
 import { ESiderModes, TSiderModes, TSiderProps } from './types';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const routeList = [
 	{ name: 'Dashboard', href: '/dashboard', icon: 'e323' },

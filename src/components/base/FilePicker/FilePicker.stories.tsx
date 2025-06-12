@@ -5,7 +5,7 @@ import { Avatar } from '#components/base/Avatar/Avatar';
 import { FilePicker } from './FilePicker';
 import { TFilePickerProps } from './types';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const FilePickerComponent = (
 	props: Omit<TFilePickerProps, 'value' | 'onChange'>,

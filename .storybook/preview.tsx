@@ -11,7 +11,7 @@ import { ThemeController } from './ThemeController';
 import { BrandColorList, ThemeList } from './constants';
 import './style.scss';
 
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 
 const themeScript = themeController();
 eval(themeScript);
