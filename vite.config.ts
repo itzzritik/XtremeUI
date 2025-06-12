@@ -45,11 +45,12 @@ export default defineConfig((configEnv) => {
 		build: {
 			ssr: true,
 			minify: true,
-
-			// cssCodeSplit: true,
 			lib: {
 				name: 'XtremeUI',
-				entry: getComponentEntries(),
+				entry: {
+					index: resolve(__dirname, 'src/index.ts'),
+					...getComponentEntries(),
+				},
 				formats: ['es', 'cjs'],
 			},
 			outDir: 'dist',
