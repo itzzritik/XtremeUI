@@ -104,6 +104,7 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
+	"./styles": "./dist/xtreme-ui.css",
     "./ActionCard": {
       "import": "./dist/components/base/ActionCard/exports.js",
       "require": "./dist/components/base/ActionCard/exports.cjs"
