@@ -5,14 +5,14 @@ import ShadeSlider from '@uiw/react-color-shade-slider';
 import Wheel from '@uiw/react-color-wheel';
 import clsx from 'clsx';
 
-import styles from './colorPicker.module.scss';
+import './colorPicker.scss';
 import { TColorPickerProps } from './types';
 
 const WHEEL_SIZE = 180;
 export const ColorPicker = forwardRef<HTMLDivElement, TColorPickerProps>((props, ref) => {
 	const { className, shade = true, alpha = true, color = { h: 0, s: 0, v: 100, a: 1 }, setColor } = props;
 
-	const ColorPickerClsx = clsx(styles.colorPicker, className);
+	const ColorPickerClsx = clsx('xtrColorPicker', className);
 
 	return (
 		<div
@@ -20,7 +20,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, TColorPickerProps>((props,
 			className={ColorPickerClsx}
 		>
 			<Wheel
-				className={styles.wheel}
+				className='wheel'
 				color={color}
 				width={WHEEL_SIZE} height={WHEEL_SIZE}
 				onChange={(col) => setColor(col.hsva)}
@@ -28,7 +28,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, TColorPickerProps>((props,
 			{
 				shade &&
 				<ShadeSlider
-					className={styles.shade}
+					className='shade'
 					hsva={color}
 					onChange={({ v }) => setColor({ ...color, v })}
 				/>
@@ -36,7 +36,7 @@ export const ColorPicker = forwardRef<HTMLDivElement, TColorPickerProps>((props,
 			{
 				alpha &&
 				<Alpha
-					className={styles.alpha}
+					className='alpha'
 					hsva={color}
 					onChange={({ a }) => setColor({ ...color, a })}
 				/>

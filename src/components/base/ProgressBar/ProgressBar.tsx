@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 import clsx from 'clsx';
 
-import styles from './progressbar.module.scss';
+import './progressbar.scss';
 import { IProgressBarProps } from './types';
 
 export const ProgressBar = forwardRef<HTMLDivElement, IProgressBarProps>((props, ref) => {
@@ -11,8 +11,8 @@ export const ProgressBar = forwardRef<HTMLDivElement, IProgressBarProps>((props,
 	const progressWidth = intermediate ? 150 : Math.min(Math.max(progress, 0), 100);
 
 	const ProgressClsx = clsx(
-		styles.progressBar,
-		intermediate && styles.intermediate,
+		'xtrProgressBar',
+		intermediate && 'intermediate',
 		className,
 	);
 
@@ -22,7 +22,7 @@ export const ProgressBar = forwardRef<HTMLDivElement, IProgressBarProps>((props,
 			className={ProgressClsx}
 			role='progressbar'
 		>
-			<span className={styles.progress} style={{ width: `${progressWidth}%` }} />
+			<span className='progress' style={{ width: `${progressWidth}%` }} />
 		</div>
 	);
 });

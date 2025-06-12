@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import { Icon } from '#components/base/Icon/Icon';
 
-import styles from './navigation.module.scss';
+import './navigation.scss';
 import { TNavigationProps } from './types';
 
 export const Navigation = forwardRef<HTMLDivElement, TNavigationProps>((props, ref) => {
@@ -12,7 +12,7 @@ export const Navigation = forwardRef<HTMLDivElement, TNavigationProps>((props, r
 	const [loading, setLoading] = useState<string>('/');
 
 	const NavigationClsx = clsx(
-		styles.navigation,
+		'xtrNavigation',
 		className,
 	);
 
@@ -27,16 +27,16 @@ export const Navigation = forwardRef<HTMLDivElement, TNavigationProps>((props, r
 			className={NavigationClsx}
 			role='navigation'
 		>
-			<div className={styles.brand}>{children}</div>
-			<div className={styles.routeList}>
+			<div className='brand'>{children}</div>
+			<div className='routeList'>
 				{
 					routes.map((route, i) => (
 						<Tag
 							key={`route-${route?.href}-${i}`}
 							className={clsx(
-								styles.route,
-								route?.href === loading && styles.loading,
-								route?.href === pathname && styles.active,
+								'route',
+								route?.href === loading && 'loading',
+								route?.href === pathname && 'active',
 							)}
 							{...({ [hrefPropName]: route?.href })}
 							onClick={() => {
@@ -46,12 +46,11 @@ export const Navigation = forwardRef<HTMLDivElement, TNavigationProps>((props, r
 							{
 								route?.icon &&
 								<Icon
-									className={styles?.icon}
 									code={route?.icon}
 									type={route?.href === pathname ? 'duotone' : 'light'}
 								/>
 							}
-							<span className={styles.label}>{route?.name}</span>
+							<span className='label'>{route?.name}</span>
 						</Tag>
 					))
 				}

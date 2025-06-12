@@ -97,5 +97,91 @@
   "bugs": {
     "url": "https://github.com/itzzritik/XtremeUI/issues"
   },
-  "readme": "ERROR: No README data found!"
+  "readme": "ERROR: No README data found!",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./ActionCard": {
+      "import": "./dist/components/base/ActionCard/exports.js",
+      "require": "./dist/components/base/ActionCard/exports.cjs"
+    },
+    "./Avatar": {
+      "import": "./dist/components/base/Avatar/exports.js",
+      "require": "./dist/components/base/Avatar/exports.cjs"
+    },
+    "./Button": {
+      "import": "./dist/components/base/Button/exports.js",
+      "require": "./dist/components/base/Button/exports.cjs"
+    },
+	"./ColorPicker": {
+      "import": "./dist/components/base/ColorPicker/exports.js",
+      "require": "./dist/components/base/ColorPicker/exports.cjs"
+    },
+    "./ColorPopper": {
+      "import": "./dist/components/base/ColorPopper/exports.js",
+      "require": "./dist/components/base/ColorPopper/exports.cjs"
+    },
+	"./DatePicker": {
+      "import": "./dist/components/base/DatePicker/exports.js",
+      "require": "./dist/components/base/DatePicker/exports.cjs"
+    },
+    "./FilePicker": {
+      "import": "./dist/components/base/FilePicker/exports.js",
+      "require": "./dist/components/base/FilePicker/exports.cjs"
+    },
+    "./Icon": {
+      "import": "./dist/components/base/Icon/exports.js",
+      "require": "./dist/components/base/Icon/exports.cjs"
+    },
+    "./Lottie": {
+      "import": "./dist/components/base/Lottie/exports.js",
+      "require": "./dist/components/base/Lottie/exports.cjs"
+    },
+    "./ProgressBar": {
+      "import": "./dist/components/base/ProgressBar/exports.js",
+      "require": "./dist/components/base/ProgressBar/exports.cjs"
+    },
+	"./Select": {
+      "import": "./dist/components/base/Select/exports.js",
+      "require": "./dist/components/base/Select/exports.cjs"
+    },
+	"./Spinner": {
+      "import": "./dist/components/base/Spinner/exports.js",
+      "require": "./dist/components/base/Spinner/exports.cjs"
+    },
+    "./Textfield": {
+      "import": "./dist/components/base/Textfield/exports.js",
+      "require": "./dist/components/base/Textfield/exports.cjs"
+    },
+    "./ImageEditor": {
+      "import": "./dist/components/layout/ImageEditor/exports.js",
+      "require": "./dist/components/layout/ImageEditor/exports.cjs"
+    },
+    "./Navigation": {
+      "import": "./dist/components/layout/Navigation/exports.js",
+      "require": "./dist/components/layout/Navigation/exports.cjs"
+    },
+    "./Sider": {
+      "import": "./dist/components/layout/Sider/exports.js",
+      "require": "./dist/components/layout/Sider/exports.cjs"
+    },
+    "./SiderModal": {
+      "import": "./dist/components/layout/SiderModal/exports.js",
+      "require": "./dist/components/layout/SiderModal/exports.cjs"
+    },
+    "./ThemePicker": {
+      "import": "./dist/components/layout/ThemePicker/exports.js",
+      "require": "./dist/components/layout/ThemePicker/exports.cjs"
+    },
+    "./ThemeSelect": {
+      "import": "./dist/components/layout/ThemeSelect/exports.js",
+      "require": "./dist/components/layout/ThemeSelect/exports.cjs"
+    },
+    "./ThemeSwitch": {
+      "import": "./dist/components/layout/ThemeSwitch/exports.js",
+      "require": "./dist/components/layout/ThemeSwitch/exports.cjs"
+    }
+  }
 }

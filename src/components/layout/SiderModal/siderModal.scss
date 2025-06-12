@@ -1,4 +1,4 @@
-.siderModal {
+.xtrSiderModal {
 	width: fit-content; height: 100%;
 	min-width: 300px;
 	display: flex;
@@ -17,7 +17,7 @@
 			display: none;
 		}
 
-		.icon, .title {
+		.xtrIcon, .title {
 			font-size: x-large;
 			font-variation-settings: 'wdth' 75, 'wght' 400;
 			color: var(--colorContentPrimary);

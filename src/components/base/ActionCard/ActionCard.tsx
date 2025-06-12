@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 import clsx from 'clsx';
 
-import styles from './actionCard.module.scss';
+import './actionCard.scss';
 import { EActionCardSize, TActionCardProps } from './types';
 
 export const ActionCard = forwardRef<HTMLDivElement, TActionCardProps>((props, ref) => {
@@ -17,9 +17,9 @@ export const ActionCard = forwardRef<HTMLDivElement, TActionCardProps>((props, r
 	const cardSize = Array.isArray(size) ? size : [EActionCardSize[size], EActionCardSize[size]];
 
 	const ActionCardClsx = clsx(
-		styles.actionCard,
+		'xtrActionCard',
 		'shadowRipple',
-		styles[`${size}Size`],
+		`${size}Size`,
 		className,
 	);
 

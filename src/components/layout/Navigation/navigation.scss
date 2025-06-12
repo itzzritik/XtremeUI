@@ -1,4 +1,4 @@
-.navigation {
+.xtrNavigation {
 	--animDurFast: 0.4s;
 	--borderRadius: 30px;
 
@@ -51,7 +51,7 @@
 				overflow: hidden;
 			}
 
-			.icon {
+			.xtrIcon {
 				width: var(--siderWidthMini);
 				height: var(--siderWidthMini);
 				font-size: calc(var(--siderWidthMini) - 40px);

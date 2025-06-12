@@ -7,8 +7,8 @@
 	--H: 2;
 	--S: 100%;
 	--L: 70%;
-	--L2: min(calc(var(--L) + 10%), 100%);
-	--L3: min(calc(var(--L) + 20%), 100%);
+	--L2: min(calc(var(--L) + 20%), 100%);
+	--L3: min(calc(var(--L) + 30%), 100%);
 
 	--colorBrandPrimary: var(--H) var(--S) var(--L);
 	--colorBrandSecondary: var(--H) var(--S) var(--L2);
@@ -23,7 +23,7 @@
 	--colorBorderPrimary: #ABB0BB;
 
 	// Gradient Colors
-	--gradientBrand: linear-gradient(320deg, rgb(var(--colorBrandPrimary)), rgb(var(--colorBrandSecondaryRgb)));
+	--gradientBrand: linear-gradient(320deg, hsl(var(--colorBrandPrimary)), hsl(var(--colorBrandTertiary)));
 
 	// Cubic Bezier
 	--animDurSlow: 1s;

@@ -7,7 +7,7 @@ import { TButtonProps } from '#components/base/Button/types';
 import { Icon } from '#components/base/Icon/Icon';
 import { useXData } from '#components/context/useContext';
 
-import styles from './siderModal.module.scss';
+import './siderModal.scss';
 import { TSiderModalProps } from './types';
 
 export const SiderModal = forwardRef<HTMLDivElement, TSiderModalProps>((props, ref) => {
@@ -23,7 +23,7 @@ export const SiderModal = forwardRef<HTMLDivElement, TSiderModalProps>((props, r
 	const { setSiderMode } = useXData();
 
 	const SiderModalClsx = clsx(
-		styles.siderModal,
+		'xtrSiderModal',
 		className,
 	);
 
@@ -33,24 +33,24 @@ export const SiderModal = forwardRef<HTMLDivElement, TSiderModalProps>((props, r
 			className={SiderModalClsx}
 			role='dialog'
 		>
-			<div className={styles.header}>
-				<Button className={styles.back} icon='f053' onClick={() => setSiderMode('closed')} />
-				{icon && <Icon className={styles.icon} code={icon} type='duotone' />}
-				<p className={styles.title}>{title}</p>
+			<div className='header'>
+				<Button className='back' icon='f053' onClick={() => setSiderMode('closed')} />
+				{icon && <Icon code={icon} type='duotone' />}
+				<p className='title'>{title}</p>
 			</div>
-			<div className={styles.body}>
+			<div className='body'>
 				{children}
 			</div>
-			<div className={styles.footer}>
+			<div className='footer'>
 				<Button
 					type='primary'
 					{...primaryButtonProps}
-					className={clsx(styles.primaryButton, primaryButtonProps?.className)}
+					className={clsx('primaryButton', primaryButtonProps?.className)}
 				/>
 				<Button
 					type='secondary'
 					{...secondaryButtonProps}
-					className={clsx(styles.secondaryButton, secondaryButtonProps?.className)}
+					className={clsx('secondaryButton', secondaryButtonProps?.className)}
 				/>
 			</div>
 		</div>

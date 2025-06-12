@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import { useXData } from '#components/context/useContext';
 
-import styles from './sider.module.scss';
+import './sider.scss';
 import { TSiderProps } from './types';
 
 export const Sider = forwardRef<HTMLDivElement, TSiderProps>((props, ref) => {
@@ -22,11 +22,11 @@ export const Sider = forwardRef<HTMLDivElement, TSiderProps>((props, ref) => {
 	const rightSiderRef = useRef<HTMLDivElement>(null);
 
 	const SiderClsx = clsx(
-		styles.sider,
-		siderMode === 'left' && leftSider && styles.leftOpen,
-		showMiniLeftSider && styles.miniLeftSider,
-		siderMode === 'right' && rightSider && styles.rightOpen,
-		showMiniRightSider && styles.miniRightSider,
+		'xtrSider',
+		siderMode === 'left' && leftSider && 'leftOpen',
+		showMiniLeftSider && 'miniLeftSider',
+		siderMode === 'right' && rightSider && 'rightOpen',
+		showMiniRightSider && 'miniRightSider',
 		className,
 	);
 
@@ -40,13 +40,13 @@ export const Sider = forwardRef<HTMLDivElement, TSiderProps>((props, ref) => {
 			}}
 			role='region'
 		>
-			<div ref={leftSiderRef} className={styles.leftSiderContainer}>
+			<div ref={leftSiderRef} className='leftSiderContainer'>
 				{leftSider}
 			</div>
-			<div ref={rightSiderRef} className={styles.rightSiderContainer}>
+			<div ref={rightSiderRef} className='rightSiderContainer'>
 				{rightSider}
 			</div>
-			<div className={styles.content}>
+			<div className='content'>
 				{children}
 			</div>
 		</main>
