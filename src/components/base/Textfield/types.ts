@@ -1,6 +1,6 @@
 import { CSSProperties, ChangeEvent, FocusEvent, KeyboardEvent } from 'react';
 
-import { EIconType } from '../Icon/types';
+import { ICON_TYPES } from 'gliff';
 
 export type TTextfieldProps = {
 	className?: string;
@@ -12,7 +12,7 @@ export type TTextfieldProps = {
 	autoFocus?: boolean;
 	autoComplete?: keyof typeof ETextfieldAutoComplete;
 	icon?: string;
-	iconType?: keyof typeof EIconType;
+	iconType?: keyof typeof ICON_TYPES;
 	value?: string;
 	id?: string;
 	onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
@@ -21,7 +21,7 @@ export type TTextfieldProps = {
 	onKeyDown?: (event: KeyboardEvent) => void;
 	onKeyUp?: (event: KeyboardEvent) => void;
 	onEnterKey?: (event: KeyboardEvent) => void;
-}
+};
 export enum ETextfieldType {
 	text = 'text',
 	number = 'number',
@@ -80,5 +80,5 @@ export enum ETextfieldAutoComplete {
 	'tel-national' = 'tel-national',
 	'tel-area-code' = 'tel-area-code',
 	'tel-local' = 'tel-local',
-	'tel-extension' = 'tel-extension'
+	'tel-extension' = 'tel-extension',
 }

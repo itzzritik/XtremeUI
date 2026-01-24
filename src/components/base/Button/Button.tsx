@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
 
 import clsx from 'clsx';
+import { Icon } from 'gliff';
 
-import { Icon } from '../Icon/Icon';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
 
 import './button.scss';
@@ -23,12 +23,7 @@ export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) =
 		onClick,
 	} = props;
 
-	const IconComponent = () =>
-		(
-			icon
-				? <Icon className='icon' code={icon} type={iconType} size={size} />
-				: null
-		);
+	const IconComponent = () => (icon ? <Icon className='icon' code={icon} type={iconType} size={size} /> : null);
 
 	const ButtonClsx = clsx(
 		'xtrButton',
@@ -43,14 +38,7 @@ export const Button = forwardRef<HTMLButtonElement, TButtonProps>((props, ref) =
 	if (!label && !icon) return null;
 
 	return (
-		<button
-			ref={ref}
-			className={ButtonClsx}
-			style={style}
-			onClick={onClick}
-			disabled={disabled}
-			role='button'
-		>
+		<button ref={ref} className={ButtonClsx} style={style} onClick={onClick} disabled={disabled} role='button'>
 			{type.includes(EButtonTypes.link) && <ProgressBar className={'underline'} intermediate={loading} />}
 			{iconPosition === 'left' && <IconComponent />}
 			{label && <span className={'label'}>{label}</span>}

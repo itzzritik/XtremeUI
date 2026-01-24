@@ -24,7 +24,7 @@
 		.themeSchemeItem {
 			--rippleShadowColor: var(--globalTertiaryColor);
 			--cardBorderRadius: calc(var(--schemeGap) / 2);
-			
+
 			position: relative;
 			width: var(--schemeSize);
 			height: calc(var(--schemeSize) * 0.8);
@@ -32,7 +32,9 @@
 			user-select: none;
 			border: 2px solid var(--colorBackgroundTertiary);
 			cursor: pointer;
-			transition: all var(--animDurDefault) var(--cubicBezierPrimary), box-shadow var(--animDurDefault) linear;
+			transition:
+				all var(--animDurDefault) var(--cubicBezierPrimary),
+				box-shadow var(--animDurDefault) linear;
 
 			&.auto {
 				@include colorSchemes.autoScheme;
@@ -56,7 +58,8 @@
 
 				.navigation {
 					position: absolute;
-					top: 0; left: 0;
+					top: 0;
+					left: 0;
 					width: 25%;
 					height: 100%;
 					display: flex;
@@ -84,7 +87,8 @@
 
 				.content {
 					position: absolute;
-					top: 0; left: 4%;
+					top: 0;
+					left: 4%;
 					width: 96%;
 					height: 100%;
 					border-top-left-radius: calc(var(--schemeGap) / 2);
@@ -93,16 +97,19 @@
 
 					.header {
 						position: absolute;
-						top: 0; left: 0;
+						top: 0;
+						left: 0;
 						width: 100%;
 						height: calc(var(--schemeGap) / 2);
-						
+
 						&::before {
 							content: '';
 							position: absolute;
-							top: calc(var(--schemeGap) / 3); left: calc(var(--schemeGap) / 3);
+							top: calc(var(--schemeGap) / 3);
+							left: calc(var(--schemeGap) / 3);
 							display: block;
-							width: calc(var(--schemeGap) / 4); height: calc(var(--schemeGap) / 4);
+							width: calc(var(--schemeGap) / 4);
+							height: calc(var(--schemeGap) / 4);
 							border-radius: 9999px;
 							background: var(--colorBackgroundTertiary);
 						}
@@ -110,9 +117,11 @@
 						&::after {
 							content: '';
 							position: absolute;
-							top: calc(var(--schemeGap) / 3); left: calc(var(--schemeGap) / 1.2);
+							top: calc(var(--schemeGap) / 3);
+							left: calc(var(--schemeGap) / 1.2);
 							display: block;
-							width: calc(var(--schemeGap) * 2); height: calc(var(--schemeGap) / 4);
+							width: calc(var(--schemeGap) * 2);
+							height: calc(var(--schemeGap) / 4);
 							border-radius: 9999px;
 							background: var(--colorBackgroundTertiary);
 						}
@@ -120,19 +129,23 @@
 
 					.profile {
 						position: absolute;
-						top: calc(var(--schemeGap) / 1.1); left: 50%;
+						top: calc(var(--schemeGap) / 1.1);
+						left: 50%;
 						transform: translateX(-50%);
-						width: calc(var(--schemeGap)); height: calc(var(--schemeGap));
+						width: calc(var(--schemeGap));
+						height: calc(var(--schemeGap));
 						border-radius: 9999px;
 						background: var(--colorBackgroundTertiary);
 
 						&::before {
 							content: '';
 							position: absolute;
-							top: calc(var(--schemeGap) * 1.2); left: 50%;
+							top: calc(var(--schemeGap) * 1.2);
+							left: 50%;
 							transform: translateX(-50%);
 							display: block;
-							width: calc(var(--schemeGap) * 1.5); height: calc(var(--schemeGap) / 8);
+							width: calc(var(--schemeGap) * 1.5);
+							height: calc(var(--schemeGap) / 8);
 							border-radius: 9999px;
 							background: var(--colorBackgroundTertiary);
 							transition: all var(--animDurDefault) var(--cubicBezierPrimary);
@@ -160,7 +173,9 @@
 
 				.footerLabel {
 					font-size: max(10px, calc(var(--schemeGap) / 1.6));
-					font-variation-settings: 'wdth' 75, 'wght' 700;
+					font-variation-settings:
+						'wdth' 75,
+						'wght' 700;
 					text-transform: uppercase;
 					color: inherit;
 				}
@@ -169,13 +184,15 @@
 			&:hover {
 				.design {
 					.content {
-						top: 0; left: 20%;
+						top: 0;
+						left: 20%;
 						width: 80%;
 					}
 				}
 			}
 
-			&.active, &:hover {
+			&.active,
+			&:hover {
 				.design {
 					.navigation {
 						background: hsl(var(--colorBrandPrimary));
@@ -209,35 +226,40 @@
 		grid-auto-rows: auto;
 		gap: calc(var(--schemeGap) / 1.5);
 		padding: 0 4px;
-		margin-top: var(--schemeGap);;
+		margin-top: var(--schemeGap);
 		transition: all var(--animDurDefault) var(--cubicBezierPrimary);
 
-		.xtrThemeSelect, .xtrColorButton {
+		.xtrThemeSelect,
+		.xtrColorButton {
 			width: 100% !important;
 			grid-column: span 2;
 		}
 		.xtrButton .label {
-			font-variation-settings: 'wdth' 75, 'wght' 600;
+			font-variation-settings:
+				'wdth' 75,
+				'wght' 600;
 			letter-spacing: 0.8px;
 		}
 	}
 
 	@container (width < 640px) {
-		.themeSchemes, .swatches {
+		.themeSchemes,
+		.swatches {
 			--schemeSize: 130px;
 			--schemeGap: calc(var(--schemeSize) / 8);
 		}
 	}
 
 	@container (width < 420px) {
-		.themeSchemes, .swatches {
+		.themeSchemes,
+		.swatches {
 			--schemeSize: 100px;
 			--schemeGap: calc(var(--schemeSize) / 8);
 		}
 		.xtrButton {
 			padding: 6px 12px;
 
-			.xtrIcon {
+			.xIcon {
 				--iconSize: 14px !important;
 			}
 			.label {

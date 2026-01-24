@@ -1,4 +1,3 @@
-
 @use 'react-datetime-picker/dist/DateTimePicker.css';
 @use 'react-calendar/dist/Calendar.css';
 @use 'react-clock/dist/Clock.css';
@@ -6,22 +5,22 @@
 @use 'colors';
 @use 'animations/shadowRipple';
 
-@import url('https://cdn.jsdelivr.net/gh/itzzjarvis/Assets/styles/fa/fa-min.css');
-
 html {
 	scroll-behavior: smooth;
-	
+
 	background: var(--colorBackgroundPrimary);
-	
+
 	::selection {
 		color: white;
 		background: hsl(var(--colorBrandPrimary));
 	}
 
 	@include colors.colors;
-	
+
 	* {
-		font-variation-settings: 'wdth' 75, 'wght' 500;
+		font-variation-settings:
+			'wdth' 75,
+			'wght' 500;
 		color: var(--colorContentPrimary);
 		box-sizing: border-box;
 	}

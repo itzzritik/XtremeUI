@@ -1,189 +1,121 @@
 {
-  "name": "xtreme-ui",
-  "version": "0.0.121",
-  "type": "module",
-  "description": "Collection of reusable components that can be used in web projects",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "dev": "storybook dev -p 3001",
-    "build": "vite build",
-    "watch": "vite build -w",
-    "build-storybook": "storybook build -o dist/storybook",
-    "lint": "eslint --max-warnings 50",
-    "clean": "rm -rf node_modules pnpm-lock.yaml && pnpm install"
-  },
-  "dependencies": {
-    "@floating-ui/react": "^0.27.12",
-    "@lottiefiles/dotlottie-react": "^0.14.1",
-    "@uiw/react-color-alpha": "^2.5.5",
-    "@uiw/react-color-shade-slider": "^2.5.5",
-    "@uiw/react-color-wheel": "^2.5.5",
-    "@wojtekmaj/react-datetimerange-picker": "^6.0.0",
-    "clsx": "^2.1.1",
-    "color-namer": "^1.4.0",
-    "colord": "^2.9.3",
-    "globals": "^16.2.0",
-    "react-calendar": "^6.0.0",
-    "react-clock": "^6.0.0",
-    "react-datetime-picker": "^6.0.1",
-    "react-easy-crop": "^5.4.2",
-    "react-select": "^5.10.1",
-    "use-file-picker": "^2.1.4"
-  },
-  "devDependencies": {
-    "@chromatic-com/storybook": "^4.0.0",
-    "@eslint/js": "^9.28.0",
-    "@storybook/addon-docs": "^9.0.8",
-    "@storybook/addon-links": "^9.0.8",
-    "@storybook/react-vite": "^9.0.8",
-    "@types/lodash": "^4.17.17",
-    "@types/node": "^24.0.1",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@typescript-eslint/eslint-plugin": "^8.34.0",
-    "@typescript-eslint/parser": "^8.34.0",
-    "@vitejs/plugin-react": "^4.5.2",
-    "@vitejs/plugin-react-swc": "^3.10.2",
-    "eslint": "^9.28.0",
-    "eslint-import-resolver-typescript": "^4.4.3",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "eslint-plugin-storybook": "^9.0.8",
-    "lodash": "^4.17.21",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-router-dom": "^7.6.2",
-    "sass": "^1.89.2",
-    "storybook": "^9.0.8",
-    "stylelint": "^16.20.0",
-    "stylelint-config-standard-scss": "^15.0.1",
-    "stylelint-order": "^7.0.0",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.34.0",
-    "vite": "^6.3.5",
-    "vite-plugin-dts": "^4.5.4",
-    "vite-plugin-linter": "^3.0.1",
-    "vite-tsconfig-paths": "^5.1.4"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "files": [
-    "dist"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/itzzritik/XtremeUI.git"
-  },
-  "keywords": [
-    "react",
-    "javascript",
-    "design-systems",
-    "ui",
-    "ui-library",
-    "typescript",
-    "react-components",
-    "vite"
-  ],
-  "author": {
-    "name": "Ritik Srivastava"
-  },
-  "homepage": "https://github.com/itzzritik/XtremeUI#readme",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/itzzritik/XtremeUI/issues"
-  },
-  "readme": "ERROR: No README data found!",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./styles": "./dist/xtreme-ui.css",
-    "./ActionCard": {
-      "import": "./dist/components/base/ActionCard/exports.js",
-      "require": "./dist/components/base/ActionCard/exports.cjs"
-    },
-    "./Avatar": {
-      "import": "./dist/components/base/Avatar/exports.js",
-      "require": "./dist/components/base/Avatar/exports.cjs"
-    },
-    "./Button": {
-      "import": "./dist/components/base/Button/exports.js",
-      "require": "./dist/components/base/Button/exports.cjs"
-    },
-    "./ColorPicker": {
-      "import": "./dist/components/base/ColorPicker/exports.js",
-      "require": "./dist/components/base/ColorPicker/exports.cjs"
-    },
-    "./ColorPopper": {
-      "import": "./dist/components/base/ColorPopper/exports.js",
-      "require": "./dist/components/base/ColorPopper/exports.cjs"
-    },
-    "./DatePicker": {
-      "import": "./dist/components/base/DatePicker/exports.js",
-      "require": "./dist/components/base/DatePicker/exports.cjs"
-    },
-    "./FilePicker": {
-      "import": "./dist/components/base/FilePicker/exports.js",
-      "require": "./dist/components/base/FilePicker/exports.cjs"
-    },
-    "./Icon": {
-      "import": "./dist/components/base/Icon/exports.js",
-      "require": "./dist/components/base/Icon/exports.cjs"
-    },
-    "./Lottie": {
-      "import": "./dist/components/base/Lottie/exports.js",
-      "require": "./dist/components/base/Lottie/exports.cjs"
-    },
-    "./ProgressBar": {
-      "import": "./dist/components/base/ProgressBar/exports.js",
-      "require": "./dist/components/base/ProgressBar/exports.cjs"
-    },
-    "./Select": {
-      "import": "./dist/components/base/Select/exports.js",
-      "require": "./dist/components/base/Select/exports.cjs"
-    },
-    "./Spinner": {
-      "import": "./dist/components/base/Spinner/exports.js",
-      "require": "./dist/components/base/Spinner/exports.cjs"
-    },
-    "./Textfield": {
-      "import": "./dist/components/base/Textfield/exports.js",
-      "require": "./dist/components/base/Textfield/exports.cjs"
-    },
-    "./ImageEditor": {
-      "import": "./dist/components/layout/ImageEditor/exports.js",
-      "require": "./dist/components/layout/ImageEditor/exports.cjs"
-    },
-    "./Navigation": {
-      "import": "./dist/components/layout/Navigation/exports.js",
-      "require": "./dist/components/layout/Navigation/exports.cjs"
-    },
-    "./Sider": {
-      "import": "./dist/components/layout/Sider/exports.js",
-      "require": "./dist/components/layout/Sider/exports.cjs"
-    },
-    "./SiderModal": {
-      "import": "./dist/components/layout/SiderModal/exports.js",
-      "require": "./dist/components/layout/SiderModal/exports.cjs"
-    },
-    "./ThemePicker": {
-      "import": "./dist/components/layout/ThemePicker/exports.js",
-      "require": "./dist/components/layout/ThemePicker/exports.cjs"
-    },
-    "./ThemeSelect": {
-      "import": "./dist/components/layout/ThemeSelect/exports.js",
-      "require": "./dist/components/layout/ThemeSelect/exports.cjs"
-    },
-    "./ThemeSwitch": {
-      "import": "./dist/components/layout/ThemeSwitch/exports.js",
-      "require": "./dist/components/layout/ThemeSwitch/exports.cjs"
-    }
-  }
+	"name": "xtreme-ui",
+	"version": "0.0.121",
+	"type": "module",
+	"description": "Collection of reusable components that can be used in web projects",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"dev": "storybook dev -p 3001",
+		"build": "vite build",
+		"watch": "vite build -w",
+		"build-storybook": "storybook build -o dist/storybook",
+		"lint": "eslint --max-warnings 50",
+		"clean": "rm -rf node_modules pnpm-lock.yaml && pnpm install"
+	},
+	"dependencies": {
+		"@floating-ui/react": "^0.27.16",
+		"@lottiefiles/dotlottie-react": "^0.17.13",
+		"@uiw/react-color-alpha": "^2.9.2",
+		"@uiw/react-color-shade-slider": "^2.9.2",
+		"@uiw/react-color-wheel": "^2.9.2",
+		"@wojtekmaj/react-datetimerange-picker": "^7.0.0",
+		"clsx": "^2.1.1",
+		"color-namer": "^1.4.0",
+		"colord": "^2.9.3",
+		"react-calendar": "^6.0.0",
+		"react-clock": "^6.0.0",
+		"react-datetime-picker": "^7.0.1",
+		"react-easy-crop": "^5.5.6",
+		"react-select": "^5.10.2",
+		"use-file-picker": "^2.1.4"
+	},
+	"devDependencies": {
+		"@chromatic-com/storybook": "^5.0.0",
+		"@eslint/js": "^9.39.2",
+		"@storybook/addon-docs": "^10.2.0",
+		"@storybook/addon-links": "^10.2.0",
+		"@storybook/react-vite": "^10.2.0",
+		"@types/lodash": "^4.17.23",
+		"@types/node": "^25.0.10",
+		"@types/react": "^19.2.9",
+		"@types/react-dom": "^19.2.3",
+		"@typescript-eslint/eslint-plugin": "^8.53.1",
+		"@typescript-eslint/parser": "^8.53.1",
+		"@vitejs/plugin-react": "^5.1.2",
+		"@vitejs/plugin-react-swc": "^4.2.2",
+		"eslint": "^9.39.2",
+		"eslint-import-resolver-typescript": "^4.4.4",
+		"eslint-plugin-import": "^2.32.0",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react-hooks": "^7.0.1",
+		"eslint-plugin-react-refresh": "^0.4.26",
+		"eslint-plugin-storybook": "^10.2.0",
+		"globals": "^17.1.0",
+		"lodash": "^4.17.23",
+		"react": "^19.2.3",
+		"react-dom": "^19.2.3",
+		"react-router-dom": "^7.13.0",
+		"sass": "^1.97.3",
+		"storybook": "^10.2.0",
+		"stylelint": "^17.0.0",
+		"stylelint-config-standard-scss": "^17.0.0",
+		"stylelint-order": "^7.0.1",
+		"terser": "^5.46.0",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.53.1",
+		"vite": "^7.3.1",
+		"vite-plugin-dts": "^4.5.4",
+		"vite-plugin-lib-inject-css": "^2.2.2",
+		"vite-tsconfig-paths": "^6.0.5"
+	},
+	"peerDependencies": {
+		"react": ">=18",
+		"react-dom": ">=18",
+		"gliff": "^0.0.9"
+	},
+	"sideEffects": [
+		"**/*.css"
+	],
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"files": [
+		"dist"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/itzzritik/XtremeUI.git"
+	},
+	"keywords": [
+		"react",
+		"javascript",
+		"design-systems",
+		"ui",
+		"ui-library",
+		"typescript",
+		"react-components",
+		"vite"
+	],
+	"author": {
+		"name": "Ritik Srivastava"
+	},
+	"homepage": "https://github.com/itzzritik/XtremeUI#readme",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/itzzritik/XtremeUI/issues"
+	},
+	"readme": "ERROR: No README data found!",
+	"exports": {
+		".": {
+			"import": "./dist/index.js"
+		},
+		"./styles": "./dist/xtreme-ui.css",
+		"./*": {
+			"types": "./dist/components/*/exports.d.ts",
+			"import": "./dist/components/*/exports.js"
+		}
+	}
 }

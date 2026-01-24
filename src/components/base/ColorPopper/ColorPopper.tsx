@@ -1,3 +1,4 @@
+/* eslint-disable indent, react/jsx-closing-bracket-location, space-before-function-paren */
 import { forwardRef, useMemo, useRef, useState, useEffect, Ref } from 'react';
 
 import {
@@ -13,9 +14,9 @@ import {
 } from '@floating-ui/react';
 import clsx from 'clsx';
 import { Colord, colord, getFormat } from 'colord';
+import { Icon } from 'gliff';
 
 import { ColorPicker } from '#components/base/ColorPicker/ColorPicker';
-import { Icon } from '#components/base/Icon/Icon';
 import { Textfield } from '#components/base/Textfield/Textfield';
 import { useScreenType } from '#components/hooks/useScreen';
 import { getColorLabel } from '#utils/helper/colorHelper';
@@ -28,7 +29,7 @@ import './colorPopper.scss';
 import type { ExtractColorType, TColorPopperProps } from './types';
 import type { AnyColor, HsvaColor, Input } from 'colord/types';
 
-function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperProps<T>, ref: Ref<HTMLDivElement>) {
+function ColorPopperInner<T extends AnyColor = AnyColor>(props: TColorPopperProps<T>, ref: Ref<HTMLDivElement>) {
 	const {
 		className,
 		popperClassName,
@@ -63,11 +64,7 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 	const { refs, floatingStyles, context } = useFloating({
 		open: isOpen,
 		onOpenChange: setIsOpen,
-		middleware: [
-			shift({ crossAxis: true, padding: 18 }),
-			flip(),
-			offset(({ placement }) => (placement === 'bottom' ? 10 : 16)),
-		],
+		middleware: [shift({ crossAxis: true, padding: 18 }), flip(), offset(({ placement }) => (placement === 'bottom' ? 10 : 16))],
 		whileElementsMounted: autoUpdate,
 	});
 	const { isMounted, styles: transitionStyles } = useTransitionStyles(context, {
@@ -77,10 +74,7 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 			translate: side === 'bottom' ? '0px 8px' : '0px -8px',
 		}),
 	});
-	const { getReferenceProps, getFloatingProps } = useInteractions([
-		useClick(context),
-		useDismiss(context),
-	]);
+	const { getReferenceProps, getFloatingProps } = useInteractions([useClick(context), useDismiss(context)]);
 
 	const [hslThemeColor, hslResetColor, iconColor] = useMemo(() => {
 		const col = colord(localColor);
@@ -148,39 +142,38 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 
 	return (
 		<>
-			{
-				buttonInput ?
-					<Button
-						className='xtrColorButton'
-						ref={refs.setReference}
-						size={size}
-						icon='f53f'
-						iconType='solid'
-						label={input === 'buttonLabel' ? inputValue : undefined}
-						style={{
-							['--themeColor' as string]: hslThemeColor,
-							['--iconColor' as string]: iconColor,
-							color: iconColor,
-						}}
-						onClick={() => setIsOpen(true)} {...getReferenceProps()}
-					/>
-					:
-					<Textfield
-						className={clsx('xtrColorInput', className)}
-						ref={refs.setReference}
-						placeholder={placeholder}
-						icon='f53f'
-						iconType='solid'
-						active={isOpen}
-						value={inputValue}
-						onChange={(e) => handleTextChange(e.target.value)}
-						style={{
-							['--colorBrandPrimary' as string]: hslThemeColor,
-							['--iconColor' as string]: iconColor,
-						}}
-						onFocus={() => setIsOpen(true)}
-						{...getReferenceProps()}
-					/>
+			{buttonInput ?
+				<Button
+					className='xtrColorButton'
+					ref={refs.setReference}
+					size={size}
+					icon='f53f'
+					iconType='solid'
+					label={input === 'buttonLabel' ? inputValue : undefined}
+					style={{
+						['--themeColor' as string]: hslThemeColor,
+						['--iconColor' as string]: iconColor,
+						color: iconColor,
+					}}
+					onClick={() => setIsOpen(true)}
+					{...getReferenceProps()}
+				/>
+			:	<Textfield
+					className={clsx('xtrColorInput', className)}
+					ref={refs.setReference}
+					placeholder={placeholder}
+					icon='f53f'
+					iconType='solid'
+					active={isOpen}
+					value={inputValue}
+					onChange={(e) => handleTextChange(e.target.value)}
+					style={{
+						['--colorBrandPrimary' as string]: hslThemeColor,
+						['--iconColor' as string]: iconColor,
+					}}
+					onFocus={() => setIsOpen(true)}
+					{...getReferenceProps()}
+				/>
 			}
 
 			{isMounted && (
@@ -190,14 +183,12 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 					style={{ ...floatingStyles, ...transitionStyles, ['--colorBrandPrimary' as string]: hslThemeColor }}
 					{...getFloatingProps()}
 				>
-					{
-						(swatch || !hideWheel) &&
+					{(swatch || !hideWheel) && (
 						<div className={clsx('header', buttonInput && 'withInput')}>
 							<div className='heading'>
 								<div>
 									<h1>{heading}</h1>
-									{
-										buttonInput &&
+									{buttonInput && (
 										<input
 											placeholder='#Hex'
 											className={clsx('popperInput', className)}
@@ -205,12 +196,11 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 											autoFocus={s.isLargest}
 											onChange={(e) => handleTextChange(e.target.value)}
 										/>
-									}
+									)}
 								</div>
 								<h1>{colorHeading}</h1>
 							</div>
-							{
-								showReset &&
+							{showReset && (
 								<Icon
 									code='f1da'
 									type='solid'
@@ -220,69 +210,60 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 									}}
 									onClick={handleReset}
 								/>
-							}
+							)}
 						</div>
-					}
-					{
-						swatch &&
-							<div className='swatch'>
-								{swatch.map((item, i) => {
-									const isActive = colord(inputValue).isEqual(item);
-									const c = colord(item).toHsl();
-									const themeColorValue = `${c.h} ${c.s}% ${c.l}%`;
+					)}
+					{swatch && (
+						<div className='swatch'>
+							{swatch.map((item, i) => {
+								const isActive = colord(inputValue).isEqual(item);
+								const c = colord(item).toHsl();
+								const themeColorValue = `${c.h} ${c.s}% ${c.l}%`;
 
-									return (
-										<Button
-											className='swatchItem'
-											key={`ThemeColor-${c.h}${c.s}${c.l}-${i}`}
-											icon='f00c'
-											iconType='solid'
-											size='mini'
-											style={{
-												['--themeColor' as string]: themeColorValue,
-												color: isActive ? 'white' : 'transparent',
-											}}
-											onClick={() => handleSwatchChange(c)}
-										/>
-									);
-								})}
-							</div>
-					}
-					{
-						!hideWheel &&
-						<ColorPicker
-							className='colorPicker'
-							alpha={alpha}
-							shade={shade}
-							color={localColor}
-							setColor={handlePickerChange}
-						/>
-					}
-					{
-						schemeHeading &&
+								return (
+									<Button
+										className='swatchItem'
+										key={`ThemeColor-${c.h}${c.s}${c.l}-${i}`}
+										icon='f00c'
+										iconType='solid'
+										size='mini'
+										style={{
+											['--themeColor' as string]: themeColorValue,
+											color: isActive ? 'white' : 'transparent',
+										}}
+										onClick={() => handleSwatchChange(c)}
+									/>
+								);
+							})}
+						</div>
+					)}
+					{!hideWheel && (
+						<ColorPicker className='colorPicker' alpha={alpha} shade={shade} color={localColor} setColor={handlePickerChange} />
+					)}
+					{schemeHeading && (
 						<div className='themeScheme'>
 							<div className='header'>
 								<div className='heading'>
-									<div><h1>{themeScheme}</h1></div>
+									<div>
+										<h1>{themeScheme}</h1>
+									</div>
 									<h1>{schemeHeading}</h1>
 								</div>
 							</div>
 							<div className='schemeSelector'>
-								{
-									THEME_SCHEME.map(({ name, icon }, i) => (
-										<Button
-											key={`ThemeScheme-${name}-${i}`}
-											icon={icon}
-											iconType='solid'
-											disabled={themeScheme === name}
-											type={themeScheme === name ? 'primary' : 'secondary'}
-											onClick={() => setThemeScheme?.(name)}
-										/>
-									))
-								}
+								{THEME_SCHEME.map(({ name, icon }, i) => (
+									<Button
+										key={`ThemeScheme-${name}-${i}`}
+										icon={icon}
+										iconType='solid'
+										disabled={themeScheme === name}
+										type={themeScheme === name ? 'primary' : 'secondary'}
+										onClick={() => setThemeScheme?.(name)}
+									/>
+								))}
 							</div>
 						</div>
-					}
+					)}
 				</div>
 			)}
 		</>
@@ -290,7 +271,7 @@ function ColorPopperInner<T extends AnyColor = AnyColor> (props: TColorPopperPro
 }
 
 export const ColorPopper = forwardRef(ColorPopperInner) as <T extends AnyColor = AnyColor>(
-	props: TColorPopperProps<T> & { ref?: Ref<HTMLDivElement> }
+	props: TColorPopperProps<T> & { ref?: Ref<HTMLDivElement> },
 ) => ReturnType<typeof ColorPopperInner>;
 
 ColorPopperInner.displayName = 'ColorPopper';

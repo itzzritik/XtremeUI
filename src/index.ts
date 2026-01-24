@@ -19,14 +19,6 @@ export { type TAvatarProps, EAvatarSize } from './components/base/Avatar/types';
 export { Button } from './components/base/Button/Button';
 export { type TButtonProps, EButtonTypes } from './components/base/Button/types';
 
-// Icon
-export { Icon } from './components/base/Icon/Icon';
-export { type IIconProps, type EIconType, EIconSize } from './components/base/Icon/types';
-
-// Lottie
-export { Lottie } from './components/base/Lottie/Lottie';
-export { type TLottieProps, ELottieSize } from './components/base/Lottie/types';
-
 // ProgressBar
 export { ProgressBar } from './components/base/ProgressBar/ProgressBar';
 export { type IProgressBarProps } from './components/base/ProgressBar/types';

@@ -1,8 +1,8 @@
+/* eslint-disable indent, react/jsx-closing-bracket-location */
 import { KeyboardEvent, forwardRef, useId, useMemo } from 'react';
 
 import clsx from 'clsx';
-
-import { Icon } from '../Icon/Icon';
+import { Icon } from 'gliff';
 
 import './textfield.scss';
 import { TTextfieldProps } from './types';
@@ -65,28 +65,23 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 		localIconName && 'withIcon',
 		textarea && 'textarea',
 		value && 'hasValue',
-		(type === 'phone') && 'phone',
+		type === 'phone' && 'phone',
 		active && 'active',
 		className,
 	);
 
 	return (
-		<div
-			ref={ref}
-			className={TextfieldClsx}
-			role='textbox'
-			style={style}
-		>
-			<label className='placeholder' htmlFor={id}>{localPlaceholder}</label>
-			{localIconName && !textarea &&
-				<Icon code={localIconName} type={iconType} />
-			}
-			{type === 'phone' &&
+		<div ref={ref} className={TextfieldClsx} role='textbox' style={style}>
+			<label className='placeholder' htmlFor={id}>
+				{localPlaceholder}
+			</label>
+			{localIconName && !textarea && <Icon code={localIconName} type={iconType} />}
+			{type === 'phone' && (
 				<div className='dialCode'>
 					<span style={{ backgroundImage: 'url(https://flagcdn.com/in.svg)' }} />
 					<p>+91</p>
 				</div>
-			}
+			)}
 			{!textarea ?
 				<input
 					className='input'
@@ -102,8 +97,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 					onKeyDown={onLocalKeyDown}
 					aria-label={localPlaceholder}
 				/>
-				:
-				<textarea
+			:	<textarea
 					className='input'
 					id={id}
 					autoFocus={autoFocus}

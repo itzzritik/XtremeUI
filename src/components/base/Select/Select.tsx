@@ -1,17 +1,10 @@
 import { useId, useMemo, useState } from 'react';
 
 import clsx from 'clsx';
-import XSelect, {
-	GroupBase,
-	MultiValue,
-	OptionsOrGroups,
-	PropsValue,
-	SingleValue,
-} from 'react-select';
+import { Icon } from 'gliff';
+import XSelect, { GroupBase, MultiValue, OptionsOrGroups, PropsValue, SingleValue } from 'react-select';
 
 import { isEqual } from '#utils/function/common';
-
-import { Icon } from '../Icon/Icon';
 
 import './select.scss';
 import { Option, TSelectProps } from './types';
@@ -57,9 +50,7 @@ export function Select<T> (props: TSelectProps<T>) {
 		className,
 	);
 
-	const onChangeHandler = (
-		newValue: MultiValue<Option<T>> | SingleValue<Option<T>> | null,
-	) => {
+	const onChangeHandler = (newValue: MultiValue<Option<T>> | SingleValue<Option<T>> | null) => {
 		if (multi) {
 			const vals = (newValue as MultiValue<Option<T>>)?.map((opt) => opt.value) ?? [];
 			(onChange as (value: T[]) => void)(vals);
@@ -89,7 +80,11 @@ export function Select<T> (props: TSelectProps<T>) {
 				value={localValue as unknown as PropsValue<Option<T>>}
 				onChange={onChangeHandler}
 			/>
-			{placeholder && !multi && <label className='placeholder' htmlFor={id}>{placeholder}</label>}
+			{placeholder && !multi && (
+				<label className='placeholder' htmlFor={id}>
+					{placeholder}
+				</label>
+			)}
 			{icon && <Icon className='xtrSelectIcon' code={icon} type={iconType} />}
 		</div>
 	);

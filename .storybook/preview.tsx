@@ -11,6 +11,8 @@ import { ThemeController } from './ThemeController';
 import { BrandColorList, ThemeList } from './constants';
 import './style.scss';
 
+import { Gliff } from 'gliff';
+
 import type { Preview } from '@storybook/react-vite';
 
 const themeScript = themeController();
@@ -58,6 +60,7 @@ const preview: Preview = {
 		(Story) => {
 			return (
 				<XProvider>
+					<Gliff react />
 					<ThemeController />
 					<Story />
 				</XProvider>
@@ -76,12 +79,14 @@ waitForElement('#storybook-root').then((element) => {
 	element.style.setProperty('padding', '16px');
 });
 
-elementObserver((element, event) => {
-	if (event === 'added') root?.style.setProperty('padding', '0');
-	else if (event === 'removed') root?.style.setProperty('padding', '16px');
+elementObserver(
+	(element, event) => {
+		if (event === 'added') root?.style.setProperty('padding', '0');
+		else if (event === 'removed') root?.style.setProperty('padding', '16px');
 
-	if (element?.classList?.[0].includes('navigation'))
-		element.style.setProperty('background', 'hsl(var(--colorBrandPrimary) / 90%)');
-}, ['#storybook-root > [role="region"]']);
+		if (element?.classList?.[0].includes('navigation')) element.style.setProperty('background', 'hsl(var(--colorBrandPrimary) / 90%)');
+	},
+	['#storybook-root > [role="region"]'],
+);
 
 export default preview;

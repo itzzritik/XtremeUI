@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import clsx from 'clsx';
+import { Icon } from 'gliff';
 import Cropper, { type Area } from 'react-easy-crop';
 
-import { Icon } from '#components/base/Icon/Icon';
 import { Spinner } from '#components/base/Spinner/Spinner';
 import { getCroppedImg, getImageSize, readImageFile } from '#utils/helper/imageHelper';
 
@@ -20,10 +20,7 @@ export const ImageEditor = (props: TImageEditorProps) => {
 	const [rotation, setRotation] = useState(0);
 	const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area>();
 
-	const ImageEditorClsx = clsx(
-		'xtrImageEditor',
-		className,
-	);
+	const ImageEditorClsx = clsx('xtrImageEditor', className);
 
 	const accept = async () => {
 		try {

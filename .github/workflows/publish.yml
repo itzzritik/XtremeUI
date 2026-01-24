@@ -1,81 +1,82 @@
 name: Publish NPM Package
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: New version
-        required: true
-        default: 'patch'
-        type: choice
-        options:
-          - patch
-          - minor
-          - major
-  push:
-    branches:
-      - main
+    workflow_dispatch:
+        inputs:
+            version:
+                description: 'New version'
+                required: true
+                default: 'patch'
+                type: choice
+                options:
+                    - patch
+                    - minor
+                    - major
+    push:
+        branches:
+            - main
+
+permissions:
+    contents: write
+    id-token: write
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
 
 jobs:
-  publish:
-    if: github.actor != 'itzzjarvis'
-    name: Publish new ${{ github.event_name == 'push' && 'patch' || github.event.inputs.version }} version
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set version variable 📝
-        run: |
-          if [ "${{ github.event_name }}" == "push" ]; then
-            echo "VERSION=patch" >> $GITHUB_ENV
-          else
-            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
-          fi
+    publish:
+        if: github.actor != 'itzzjarvis'
+        name: Publish new ${{ github.event_name == 'push' && 'patch' || github.event.inputs.version }} version
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout to 'main' Branch ✔️
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
 
-      - name: Checkout to 'main' Branch ✔️
-        uses: actions/checkout@v4
+            - name: Use Node.js v24.x 👀
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 24.x
+                  registry-url: 'https://registry.npmjs.org/'
 
-      - name: Use Node.js v20.x 👀
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-          registry-url: https://registry.npmjs.org/
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+            - name: Install dependencies using pnpm 📦
+              uses: pnpm/action-setup@v4
+              with:
+                  version: latest
+                  run_install: true
 
-      - name: Install dependencies using pnpm 📦
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
-          run_install: true
+            - name: Setup Git & GPG 🔐
+              run: |
+                  git config --global user.email "ritik.jarvis@gmail.com"
+                  git config --global user.name "Jarvis"
 
-      - name: Building Package 🏗️
-        run: pnpm build
+                  mkdir -p ~/.ssh/
+                  echo "${{ secrets.JARVIS_SSH_KEY }}" > ~/.ssh/id_rsa
+                  chmod 600 ~/.ssh/id_rsa
+                  ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-      - name: Setting up SSH key 🔑
-        run: |
-            mkdir -p ~/.ssh/
-            echo "${{ secrets.JARVIS_SSH_KEY }}" > ~/.ssh/id_rsa
-            chmod 600 ~/.ssh/id_rsa
-            ssh-keyscan github.com >> ~/.ssh/known_hosts
+                  git config --global gpg.format ssh
+                  git config --global user.signingkey ~/.ssh/id_rsa
+                  git config --global commit.gpgsign true
+                  git config --global tag.gpgsign true
+                  npm config set sign-git-tag true
 
-      - name: Configure git and npm with SSH key and author 🛠️
-        run: |
-            git config --global gpg.format ssh
-            git config --global user.signingkey ~/.ssh/id_rsa
-            git config --global commit.gpgsign true
-            git config --global user.email "ritik.jarvis@gmail.com"
-            git config --global user.name "Jarvis"
-            npm config set sign-git-tag true
+            - name: Generate new version (Local Only) 🏷️
+              env:
+                  VERSION: ${{ github.event.inputs.version || 'patch' }}
+              run: |
+                  TAG=$(npm version $VERSION --no-git-tag-version)
+                  git tag -d $TAG 2>/dev/null || true
+                  git push origin :refs/tags/$TAG 2>/dev/null || true
+                  git commit -am "🤖 Jarvis published a $VERSION version"
+                  git tag -s -m "🤖 Jarvis published a $VERSION version" $TAG
 
-      - name: Delete old version tags 🔖
-        run: git ls-remote --tags origin | awk -F/ '/\/tags\// {print ":" $NF}' | grep -Ev "\^" | xargs -I{} git push origin {}
+            - name: Building Package �️
+              run: pnpm build
 
-      - name: Clean working directory before versioning 🧽
-        run: git restore .
+            - name: Publishing Package 🚀
+              run: npm publish --access public --provenance
 
-      - name: Generate new version tag 🏷️
-        run: npm version $VERSION -m "🤖 Jarvis published a $VERSION version"
-
-      - name: Push new version tag to repository 🎉
-        run: git push --follow-tags
-
-      - name: Publishing Package 🚀
-        run: npm publish --access public
+            - name: Push new version to repository 🎉
+              run: git push --follow-tags

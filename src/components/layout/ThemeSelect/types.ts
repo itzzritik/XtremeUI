@@ -1,5 +1,6 @@
+import { ICON_TYPES } from 'gliff';
+
 import { ColorPopperInput, EColorPopperSize } from '#components/base/ColorPopper/types';
-import { EIconType } from '#components/base/Icon/types';
 
 export type TThemeSelectProps = {
 	className?: string;
@@ -8,5 +9,5 @@ export type TThemeSelectProps = {
 	withScheme?: boolean;
 	withSwatch?: boolean;
 	withWheel?: boolean;
-	iconType?: keyof typeof EIconType;
-}
+	iconType?: keyof typeof ICON_TYPES;
+};

@@ -1,7 +1,6 @@
 import clsx from 'clsx';
+import { Icon } from 'gliff';
 import DateTimePicker from 'react-datetime-picker';
-
-import { Icon } from '#components/base/Icon/Icon';
 
 import './datePicker.scss';
 import { TDatePickerProps } from './types';
@@ -41,10 +40,7 @@ export const DatePicker = (props: TDatePickerProps) => {
 		onChange,
 	} = props;
 
-	const DatePickerClsx = clsx(
-		'xtrDatePicker',
-		className,
-	);
+	const DatePickerClsx = clsx('xtrDatePicker', className);
 
 	const commonProps = {
 		className: DatePickerClsx,
@@ -64,7 +60,5 @@ export const DatePicker = (props: TDatePickerProps) => {
 
 	const DateComponent = DateComponentList[type];
 
-	return (
-		<DateComponent data-testid={placeholder} {...commonProps} />
-	);
+	return <DateComponent data-testid={placeholder} {...commonProps} />;
 };

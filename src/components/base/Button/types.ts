@@ -1,6 +1,6 @@
 import { CSSProperties, HTMLAttributes } from 'react';
 
-import { EIconType } from '../Icon/types';
+import { ICON_TYPES } from 'gliff';
 
 export enum EButtonSize {
 	mini = 'mini',
@@ -14,7 +14,7 @@ export interface BaseButton extends HTMLAttributes<HTMLButtonElement> {
 	size?: keyof typeof EButtonSize;
 	loading?: boolean;
 	disabled?: boolean;
-	iconType?: keyof typeof EIconType;
+	iconType?: keyof typeof ICON_TYPES;
 	iconPosition?: 'left' | 'right';
 	onClick?: () => void;
 }
