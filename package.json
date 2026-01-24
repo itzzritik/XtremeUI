@@ -64,7 +64,8 @@
 		"react-dom": ">=18"
 	},
 	"sideEffects": [
-		"**/*.css"
+		"**/*.css",
+		"./dist/index.js"
 	],
 	"publishConfig": {
 		"access": "public",
