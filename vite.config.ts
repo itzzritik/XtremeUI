@@ -55,10 +55,10 @@ export default defineConfig({
 		rollupOptions: {
 			external: ["react", "react-dom", "react/jsx-runtime", "gliff", ...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})],
 			output: {
-				preserveModules: false,
+				preserveModules: true,
 				exports: "named",
 				banner: ({ facadeModuleId: id }) => {
-					return id && (id.endsWith(".tsx") || /src\/index\.ts$/.test(id) || /components\/hooks\/.*\.ts$/.test(id)) ? "'use client';" : "";
+					return id && (id.endsWith(".tsx") || /components\/hooks\/.*\.ts$/.test(id)) ? "'use client';" : "";
 				},
 			},
 		},
