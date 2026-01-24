@@ -95,12 +95,11 @@
 	"bugs": {
 		"url": "https://github.com/itzzritik/XtremeUI/issues"
 	},
-	"readme": "ERROR: No README data found!",
 	"exports": {
 		".": {
 			"import": "./dist/index.js"
 		},
-		"./styles": "./dist/xtreme-ui.css",
+		"./styles": "./dist/styles/index.css",
 		"./*": {
 			"types": "./dist/components/*/exports.d.ts",
 			"import": "./dist/components/*/exports.js"
