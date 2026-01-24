@@ -1,15 +1,15 @@
-import { EThemeScheme, TThemeColor } from '#components/context/Theme/types';
+import { EThemeScheme, type TThemeColor } from "#components/context/Theme/types";
 
 export const STORAGE = {
-	themeSchemeAttr: 'data-theme-scheme',
-	themeScheme: 'xThemeScheme',
-	themeColor: 'xThemeColor',
+	themeSchemeAttr: "data-theme-scheme",
+	themeScheme: "xThemeScheme",
+	themeColor: "xThemeColor",
 };
 
 export const THEME_SCHEME = [
-	{ name: EThemeScheme.auto, icon: 'e163' },
-	{ name: EThemeScheme.light, icon: 'e28f' },
-	{ name: EThemeScheme.dark, icon: 'f186' },
+	{ name: EThemeScheme.auto, icon: "e163" },
+	{ name: EThemeScheme.light, icon: "e28f" },
+	{ name: EThemeScheme.dark, icon: "f186" },
 ] as const;
 
 export const ThemeColorsPreset: Record<string, TThemeColor> = {

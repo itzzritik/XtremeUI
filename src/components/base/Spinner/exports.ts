@@ -1,7 +1,7 @@
-import '#styles/index.scss';
+import "#styles/index.scss";
 
-import './spinner.scss';
+import "./spinner.scss";
 
-export { Spinner } from './Spinner';
-export type { ISpinnerProps } from './types';
-export { ESpinnerSize } from './types';
+export { Spinner } from "./Spinner";
+export type { ISpinnerProps } from "./types";
+export { ESpinnerSize } from "./types";

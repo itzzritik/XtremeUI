@@ -1,43 +1,29 @@
-import { forwardRef } from 'react';
+import clsx from "clsx";
+import { forwardRef } from "react";
 
-import clsx from 'clsx';
-
-import './actionCard.scss';
-import { EActionCardSize, TActionCardProps } from './types';
+import "./actionCard.scss";
+import { EActionCardSize, type TActionCardProps } from "./types";
 
 export const ActionCard = forwardRef<HTMLDivElement, TActionCardProps>((props, ref) => {
-	const {
-		className,
-		children,
-		style = {},
-		size = 'default',
-		onClick,
-	} = props;
+	const { className, children, style = {}, size = "default", onClick } = props;
 
 	const cardSize = Array.isArray(size) ? size : [EActionCardSize[size], EActionCardSize[size]];
 
-	const ActionCardClsx = clsx(
-		'xtrActionCard',
-		'shadowRipple',
-		`${size}Size`,
-		className,
-	);
+	const ActionCardClsx = clsx("xtrActionCard", "shadowRipple", `${size}Size`, className);
 
 	return (
-		<div
+		<footer
 			ref={ref}
 			className={ActionCardClsx}
 			style={{
-				['--cardWidth' as string]: `${cardSize[0]}px`,
-				['--cardHeight' as string]: `${cardSize[1]}px`,
+				["--cardWidth" as string]: `${cardSize[0]}px`,
+				["--cardHeight" as string]: `${cardSize[1]}px`,
 				...style,
 			}}
-			onClick={onClick}
-			role='contentinfo'
-		>
+			onClick={onClick}>
 			{children}
-		</div>
+		</footer>
 	);
 });
 
-ActionCard.displayName = 'ActionCard';
+ActionCard.displayName = "ActionCard";

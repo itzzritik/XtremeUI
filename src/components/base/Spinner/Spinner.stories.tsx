@@ -1,15 +1,14 @@
-import { Spinner } from './Spinner';
-
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Spinner } from "./Spinner";
 
 const meta = {
-	title: 'Components/Spinner',
+	title: "Components/Spinner",
 	component: Spinner,
-	tags: ['autodocs'],
+	tags: ["autodocs"],
 	argTypes: {
 		className: { control: false },
 		size: {
-			control: { type: 'range', min: 32, max: 512, step: 16 },
+			control: { type: "range", min: 32, max: 512, step: 16 },
 			defaultValue: { summary: 64 },
 		},
 		fullpage: {

@@ -1,14 +1,13 @@
-import { ProgressBar } from './ProgressBar';
-
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ProgressBar } from "./ProgressBar";
 
 const meta = {
-	title: 'Components/Progress Bar',
+	title: "Components/Progress Bar",
 	component: ProgressBar,
-	tags: ['autodocs'],
+	tags: ["autodocs"],
 	argTypes: {
 		className: { control: false },
-		progress: { control: { type: 'range', min: 0, max: 100, step: 1 } },
+		progress: { control: { type: "range", min: 0, max: 100, step: 1 } },
 		intermediate: {
 			defaultValue: { summary: false },
 		},

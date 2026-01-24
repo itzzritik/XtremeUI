@@ -1,28 +1,23 @@
-import namer from 'color-namer';
-import { colord } from 'colord';
+import namer from "color-namer";
+import { colord } from "colord";
 
-import { TThemeColor } from '#components/context/Theme/types';
-import { ThemeColorsPreset } from '#utils/constants/theme';
+import type { TThemeColor } from "#components/context/Theme/types";
+import { ThemeColorsPreset } from "#utils/constants/theme";
 
 export const guessClosestColorName = (color: TThemeColor) => {
 	const hex = colord(color).toHex();
 	const nameGroups = namer(hex);
 
 	let closest = null;
-	for (const c of nameGroups.ntc)
-		if (!closest || c.distance < closest.distance)
-			closest = c;
+	for (const c of nameGroups.ntc) if (!closest || c.distance < closest.distance) closest = c;
 
 	return closest?.name || undefined;
 };
 
-export function getColorLabel (c?: TThemeColor): string | undefined {
+export function getColorLabel(c?: TThemeColor): string | undefined {
 	if (!c) return undefined;
-	for (const [label, preset] of Object.entries(ThemeColorsPreset))
-		if (c.h === preset.h && c.s === preset.s && c.l === preset.l)
-			return label;
+	for (const [label, preset] of Object.entries(ThemeColorsPreset)) if (c.h === preset.h && c.s === preset.s && c.l === preset.l) return label;
 	return guessClosestColorName(c);
 }
 
-export const isValidThemeColor = (c?: TThemeColor): boolean =>
-	!!c && typeof c.h === 'number' && typeof c.s === 'number' && typeof c.l === 'number';
+export const isValidThemeColor = (c?: TThemeColor): boolean => !!c && typeof c.h === "number" && typeof c.s === "number" && typeof c.l === "number";

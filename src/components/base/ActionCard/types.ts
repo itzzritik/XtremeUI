@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from "react";
 
 export type TActionCardProps = {
 	className?: string;
@@ -6,7 +6,7 @@ export type TActionCardProps = {
 	style?: CSSProperties;
 	size?: TActionCardSize;
 	onClick?: () => void;
-}
+};
 export type TActionCardSize = [number, number] | keyof typeof EActionCardSize;
 export enum EActionCardSize {
 	mini = 100,

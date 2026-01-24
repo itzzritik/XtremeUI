@@ -1,7 +1,7 @@
-import '#styles/index.scss';
+import "#styles/index.scss";
 
-import './avatar.scss';
+import "./avatar.scss";
 
-export { Avatar } from './Avatar';
-export type { TAvatarProps } from './types';
-export { EAvatarSize } from './types';
+export { Avatar } from "./Avatar";
+export type { TAvatarProps } from "./types";
+export { EAvatarSize } from "./types";

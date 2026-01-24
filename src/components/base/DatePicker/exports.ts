@@ -1,7 +1,7 @@
-import '#styles/index.scss';
+import "#styles/index.scss";
 
-import './datePicker.scss';
+import "./datePicker.scss";
 
-export { DatePicker } from './DatePicker';
-export type { TDatePickerProps, TDateValue } from './types';
-export { EDatePickerTypes } from './types';
+export { DatePicker } from "./DatePicker";
+export type { TDatePickerProps, TDateValue } from "./types";
+export { EDatePickerTypes } from "./types";

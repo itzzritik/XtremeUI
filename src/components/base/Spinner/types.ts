@@ -3,7 +3,7 @@ export type ISpinnerProps = {
 	label?: string;
 	size?: number | keyof typeof ESpinnerSize;
 	fullpage?: boolean;
-}
+};
 
 export enum ESpinnerSize {
 	mini = 64,

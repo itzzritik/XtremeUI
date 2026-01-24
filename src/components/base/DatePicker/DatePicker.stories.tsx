@@ -1,25 +1,21 @@
-import { useState } from 'react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
+import { DatePicker } from "./DatePicker";
+import type { TDatePickerProps, TDateValue } from "./types";
 
-import { DatePicker } from './DatePicker';
-import { TDatePickerProps, TDateValue } from './types';
-
-import type { Meta, StoryObj } from '@storybook/react-vite';
-
-const DatePickerComponent = (
-	props: Omit<TDatePickerProps, 'value' | 'onChange'>,
-) => {
+const DatePickerComponent = (props: Omit<TDatePickerProps, "value" | "onChange">) => {
 	const [date, setDate] = useState<TDateValue>();
 	return <DatePicker {...props} value={date} onChange={setDate} />;
 };
 
 const meta = {
-	title: 'Components/DatePicker',
+	title: "Components/DatePicker",
 	component: DatePickerComponent,
-	tags: ['autodocs'],
+	tags: ["autodocs"],
 	argTypes: {
 		className: { control: false },
 		type: {
-			defaultValue: { summary: 'date' },
+			defaultValue: { summary: "date" },
 		},
 	},
 	args: {},
@@ -27,20 +23,20 @@ const meta = {
 
 export default meta;
 
-export const Date: StoryObj<typeof meta> = {
+export const Basic: StoryObj<typeof meta> = {
 	args: {
-		type: 'date',
+		type: "date",
 	},
 };
 
 export const Time: StoryObj<typeof meta> = {
 	args: {
-		type: 'time',
+		type: "time",
 	},
 };
 
 export const DateTime: StoryObj<typeof meta> = {
 	args: {
-		type: 'dateTime',
+		type: "dateTime",
 	},
 };

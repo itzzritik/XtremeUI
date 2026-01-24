@@ -1,11 +1,10 @@
-import { CSSProperties, HTMLAttributes } from 'react';
-
-import { ICON_TYPES } from 'gliff';
+import type { ICON_TYPES } from "gliff";
+import type { CSSProperties, HTMLAttributes } from "react";
 
 export enum EButtonSize {
-	mini = 'mini',
-	default = 'default',
-	large = 'large',
+	mini = "mini",
+	default = "default",
+	large = "large",
 }
 export interface BaseButton extends HTMLAttributes<HTMLButtonElement> {
 	className?: string;
@@ -15,7 +14,7 @@ export interface BaseButton extends HTMLAttributes<HTMLButtonElement> {
 	loading?: boolean;
 	disabled?: boolean;
 	iconType?: keyof typeof ICON_TYPES;
-	iconPosition?: 'left' | 'right';
+	iconPosition?: "left" | "right";
 	onClick?: () => void;
 }
 
@@ -32,10 +31,10 @@ export interface ButtonWithIconName extends BaseButton {
 export type TButtonProps = ButtonWithLabel | ButtonWithIconName;
 
 export enum EButtonTypes {
-	primary = 'primary',
-	primaryDanger = 'primaryDanger',
-	secondary = 'secondary',
-	secondaryDanger = 'secondaryDanger',
-	link = 'link',
-	linkDanger = 'linkDanger',
+	primary = "primary",
+	primaryDanger = "primaryDanger",
+	secondary = "secondary",
+	secondaryDanger = "secondaryDanger",
+	link = "link",
+	linkDanger = "linkDanger",
 }

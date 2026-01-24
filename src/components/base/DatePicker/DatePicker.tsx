@@ -1,17 +1,17 @@
-import clsx from 'clsx';
-import { Icon } from 'gliff';
-import DateTimePicker from 'react-datetime-picker';
+import clsx from "clsx";
+import { Icon } from "gliff";
+import DateTimePicker from "react-datetime-picker";
 
-import './datePicker.scss';
-import { TDatePickerProps } from './types';
+import "./datePicker.scss";
+import type { TDatePickerProps } from "./types";
 
 const DefaultDateFormat = {
-	date: 'dd-MM-yyyy',
-	dateRange: 'dd-MM-yyyy',
-	time: 'h:mm:ss a',
-	timeRange: 'h:mm:ss a',
-	dateTime: 'dd-MM-yyyy h:mm:ss a',
-	dateTimeRange: 'dd-MM-yyyy h:mm:ss a',
+	date: "dd-MM-yyyy",
+	dateRange: "dd-MM-yyyy",
+	time: "h:mm:ss a",
+	timeRange: "h:mm:ss a",
+	dateTime: "dd-MM-yyyy h:mm:ss a",
+	dateTimeRange: "dd-MM-yyyy h:mm:ss a",
 };
 
 const DateComponentList = {
@@ -26,26 +26,26 @@ const DateComponentList = {
 export const DatePicker = (props: TDatePickerProps) => {
 	const {
 		className,
-		type = 'date',
+		type = "date",
 		format,
-		dayPlaceholder = 'dd',
-		monthPlaceholder = 'mm',
-		yearPlaceholder = 'yyyy',
-		hourPlaceholder = 'hh',
-		minutePlaceholder = 'mm',
-		secondPlaceholder = 'ss',
-		placeholder = 'Select a Date',
-		icon = 'f784',
+		dayPlaceholder = "dd",
+		monthPlaceholder = "mm",
+		yearPlaceholder = "yyyy",
+		hourPlaceholder = "hh",
+		minutePlaceholder = "mm",
+		secondPlaceholder = "ss",
+		placeholder = "Select a Date",
+		icon = "f784",
 		value,
 		onChange,
 	} = props;
 
-	const DatePickerClsx = clsx('xtrDatePicker', className);
+	const DatePickerClsx = clsx("xtrDatePicker", className);
 
 	const commonProps = {
 		className: DatePickerClsx,
-		calendarIcon: <Icon code={icon} type='regular' />,
-		clearIcon: <Icon code='e59b' type='solid' />,
+		calendarIcon: <Icon code={icon} type="regular" />,
+		clearIcon: <Icon code="e59b" type="solid" />,
 		format: format ?? DefaultDateFormat[type],
 		dayPlaceholder,
 		monthPlaceholder,

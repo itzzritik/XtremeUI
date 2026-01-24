@@ -6,7 +6,7 @@ export type TAvatarProps = {
 	placeholderIcon?: string;
 	size?: number | keyof typeof EAvatarSize;
 	onClick?: () => void;
-}
+};
 
 export enum EAvatarSize {
 	mini = 64,

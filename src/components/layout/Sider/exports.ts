@@ -1,6 +1,6 @@
-import '#styles/index.scss';
+import "#styles/index.scss";
 
-import './sider.scss';
+import "./sider.scss";
 
-export { Sider } from './Sider';
-export type { TSiderProps, TSiderModes } from './types';
+export { Sider } from "./Sider";
+export type { TSiderModes, TSiderProps } from "./types";

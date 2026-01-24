@@ -1,30 +1,30 @@
-import { RefObject } from 'react';
+import type { RefObject } from "react";
 
-export const isClient = typeof window !== 'undefined';
+export const isClient = typeof window !== "undefined";
 export const win = isClient ? window : undefined;
 export const doc = isClient ? document : undefined;
 export const localStore = isClient ? localStorage : undefined;
 
 export const getCssProperty = (property: string, element: RefObject<HTMLElement>) => {
-	return isClient ? getComputedStyle(element?.current || document.documentElement).getPropertyValue(property) : '';
+	return isClient ? getComputedStyle(element?.current || document.documentElement).getPropertyValue(property) : "";
 };
 
 export const getCssPropertyPx = (property: string, element: RefObject<HTMLElement>) => {
-	return parseInt(getCssProperty(property, element).replace(/px/g, ''));
+	return parseInt(getCssProperty(property, element).replace(/px/g, ""), 10);
 };
 
 export const getCssPropertyVh = (property: string, element: RefObject<HTMLElement>) => {
-	const height = parseInt(getCssProperty(property, element).replace(/vh/g, ''));
-	return [(win?.innerHeight ?? 0) * height / 100, height];
+	const height = parseInt(getCssProperty(property, element).replace(/vh/g, ""), 10);
+	return [((win?.innerHeight ?? 0) * height) / 100, height];
 };
 
 export const getCssPropertyVw = (property: string, element: RefObject<HTMLElement>) => {
-	const width = parseInt(getCssProperty(property, element).replace(/vw/g, ''));
-	return [(win?.innerWidth ?? 0) * width / 100, width];
+	const width = parseInt(getCssProperty(property, element).replace(/vw/g, ""), 10);
+	return [((win?.innerWidth ?? 0) * width) / 100, width];
 };
 
 export const setCssProperty = (property: string, value: string, element: RefObject<HTMLElement>) => {
-	return isClient ? (element?.current || document.documentElement).style.setProperty(property, value) : '';
+	return isClient ? (element?.current || document.documentElement).style.setProperty(property, value) : "";
 };
 
 export const waitForElement = (selector: string) => {
@@ -51,11 +51,11 @@ export const elementObserver = (cb: ElementObserverCallback, selectors: string[]
 			if (selectedElement) target = document.querySelector(selector) as HTMLElement;
 
 			records?.forEach?.((record) => {
-				if (record.type === 'childList') {
+				if (record.type === "childList") {
 					const added = Array.from(record.addedNodes);
-					if (added.indexOf(target) > -1) cb(target, 'added', record);
+					if (added.indexOf(target) > -1) cb(target, "added", record);
 					const removed = Array.from(record.removedNodes);
-					if (removed.indexOf(target) > -1) cb(target, 'removed', record);
+					if (removed.indexOf(target) > -1) cb(target, "removed", record);
 				}
 			});
 		});
@@ -63,8 +63,8 @@ export const elementObserver = (cb: ElementObserverCallback, selectors: string[]
 	});
 };
 
-type ElementObserverCallback = (element: HTMLElement, event: keyof typeof EElementObserverEvent, record: MutationRecord) => void
+type ElementObserverCallback = (element: HTMLElement, event: keyof typeof EElementObserverEvent, record: MutationRecord) => void;
 enum EElementObserverEvent {
-	added = 'added',
-	removed = 'removed',
+	added = "added",
+	removed = "removed",
 }

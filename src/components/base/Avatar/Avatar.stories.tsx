@@ -1,15 +1,14 @@
-import { Avatar } from './Avatar';
-
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Avatar } from "./Avatar";
 
 const meta = {
-	title: 'Components/Avatar',
+	title: "Components/Avatar",
 	component: Avatar,
-	tags: ['autodocs'],
+	tags: ["autodocs"],
 	argTypes: {
 		className: { control: false },
 		size: {
-			control: { type: 'range', min: 32, max: 512, step: 16 },
+			control: { type: "range", min: 32, max: 512, step: 16 },
 			defaultValue: { summary: 64 },
 		},
 	},
@@ -22,7 +21,7 @@ export default meta;
 
 export const Default: StoryObj<typeof meta> = {
 	args: {
-		src: 'https://avatars.githubusercontent.com/u/24320496?v=4',
+		src: "https://avatars.githubusercontent.com/u/24320496?v=4",
 		size: 256,
 	},
 };

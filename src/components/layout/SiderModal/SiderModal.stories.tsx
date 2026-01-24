@@ -1,16 +1,15 @@
-import { SiderModal } from './SiderModal';
-
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { SiderModal } from "./SiderModal";
 
 const meta = {
-	title: 'Layouts/SiderModal',
+	title: "Layouts/SiderModal",
 	component: SiderModal,
-	tags: ['autodocs'],
+	tags: ["autodocs"],
 	argTypes: {
 		className: { control: false },
 	},
 	args: {
-		title: 'Demo Modal',
+		title: "Demo Modal",
 	},
 } satisfies Meta<typeof SiderModal>;
 
@@ -18,13 +17,13 @@ export default meta;
 
 export const Default: StoryObj<typeof meta> = {
 	args: {
-		title: 'Demo Modal',
-		icon: 'f890',
+		title: "Demo Modal",
+		icon: "f890",
 		primaryButtonProps: {
-			label: 'Save',
+			label: "Save",
 		},
 		secondaryButtonProps: {
-			label: 'Cancel',
+			label: "Cancel",
 		},
 	},
 };

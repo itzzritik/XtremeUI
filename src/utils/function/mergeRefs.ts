@@ -1,10 +1,7 @@
-import { Ref, RefCallback } from 'react';
+import type { Ref, RefCallback } from "react";
 
-export function assignRef<T> (
-	ref: Ref<T> | undefined | null,
-	value: T | null,
-): void {
-	if (typeof ref === 'function') {
+export function assignRef<T>(ref: Ref<T> | undefined | null, value: T | null): void {
+	if (typeof ref === "function") {
 		ref(value);
 	} else if (ref != null) {
 		try {
@@ -15,7 +12,7 @@ export function assignRef<T> (
 	}
 }
 
-export function mergeRefs<T> (refs: (Ref<T> | undefined | null)[]): RefCallback<T> {
+export function mergeRefs<T>(refs: (Ref<T> | undefined | null)[]): RefCallback<T> {
 	return (value) => {
 		refs.forEach((ref) => assignRef(ref, value));
 	};

@@ -1,16 +1,11 @@
-import { useState } from 'react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
+import { Avatar } from "#components/base/Avatar/Avatar";
+import { FilePicker } from "#components/base/FilePicker/FilePicker";
+import { ImageEditor } from "./ImageEditor";
+import type { TEditedImageType, TImageEditorProps } from "./types";
 
-import { Avatar } from '#components/base/Avatar/Avatar';
-import { FilePicker } from '#components/base/FilePicker/FilePicker';
-
-import { ImageEditor } from './ImageEditor';
-import { TImageEditorProps, TEditedImageType } from './types';
-
-import type { Meta, StoryObj } from '@storybook/react-vite';
-
-const ImageEditorComponent = (
-	props: Omit<TImageEditorProps, 'value' | 'onChange'>,
-) => {
+const ImageEditorComponent = (props: Omit<TImageEditorProps, "value" | "onChange">) => {
 	const [file, setFile] = useState<Blob>();
 	const [editedImage, setEditedImage] = useState<TEditedImageType>();
 
@@ -19,20 +14,15 @@ const ImageEditorComponent = (
 			<FilePicker onChange={(v) => setFile(v?.[0])}>
 				<Avatar file={editedImage?.blob} size={200} />
 			</FilePicker>
-			<ImageEditor
-				{...props}
-				file={file}
-				clearFile={() => setFile(undefined)}
-				onChange={setEditedImage}
-			/>
+			<ImageEditor {...props} file={file} clearFile={() => setFile(undefined)} onChange={setEditedImage} />
 		</>
 	);
 };
 
 const meta = {
-	title: 'Components/ImageEditor',
+	title: "Components/ImageEditor",
 	component: ImageEditorComponent,
-	tags: ['autodocs'],
+	tags: ["autodocs"],
 	argTypes: {
 		className: { control: false },
 	},

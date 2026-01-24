@@ -1,30 +1,31 @@
 /* eslint-disable indent, react/jsx-closing-bracket-location */
-import { forwardRef, useEffect, useState } from 'react';
 
-import clsx from 'clsx';
-import { Icon } from 'gliff';
+import clsx from "clsx";
+import { Icon } from "gliff";
+import { forwardRef, useEffect, useState } from "react";
 
-import { FACE_ICONS } from '#utils/constants/iconCollection';
-import { readImageFile, readImageSrc } from '#utils/helper/imageHelper';
+import { FACE_ICONS } from "#utils/constants/iconCollection";
+import { readImageFile, readImageSrc } from "#utils/helper/imageHelper";
 
-import './avatar.scss';
-import { EAvatarSize, TAvatarProps } from './types';
+import "./avatar.scss";
+import { EAvatarSize, type TAvatarProps } from "./types";
 
 export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
-	const { className, src, file, alt, placeholderIcon, size = 'default', onClick } = props;
+	const { className, src, file, alt, placeholderIcon, size = "default", onClick } = props;
 	const [image, setImage] = useState<string>();
 	const [randomFace, setRandomFace] = useState<string>(FACE_ICONS.happy[0]);
 	const [isLoading, setIsLoading] = useState(!!src || !!file);
 	const [isError, setIsError] = useState(false);
 
-	const avatarSize = typeof size === 'number' ? size : EAvatarSize[size];
-	const AvatarClsx = clsx('xtrAvatar', className, isLoading && 'loading', isError && 'error');
+	const avatarSize = typeof size === "number" ? size : EAvatarSize[size];
+	const AvatarClsx = clsx("xtrAvatar", className, isLoading && "loading", isError && "error");
 
 	const clearLoading = (img?: string) => {
 		if (img) setTimeout(() => setImage(img), 300);
 		setTimeout(() => setIsLoading(false), 1000);
 	};
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: intentional
 	useEffect(() => {
 		setRandomFace(FACE_ICONS.happy[Math.floor(Math.random() * FACE_ICONS.happy.length)]);
 		try {
@@ -58,18 +59,15 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 	}, [src, file]);
 
 	return (
-		<div ref={ref} className={AvatarClsx} style={{ ['--avatarSize' as string]: avatarSize + 'px' }} onClick={onClick} role='img'>
-			{image ?
-				<img className='image' src={image} alt={alt} />
-			:	<Icon
-					className='placeholder'
-					type='solid'
-					size={8 + avatarSize / 4}
-					code={isError ? 'e1b7' : (placeholderIcon ?? randomFace)}
-				/>
-			}
+		<div ref={ref} className={AvatarClsx} style={{ ["--avatarSize" as string]: `${avatarSize}px` }} onClick={onClick} role="img">
+			{image ? (
+				// biome-ignore lint/performance/noImgElement: library component wrapping img
+				<img className="image" src={image} alt={alt} />
+			) : (
+				<Icon className="placeholder" type="solid" size={8 + avatarSize / 4} code={isError ? "e1b7" : (placeholderIcon ?? randomFace)} />
+			)}
 		</div>
 	);
 });
 
-Avatar.displayName = 'Avatar';
+Avatar.displayName = "Avatar";

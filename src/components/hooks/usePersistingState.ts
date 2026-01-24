@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import { getLocalState, setLocalState } from '#utils/function/localStorage';
+import { getLocalState, setLocalState } from "#utils/function/localStorage";
 
-import { TStateHook } from './types';
+import type { TStateHook } from "./types";
 
 export const usePersistingState = <T>(key: string, initialState?: T): TStateHook<T> => {
 	const [state, setState] = useState(initialState ?? getLocalState<T>(key));
 
 	useEffect(() => {
 		const persist = () => setLocalState(key, state);
-		window.addEventListener('beforeunload', persist);
-		return () => window.removeEventListener('beforeunload', persist);
+		window.addEventListener("beforeunload", persist);
+		return () => window.removeEventListener("beforeunload", persist);
 	}, [key, state]);
 
 	return [state, setState];

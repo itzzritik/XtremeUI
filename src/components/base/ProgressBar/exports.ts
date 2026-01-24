@@ -1,6 +1,6 @@
-import '#styles/index.scss';
+import "#styles/index.scss";
 
-import './progressbar.scss';
+import "./progressbar.scss";
 
-export { ProgressBar } from './ProgressBar';
-export type { IProgressBarProps } from './types';
+export { ProgressBar } from "./ProgressBar";
+export type { IProgressBarProps } from "./types";

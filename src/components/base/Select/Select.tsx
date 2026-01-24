@@ -1,23 +1,22 @@
-import { useId, useMemo, useState } from 'react';
+import clsx from "clsx";
+import { Icon } from "gliff";
+import { useId, useMemo, useState } from "react";
+import XSelect, { type GroupBase, type MultiValue, type OptionsOrGroups, type PropsValue, type SingleValue } from "react-select";
 
-import clsx from 'clsx';
-import { Icon } from 'gliff';
-import XSelect, { GroupBase, MultiValue, OptionsOrGroups, PropsValue, SingleValue } from 'react-select';
+import { isEqual } from "#utils/function/common";
 
-import { isEqual } from '#utils/function/common';
+import "./select.scss";
+import type { Option, TSelectProps } from "./types";
 
-import './select.scss';
-import { Option, TSelectProps } from './types';
-
-export function Select<T> (props: TSelectProps<T>) {
+export function Select<T>(props: TSelectProps<T>) {
 	const {
 		className,
 		multi = false,
-		placeholder = 'Select an option',
+		placeholder = "Select an option",
 		noOptionsMessage,
 		icon,
-		size = 'default',
-		iconType = 'regular',
+		size = "default",
+		iconType = "regular",
 		clearable = true,
 		searchable = true,
 		disabled = false,
@@ -40,13 +39,13 @@ export function Select<T> (props: TSelectProps<T>) {
 	}, [multi, options, value]);
 
 	const SelectClsx = clsx(
-		'xtrSelectWrapper',
+		"xtrSelectWrapper",
 		size && `${size}Size`,
-		multi ? 'multi' : 'single',
-		icon && 'withIcon',
-		!!value && 'withValue',
-		open && 'open',
-		!searchable && 'noSearch',
+		multi ? "multi" : "single",
+		icon && "withIcon",
+		!!value && "withValue",
+		open && "open",
+		!searchable && "noSearch",
 		className,
 	);
 
@@ -63,8 +62,8 @@ export function Select<T> (props: TSelectProps<T>) {
 	return (
 		<div className={SelectClsx}>
 			<XSelect
-				className='xtrSelect'
-				classNamePrefix='xtrSelect'
+				className="xtrSelect"
+				classNamePrefix="xtrSelect"
 				id={id}
 				isMulti={multi}
 				menuIsOpen={open}
@@ -81,11 +80,11 @@ export function Select<T> (props: TSelectProps<T>) {
 				onChange={onChangeHandler}
 			/>
 			{placeholder && !multi && (
-				<label className='placeholder' htmlFor={id}>
+				<label className="placeholder" htmlFor={id}>
 					{placeholder}
 				</label>
 			)}
-			{icon && <Icon className='xtrSelectIcon' code={icon} type={iconType} />}
+			{icon && <Icon className="xtrSelectIcon" code={icon} type={iconType} />}
 		</div>
 	);
 }

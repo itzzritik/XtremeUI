@@ -1,6 +1,6 @@
-import { type Area } from 'react-easy-crop';
+import type { Area } from "react-easy-crop";
 
-import { TEditedImageType } from '#components/layout/ImageEditor/types';
+import type { TEditedImageType } from "#components/layout/ImageEditor/types";
 
 export const readImageSrc = async (src: string) => {
 	return new Promise<string>((resolve, reject) => {
@@ -29,8 +29,8 @@ export const readImageFile = async (file: Blob) => {
 export const createImage = (url: string) => {
 	return new Promise<HTMLImageElement>((resolve, reject) => {
 		const image = new Image();
-		image.addEventListener('load', () => resolve(image));
-		image.addEventListener('error', (error) => reject(error));
+		image.addEventListener("load", () => resolve(image));
+		image.addEventListener("error", (error) => reject(error));
 		image.src = url;
 	});
 };
@@ -39,14 +39,13 @@ export const getRadianAngle = (degreeValue: number) => {
 };
 
 export const getImageSize = async (imageSrc: string) => {
-	return new Promise<{width: number, height: number}>((resolve) => {
-		createImage(imageSrc)
-			.then((image) => {
-				resolve({
-					width: image.width,
-					height: image.height,
-				});
+	return new Promise<{ width: number; height: number }>((resolve) => {
+		createImage(imageSrc).then((image) => {
+			resolve({
+				width: image.width,
+				height: image.height,
 			});
+		});
 	});
 };
 export const getCroppedImg = async (imageSrc: string | undefined, pixelCrop: Area | undefined, rotation: number = 0) => {
@@ -54,8 +53,8 @@ export const getCroppedImg = async (imageSrc: string | undefined, pixelCrop: Are
 	const image = await createImage(imageSrc);
 
 	return new Promise<TEditedImageType>((resolve) => {
-		const canvas = document.createElement('canvas');
-		const ctx = canvas.getContext('2d');
+		const canvas = document.createElement("canvas");
+		const ctx = canvas.getContext("2d");
 
 		if (!ctx) return null;
 
@@ -69,24 +68,20 @@ export const getCroppedImg = async (imageSrc: string | undefined, pixelCrop: Are
 		ctx.rotate(getRadianAngle(rotation));
 		ctx.translate(-safeArea / 2, -safeArea / 2);
 
-		ctx.drawImage(
-			image,
-			safeArea / 2 - image.width * 0.5,
-			safeArea / 2 - image.height * 0.5,
-		);
+		ctx.drawImage(image, safeArea / 2 - image.width * 0.5, safeArea / 2 - image.height * 0.5);
 		const data = ctx.getImageData(0, 0, safeArea, safeArea);
 
 		canvas.width = pixelCrop.width;
 		canvas.height = pixelCrop.height;
 
-		ctx.putImageData(
-			data,
-			Math.round(0 - safeArea / 2 + image.width * 0.5 - pixelCrop.x),
-			Math.round(0 - safeArea / 2 + image.height * 0.5 - pixelCrop.y),
+		ctx.putImageData(data, Math.round(0 - safeArea / 2 + image.width * 0.5 - pixelCrop.x), Math.round(0 - safeArea / 2 + image.height * 0.5 - pixelCrop.y));
+		canvas.toBlob(
+			(blob) =>
+				resolve({
+					blob: blob ?? undefined,
+					base64: canvas.toDataURL("image/jpeg"),
+				}),
+			"image/jpeg",
 		);
-		canvas.toBlob((blob) => resolve({
-			blob: blob ?? undefined,
-			base64: canvas.toDataURL('image/jpeg'),
-		}), 'image/jpeg');
 	});
 };

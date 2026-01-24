@@ -1,18 +1,16 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
-import { DataProvider } from './Data/DataContext';
-import { ThemeProvider } from './Theme/ThemeContext';
+import { DataProvider } from "./Data/DataContext";
+import { ThemeProvider } from "./Theme/ThemeContext";
 
 export const XProvider = ({ children }: XProviderProps) => {
 	return (
 		<ThemeProvider>
-			<DataProvider>
-				{children}
-			</DataProvider>
+			<DataProvider>{children}</DataProvider>
 		</ThemeProvider>
 	);
 };
 
 interface XProviderProps {
-    children?: ReactNode
+	children?: ReactNode;
 }

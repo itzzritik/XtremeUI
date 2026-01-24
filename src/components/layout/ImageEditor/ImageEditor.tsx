@@ -1,18 +1,17 @@
-import { useCallback, useEffect, useState } from 'react';
+import clsx from "clsx";
+import { Icon } from "gliff";
+import { useCallback, useEffect, useState } from "react";
+import Cropper, { type Area } from "react-easy-crop";
 
-import clsx from 'clsx';
-import { Icon } from 'gliff';
-import Cropper, { type Area } from 'react-easy-crop';
+import { Spinner } from "#components/base/Spinner/Spinner";
+import { getCroppedImg, getImageSize, readImageFile } from "#utils/helper/imageHelper";
 
-import { Spinner } from '#components/base/Spinner/Spinner';
-import { getCroppedImg, getImageSize, readImageFile } from '#utils/helper/imageHelper';
-
-import './imageEditor.scss';
-import { TImageEditorProps } from './types';
+import "./imageEditor.scss";
+import type { TImageEditorProps } from "./types";
 
 const defaultZoom = 1;
 export const ImageEditor = (props: TImageEditorProps) => {
-	const { className, file, clearFile, minImageSize, cropShape = 'round', aspect = 1, zoomSpeed = 1, onChange } = props;
+	const { className, file, clearFile, minImageSize, cropShape = "round", aspect = 1, zoomSpeed = 1, onChange } = props;
 	const [imageSrc, setImageSrc] = useState<string>();
 	const [mediaLoading, setMediaLoading] = useState(true);
 	const [zoom, setZoom] = useState(defaultZoom);
@@ -20,7 +19,7 @@ export const ImageEditor = (props: TImageEditorProps) => {
 	const [rotation, setRotation] = useState(0);
 	const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area>();
 
-	const ImageEditorClsx = clsx('xtrImageEditor', className);
+	const ImageEditorClsx = clsx("xtrImageEditor", className);
 
 	const accept = async () => {
 		try {
@@ -75,11 +74,11 @@ export const ImageEditor = (props: TImageEditorProps) => {
 				onCropChange={setCrop}
 				onCropComplete={(_, v) => setCroppedAreaPixels(v)}
 			/>
-			<div className='editorControls'>
-				<Icon code='f00d' type='solid' onClick={clearFilePicker} />
-				<Icon code='f2ea' type='solid' onClick={() => setRotation((v) => v - 90)} />
-				<Icon code='f2f9' type='solid' onClick={() => setRotation((v) => v + 90)} />
-				<Icon code='f00c' type='solid' onClick={accept} />
+			<div className="editorControls">
+				<Icon code="f00d" type="solid" onClick={clearFilePicker} />
+				<Icon code="f2ea" type="solid" onClick={() => setRotation((v) => v - 90)} />
+				<Icon code="f2f9" type="solid" onClick={() => setRotation((v) => v + 90)} />
+				<Icon code="f00c" type="solid" onClick={accept} />
 			</div>
 			{mediaLoading && <Spinner fullpage />}
 		</div>

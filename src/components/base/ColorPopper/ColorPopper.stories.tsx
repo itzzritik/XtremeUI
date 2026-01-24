@@ -1,22 +1,17 @@
-import { useState } from 'react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { AnyColor } from "colord";
+import { useState } from "react";
+import { ThemeColorsPreset } from "#utils/index";
+import { ColorPopper } from "./ColorPopper";
+import type { TColorPopperProps } from "./types";
 
-import { ThemeColorsPreset } from '#utils/index';
-
-import { ColorPopper } from './ColorPopper';
-import { TColorPopperProps } from './types';
-
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import type { AnyColor } from 'colord';
-
-const ColorPickerComponent = (
-	props: Omit<TColorPopperProps, 'color' | 'setColor'>,
-) => {
-	const [color, setColor] = useState<AnyColor>('#ff0000');
+const ColorPickerComponent = (props: Omit<TColorPopperProps, "color" | "setColor">) => {
+	const [color, setColor] = useState<AnyColor>("#ff0000");
 	return <ColorPopper {...props} color={color} setColor={setColor} />;
 };
 
 const meta = {
-	title: 'Components/ColorPopper',
+	title: "Components/ColorPopper",
 	component: ColorPickerComponent,
 	tags: [],
 	argTypes: {
@@ -45,7 +40,7 @@ export const WithSwatch: StoryObj<typeof meta> = {
 
 export const WithSwatchMini: StoryObj<typeof meta> = {
 	args: {
-		size: 'mini',
+		size: "mini",
 		swatch: Object.values(ThemeColorsPreset),
 	},
 };

@@ -1,6 +1,6 @@
-import '#styles/index.scss';
+import "#styles/index.scss";
 
-import './themePicker.scss';
+import "./themePicker.scss";
 
-export { ThemePicker } from './ThemePicker';
-export type { TThemePickerProps } from './types';
+export { ThemePicker } from "./ThemePicker";
+export type { TThemePickerProps } from "./types";

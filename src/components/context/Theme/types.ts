@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
 export type TThemeInitialType = {
 	isDarkTheme: boolean | undefined;
@@ -12,9 +12,9 @@ export type TThemeProviderProps = {
 };
 
 export enum EThemeScheme {
-	light = 'light',
-	dark = 'dark',
-	auto = 'auto',
+	light = "light",
+	dark = "dark",
+	auto = "auto",
 }
 export type TThemeScheme = keyof typeof EThemeScheme;
 export const defaultScheme = EThemeScheme.auto;

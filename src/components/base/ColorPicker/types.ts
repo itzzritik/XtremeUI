@@ -1,4 +1,4 @@
-import type { HsvaColor } from 'colord';
+import type { HsvaColor } from "colord";
 
 export type TColorPickerProps = {
 	className?: string;
@@ -6,4 +6,4 @@ export type TColorPickerProps = {
 	shade?: boolean;
 	color: HsvaColor;
 	setColor: (col: HsvaColor) => void;
-}
+};

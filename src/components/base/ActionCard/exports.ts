@@ -1,6 +1,6 @@
-import '#styles/index.scss';
+import "#styles/index.scss";
 
-import './actionCard.scss';
+import "./actionCard.scss";
 
-export { ActionCard } from './ActionCard';
-export { type TActionCardProps, EActionCardSize } from './types';
+export { ActionCard } from "./ActionCard";
+export { EActionCardSize, type TActionCardProps } from "./types";

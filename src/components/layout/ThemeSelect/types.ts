@@ -1,6 +1,6 @@
-import { ICON_TYPES } from 'gliff';
+import type { ICON_TYPES } from "gliff";
 
-import { ColorPopperInput, EColorPopperSize } from '#components/base/ColorPopper/types';
+import type { ColorPopperInput, EColorPopperSize } from "#components/base/ColorPopper/types";
 
 export type TThemeSelectProps = {
 	className?: string;

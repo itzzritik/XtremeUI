@@ -1,16 +1,15 @@
-import { forwardRef, useMemo } from 'react';
+import clsx from "clsx";
+import { forwardRef, useMemo } from "react";
 
-import clsx from 'clsx';
+import { Button } from "#components/base/Button/Button";
+import { Select } from "#components/base/Select/Select";
+import { useXTheme } from "#components/context/useContext";
+import { useScreenType } from "#components/hooks/useScreen";
+import { getColorLabel, isValidThemeColor } from "#utils/helper/colorHelper";
+import { THEME_SCHEME, ThemeColorsPreset } from "#utils/index";
 
-import { Button } from '#components/base/Button/Button';
-import { Select } from '#components/base/Select/Select';
-import { useXTheme } from '#components/context/useContext';
-import { useScreenType } from '#components/hooks/useScreen';
-import { getColorLabel, isValidThemeColor } from '#utils/helper/colorHelper';
-import { THEME_SCHEME, ThemeColorsPreset } from '#utils/index';
-
-import './themeSwitch.scss';
-import { TThemeSwitchProps } from './types';
+import "./themeSwitch.scss";
+import type { TThemeSwitchProps } from "./types";
 
 const OPTIONS = Object.entries(ThemeColorsPreset).map(([label, value]) => ({
 	label: label.charAt(0).toUpperCase() + label.slice(1),
@@ -20,7 +19,7 @@ const OPTIONS = Object.entries(ThemeColorsPreset).map(([label, value]) => ({
 const THEME_COLOR = Object.values(ThemeColorsPreset);
 
 export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props, ref) => {
-	const { className, type = 'secondary', size = 'default', iconType = 'solid' } = props;
+	const { className, type = "secondary", size = "default", iconType = "solid" } = props;
 
 	const { themeScheme, setThemeScheme, themeColor, setThemeColor } = useXTheme();
 	const s = useScreenType();
@@ -30,25 +29,21 @@ export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props,
 	}, [themeScheme]);
 
 	const currentIcon = useMemo(() => {
-		return THEME_SCHEME.find((t) => t.name === themeScheme)?.icon ?? '';
+		return THEME_SCHEME.find((t) => t.name === themeScheme)?.icon ?? "";
 	}, [themeScheme]);
 
 	const nextColor = useMemo(() => {
-		return THEME_COLOR[(THEME_COLOR.findIndex((t) => t === themeColor) + 1) % THEME_COLOR.length];
+		return THEME_COLOR[(THEME_COLOR.indexOf(themeColor) + 1) % THEME_COLOR.length];
 	}, [themeColor]);
 
-	const mainClass = clsx(
-		'xtrThemeSwitch',
-		className,
-		!s.isMobile && 'withLabel',
-	);
+	const mainClass = clsx("xtrThemeSwitch", className, !s.isMobile && "withLabel");
 
 	if (!themeScheme || !isValidThemeColor(themeColor)) return null;
 
 	return (
 		<div ref={ref} className={mainClass}>
 			<Button
-				className='xtrThemeScheme'
+				className="xtrThemeScheme"
 				type={type}
 				size={size}
 				icon={currentIcon}
@@ -56,32 +51,31 @@ export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props,
 				label={!s.isMobile ? themeScheme : undefined}
 				onClick={() => nextTheme.name && setThemeScheme(nextTheme.name)}
 			/>
-			{
-				s.isLargest ?
-					<Select
-						clearable={false}
-						searchable={false}
-						size={size}
-						icon='f53f'
-						iconType={iconType}
-						placeholder='Theme'
-						options={OPTIONS}
-						value={themeColor}
-						onChange={setThemeColor}
-					/> :
-					<Button
-						className='xtrThemeColor'
-						type='primary'
-						size={size}
-						icon='f53f'
-						iconType={iconType}
-						label={!s.isMobile ? getColorLabel(themeColor) : undefined}
-						onClick={() => nextColor && setThemeColor(nextColor)}
-					/>
-			}
-
+			{s.isLargest ? (
+				<Select
+					clearable={false}
+					searchable={false}
+					size={size}
+					icon="f53f"
+					iconType={iconType}
+					placeholder="Theme"
+					options={OPTIONS}
+					value={themeColor}
+					onChange={setThemeColor}
+				/>
+			) : (
+				<Button
+					className="xtrThemeColor"
+					type="primary"
+					size={size}
+					icon="f53f"
+					iconType={iconType}
+					label={!s.isMobile ? getColorLabel(themeColor) : undefined}
+					onClick={() => nextColor && setThemeColor(nextColor)}
+				/>
+			)}
 		</div>
 	);
 });
 
-ThemeSwitch.displayName = 'ThemeSwitch';
+ThemeSwitch.displayName = "ThemeSwitch";

@@ -1,1 +1,1 @@
-declare module 'color-namer';
+declare module "color-namer";

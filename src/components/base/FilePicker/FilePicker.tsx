@@ -1,21 +1,20 @@
-import clsx from 'clsx';
-import { Icon } from 'gliff';
-import { createPortal } from 'react-dom';
-import { useFilePicker } from 'use-file-picker';
+import clsx from "clsx";
+import { Icon } from "gliff";
+import { createPortal } from "react-dom";
+import { useFilePicker } from "use-file-picker";
 
-import { ImageEditor } from '#components/layout/ImageEditor/ImageEditor';
+import { ImageEditor } from "#components/layout/ImageEditor/ImageEditor";
 
-import { Button } from '../Button/Button';
+import { Button } from "../Button/Button";
 
-import './filePicker.scss';
-import { getFilePickerIcon } from './getFilePickerIcon';
-import { TFilePickerProps, imageExts } from './types';
+import "./filePicker.scss";
+import { getFilePickerIcon } from "./getFilePickerIcon";
+import { imageExts, type TFilePickerProps } from "./types";
 
 export const FilePicker = (props: TFilePickerProps) => {
-	const { className, children, draggable = false, editable = false, multiple = false, accept = '*/*', onChange } = props;
+	const { className, children, draggable = false, editable = false, multiple = false, accept = "*/*", onChange } = props;
 
-	const isEditable =
-		editable && !multiple && (accept.includes('image') || imageExts.includes(accept?.split?.(',')?.[0]?.replace('.', '')));
+	const isEditable = editable && !multiple && (accept.includes("image") || imageExts.includes(accept?.split?.(",")?.[0]?.replace(".", "")));
 
 	const { openFilePicker, loading, plainFiles, clear } = useFilePicker({
 		accept,
@@ -25,7 +24,7 @@ export const FilePicker = (props: TFilePickerProps) => {
 		},
 	});
 
-	const FilePickerClsx = clsx('xtrFilePicker', children && 'wrapper', draggable && 'draggable', className);
+	const FilePickerClsx = clsx("xtrFilePicker", children && "wrapper", draggable && "draggable", className);
 
 	if (children) {
 		return (
@@ -35,10 +34,7 @@ export const FilePicker = (props: TFilePickerProps) => {
 				</div>
 				{isEditable &&
 					plainFiles?.[0] &&
-					createPortal(
-						<ImageEditor file={plainFiles?.[0]} clearFile={clear} onChange={(v) => onChange(v.blob ? [v.blob] : [])} />,
-						document.body,
-					)}
+					createPortal(<ImageEditor file={plainFiles?.[0]} clearFile={clear} onChange={(v) => onChange(v.blob ? [v.blob] : [])} />, document.body)}
 			</>
 		);
 	}
@@ -46,8 +42,8 @@ export const FilePicker = (props: TFilePickerProps) => {
 	if (draggable) {
 		return (
 			<div className={FilePickerClsx} onClick={openFilePicker}>
-				<Icon code='f0ed' type='duotone' size={64} />
-				<h2>Drop File{multiple ? 's' : ''} Here</h2>
+				<Icon code="f0ed" set="duotone" size={64} />
+				<h2>Drop File{multiple ? "s" : ""} Here</h2>
 				<p>or click here to open file chooser</p>
 			</div>
 		);
@@ -55,19 +51,10 @@ export const FilePicker = (props: TFilePickerProps) => {
 
 	return (
 		<>
-			<Button
-				className={FilePickerClsx}
-				label={`Choose File${multiple ? 's' : ''}`}
-				icon={getFilePickerIcon(accept)}
-				onClick={openFilePicker}
-				loading={loading}
-			/>
+			<Button className={FilePickerClsx} label={`Choose File${multiple ? "s" : ""}`} icon={getFilePickerIcon(accept)} onClick={openFilePicker} loading={loading} />
 			{isEditable &&
 				plainFiles?.[0] &&
-				createPortal(
-					<ImageEditor file={plainFiles?.[0]} clearFile={clear} onChange={(v) => onChange(v.blob ? [v.blob] : [])} />,
-					document.body,
-				)}
+				createPortal(<ImageEditor file={plainFiles?.[0]} clearFile={clear} onChange={(v) => onChange(v.blob ? [v.blob] : [])} />, document.body)}
 		</>
 	);
 };

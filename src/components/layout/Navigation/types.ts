@@ -1,4 +1,4 @@
-import { ElementType, ReactNode } from 'react';
+import type { ElementType, ReactNode } from "react";
 
 export type TNavigationProps = {
 	className?: string;
@@ -7,10 +7,10 @@ export type TNavigationProps = {
 	hrefPropName?: string;
 	pathname: string;
 	routes: TNavigationRoute[];
-}
+};
 
 export type TNavigationRoute = {
-	name: string,
-	href: string,
-	icon?: string,
-}
+	name: string;
+	href: string;
+	icon?: string;
+};

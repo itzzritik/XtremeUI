@@ -1,8 +1,8 @@
-import { ThemeColorsPreset } from '../src/utils/constants/theme';
+import { ThemeColorsPreset } from "../src/utils/constants/theme";
 
 export const ThemeList = [
-	{ name: 'Dark', value: '#000000' },
-	{ name: 'Light', value: '#FFFFFF' },
+	{ name: "Dark", value: "#000000" },
+	{ name: "Light", value: "#FFFFFF" },
 ];
 
 export const BrandColorList = Object.entries(ThemeColorsPreset).map(([name, c]) => ({

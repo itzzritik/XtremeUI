@@ -1,21 +1,20 @@
-import { XProvider } from '../src/components/context';
-import { defaultScheme } from '../src/components/context/Theme/types';
-import '../src/styles/index.scss';
-import { defaultColorPreset, STORAGE } from '../src/utils/constants/theme';
-import { getLocalState } from '../src/utils/function/localStorage';
-import { capitalize } from '../src/utils/function/string';
-import { elementObserver, localStore, waitForElement } from '../src/utils/helper/domHelper';
-import { themeController } from '../src/utils/helper/themeController';
+import { XProvider } from "../src/components/context";
+import { defaultScheme } from "../src/components/context/Theme/types";
+import "../src/styles/index.scss";
+import { defaultColorPreset, STORAGE } from "../src/utils/constants/theme";
+import { getLocalState } from "../src/utils/function/localStorage";
+import { capitalize } from "../src/utils/function/string";
+import { elementObserver, localStore, waitForElement } from "../src/utils/helper/domHelper";
+import { themeController } from "../src/utils/helper/themeController";
+import { BrandColorList, ThemeList } from "./constants";
+import { ThemeController } from "./ThemeController";
+import "./style.scss";
 
-import { ThemeController } from './ThemeController';
-import { BrandColorList, ThemeList } from './constants';
-import './style.scss';
-
-import { Gliff } from 'gliff';
-
-import type { Preview } from '@storybook/react-vite';
+import type { Preview } from "@storybook/react-vite";
+import { Gliff } from "gliff";
 
 const themeScript = themeController();
+// biome-ignore lint/security/noGlobalEval: theme script injection
 eval(themeScript);
 
 const initialThemeScheme = localStore?.getItem(STORAGE.themeScheme) ?? defaultScheme;
@@ -25,11 +24,11 @@ let root: HTMLElement;
 const preview: Preview = {
 	globalTypes: {
 		brand: {
-			description: 'Select Brand Color',
+			description: "Select Brand Color",
 			defaultValue: initialThemeColor,
 			toolbar: {
-				title: 'Brand Color',
-				icon: 'paintbrush',
+				title: "Brand Color",
+				icon: "paintbrush",
 				items: BrandColorList,
 				dynamicTitle: true,
 			},
@@ -37,7 +36,7 @@ const preview: Preview = {
 	},
 	parameters: {
 		controls: {
-			sort: 'requiredFirst',
+			sort: "requiredFirst",
 			controls: {
 				expanded: true,
 			},
@@ -48,11 +47,11 @@ const preview: Preview = {
 		},
 		docs: {
 			controls: {
-				sort: 'requiredFirst',
+				sort: "requiredFirst",
 			},
 		},
 		backgrounds: {
-			default: initialThemeScheme === 'auto' ? undefined : capitalize(initialThemeScheme),
+			default: initialThemeScheme === "auto" ? undefined : capitalize(initialThemeScheme),
 			values: ThemeList,
 		},
 	},
@@ -69,22 +68,22 @@ const preview: Preview = {
 	],
 };
 
-waitForElement('#storybook-root').then((element) => {
+waitForElement("#storybook-root").then((element) => {
 	root = element;
-	document.documentElement.style.setProperty('height', '100%');
-	document.body.style.setProperty('height', '100%');
-	document.body.style.setProperty('margin', '0');
-	document.body.style.setProperty('padding', '0');
-	element.style.setProperty('height', '100%');
-	element.style.setProperty('padding', '16px');
+	document.documentElement.style.setProperty("height", "100%");
+	document.body.style.setProperty("height", "100%");
+	document.body.style.setProperty("margin", "0");
+	document.body.style.setProperty("padding", "0");
+	element.style.setProperty("height", "100%");
+	element.style.setProperty("padding", "16px");
 });
 
 elementObserver(
 	(element, event) => {
-		if (event === 'added') root?.style.setProperty('padding', '0');
-		else if (event === 'removed') root?.style.setProperty('padding', '16px');
+		if (event === "added") root?.style.setProperty("padding", "0");
+		else if (event === "removed") root?.style.setProperty("padding", "16px");
 
-		if (element?.classList?.[0].includes('navigation')) element.style.setProperty('background', 'hsl(var(--colorBrandPrimary) / 90%)');
+		if (element?.classList?.[0].includes("navigation")) element.style.setProperty("background", "hsl(var(--colorBrandPrimary) / 90%)");
 	},
 	['#storybook-root > [role="region"]'],
 );

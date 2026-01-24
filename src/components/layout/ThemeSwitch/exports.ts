@@ -1,6 +1,6 @@
-import '#styles/index.scss';
+import "#styles/index.scss";
 
-import './themeSwitch.scss';
+import "./themeSwitch.scss";
 
-export { ThemeSwitch } from './ThemeSwitch';
-export type { TThemeSwitchProps } from './types';
+export { ThemeSwitch } from "./ThemeSwitch";
+export type { TThemeSwitchProps } from "./types";

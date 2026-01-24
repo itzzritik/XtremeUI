@@ -1,24 +1,24 @@
 /* eslint-disable indent, react/jsx-closing-bracket-location */
-import { KeyboardEvent, forwardRef, useId, useMemo } from 'react';
 
-import clsx from 'clsx';
-import { Icon } from 'gliff';
+import clsx from "clsx";
+import { Icon } from "gliff";
+import { forwardRef, type KeyboardEvent, useId, useMemo } from "react";
 
-import './textfield.scss';
-import { TTextfieldProps } from './types';
+import "./textfield.scss";
+import type { TTextfieldProps } from "./types";
 
 export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, ref) => {
 	const {
 		className,
 		style,
-		type = 'text',
+		type = "text",
 		textarea,
 		placeholder,
-		autoComplete = 'off',
+		autoComplete = "off",
 		active,
 		autoFocus,
 		icon,
-		iconType = 'regular',
+		iconType = "regular",
 		value,
 		onChange,
 		onFocus,
@@ -34,21 +34,21 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 	const localIconName = useMemo(() => {
 		if (textarea === true) return null;
 		if (icon) return icon;
-		if (type === 'number') return '23';
-		if (type === 'search') return 'f002';
-		if (type === 'password') return 'f30d';
+		if (type === "number") return "23";
+		if (type === "search") return "f002";
+		if (type === "password") return "f30d";
 	}, [textarea, icon, type]);
 
 	const localPlaceholder = useMemo(() => {
 		if (placeholder) return placeholder;
-		if (type === 'number') return 'Enter a number';
-		if (type === 'search') return 'Search';
-		if (type === 'password') return 'Enter password';
-		if (type === 'phone') return 'Enter phone number';
+		if (type === "number") return "Enter a number";
+		if (type === "search") return "Search";
+		if (type === "password") return "Enter password";
+		if (type === "phone") return "Enter phone number";
 	}, [placeholder, type]);
 
 	const localType = useMemo(() => {
-		if (type === 'phone') return 'number';
+		if (type === "phone") return "number";
 		return type;
 	}, [type]);
 
@@ -56,35 +56,35 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 		onKeyUp?.(event);
 	};
 	const onLocalKeyDown = (event: KeyboardEvent) => {
-		if (event.key === 'Enter') onEnterKey?.(event);
+		if (event.key === "Enter") onEnterKey?.(event);
 		onKeyDown?.(event);
 	};
 
 	const TextfieldClsx = clsx(
-		'xtrTextfield',
-		localIconName && 'withIcon',
-		textarea && 'textarea',
-		value && 'hasValue',
-		type === 'phone' && 'phone',
-		active && 'active',
+		"xtrTextfield",
+		localIconName && "withIcon",
+		textarea && "textarea",
+		value && "hasValue",
+		type === "phone" && "phone",
+		active && "active",
 		className,
 	);
 
 	return (
-		<div ref={ref} className={TextfieldClsx} role='textbox' style={style}>
-			<label className='placeholder' htmlFor={id}>
+		<div ref={ref} className={TextfieldClsx} style={style}>
+			<label className="placeholder" htmlFor={id}>
 				{localPlaceholder}
 			</label>
 			{localIconName && !textarea && <Icon code={localIconName} type={iconType} />}
-			{type === 'phone' && (
-				<div className='dialCode'>
-					<span style={{ backgroundImage: 'url(https://flagcdn.com/in.svg)' }} />
+			{type === "phone" && (
+				<div className="dialCode">
+					<span style={{ backgroundImage: "url(https://flagcdn.com/in.svg)" }} />
 					<p>+91</p>
 				</div>
 			)}
-			{!textarea ?
+			{!textarea ? (
 				<input
-					className='input'
+					className="input"
 					id={id}
 					type={localType}
 					autoFocus={autoFocus}
@@ -97,8 +97,9 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 					onKeyDown={onLocalKeyDown}
 					aria-label={localPlaceholder}
 				/>
-			:	<textarea
-					className='input'
+			) : (
+				<textarea
+					className="input"
 					id={id}
 					autoFocus={autoFocus}
 					autoComplete={autoComplete}
@@ -110,9 +111,9 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 					onKeyDown={onLocalKeyDown}
 					aria-label={localPlaceholder}
 				/>
-			}
+			)}
 		</div>
 	);
 });
 
-Textfield.displayName = 'Textfield';
+Textfield.displayName = "Textfield";

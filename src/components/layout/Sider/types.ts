@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
 export type TSiderProps = {
 	className?: string;
@@ -7,12 +7,12 @@ export type TSiderProps = {
 	showMiniLeftSider?: boolean;
 	rightSider?: ReactNode;
 	showMiniRightSider?: boolean;
-}
+};
 
 export enum ESiderModes {
-	left = 'left',
-	right = 'right',
-	closed = 'closed',
+	left = "left",
+	right = "right",
+	closed = "closed",
 }
 export type TSiderModes = keyof typeof ESiderModes;
 export const defaultSiderMode = ESiderModes.closed;

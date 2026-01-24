@@ -1,5 +1,5 @@
-import { defaultScheme, TThemeColor } from '#components/context/Theme/types';
-import { defaultColorPreset, STORAGE } from '#utils/constants/theme';
+import { defaultScheme, type TThemeColor } from "#components/context/Theme/types";
+import { defaultColorPreset, STORAGE } from "#utils/constants/theme";
 
 type ThemeConfig = {
 	scheme?: string;
@@ -8,14 +8,9 @@ type ThemeConfig = {
 	defColor?: TThemeColor;
 };
 
-export const themeController = ({
-	scheme,
-	color,
-	defScheme = defaultScheme,
-	defColor = defaultColorPreset,
-}: ThemeConfig = {}) => {
-	const schemeStr = scheme != null ? `'${scheme}'` : 'null';
-	const colorStr = color ? JSON.stringify(color) : 'null';
+export const themeController = ({ scheme, color, defScheme = defaultScheme, defColor = defaultColorPreset }: ThemeConfig = {}) => {
+	const schemeStr = scheme != null ? `'${scheme}'` : "null";
+	const colorStr = color ? JSON.stringify(color) : "null";
 	const defaultColorStr = JSON.stringify(defColor);
 
 	return `(function() {

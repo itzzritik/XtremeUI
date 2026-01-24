@@ -1,20 +1,16 @@
-import { useState } from 'react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { HsvaColor } from "colord";
+import { useState } from "react";
+import { ColorPicker } from "./ColorPicker";
+import type { TColorPickerProps } from "./types";
 
-import { ColorPicker } from './ColorPicker';
-import { TColorPickerProps } from './types';
-
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import type { HsvaColor } from 'colord';
-
-const ColorPickerComponent = (
-	props: Omit<TColorPickerProps, 'color' | 'setColor'>,
-) => {
+const ColorPickerComponent = (props: Omit<TColorPickerProps, "color" | "setColor">) => {
 	const [color, setColor] = useState<HsvaColor>({ h: 0, s: 0, v: 100, a: 1 });
 	return <ColorPicker {...props} color={color} setColor={setColor} />;
 };
 
 const meta = {
-	title: 'Components/ColorPicker',
+	title: "Components/ColorPicker",
 	component: ColorPickerComponent,
 	tags: [],
 	argTypes: {

@@ -1,5 +1,5 @@
 export const safeStringFromCodePoint = (codePoint: number) => {
-	if (isNaN(codePoint) || codePoint < 0 || codePoint > 0x10FFFF || Math.floor(codePoint) !== codePoint) return '';
+	if (Number.isNaN(codePoint) || codePoint < 0 || codePoint > 0x10ffff || Math.floor(codePoint) !== codePoint) return "";
 
 	return String.fromCodePoint(codePoint);
 };

@@ -1,6 +1,6 @@
-import '#styles/index.scss';
+import "#styles/index.scss";
 
-import './colorPopper.scss';
+import "./colorPopper.scss";
 
-export { ColorPopper } from './ColorPopper';
-export type { TColorPopperProps } from './types';
+export { ColorPopper } from "./ColorPopper";
+export type { TColorPopperProps } from "./types";

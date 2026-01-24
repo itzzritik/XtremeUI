@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
-
-import { ICON_TYPES } from 'gliff';
+import type { ICON_TYPES } from "gliff";
+import type { ReactNode } from "react";
 
 export enum ESelectSize {
-	mini = 'mini',
-	default = 'default',
-	large = 'large',
+	mini = "mini",
+	default = "default",
+	large = "large",
 }
 
 export type Option<T> = { label: string; value: T };

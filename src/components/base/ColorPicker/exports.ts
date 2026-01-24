@@ -1,6 +1,6 @@
-import '#styles/index.scss';
+import "#styles/index.scss";
 
-import './colorPicker.scss';
+import "./colorPicker.scss";
 
-export { ColorPicker } from './ColorPicker';
-export type { TColorPickerProps } from './types';
+export { ColorPicker } from "./ColorPicker";
+export type { TColorPickerProps } from "./types";

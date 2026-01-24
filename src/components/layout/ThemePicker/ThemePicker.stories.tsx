@@ -1,16 +1,14 @@
-import { ThemePicker } from './ThemePicker';
-
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ThemePicker } from "./ThemePicker";
 
 const meta = {
-	title: 'Layouts/Theme Picker',
+	title: "Layouts/Theme Picker",
 	component: ThemePicker,
-	tags: ['autodocs'],
+	tags: ["autodocs"],
 	argTypes: {
 		className: { control: false },
 	},
-	args: {
-	},
+	args: {},
 } satisfies Meta<typeof ThemePicker>;
 
 export default meta;

@@ -1,6 +1,6 @@
-import '#styles/index.scss';
+import "#styles/index.scss";
 
-import './select.scss';
+import "./select.scss";
 
-export { Select } from './Select';
-export type { TSelectProps } from './types';
+export { Select } from "./Select";
+export type { TSelectProps } from "./types";

@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
-import { TButtonProps } from '#components/base/Button/types';
+import type { TButtonProps } from "#components/base/Button/types";
 
 export type TSiderModalProps = {
 	className?: string;
@@ -9,4 +9,4 @@ export type TSiderModalProps = {
 	icon?: string;
 	primaryButtonProps?: TButtonProps;
 	secondaryButtonProps?: TButtonProps;
-}
+};

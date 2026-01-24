@@ -1,15 +1,10 @@
-import { useState } from 'react';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
+import { Avatar } from "#components/base/Avatar/Avatar";
+import { FilePicker } from "./FilePicker";
+import type { TFilePickerProps } from "./types";
 
-import { Avatar } from '#components/base/Avatar/Avatar';
-
-import { FilePicker } from './FilePicker';
-import { TFilePickerProps } from './types';
-
-import type { Meta, StoryObj } from '@storybook/react-vite';
-
-const FilePickerComponent = (
-	props: Omit<TFilePickerProps, 'value' | 'onChange'>,
-) => {
+const FilePickerComponent = (props: Omit<TFilePickerProps, "value" | "onChange">) => {
 	const [file, setFile] = useState<Blob[]>();
 
 	return (
@@ -20,14 +15,14 @@ const FilePickerComponent = (
 };
 
 const meta = {
-	title: 'Components/FilePicker',
+	title: "Components/FilePicker",
 	component: FilePickerComponent,
-	tags: ['autodocs'],
+	tags: ["autodocs"],
 	argTypes: {
 		className: { control: false },
 	},
 	args: {
-		accept: 'all',
+		accept: "all",
 		multiple: false,
 	},
 } satisfies Meta<typeof FilePicker>;
@@ -46,8 +41,8 @@ export const Draggable: StoryObj<typeof meta> = {
 
 export const Wrapper: StoryObj<typeof meta> = {
 	args: {
-		accept: 'image/*',
-		children: 'Avatar',
+		accept: "image/*",
+		children: "Avatar",
 		editable: true,
 	},
 };

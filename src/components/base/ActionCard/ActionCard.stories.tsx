@@ -1,19 +1,18 @@
-import { ActionCard } from './ActionCard';
-
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ActionCard } from "./ActionCard";
 
 const meta = {
-	title: 'Components/Action Card',
+	title: "Components/Action Card",
 	component: ActionCard,
-	tags: ['autodocs'],
+	tags: ["autodocs"],
 	argTypes: {
 		className: { control: false },
 		size: {
-			defaultValue: { summary: 'default' },
+			defaultValue: { summary: "default" },
 		},
 	},
 	args: {
-		size: 'default',
+		size: "default",
 	},
 } satisfies Meta<typeof ActionCard>;
 

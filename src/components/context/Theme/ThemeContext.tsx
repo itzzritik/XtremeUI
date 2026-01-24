@@ -1,8 +1,8 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from "react";
 
-import { defaultColorPreset, STORAGE } from '#utils/index';
+import { defaultColorPreset, STORAGE } from "#utils/index";
 
-import { TThemeColor, TThemeInitialType, TThemeProviderProps, TThemeScheme } from './types';
+import type { TThemeColor, TThemeInitialType, TThemeProviderProps, TThemeScheme } from "./types";
 
 const ThemeDefault: TThemeInitialType = {
 	isDarkTheme: undefined,
@@ -17,21 +17,20 @@ const ThemeProvider = ({ children }: TThemeProviderProps) => {
 	const [themeScheme, setThemeScheme] = useState<TThemeScheme | undefined>(ThemeDefault.themeScheme);
 	const [themeColor, setThemeColor] = useState<TThemeColor | undefined>(ThemeDefault.themeColor);
 
-	const getSystemPref = () => matchMedia('(prefers-color-scheme: dark)').matches;
-	const [isDarkTheme, setIsDark] = useState(themeScheme === 'auto' ? getSystemPref() : themeScheme === 'dark');
+	const getSystemPref = () => matchMedia("(prefers-color-scheme: dark)").matches;
+	const [isDarkTheme, setIsDark] = useState(themeScheme === "auto" ? getSystemPref() : themeScheme === "dark");
 
 	useEffect(() => {
 		let storedScheme = localStorage.getItem(STORAGE.themeScheme) as TThemeScheme;
 		let storedColor: TThemeColor | undefined;
 
 		try {
-			storedColor = JSON.parse(localStorage.getItem(STORAGE.themeColor) || 'null') || defaultColorPreset;
+			storedColor = JSON.parse(localStorage.getItem(STORAGE.themeColor) || "null") || defaultColorPreset;
 		} catch {
 			storedColor = defaultColorPreset;
 		}
 
-		if (!storedScheme)
-			storedScheme = document?.documentElement.getAttribute(STORAGE.themeSchemeAttr) as TThemeScheme ?? undefined;
+		if (!storedScheme) storedScheme = (document?.documentElement.getAttribute(STORAGE.themeSchemeAttr) as TThemeScheme) ?? undefined;
 
 		if (storedScheme) setThemeScheme(storedScheme);
 		if (storedColor) setThemeColor(storedColor);
@@ -42,14 +41,13 @@ const ThemeProvider = ({ children }: TThemeProviderProps) => {
 		const { h, s, l } = themeColor;
 		document.documentElement.setAttribute(STORAGE.themeSchemeAttr, themeScheme);
 
-		const style = document.getElementById(STORAGE.themeColor) ||
-			document.head.appendChild(Object.assign(document.createElement('style'), { id: STORAGE.themeColor }));
+		const style = document.getElementById(STORAGE.themeColor) || document.head.appendChild(Object.assign(document.createElement("style"), { id: STORAGE.themeColor }));
 		style.textContent = `:root{ --H: ${h}; --S: ${s}%; --L: ${l}% }`;
 
 		let meta = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null;
 		if (!meta) {
-			meta = document.createElement('meta') as HTMLMetaElement;
-			meta.name = 'theme-color';
+			meta = document.createElement("meta") as HTMLMetaElement;
+			meta.name = "theme-color";
 			document.head.appendChild(meta);
 		}
 		meta.content = `hsl(${h},${s}%,${l}%)`;
@@ -59,20 +57,16 @@ const ThemeProvider = ({ children }: TThemeProviderProps) => {
 	}, [themeScheme, themeColor]);
 
 	useEffect(() => {
-		if (themeScheme !== 'auto') return setIsDark(themeScheme === 'dark');
+		if (themeScheme !== "auto") return setIsDark(themeScheme === "dark");
 
-		const media = matchMedia('(prefers-color-scheme: dark)');
+		const media = matchMedia("(prefers-color-scheme: dark)");
 		const update = () => setIsDark(media.matches);
 		update();
-		media.addEventListener('change', update);
-		return () => media.removeEventListener('change', update);
+		media.addEventListener("change", update);
+		return () => media.removeEventListener("change", update);
 	}, [themeScheme]);
 
-	return (
-		<ThemeContext.Provider value={{ isDarkTheme, themeScheme, setThemeScheme, themeColor, setThemeColor }}>
-			{children}
-		</ThemeContext.Provider>
-	);
+	return <ThemeContext.Provider value={{ isDarkTheme, themeScheme, setThemeScheme, themeColor, setThemeColor }}>{children}</ThemeContext.Provider>;
 };
 
 export { ThemeProvider, ThemeContext };

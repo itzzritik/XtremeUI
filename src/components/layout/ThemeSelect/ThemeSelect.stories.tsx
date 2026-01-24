@@ -1,24 +1,20 @@
-import { ThemeSelect } from './ThemeSelect';
-
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ThemeSelect } from "./ThemeSelect";
 
 const meta = {
-	title: 'Layouts/Theme Select',
+	title: "Layouts/Theme Select",
 	component: ThemeSelect,
-	tags: ['autodocs'],
+	tags: ["autodocs"],
 	argTypes: {
 		className: { control: false },
 	},
-	args: {
-	},
+	args: {},
 } satisfies Meta<typeof ThemeSelect>;
 
 export default meta;
 
 export const Default: StoryObj<typeof meta> = {
-	args: {
-
-	},
+	args: {},
 };
 
 export const WithSwatch: StoryObj<typeof meta> = {

@@ -1,30 +1,18 @@
-import { useEffect } from 'react';
-
-import {
-	MemoryRouter,
-	Routes,
-	Route,
-	Link,
-	useLocation,
-	useNavigate,
-} from 'react-router-dom';
-
-import { useXData } from '#components/context/useContext';
-
-import { Navigation } from '../Navigation/Navigation';
-import { SiderModal } from '../SiderModal/SiderModal';
-
-import { Sider } from './Sider';
-import { ESiderModes, TSiderModes, TSiderProps } from './types';
-
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useEffect } from "react";
+import { Link, MemoryRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { useXData } from "#components/context/useContext";
+import { Navigation } from "../Navigation/Navigation";
+import { SiderModal } from "../SiderModal/SiderModal";
+import { Sider } from "./Sider";
+import { ESiderModes, type TSiderModes, type TSiderProps } from "./types";
 
 const routeList = [
-	{ name: 'Dashboard', href: '/dashboard', icon: 'e323' },
-	{ name: 'Teams', href: '/teams', icon: 'e533' },
-	{ name: 'Favorite', href: '/favorite', icon: 'f762' },
-	{ name: 'Wallet', href: '/wallet', icon: 'f555' },
-	{ name: 'Settings', href: '/settings', icon: 'f013' },
+	{ name: "Dashboard", href: "/dashboard", icon: "e323" },
+	{ name: "Teams", href: "/teams", icon: "e533" },
+	{ name: "Favorite", href: "/favorite", icon: "f762" },
+	{ name: "Wallet", href: "/wallet", icon: "f555" },
+	{ name: "Settings", href: "/settings", icon: "f013" },
 ];
 
 const Renderer = (props: TSiderStoryProps) => {
@@ -33,7 +21,7 @@ const Renderer = (props: TSiderStoryProps) => {
 	const { setSiderMode } = useXData();
 
 	useEffect(() => {
-		if (pathname === '/') navigate(routeList[0]?.href);
+		if (pathname === "/") navigate(routeList[0]?.href);
 	}, [navigate, pathname]);
 
 	useEffect(() => {
@@ -44,24 +32,19 @@ const Renderer = (props: TSiderStoryProps) => {
 		<Sider
 			{...props}
 			leftSider={
-				<Navigation
-					as={Link}
-					hrefPropName='to'
-					pathname={pathname}
-					routes={routeList}
-				>
+				<Navigation as={Link} hrefPropName="to" pathname={pathname} routes={routeList}>
 					🎲 XtremeUI
 				</Navigation>
 			}
 			rightSider={
 				<SiderModal
-					title='Demo Sider Modal'
-					icon='f890'
+					title="Demo Sider Modal"
+					icon="f890"
 					primaryButtonProps={{
-						label: 'Save',
+						label: "Save",
 					}}
 					secondaryButtonProps={{
-						label: 'Cancel',
+						label: "Cancel",
 					}}
 				/>
 			}
@@ -73,14 +56,14 @@ const ReactRouterDecorator = (props: TSiderStoryProps) => {
 	return (
 		<MemoryRouter>
 			<Routes>
-				<Route path='/*' element={<Renderer {...props} />} />
+				<Route path="/*" element={<Renderer {...props} />} />
 			</Routes>
 		</MemoryRouter>
 	);
 };
 
 const meta: Meta<typeof ReactRouterDecorator> = {
-	title: 'Layouts/Sider',
+	title: "Layouts/Sider",
 	component: ReactRouterDecorator,
 	tags: [],
 	argTypes: {
@@ -89,7 +72,7 @@ const meta: Meta<typeof ReactRouterDecorator> = {
 		rightSider: { control: false },
 		siderMode: {
 			options: Object.values(ESiderModes),
-			control: { type: 'radio' },
+			control: { type: "radio" },
 		},
 		showMiniLeftSider: { defaultValue: { summary: true } },
 		showMiniRightSider: { defaultValue: { summary: false } },
@@ -97,7 +80,7 @@ const meta: Meta<typeof ReactRouterDecorator> = {
 	args: {
 		showMiniLeftSider: true,
 		showMiniRightSider: false,
-		siderMode: 'left',
+		siderMode: "left",
 	},
 };
 
@@ -107,5 +90,5 @@ export const Default: StoryObj<typeof meta> = {
 };
 
 type TSiderStoryProps = TSiderProps & {
-  siderMode: TSiderModes;
+	siderMode: TSiderModes;
 };

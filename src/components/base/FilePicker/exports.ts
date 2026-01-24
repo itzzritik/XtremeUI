@@ -1,7 +1,7 @@
-import '#styles/index.scss';
+import "#styles/index.scss";
 
-import './filePicker.scss';
+import "./filePicker.scss";
 
-export { FilePicker } from './FilePicker';
-export type { TFilePickerProps, EFilePickerAccept } from './types';
-export { FilePickerIcon } from './types';
+export { FilePicker } from "./FilePicker";
+export type { EFilePickerAccept, TFilePickerProps } from "./types";
+export { FilePickerIcon } from "./types";
