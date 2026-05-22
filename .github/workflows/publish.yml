@@ -28,7 +28,7 @@ concurrency:
 jobs:
     publish:
         if: github.actor != 'itzzjarvis'
-        name: Publish ${{ github.event_name == 'push' && 'patch' || inputs.version }} version to npm
+        name: Publish ${{ github.event_name == 'push' && 'patch' || inputs.version }} version
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v6
@@ -71,29 +71,6 @@ jobs:
             - name: Build package
               run: pnpm build
 
-            - name: Publish to npm
-              run: npm publish --access public --provenance
-
-            - name: Push commit & tag
-              run: git push --follow-tags
-
-    build:
-        name: Build Storybook
-        needs: publish
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v6
-              with:
-                  ref: main
-
-            - uses: actions/setup-node@v6
-              with:
-                  node-version: 24
-
-            - uses: pnpm/action-setup@v6
-
-            - run: pnpm install --frozen-lockfile
-
             - name: Build Storybook
               run: pnpm build-storybook
 
@@ -104,9 +81,15 @@ jobs:
               with:
                   path: dist/storybook
 
+            - name: Publish to npm
+              run: npm publish --access public --provenance
+
+            - name: Push commit & tag
+              run: git push --follow-tags
+
     deploy:
         name: Deploy to GitHub Pages
-        needs: build
+        needs: publish
         runs-on: ubuntu-latest
         environment:
             name: github-pages
