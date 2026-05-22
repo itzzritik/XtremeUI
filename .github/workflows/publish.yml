@@ -19,10 +19,11 @@ on:
 permissions:
     contents: write
     id-token: write
+    pages: write
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
-    cancel-in-progress: true
+    cancel-in-progress: false
 
 jobs:
     publish:
@@ -39,10 +40,9 @@ jobs:
                   node-version: 24
                   registry-url: 'https://registry.npmjs.org/'
 
-            - uses: pnpm/action-setup@v4
-              with:
-                  version: latest
-                  run_install: true
+            - uses: pnpm/action-setup@v6
+
+            - run: pnpm install --frozen-lockfile
 
             - name: Setup Git & SSH signing
               run: |
@@ -76,3 +76,41 @@ jobs:
 
             - name: Push commit & tag
               run: git push --follow-tags
+
+    build:
+        name: Build Storybook
+        needs: publish
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+              with:
+                  ref: main
+
+            - uses: actions/setup-node@v6
+              with:
+                  node-version: 24
+
+            - uses: pnpm/action-setup@v6
+
+            - run: pnpm install --frozen-lockfile
+
+            - name: Build Storybook
+              run: pnpm build-storybook
+
+            - name: Write CNAME for custom domain
+              run: echo "xtremeui.ritik.me" > dist/storybook/CNAME
+
+            - uses: actions/upload-pages-artifact@v5
+              with:
+                  path: dist/storybook
+
+    deploy:
+        name: Deploy to GitHub Pages
+        needs: build
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - id: deployment
+              uses: actions/deploy-pages@v5
