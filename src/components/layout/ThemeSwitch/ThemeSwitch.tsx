@@ -33,7 +33,8 @@ export const ThemeSwitch = forwardRef<HTMLDivElement, TThemeSwitchProps>((props,
 	}, [themeScheme]);
 
 	const nextColor = useMemo(() => {
-		return THEME_COLOR[(THEME_COLOR.indexOf(themeColor) + 1) % THEME_COLOR.length];
+		const currentColor = themeColor ?? THEME_COLOR[0];
+		return THEME_COLOR[(THEME_COLOR.indexOf(currentColor) + 1) % THEME_COLOR.length];
 	}, [themeColor]);
 
 	const mainClass = clsx("xtrThemeSwitch", className, !s.isMobile && "withLabel");

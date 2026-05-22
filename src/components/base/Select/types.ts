@@ -1,5 +1,5 @@
-import type { ICON_TYPES } from "gliff";
 import type { ReactNode } from "react";
+import type { TClassicIconType } from "../Button/types";
 
 export enum ESelectSize {
 	mini = "mini",
@@ -14,7 +14,7 @@ type TCommonProps<T> = {
 	noOptionsMessage?: (obj: { inputValue: string }) => ReactNode;
 	size?: keyof typeof ESelectSize;
 	icon?: string;
-	iconType?: keyof typeof ICON_TYPES;
+	iconType?: TClassicIconType;
 	placeholder?: string;
 	clearable?: boolean;
 	searchable?: boolean;

@@ -25,7 +25,7 @@
 		"clsx": "^2.1.1",
 		"color-namer": "^1.4.0",
 		"colord": "^2.9.3",
-		"gliff": "^0.0.9",
+		"gliff": "^0.0.12",
 		"react-calendar": "^6.0.0",
 		"react-clock": "^6.0.0",
 		"react-datetime-picker": "^7.0.1",

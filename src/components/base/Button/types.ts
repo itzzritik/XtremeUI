@@ -1,5 +1,7 @@
-import type { ICON_TYPES } from "gliff";
+import type { TIconProps } from "gliff";
 import type { CSSProperties, HTMLAttributes } from "react";
+
+export type TClassicIconType = Extract<TIconProps, { set?: "classic" }>["type"];
 
 export enum EButtonSize {
 	mini = "mini",
@@ -13,7 +15,7 @@ export interface BaseButton extends HTMLAttributes<HTMLButtonElement> {
 	size?: keyof typeof EButtonSize;
 	loading?: boolean;
 	disabled?: boolean;
-	iconType?: keyof typeof ICON_TYPES;
+	iconType?: TClassicIconType;
 	iconPosition?: "left" | "right";
 	onClick?: () => void;
 }

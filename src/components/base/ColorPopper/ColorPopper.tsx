@@ -2,7 +2,7 @@
 
 import { autoUpdate, flip, offset, shift, useClick, useDismiss, useFloating, useInteractions, useTransitionStyles } from "@floating-ui/react";
 import clsx from "clsx";
-import { type Colord, colord, getFormat } from "colord";
+import { type AnyColor, type Colord, colord, getFormat, type HsvaColor } from "colord";
 import { Icon } from "gliff";
 import { forwardRef, type Ref, useEffect, useMemo, useRef, useState } from "react";
 
@@ -16,7 +16,6 @@ import { Button } from "../Button/Button";
 
 import "./colorPopper.scss";
 
-import type { AnyColor, HsvaColor, Input } from "colord/types";
 import type { ExtractColorType, TColorPopperProps } from "./types";
 
 function ColorPopperInner<T extends AnyColor = AnyColor>(props: TColorPopperProps<T>, ref: Ref<HTMLDivElement>) {
@@ -43,7 +42,7 @@ function ColorPopperInner<T extends AnyColor = AnyColor>(props: TColorPopperProp
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: intentional
 	const initialColor = useMemo(() => colord(color), []);
-	const format = useMemo(() => getFormat(color as Input), [color]);
+	const format = useMemo(() => getFormat(color as Parameters<typeof getFormat>[0]), [color]);
 
 	const [localColor, setLocalColor] = useState<HsvaColor>(initialColor.toHsv());
 	const [inputValue, setInputValue] = useState(initialColor.toHex());

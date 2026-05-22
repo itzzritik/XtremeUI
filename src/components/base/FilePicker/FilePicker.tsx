@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { Icon } from "gliff";
+import type { CSSProperties } from "react";
 import { createPortal } from "react-dom";
 import { useFilePicker } from "use-file-picker";
 
@@ -10,6 +11,8 @@ import { Button } from "../Button/Button";
 import "./filePicker.scss";
 import { getFilePickerIcon } from "./getFilePickerIcon";
 import { imageExts, type TFilePickerProps } from "./types";
+
+const uploadIconStyle = { "--iconSize": "64px" } as CSSProperties & { "--iconSize": string };
 
 export const FilePicker = (props: TFilePickerProps) => {
 	const { className, children, draggable = false, editable = false, multiple = false, accept = "*/*", onChange } = props;
@@ -42,7 +45,7 @@ export const FilePicker = (props: TFilePickerProps) => {
 	if (draggable) {
 		return (
 			<div className={FilePickerClsx} onClick={openFilePicker}>
-				<Icon code="f0ed" set="duotone" size={64} />
+				<Icon code="f0ed" set="duotone" style={uploadIconStyle} />
 				<h2>Drop File{multiple ? "s" : ""} Here</h2>
 				<p>or click here to open file chooser</p>
 			</div>

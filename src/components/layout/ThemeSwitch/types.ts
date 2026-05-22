@@ -1,11 +1,9 @@
-import type { ICON_TYPES } from "gliff";
-
-import type { EButtonSize, EButtonTypes } from "../../base/Button/types";
+import type { EButtonSize, EButtonTypes, TClassicIconType } from "../../base/Button/types";
 
 export type TThemeSwitchProps = {
 	className?: string;
 	withLabel?: boolean;
 	type?: keyof typeof EButtonTypes;
 	size?: keyof typeof EButtonSize;
-	iconType?: keyof typeof ICON_TYPES;
+	iconType?: TClassicIconType;
 };

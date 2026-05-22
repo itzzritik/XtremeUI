@@ -2,13 +2,15 @@
 
 import clsx from "clsx";
 import { Icon } from "gliff";
-import { forwardRef, useEffect, useState } from "react";
+import { type CSSProperties, forwardRef, useEffect, useState } from "react";
 
 import { FACE_ICONS } from "#utils/constants/iconCollection";
 import { readImageFile, readImageSrc } from "#utils/helper/imageHelper";
 
 import "./avatar.scss";
 import { EAvatarSize, type TAvatarProps } from "./types";
+
+type TIconStyle = CSSProperties & { "--iconSize": string };
 
 export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 	const { className, src, file, alt, placeholderIcon, size = "default", onClick } = props;
@@ -18,6 +20,7 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 	const [isError, setIsError] = useState(false);
 
 	const avatarSize = typeof size === "number" ? size : EAvatarSize[size];
+	const placeholderIconStyle: TIconStyle = { "--iconSize": `${8 + avatarSize / 4}px` };
 	const AvatarClsx = clsx("xtrAvatar", className, isLoading && "loading", isError && "error");
 
 	const clearLoading = (img?: string) => {
@@ -64,7 +67,7 @@ export const Avatar = forwardRef<HTMLDivElement, TAvatarProps>((props, ref) => {
 				// biome-ignore lint/performance/noImgElement: library component wrapping img
 				<img className="image" src={image} alt={alt} />
 			) : (
-				<Icon className="placeholder" type="solid" size={8 + avatarSize / 4} code={isError ? "e1b7" : (placeholderIcon ?? randomFace)} />
+				<Icon className="placeholder" type="solid" style={placeholderIconStyle} code={isError ? "e1b7" : (placeholderIcon ?? randomFace)} />
 			)}
 		</div>
 	);

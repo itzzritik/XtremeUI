@@ -1,5 +1,5 @@
-import type { ICON_TYPES } from "gliff";
 import type { ChangeEvent, CSSProperties, FocusEvent, KeyboardEvent } from "react";
+import type { TClassicIconType } from "../Button/types";
 
 export type TTextfieldProps = {
 	className?: string;
@@ -11,7 +11,7 @@ export type TTextfieldProps = {
 	autoFocus?: boolean;
 	autoComplete?: keyof typeof ETextfieldAutoComplete;
 	icon?: string;
-	iconType?: keyof typeof ICON_TYPES;
+	iconType?: TClassicIconType;
 	value?: string;
 	id?: string;
 	onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
