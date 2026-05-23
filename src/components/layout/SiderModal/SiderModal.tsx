@@ -20,7 +20,7 @@ export const SiderModal = forwardRef<HTMLDivElement, TSiderModalProps>((props, r
 		<div ref={ref} className={SiderModalClsx} role="dialog">
 			<div className="header">
 				<Button className="back" icon="f053" onClick={() => setSiderMode("closed")} />
-				{icon && <Icon code={icon} set="duotone" />}
+				{icon && <Icon className="xIcon" code={icon} set="duotone" />}
 				<p className="title">{title}</p>
 			</div>
 			<div className="body">{children}</div>

@@ -29,7 +29,7 @@ export const Navigation = forwardRef<HTMLDivElement, TNavigationProps>((props, r
 								if (loading !== pathname) setLoading(route?.href);
 							}, 150);
 						}}>
-						{route?.icon && <Icon code={route?.icon} set={route?.href === pathname ? "duotone" : undefined} type={route?.href === pathname ? undefined : "light"} />}
+						{route?.icon && <Icon className="xIcon" code={route?.icon} set={route?.href === pathname ? "duotone" : undefined} type={route?.href === pathname ? undefined : "light"} />}
 						<span className="label">{route?.name}</span>
 					</Tag>
 				))}

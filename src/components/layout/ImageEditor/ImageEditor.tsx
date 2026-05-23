@@ -75,10 +75,10 @@ export const ImageEditor = (props: TImageEditorProps) => {
 				onCropComplete={(_, v) => setCroppedAreaPixels(v)}
 			/>
 			<div className="editorControls">
-				<Icon code="f00d" type="solid" onClick={clearFilePicker} />
-				<Icon code="f2ea" type="solid" onClick={() => setRotation((v) => v - 90)} />
-				<Icon code="f2f9" type="solid" onClick={() => setRotation((v) => v + 90)} />
-				<Icon code="f00c" type="solid" onClick={accept} />
+				<Icon className="xIcon" code="f00d" type="solid" onClick={clearFilePicker} />
+				<Icon className="xIcon" code="f2ea" type="solid" onClick={() => setRotation((v) => v - 90)} />
+				<Icon className="xIcon" code="f2f9" type="solid" onClick={() => setRotation((v) => v + 90)} />
+				<Icon className="xIcon" code="f00c" type="solid" onClick={accept} />
 			</div>
 			{mediaLoading && <Spinner fullpage />}
 		</div>
