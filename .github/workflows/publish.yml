@@ -28,23 +28,39 @@ concurrency:
 jobs:
     publish:
         if: github.actor != 'itzzjarvis'
-        name: Publish ${{ github.event_name == 'push' && 'patch' || inputs.version }} version
+        name: Publish
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v6
               with:
                   fetch-depth: 0
 
+            - uses: pnpm/action-setup@v6
+
             - uses: actions/setup-node@v6
               with:
                   node-version: 24
                   registry-url: 'https://registry.npmjs.org/'
-
-            - uses: pnpm/action-setup@v6
+                  cache: pnpm
 
             - run: pnpm install --frozen-lockfile
 
+            - name: Detect package-affecting changes
+              id: changes
+              uses: dorny/paths-filter@v4
+              with:
+                  filters: |
+                      package:
+                        - 'src/**'
+                        - '!src/**/*.stories.@(ts|tsx|mdx)'
+                        - '!src/**/*.test.@(ts|tsx)'
+                        - '!src/**/*.spec.@(ts|tsx)'
+                        - 'package.json'
+                        - 'tsconfig.json'
+                        - 'vite.config.ts'
+
             - name: Setup Git & SSH signing
+              if: github.event_name == 'workflow_dispatch' || steps.changes.outputs.package == 'true'
               run: |
                   git config user.email "ritik.jarvis@gmail.com"
                   git config user.name "Jarvis"
@@ -59,6 +75,7 @@ jobs:
                   npm config set sign-git-tag true
 
             - name: Bump version & sign tag
+              if: github.event_name == 'workflow_dispatch' || steps.changes.outputs.package == 'true'
               env:
                   RELEASE_TYPE: ${{ inputs.version || 'patch' }}
               run: |
@@ -69,6 +86,7 @@ jobs:
                   git tag -s -m "🤖 Jarvis published a $RELEASE_TYPE version" "$TAG"
 
             - name: Build package
+              if: github.event_name == 'workflow_dispatch' || steps.changes.outputs.package == 'true'
               run: pnpm build
 
             - name: Build Storybook
@@ -82,9 +100,11 @@ jobs:
                   path: dist/storybook
 
             - name: Publish to npm
+              if: github.event_name == 'workflow_dispatch' || steps.changes.outputs.package == 'true'
               run: npm publish --access public --provenance
 
             - name: Push commit & tag
+              if: github.event_name == 'workflow_dispatch' || steps.changes.outputs.package == 'true'
               run: git push --follow-tags
 
     deploy:
