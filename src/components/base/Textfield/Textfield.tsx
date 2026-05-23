@@ -75,7 +75,7 @@ export const Textfield = forwardRef<HTMLInputElement, TTextfieldProps>((props, r
 			<label className="placeholder" htmlFor={id}>
 				{localPlaceholder}
 			</label>
-			{localIconName && !textarea && <Icon code={localIconName} type={iconType} />}
+			{localIconName && !textarea && <Icon className="xIcon" code={localIconName} type={iconType} />}
 			{type === "phone" && (
 				<div className="dialCode">
 					<span style={{ backgroundImage: "url(https://flagcdn.com/in.svg)" }} />
